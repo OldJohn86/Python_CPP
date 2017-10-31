@@ -8,7 +8,19 @@ from time import sleep
 def main():
 	url='https://www.zhihu.com/?next=%2Fquestion%2F22591304%2Ffollowers'
 	#感觉这个话题人很多
-	headers={}
+	headers={
+	    'User-Agent':'',
+	    'Host':'www.zhihu.com',
+	    'Accept-Encoding':'gzip,deflate,br',
+	    'Accept-Language':'zh-CN,en-US;q=0.8,en;q=0.6',
+	    'Origin':'https://www.zhihu.com/',
+	    'Connection':'keep-alive',
+	    'Referer':'https://www.zhihu.com/?next=%2Fquestion%2F22591304%2Ffollowers',
+	    'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
+	    'X-Requested-With':'XMLHttpRequest',
+	    'X-Xsrftoken':'',
+	    'Cookie':''
+	}
 	i=1
 	print ('1111111')
 	for x in xrange(20,3600,20):
