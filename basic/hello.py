@@ -90,3 +90,7 @@ print s3
 s4 = r'''Hello,
 Lisa!'''
 print s4
+
+print ord('A')
+print ord('B')
+
