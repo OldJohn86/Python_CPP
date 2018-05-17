@@ -3,6 +3,9 @@ class Animal(object):
 	def run(self):
 		print('Animal is running...')
 
+	def eat(self):
+		print('Animal is eating...')
+
 class Dog(Animal):
 
 	def run(self):
@@ -48,9 +51,4 @@ class Tortoise(Animal):
 		print('Tortoise is running slowly...')
 
 print(run_twice(Tortoise()))
-
-
-
-
-
 
