@@ -24,7 +24,7 @@ def hanoi(n, x, y, z):
 		hanoi(n-1, x, z, y)
 		hanoi(1, x, y, z)
 		hanoi(n-1, y, x, z)
-hanoi(3, 'A', 'B', 'C')
+hanoi(5, 'A', 'B', 'C')
 
 
 
