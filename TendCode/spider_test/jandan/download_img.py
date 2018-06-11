@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import re
 import threading
 import multiprocessing
-
+import os
 
 def _md5(value):
     '''md5加密'''
@@ -74,14 +74,14 @@ def get_r(js_url):
 def load_img(imgurl, file):
     '''下载单张图片到制定的文件夹下'''
     name = imgurl.split('/')[-1]
-    print(name)
-    print(file)
+#    print(name)
+#    print(file)
     file = "{}/{}".format(file,name)
-    print(file)
+#    print(file)
     item = requests.get(imgurl).content
     with open(file,'wb') as f:
         f.write(item)
-    print('{} is loaded'.format(name))
+#    print('{} is loaded'.format(name))
 
 
 
@@ -109,8 +109,16 @@ def load_imgs(url,file):
         i.join()
     print(url,'is ok')
 
-def main(start,end,file):
+def get_dir():
+    '''判断文件夹是否存在，如果不存在就创建一个'''
+    filename = "pics"
+    if not os.path.isdir(filename):
+        os.makedirs(filename)
+    return filename
+
+def main(start,offset,file):
     '''多进程下载多页的图片,传入参数是开始页码数，结束页码，图片保存文件夹地址'''
+    end = start + offset
     pool = multiprocessing.Pool(processes=4)
     base_url = 'http://jandan.net/ooxx/page-{}'
     for i in range(start,end+1):
@@ -123,12 +131,13 @@ def main(start,end,file):
 if __name__ == '__main__':
     import time
     t = time.time()
-    main(20,25,r'./download1')
-    time.sleep(60)
-    main(30,35,r'./download2')
-    time.sleep(60)
-    main(40,45,r'./download3')
-    time.sleep(60)
-    main(50,55,r'./download4')
+    get_dir()
+    main(50689384,100,r'./pics')
+#    time.sleep(60)
+#    main(30,35,r'./download2')
+#    time.sleep(60)
+#    main(40,45,r'./download3')
+#    time.sleep(60)
+#    main(50,55,r'./download4')
 #    time.sleep(60)
     print(time.time()-t)
