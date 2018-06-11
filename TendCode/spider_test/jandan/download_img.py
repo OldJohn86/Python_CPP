@@ -74,7 +74,10 @@ def get_r(js_url):
 def load_img(imgurl, file):
     '''下载单张图片到制定的文件夹下'''
     name = imgurl.split('/')[-1]
-    file = "{}\\{}".format(file,name)
+    print(name)
+    print(file)
+    file = "{}/{}".format(file,name)
+    print(file)
     item = requests.get(imgurl).content
     with open(file,'wb') as f:
         f.write(item)
@@ -120,5 +123,12 @@ def main(start,end,file):
 if __name__ == '__main__':
     import time
     t = time.time()
-    main(23,25,r'./download/')
+    main(20,25,r'./download1')
+    time.sleep(60)
+    main(30,35,r'./download2')
+    time.sleep(60)
+    main(40,45,r'./download3')
+    time.sleep(60)
+    main(50,55,r'./download4')
+#    time.sleep(60)
     print(time.time()-t)
