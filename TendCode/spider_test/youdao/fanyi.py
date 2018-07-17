@@ -77,4 +77,6 @@ if __name__ == '__main__':
     y.get_result()
     y = Youdao('有朋自远方来，不亦乐乎')
     y.get_result()
+    y = Youdao('明月几时有，把酒问青天')
+    y.get_result()
 
