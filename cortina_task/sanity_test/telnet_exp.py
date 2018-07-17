@@ -32,12 +32,17 @@ def do_telnet(host):
 
     tn.write(b'reboot\n')
     time.sleep(50)
-    result1 = tn.read_very_eager()
-    print (result1.decode('ascii', errors='ignore'))
+    result_str = tn.read_very_eager()
+    return (result_str.decode('ascii', errors='ignore'))
 
     tn.write(b'exit\n')
     tn.close()
     
 if __name__ == '__main__':
     host = '192.168.41.251'
-    do_telnet(host)
+    log_txt = do_telnet(host)
+    print(log_txt)
+
+    with open('./logfile/g3_santy_test.txt', 'w') as f:
+        f.write(log_txt)
+
