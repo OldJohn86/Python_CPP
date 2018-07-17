@@ -34,22 +34,22 @@ def ssh_test(host, port, username, password):
         return result.decode().strip()
 
     # 获取指定文件夹的绝对地址
-    cmd_get_path = 'cd daily_image_sanity_test;pwd'
+    cmd_get_path = 'cd daily_image_sanity_test; pwd'
     db_path = run_shell(cmd_get_path)
 
     # 获取指定文件夹中文件的名称，并跟上面得到的文件夹绝对地址组合起来
-    cmd_get_sqls = 'cd daily_image_sanity_test;ls'
+    cmd_get_sqls = 'cd daily_image_sanity_test; ls'
     sqls = run_shell(cmd_get_sqls)
-    #print(sqls)
+    print(sqls)
 
     # 判断是否为子目录
-    cmd_get_dir ='cd daily_image_sanity_test;ls -l|grep ^d|awk \'{print$9}\'' 
+    cmd_get_dir ='cd daily_image_sanity_test; ls -l|grep ^d|awk \'{print$9}\'' 
     dir_name = run_shell(cmd_get_dir)
-    #print(dir_name)
+    print(dir_name)
 
     # 去除子目录路径
-    sqls = sqls.replace(dir_name + '\n', '')
-    print(sqls)
+#sqls = sqls.replace(dir_name + '\n', ' ')
+#    print(sqls)
 
     lis = ['{}/{}'.format(db_path, each) for each in sqls.split('\n')]
     print(lis)
@@ -81,8 +81,12 @@ if __name__ == '__main__':
     pw = info.get('password', None)
     files = ssh_test(h, p, u, pw)
 
-    path = './daily_images'
-    os.system('mkdir ./daily_images')
+    path = './daily_build'
+    if os.path.exists(path):
+        pass
+    else:
+        os.mkdirs(path)
+
     if files:
         for each in files:
             name = each.split('/')[-1]
