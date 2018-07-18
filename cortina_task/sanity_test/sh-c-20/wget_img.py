@@ -14,7 +14,7 @@ y_m = date.today().strftime('%Y-%m')
 print(y_m_d)
 print(y_m)
 
-def do_wget(target, child):
+def do_wget(target, child=''):
     cmd_rm_img = sanity_test_path +' rm *'+target+'*;'+' rm *.dtb'
     print(cmd_rm_img)
     os.system(cmd_rm_img)
@@ -23,7 +23,7 @@ def do_wget(target, child):
         target_img_type = 'g3-eng-major-image'
         target_gpt = 'major-image-g3-eng-gpt-nandinfo.img'
         target_img = 'major-image-g3-eng.mubi'
-    elif target == 'saturn_sfu':
+    elif target == 'saturn-sfu':
         if child == 'epon':
             target_img_type = 'saturn-sfu-eng_epon-major-image'
         elif child == 'gpon':
