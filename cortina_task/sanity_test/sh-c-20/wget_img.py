@@ -14,10 +14,8 @@ y_m = date.today().strftime('%Y-%m')
 print(y_m_d)
 print(y_m)
 
-def do_wget(target):
-    # Removed old images first.
-    
-    cmd_rm_img = sanity_test_path +' rm *'+target+'*'
+def do_wget(target, child):
+    cmd_rm_img = sanity_test_path +' rm *'+target+'*;'+' rm *.dtb'
     print(cmd_rm_img)
     os.system(cmd_rm_img)
 
@@ -25,8 +23,14 @@ def do_wget(target):
         target_img_type = 'g3-eng-major-image'
         target_gpt = 'major-image-g3-eng-gpt-nandinfo.img'
         target_img = 'major-image-g3-eng.mubi'
-    elif target == 'saturn_epon':
-        target_img_type = 'saturn-sfu-eng_epon-major-image'
+    elif target == 'saturn_sfu':
+        if child == 'epon':
+            target_img_type = 'saturn-sfu-eng_epon-major-image'
+        elif child == 'gpon':
+            target_img_type = 'saturn-sfu-eng_gpon-major-image'
+        else:
+            pass
+
         target_gpt = 'major-image-saturn-sfu-eng-gpt.img'
         target_img = 'uImage'
         dtb = 'uImage-saturn_sfu.dtb'
@@ -51,7 +55,7 @@ def do_wget(target):
     print(cmd_wget_img)
     os.system(cmd_wget_img)
 
-    if target == 'saturn_epon':
+    if target == 'saturn-sfu':
         cmd_wget_img = sanity_test_path +' wget '+server_url+target+'/'+y_m+'/'+y_m_d+'/'+target_img_type+'/'+dtb
         print(cmd_wget_img)
         os.system(cmd_wget_img)
@@ -68,5 +72,5 @@ def do_wget(target):
 
 if __name__ == '__main__':
     do_wget('g3')
-    do_wget('saturn_epon')
+    do_wget('saturn-sfu', 'epon')
 
