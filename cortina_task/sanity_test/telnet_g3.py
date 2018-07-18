@@ -69,12 +69,20 @@ def do_telnet(host):
     tn.write(reset_set)
 
     time.sleep(50)
+    tn.write(b'root\n')
+    time.sleep(1)
+    tn.write(b'\r\n')
+    time.sleep(1)
+    tn.write(b'uname -a\n')
+
     # result_str = tn.read_all()
     result_str = tn.read_very_eager()
-    return (result_str.decode('ascii', errors='ignore'))
+
+#tn.read_until(b'g3-eng login: ')
 
     tn.write(b'exit\n')
     tn.close()
+    return (result_str.decode('ascii', errors='ignore'))
     
 if __name__ == '__main__':
     host = '192.168.41.251'
