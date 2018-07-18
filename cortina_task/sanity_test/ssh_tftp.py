@@ -87,15 +87,15 @@ if __name__ == '__main__':
     if os.path.exists(path):
         pass
     else:
-        os.mkdirs(path)
+        os.makedirs(path)
 
     target = ['expect_scp.sh', 'send_logs.sh', 'wget_image.sh']
 
     if files:
         for each in files:
             name = each.split('/')[-1]
-#print(each)
-#print(name)
+            #print(each)
+            #print(name)
             if name in target:
                 ss = sftp_test(h, p, u, pw, each, os.path.join(path, name))
 
