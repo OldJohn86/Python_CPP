@@ -5,6 +5,7 @@
 
 import telnetlib
 import time
+import os
 
 HOST = "192.168.41.251"
 PORT = 2012
@@ -74,13 +75,11 @@ def do_telnet(host):
     tn.write(b'\r\n')
     time.sleep(1)
     tn.write(b'uname -a\n')
+    time.sleep(1)
+    tn.write(b'exit\n')
 
     # result_str = tn.read_all()
     result_str = tn.read_very_eager()
-
-#tn.read_until(b'g3-eng login: ')
-
-    tn.write(b'exit\n')
     tn.close()
     return (result_str.decode('ascii', errors='ignore'))
     
@@ -88,6 +87,12 @@ if __name__ == '__main__':
     host = '192.168.41.251'
     log_txt = do_telnet(host)
     print(log_txt)
+
+    path = './logfile'
+    if os.path.exists(path):
+        pass
+    else:
+        os.makedirs(path)
 
     with open('./logfile/g3_santy_testlog.txt', 'w') as f:
         f.write(log_txt)
