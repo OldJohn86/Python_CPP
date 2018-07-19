@@ -72,5 +72,8 @@ def do_wget(target, child=''):
 
 if __name__ == '__main__':
     do_wget('g3')
-    do_wget('saturn-sfu', 'epon')
+    #do_wget('saturn-sfu', 'epon')
+
+
+
 
