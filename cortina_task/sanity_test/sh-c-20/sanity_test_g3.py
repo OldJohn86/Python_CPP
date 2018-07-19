@@ -27,9 +27,6 @@ print(y_m)
 #password = getpass.getpass("主机密码:")
 #port = 22
 
-server_url       = 'http://192.168.65.235:18683/'
-ubootenv         = 'uboot-env.bin'
-
 activeport_set     = b'setenv active_port 1;\r\n'
 serverip_set       = b'setenv serverip 192.168.1.128;\r\n'
 ipaddr_set         = b'setenv ipaddr 192.168.1.2;\r\n'
