@@ -10,7 +10,7 @@ from configparser import ConfigParser
 def read_ini():
     info = dict()
     cf = ConfigParser()
-    cf.read('config.ini', encoding='utf-8')
+    cf.read('/config/sh-c-20_config.ini', encoding='utf-8')
     keys = cf.options('ssh')
     for each in keys:
         info[each] = cf.get('ssh', each)
