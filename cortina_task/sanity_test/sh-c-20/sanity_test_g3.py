@@ -12,6 +12,15 @@ from datetime import date
 from configparser import ConfigParser
 
 
+# Get Timestamp
+y_m_d = '2018-07-18'
+#date.today().strftime('%Y-%m-%d')
+y_m ='2018-07'
+#date.today().strftime('%Y-%m')
+print(y_m_d)
+print(y_m)
+
+
 #print("\033[32;1m****开始配置目标机器信息*****\033[0m")
 #ips = input("主机IP:")
 #user = input("主机账号:")
@@ -86,14 +95,6 @@ def download_img(obj, config, target, child=''):
         os.makedirs(local_path)
     remote_path = path_info.get('remote_path', None)
 
-    # Get Timestamp
-    y_m_d = '2018-07-18'
-#date.today().strftime('%Y-%m-%d')
-    y_m ='2018-07'
-#date.today().strftime('%Y-%m')
-    print(y_m_d)
-    print(y_m)
-
     getattr(obj, "connect")()
     target_info = read_ini(config, target)
     for item in target_info.values():
@@ -130,14 +131,6 @@ def upload_log(obj, config, target, child=''):
     else:
         os.makedirs(local_path)
     remote_path = path_info.get('remote_path', None)
-
-    # Get Timestamp
-    y_m_d = '2018-07-18'
-#date.today().strftime('%Y-%m-%d')
-    y_m ='2018-07'
-#date.today().strftime('%Y-%m')
-    print(y_m_d)
-    print(y_m)
 
     getattr(obj, "connect")()
     target_info = read_ini(config, target)
@@ -251,7 +244,7 @@ if __name__ == "__main__":
         pass
     else:
         os.makedirs('./daily_image_sanity_test')
-    with open('./daily_image_sanity_test/g3-sanitytest-log.txt', 'w') as f:
+    with open('./daily_image_sanity_test/'+y_m_d+'g3-sanitytest-log.txt', 'w') as f:
         f.write(log_txt)
     upload_log(obj, config, 'g3')
     
