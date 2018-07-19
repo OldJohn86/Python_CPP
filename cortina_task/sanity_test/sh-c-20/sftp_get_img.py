@@ -41,9 +41,9 @@ class Tools(object):
             self.ssh = paramiko.SSHClient()
             self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             self.ssh.connect(self.ip, self.port, self.user, self.password)
-            print("连接已建立")
+            print("Connect created!!")
         except Exception as e:
-            print("未能连接到主机")
+            print("Failed to connect to Host")
     def input(self, local_file, remote_file):
         self.local_file_abs = local_file 
         self.remote_file_abs = remote_file
@@ -61,7 +61,7 @@ class Tools(object):
         sftp.close()
     def close(self):
         self.ssh.close()
-        print("连接关闭")
+        print("Connect closed")
 
 def download_img(obj, config, target, child=''):
     path_info = read_ini(config, 'path')
