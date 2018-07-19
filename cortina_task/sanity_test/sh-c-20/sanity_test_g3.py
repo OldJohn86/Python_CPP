@@ -29,7 +29,7 @@ saveenv_set        = b'saveenv;\r\n'
 reset_set          = b'reset\r\n'
 
 tftpboot_gpt       = b'tftpboot 0x84100000 major-image-g3-eng-gpt-nandinfo.img; nand erase 0x0 0x400000; nand write 0x84100000 0x0 0x300000;\r\n'
-tftpboot_ubootenv  = b'tftpboot 0x84000000 g3-uboot-env.bin; nand erase 0x400000 0x100000; nand write 0x84000000 0x400000 0x20000;\r\n'
+tftpboot_ubootenv  = b'tftpboot 0x84000000 uboot-env.bin; nand erase 0x400000 0x100000; nand write 0x84000000 0x400000 0x20000;\r\n'
 tftpboot_image     = b'tftpboot 0x85000000 major-image-g3-eng.mubi; nand erase 0x500000 0xD000000; nand write 0x85000000 0x500000 0x${filesize};\r\n'
 
 
