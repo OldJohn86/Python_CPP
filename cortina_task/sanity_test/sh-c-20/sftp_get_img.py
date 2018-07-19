@@ -162,7 +162,7 @@ if __name__ == "__main__":
     obj = Tools(username, password, port, host)
 #download_img(obj, config, 'saturn-sfu', 'epon')
 #download_img(obj, config, 'saturn-sfu', 'gpon')
-#download_img(obj, config, 'g3')
+    download_img(obj, config, 'g3')
 
-    upload_log(obj, config, 'g3')
+#upload_log(obj, config, 'g3')
     
