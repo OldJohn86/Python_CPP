@@ -18,7 +18,6 @@ from configparser import ConfigParser
 #password = getpass.getpass("主机密码:")
 #port = 22
 
-sanity_test_path = 'cd /home/pchen/daily_image_sanity_test;'
 server_url       = 'http://192.168.65.235:18683/'
 ubootenv         = 'uboot-env.bin'
 
@@ -250,7 +249,7 @@ if __name__ == "__main__":
         pass
     else:
         os.makedirs('./daily_image_sanity_test')
-    with open('./daily_image_sanity_test/g3-santytest-log.txt', 'w') as f:
+    with open('./daily_image_sanity_test/g3-sanitytest-log.txt', 'w') as f:
         f.write(log_txt)
     upload_log(obj, config, 'g3')
     
