@@ -71,16 +71,15 @@ def download_img(obj, config, target, child=''):
     else:
         os.makedirs(local_path)
     remote_path = path_info.get('remote_path', None)
-    # g3_path = path_info.get('g3_path', None)
-    # epon_path = path_info.get('epon_path', None)
-    # gpon_path = path_info.get('gpon_path', None)
-    
+
     # Get Timestamp
-    y_m_d = date.today().strftime('%Y-%m-%d')
-    y_m = date.today().strftime('%Y-%m')
-    #print(y_m_d)
-    #print(y_m)
-    
+    y_m_d = '2018-07-18'
+#date.today().strftime('%Y-%m-%d')
+    y_m ='2018-07'
+#date.today().strftime('%Y-%m')
+    print(y_m_d)
+    print(y_m)
+
     getattr(obj, "connect")()
     target_info = read_ini(config, target)
     for item in target_info.values():
@@ -97,13 +96,59 @@ def download_img(obj, config, target, child=''):
         else:
             print("Target[%s] is invalid!!" % target)
             pass
-        remote_file = remote_path+target+'/'+ y_m +'/'+ y_m_d + target_path + item
-        local_file = local_path + item
-        print(remote_file)
-        print(local_file)     
-        getattr(obj, "input")(local_file, remote_file)
-        getattr(obj, "get")()
 
+        if '-sanitytest-log.txt' in item:
+            pass
+        else:
+            remote_file = remote_path+target+'/'+ y_m +'/'+ y_m_d + target_path + item
+            local_file = local_path + item
+            print(remote_file)
+            print(local_file)
+            getattr(obj, "input")(local_file, remote_file)
+            getattr(obj, "get")()
+
+def upload_log(obj, config, target, child=''):
+    path_info = read_ini(config, 'path')
+    local_path = path_info.get('local_path', None)
+    if os.path.exists(local_path):
+        pass
+    else:
+        os.makedirs(local_path)
+    remote_path = path_info.get('remote_path', None)
+
+    # Get Timestamp
+    y_m_d = '2018-07-18'
+#date.today().strftime('%Y-%m-%d')
+    y_m ='2018-07'
+#date.today().strftime('%Y-%m')
+    print(y_m_d)
+    print(y_m)
+
+    getattr(obj, "connect")()
+    target_info = read_ini(config, target)
+    for item in target_info.values():
+        if target == 'g3':
+            target_path = path_info.get('g3_path', None)
+        elif target == 'saturn-sfu':
+            if child == 'epon':
+                target_path = path_info.get('epon_path', None)
+            elif child == 'gpon':
+                target_path = path_info.get('gpon_path', None)
+            else:
+                print("Target child[%s] is invalid!!" % target)
+                pass
+        else:
+            print("Target[%s] is invalid!!" % target)
+            pass
+        if '-sanitytest-log.txt' in item:
+            remote_file = remote_path+target+'/'+ y_m +'/'+ y_m_d + target_path + y_m_d+ '-' + item
+            local_file = local_path + item
+            print(remote_file)
+            print(local_file)
+            getattr(obj, "input")(local_file, remote_file)
+            getattr(obj, "put")()
+        else:
+            pass
 
 if __name__ == "__main__":
     config = './config/dailybuild_server_config.ini'
@@ -115,7 +160,9 @@ if __name__ == "__main__":
     password = ssh_info.get('password', None)
 
     obj = Tools(username, password, port, host)
-    download_img(obj, config, 'saturn-sfu', 'epon')
+#download_img(obj, config, 'saturn-sfu', 'epon')
 #download_img(obj, config, 'saturn-sfu', 'gpon')
 #download_img(obj, config, 'g3')
+
+    upload_log(obj, config, 'g3')
     
