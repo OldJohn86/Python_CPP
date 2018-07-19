@@ -120,6 +120,7 @@ def download_img(obj, config, target, child=''):
             print(local_file)
             getattr(obj, "input")(local_file, remote_file)
             getattr(obj, "get")()
+    getattr(obj, "close")()
 
 def upload_log(obj, config, target, child=''):
     path_info = read_ini(config, 'path')
@@ -163,6 +164,7 @@ def upload_log(obj, config, target, child=''):
             getattr(obj, "put")()
         else:
             pass
+    getattr(obj, "close")()
 
 
 def do_telnet(host):
