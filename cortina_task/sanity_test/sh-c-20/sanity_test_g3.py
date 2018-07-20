@@ -121,8 +121,10 @@ def upload_log(obj, config, target, child=''):
     target_info = read_ini(config, target)
     for item in target_info.values():
         if target == 'g3':
+            log_file = target + '-sanitytest-log.txt';
             target_path = path_info.get('g3_path', None)
         elif target == 'saturn-sfu':
+            log_file = child + '-sanitytest-log.txt';
             if child == 'epon':
                 target_path = path_info.get('epon_path', None)
             elif child == 'gpon':
@@ -133,8 +135,8 @@ def upload_log(obj, config, target, child=''):
         else:
             print("ERROR: Input target[%s] is invalid!!" % target)
             pass
-        if '-sanitytest-log.txt' in item:
-            remote_file = remote_path + target +'/'+ y_m +'/'+ y_m_d + target_path+ y_m_d +'-'+ item
+        if log_file == item:
+            remote_file = remote_path + target +'/'+ y_m +'/'+ y_m_d + target_path + y_m_d +'-'+ item
             print(remote_file)
             local_file = os.path.join(local_path_abs, y_m_d +'-'+ item)
             print(local_file)
