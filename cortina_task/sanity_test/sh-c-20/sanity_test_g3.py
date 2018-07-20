@@ -288,7 +288,7 @@ if __name__ == "__main__":
  
     # Epon sanity test process
     download_img(obj, config, 'saturn-sfu', 'epon')
-    capture_log(config, 'saturn-sfu', epon)
+    capture_log(config, 'saturn-sfu', 'epon')
     upload_log(obj, config, 'saturn-sfu', 'epon')
 
     # Gpon sanity test process
