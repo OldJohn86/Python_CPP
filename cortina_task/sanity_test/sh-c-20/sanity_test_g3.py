@@ -43,7 +43,7 @@ class SftpTool(object):
             self.ssh = paramiko.SSHClient()
             self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             self.ssh.connect(self.ip, self.port, self.user, self.password)
-            print("Connect created!!")
+            print("Host[%s] connect created!!" % self.ip)
         except Exception as e:
             print("ERROR: Failed to connect to Host[%s]!!" % self.ip)
     def input(self, local_file, remote_file):
@@ -63,7 +63,7 @@ class SftpTool(object):
         sftp.close()
     def close(self):
         self.ssh.close()
-        print("Connect closed")
+        print("Host[%s] connect closed!!" % self.ip)
 
 def download_img(obj, config, target, child=''):
     path_info = read_ini(config, 'path')
@@ -152,24 +152,22 @@ def upload_log(obj, config, target, child=''):
 def do_telnet(config, target):
     telnet_info = read_ini(config, 'telnet')
     host = telnet_info.get('host', None)
-    if target == 'g3':
-        port = int(telnet_info.get('g3_port', None))
-    elif target == 'saturn-sfu':
-        port = int(telnet_info.get('saturn_port', None))
-    else:
-        print("ERROR: Input target[%s] is invalid!!" % target)
-
     tftpboot_info = read_ini(config, 'tftpboot')
     saveenv_set = tftpboot_info.get('saveenv_set', None).encode('ascii')
     reset_set = tftpboot_info.get('reset_set', None).encode('ascii')
     if target == "g3":
+        port = int(telnet_info.get('g3_port', None))
         activeport_set = tftpboot_info.get('g3_activeport_set', None).encode('ascii')
         ipaddr_set = tftpboot_info.get('g3_ipaddr_set', None).encode('ascii')
         serverip_set = tftpboot_info.get('g3_serverip_set', None).encode('ascii')
         tftpboot_gpt = tftpboot_info.get('g3_tftpboot_gpt', None).encode('ascii')
         tftpboot_ubootenv = tftpboot_info.get('g3_tftpboot_ubootenv', None).encode('ascii')
         tftpboot_image = tftpboot_info.get('g3_tftpboot_image', None).encode('ascii')
+        uboot_tag = b'G3# '
+        cmdline_tag = b'root@g3-eng:~# '
+        written_ok = b'written: OK'
     elif target == "saturn-sfu":
+        port = int(telnet_info.get('saturn_port', None))
         activeport_set = tftpboot_info.get('saturn_activeport_set', None).encode('ascii')
         ipaddr_set = tftpboot_info.get('saturn_ipaddr_set', None).encode('ascii')
         serverip_set = tftpboot_info.get('saturn_serverip_set', None).encode('ascii')
@@ -179,7 +177,12 @@ def do_telnet(config, target):
         tftpboot_image = tftpboot_info.get('saturn_tftpboot_image', None).encode('ascii')
         tftpboot_rootfs = tftpboot_info.get('saturn_tftpboot_rootfs', None).encode('ascii')
         tftpboot_userubi = tftpboot_info.get('saturn_tftpboot_userubi', None).encode('ascii')
-    
+        uboot_tag = b'SATURN# '
+        cmdline_tag = b'root@saturn-sfu-eng:~# '
+        written_ok = b'Written: OK'
+    else:
+        print("ERROR: Input target[%s] is invalid!!" % target)
+
     tn = telnetlib.Telnet(host, port, timeout=50)
     tn.write(b'\r\n')
     time.sleep(1)
@@ -187,41 +190,22 @@ def do_telnet(config, target):
     time.sleep(1)
     tn.write(b'\r\n')
     time.sleep(1)
-
-    if target == 'g3':
-        tn.read_until(b'root@g3-eng:~# ')
-    elif target == 'saturn-sfu':
-        tn.read_until(b'root@saturn-sfu-eng:~# ')
-    else:
-        pass
+    tn.read_until(cmdline_tag)
     tn.write(b'reboot\n')
     time.sleep(1)
-
     tn.read_until(b'Hit any key to stop autoboot: ')
     tn.write(b'\r\n')
     time.sleep(1)
-
     tn.write(activeport_set + b'\r\n')
     tn.write(serverip_set + b'\r\n')
     tn.write(ipaddr_set + b'\r\n')
     tn.write(saveenv_set + b'\r\n')
     tn.write(reset_set + b'\r\n')
-
     tn.read_until(b'Hit any key to stop autoboot: ')
     tn.write(b'\r\n')
     time.sleep(1)
-
     # Upgrade gpt
-    if target == 'g3':
-        written_ok = b'written: OK'
-        target_tag = b'G3# '
-    elif target == 'saturn-sfu':
-        written_ok = b'Written: OK'
-        target_tag = b'SATURN# '
-    else:
-        print("ERROR: Input target[%s] invalid!" % target)
-        pass
-    tn.read_until(target_tag)
+    tn.read_until(uboot_tag)
     tn.write(tftpboot_gpt + b'\r\n')
     time.sleep(1)
     # Upgrade uboot_env
@@ -247,7 +231,6 @@ def do_telnet(config, target):
     # RESET board
     tn.read_until(written_ok)
     tn.write(reset_set + b'\r\n')
-
     time.sleep(50)
     tn.write(b'root\n')
     time.sleep(1)
@@ -257,7 +240,6 @@ def do_telnet(config, target):
     time.sleep(1)
     #tn.write(b'exit\n')
     time.sleep(1)
-
     result_str = tn.read_very_eager()
     tn.close()
     return (result_str.decode('ascii', errors='ignore'))
@@ -266,7 +248,6 @@ def capture_log(config, target, child=''):
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
     local_path_abs = os.path.join(os.getcwd(), local_path)
-
     if not os.path.exists(local_path_abs):
         os.makedirs(local_path_abs)
     if target == 'g3':
