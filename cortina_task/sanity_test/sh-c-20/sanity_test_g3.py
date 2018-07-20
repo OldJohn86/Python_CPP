@@ -20,17 +20,6 @@ y_m = date.today().strftime('%Y-%m')
 print(y_m_d)
 print(y_m)
 
-#activeport_set     = b'setenv active_port 1;\r\n'
-#serverip_set       = b'setenv serverip 192.168.1.128;\r\n'
-#ipaddr_set         = b'setenv ipaddr 192.168.1.2;\r\n'
-#saveenv_set        = b'saveenv;\r\n'
-#reset_set          = b'reset\r\n'
-
-#tftpboot_gpt       = b'tftpboot 0x84100000 major-image-g3-eng-gpt-nandinfo.img; nand erase 0x0 0x400000; nand write 0x84100000 0x0 0x300000;\r\n'
-#tftpboot_ubootenv  = b'tftpboot 0x84000000 uboot-env.bin; nand erase 0x400000 0x100000; nand write 0x84000000 0x400000 0x20000;\r\n'
-#tftpboot_image     = b'tftpboot 0x85000000 major-image-g3-eng.mubi; nand erase 0x500000 0xD000000; nand write 0x85000000 0x500000 0x${filesize};\r\n'
-
-
 # 读取配置文件获取服务器的登录信息
 def read_ini(config, option):
     info = dict()
@@ -83,6 +72,10 @@ def download_img(obj, config, target, child=''):
     print(local_path_abs)
     if not os.path.exists(local_path_abs):
         os.makedirs(local_path_abs)
+    else:
+        oldfile_list = os.listdir(local_path_abs)
+        for item in oldfile_list:
+            os.remove(local_path_abs +'/' + item)
     remote_path = path_info.get('remote_path', None)
 
     getattr(obj, "connect")()
@@ -289,7 +282,7 @@ if __name__ == "__main__":
     obj = SftpTool(username, password, port, host)
 
     # G3 sanity test process
-    # download_img(obj, config, 'g3')
+    download_img(obj, config, 'g3')
     capture_log(config, 'g3')
     upload_log(obj, config, 'g3')
  
