@@ -20,22 +20,15 @@ y_m = date.today().strftime('%Y-%m')
 print(y_m_d)
 print(y_m)
 
+#activeport_set     = b'setenv active_port 1;\r\n'
+#serverip_set       = b'setenv serverip 192.168.1.128;\r\n'
+#ipaddr_set         = b'setenv ipaddr 192.168.1.2;\r\n'
+#saveenv_set        = b'saveenv;\r\n'
+#reset_set          = b'reset\r\n'
 
-#print("\033[32;1m****开始配置目标机器信息*****\033[0m")
-#ips = input("主机IP:")
-#user = input("主机账号:")
-#password = getpass.getpass("主机密码:")
-#port = 22
-
-activeport_set     = b'setenv active_port 1;\r\n'
-serverip_set       = b'setenv serverip 192.168.1.128;\r\n'
-ipaddr_set         = b'setenv ipaddr 192.168.1.2;\r\n'
-saveenv_set        = b'saveenv;\r\n'
-reset_set          = b'reset\r\n'
-
-tftpboot_gpt       = b'tftpboot 0x84100000 major-image-g3-eng-gpt-nandinfo.img; nand erase 0x0 0x400000; nand write 0x84100000 0x0 0x300000;\r\n'
-tftpboot_ubootenv  = b'tftpboot 0x84000000 uboot-env.bin; nand erase 0x400000 0x100000; nand write 0x84000000 0x400000 0x20000;\r\n'
-tftpboot_image     = b'tftpboot 0x85000000 major-image-g3-eng.mubi; nand erase 0x500000 0xD000000; nand write 0x85000000 0x500000 0x${filesize};\r\n'
+#tftpboot_gpt       = b'tftpboot 0x84100000 major-image-g3-eng-gpt-nandinfo.img; nand erase 0x0 0x400000; nand write 0x84100000 0x0 0x300000;\r\n'
+#tftpboot_ubootenv  = b'tftpboot 0x84000000 uboot-env.bin; nand erase 0x400000 0x100000; nand write 0x84000000 0x400000 0x20000;\r\n'
+#tftpboot_image     = b'tftpboot 0x85000000 major-image-g3-eng.mubi; nand erase 0x500000 0xD000000; nand write 0x85000000 0x500000 0x${filesize};\r\n'
 
 
 # 读取配置文件获取服务器的登录信息
@@ -119,6 +112,7 @@ def download_img(obj, config, target, child=''):
             print(local_file)
             getattr(obj, "input")(local_file, remote_file)
             getattr(obj, "get")()
+            time.sleep(1)
     getattr(obj, "close")()
 
 def upload_log(obj, config, target, child=''):
@@ -155,26 +149,54 @@ def upload_log(obj, config, target, child=''):
                 print("ERROR: local_file[%s] NOT exists!!" % local_file)
             getattr(obj, "input")(local_file, remote_file)
             getattr(obj, "put")()
+            time.sleep(1)
         else:
             pass
     getattr(obj, "close")()
 
+def do_telnet(config, target):
+    telnet_info = read_ini(config, 'telnet')
+    host = telnet_info.get('host', None)
+    if target == 'g3':
+        port = int(telnet_info.get('g3_port', None))
+    elif target == 'saturn-sfu':
+        port = int(telnet_info.get('saturn_port', None))
+    else:
+        print("ERROR: Input target[%s] is invalid!!" % target)
 
-def do_telnet(host):
-    tn = telnetlib.Telnet(host, port=2012, timeout=50)
+    tftpboot_info = read_ini(config, 'tftpboot')
+    saveenv_set = tftpboot_info.get('saveenv_set', None).encode('ascii')
+    reset_set = tftpboot_info.get('reset_set', None).encode('ascii')
+    if target == "g3":
+        activeport_set = tftpboot_info.get('g3_activeport_set', None).encode('ascii')
+        ipaddr_set = tftpboot_info.get('g3_ipaddr_set', None).encode('ascii')
+        serverip_set = tftpboot_info.get('g3_serverip_set', None).encode('ascii')
+        tftpboot_gpt = tftpboot_info.get('g3_tftpboot_gpt', None).encode('ascii')
+        tftpboot_ubootenv = tftpboot_info.get('g3_tftpboot_ubootenv', None).encode('ascii')
+        tftpboot_image = tftpboot_info.get('g3_tftpboot_image', None).encode('ascii')
+    elif target == "saturn-sfu":
+        activeport_set = tftpboot_info.get('saturn_activeport_set', None).encode('ascii')
+        ipaddr_set = tftpboot_info.get('saturn_ipaddr_set', None).encode('ascii')
+        serverip_set = tftpboot_info.get('saturn_serverip_set', None).encode('ascii')
+        tftpboot_gpt = tftpboot_info.get('saturn_tftpboot_gpt', None).encode('ascii')
+        tftpboot_ubootenv = tftpboot_info.get('saturn_tftpboot_ubootenv', None).encode('ascii')
+        tftpboot_dtb = tftpboot_info.get('saturn_tftpboot_dtb', None).encode('ascii')
+        tftpboot_image = tftpboot_info.get('saturn_tftpboot_image', None).encode('ascii')
+        tftpboot_rootfs = tftpboot_info.get('saturn_tftpboot_rootfs', None).encode('ascii')
+        tftpboot_userubi = tftpboot_info.get('saturn_tftpboot_userubi', None).encode('ascii')
     
-    # tn.read_until(b'login: ')
-    # tn.write(username + b'\n')
-
-    # tn.read_until(b'Password: ')
-    # tn.write(password + b'\n')
-    
+    tn = telnetlib.Telnet(host, port, timeout=50)
     tn.write(b'root\n')
     time.sleep(1)
     tn.write(b'\r\n')
     time.sleep(1)
 
-    tn.read_until(b'root@g3-eng:~# ')
+    if target == 'g3':
+        tn.read_until(b'root@g3-eng:~# ')
+    elif target == 'saturn-sfu':
+        tn.read_until(b'root@saturn-sfu-eng:~# ')
+    else:
+        pass
     tn.write(b'reboot\n')
     time.sleep(1)
 
@@ -182,31 +204,48 @@ def do_telnet(host):
     tn.write(b'\r\n')
     time.sleep(1)
 
-    tn.write(activeport_set)
-    tn.write(serverip_set)
-    tn.write(ipaddr_set)
-    tn.write(saveenv_set)
-    tn.write(reset_set)
+    tn.write(activeport_set + b'\r\n')
+    tn.write(serverip_set + b'\r\n')
+    tn.write(ipaddr_set + b'\r\n')
+    tn.write(saveenv_set + b'\r\n')
+    tn.write(reset_set + b'\r\n')
 
     tn.read_until(b'Hit any key to stop autoboot: ')
     tn.write(b'\r\n')
     time.sleep(1)
 
     # Upgrade gpt
-    tn.read_until(b'G3# ')
-    tn.write(tftpboot_gpt)
+    if target == 'g3':
+        tn.read_until(b'G3# ')
+    elif target == 'saturn-sfu':
+        tn.read_until(b'SATURN# ')
+    else:
+        pass
+    tn.write(tftpboot_gpt + b'\r\n')
     time.sleep(1)
     # Upgrade uboot_env
     tn.read_until(b'written: OK')
-    tn.write(tftpboot_ubootenv)
+    tn.write(tftpboot_ubootenv + b'\r\n')
     time.sleep(1)
     # Upgrade image
     tn.read_until(b'written: OK')
-    tn.write(tftpboot_image)
+    tn.write(tftpboot_image + b'\r\n')
     time.sleep(1)
+    if target =='saturn-sfu':
+        tn.read_until(b'written: OK')
+        tn.write(tftpboot_dtb + b'\r\n')
+        time.sleep(1)
+        tn.read_until(b'written: OK')
+        tn.write(tftpboot_rootfs + b'\r\n')
+        time.sleep(1)
+        tn.read_until(b'written: OK')
+        tn.write(tftpboot_userubi + b'\r\n')
+        time.sleep(1)
+    else:
+        pass
     # RESET board
     tn.read_until(b'written: OK')
-    tn.write(reset_set)
+    tn.write(reset_set + b'\r\n')
 
     time.sleep(50)
     tn.write(b'root\n')
@@ -218,40 +257,48 @@ def do_telnet(host):
     tn.write(b'exit\n')
     time.sleep(1)
 
-    # result_str = tn.read_all()
     result_str = tn.read_very_eager()
     tn.close()
     return (result_str.decode('ascii', errors='ignore'))
 
-class TelnetTool(object):
-    def __init__(self, port, host):
-        self.port = port
-        self.ip = host
-#def connect(self):
-#try:
-#print("Telnet connect created!!")
-    #def close():
+def capture_log(config, target, child=''):
+    path_info = read_ini(config, 'path')
+    local_path = path_info.get('local_path', None)
+    local_path_abs = os.path.join(os.getcwd(), local_path)
+
+    if not os.path.exists(local_path_abs):
+        os.makedirs(local_path_abs)
+    if target == 'g3':
+        log_file_path = local_path_abs + y_m_d +'-'+ target +'-sanitytest-log.txt'; 
+    elif target == 'saturn-sfu':
+        log_file_path = local_path_abs + y_m_d +'-'+ child +'-sanitytest-log.txt'; 
+    else:
+        pass
+    print(log_file_path)
+    log_txt = do_telnet(config, target)
+    with open(local_path_abs + y_m_d +'-'+ target +'-sanitytest-log.txt', 'w') as f:
+        f.write(log_txt)
 
 if __name__ == "__main__":
     config = './config/dailybuild_server_config.ini'
-    
     ssh_info = read_ini(config, 'ssh')
     host = ssh_info.get('host', None)
     port = int(ssh_info.get('port', None)) # 端口是int类型
     username = ssh_info.get('username', None)
     password = ssh_info.get('password', None)
-
     obj = SftpTool(username, password, port, host)
-#download_img(obj, config, 'saturn-sfu', 'epon')
-#download_img(obj, config, 'saturn-sfu', 'gpon')
-    
-    download_img(obj, config, 'g3')
-    log_txt = do_telnet('192.168.41.251')
-    if os.path.exists('./daily_image_sanity_test'):
-        pass
-    else:
-        os.makedirs('./daily_image_sanity_test')
-    with open('./daily_image_sanity_test/'+y_m_d+'-g3-sanitytest-log.txt', 'w') as f:
-        f.write(log_txt)
+
+    # G3 sanity test process
+    # download_img(obj, config, 'g3')
+    capture_log(config, 'g3')
     upload_log(obj, config, 'g3')
  
+    # Epon sanity test process
+    # download_img(obj, config, 'saturn-sfu', 'epon')
+    # capture_log(config, 'saturn-sfu', epon)
+    # upload_log(obj, config, 'saturn-sfu', 'epon')
+
+    # Gpon sanity test process
+    # download_img(obj, config, 'saturn-sfu', 'gpon')
+    # capture_log(config, 'saturn-sfu', 'gpon')
+    # upload_log(obj, config, 'saturn-sfu', 'gpon')
