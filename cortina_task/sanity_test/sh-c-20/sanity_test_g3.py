@@ -289,24 +289,23 @@ if __name__ == "__main__":
 
     # G3 sanity test process
     download_img(obj, config, 'g3')
-    time.sleep(5)
+    time.sleep(2)
     capture_log(config, 'g3')
-    time.sleep(5)
+    time.sleep(2)
     upload_log(obj, config, 'g3')
-    time.sleep(5)
+    time.sleep(2)
 
     # Epon sanity test process
     download_img(obj, config, 'saturn-sfu', 'epon')
-    time.sleep(5)
+    time.sleep(2)
     capture_log(config, 'saturn-sfu', 'epon')
-    time.sleep(5)
+    time.sleep(2)
     upload_log(obj, config, 'saturn-sfu', 'epon')
-    time.sleep(5)
+    time.sleep(2)
 
     # Gpon sanity test process
     download_img(obj, config, 'saturn-sfu', 'gpon')
-    time.sleep(5)
+    time.sleep(2)
     capture_log(config, 'saturn-sfu', 'gpon')
-    time.sleep(5)
+    time.sleep(2)
     upload_log(obj, config, 'saturn-sfu', 'gpon')
-    time.sleep(5) 
