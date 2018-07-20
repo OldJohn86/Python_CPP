@@ -28,7 +28,7 @@ def read_ini(config, option):
     keys = cf.options(option)
     for each in keys:
         info[each] = cf.get(option, each)
-    print(info)
+    # print(info)
     return info
 
 # 定义SSH SFTP Tool 工具类
