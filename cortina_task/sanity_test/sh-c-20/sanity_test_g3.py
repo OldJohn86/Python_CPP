@@ -217,7 +217,7 @@ def do_telnet(config, target):
         written_ok = b'Written: OK'
         target_tag = b'SATURN# '
     else:
-        print("ERROR: Input target[%s] invalid!" %s target)
+        print("ERROR: Input target[%s] invalid!" % target)
         pass
     tn.read_until(target_tag)
     tn.write(tftpboot_gpt + b'\r\n')
