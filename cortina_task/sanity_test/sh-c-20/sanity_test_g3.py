@@ -13,10 +13,10 @@ from configparser import ConfigParser
 
 
 # Get Timestamp
-y_m_d = '2018-07-18'
-#date.today().strftime('%Y-%m-%d')
-y_m ='2018-07'
-#date.today().strftime('%Y-%m')
+#y_m_d = '2018-07-18'
+y_m_d = date.today().strftime('%Y-%m-%d')
+#y_m ='2018-07'
+y_m = date.today().strftime('%Y-%m')
 print(y_m_d)
 print(y_m)
 
@@ -50,7 +50,7 @@ def read_ini(config, option):
     return info
 
 # 定义SSH SFTP Tool 工具类
-class SFTPTools(object):
+class SftpTool(object):
     def __init__(self, username, password, port, host):
         self.user = username
         self.password = password
@@ -63,7 +63,7 @@ class SFTPTools(object):
             self.ssh.connect(self.ip, self.port, self.user, self.password)
             print("Connect created!!")
         except Exception as e:
-            print("Failed to connect to Host")
+            print("ERROR: Failed to connect to Host[%s]!!" % self.ip)
     def input(self, local_file, remote_file):
         self.local_file_abs = local_file 
         self.remote_file_abs = remote_file
@@ -86,10 +86,10 @@ class SFTPTools(object):
 def download_img(obj, config, target, child=''):
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
-    if os.path.exists(local_path):
-        pass
-    else:
-        os.makedirs(local_path)
+    local_path_abs = os.path.join(os.getcwd(), local_path)
+    print(local_path_abs)
+    if not os.path.exists(local_path_abs):
+        os.makedirs(local_path_abs)
     remote_path = path_info.get('remote_path', None)
 
     getattr(obj, "connect")()
@@ -113,8 +113,9 @@ def download_img(obj, config, target, child=''):
             pass
         else:
             remote_file = remote_path+target+'/'+ y_m +'/'+ y_m_d + target_path + item
-            local_file = local_path + item
             print(remote_file)
+            # local_file = local_path_abs + item
+            local_file = os.path.join(local_path_abs, item)
             print(local_file)
             getattr(obj, "input")(local_file, remote_file)
             getattr(obj, "get")()
@@ -123,10 +124,10 @@ def download_img(obj, config, target, child=''):
 def upload_log(obj, config, target, child=''):
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
-    if os.path.exists(local_path):
-        pass
-    else:
-        os.makedirs(local_path)
+    local_path_abs = os.path.join(os.getcwd(), local_path)
+    print(local_path_abs)
+    if not os.path.exists(local_path_abs):
+        print("ERROR: local_path[%s] NOT exists!!" % local_path_abs)
     remote_path = path_info.get('remote_path', None)
 
     getattr(obj, "connect")()
@@ -140,16 +141,18 @@ def upload_log(obj, config, target, child=''):
             elif child == 'gpon':
                 target_path = path_info.get('gpon_path', None)
             else:
-                print("Target child[%s] is invalid!!" % target)
+                print("ERROR: Input saturn-sfu child[%s] is invalid!!" % child)
                 pass
         else:
-            print("Target[%s] is invalid!!" % target)
+            print("ERROR: Input target[%s] is invalid!!" % target)
             pass
         if '-sanitytest-log.txt' in item:
-            remote_file = remote_path+target+'/'+ y_m +'/'+ y_m_d + target_path + y_m_d+ '-' + item
-            local_file = local_path + item
+            remote_file = remote_path + target +'/'+ y_m +'/'+ y_m_d + target_path+ y_m_d +'-'+ item
             print(remote_file)
+            local_file = os.path.join(local_path_abs, y_m_d +'-'+ item)
             print(local_file)
+            if not os.path.exists(local_file):
+                print("ERROR: local_file[%s] NOT exists!!" % local_file)
             getattr(obj, "input")(local_file, remote_file)
             getattr(obj, "put")()
         else:
@@ -220,6 +223,14 @@ def do_telnet(host):
     tn.close()
     return (result_str.decode('ascii', errors='ignore'))
 
+class TelnetTool(object):
+    def __init__(self, port, host):
+        self.port = port
+        self.ip = host
+#def connect(self):
+#try:
+#print("Telnet connect created!!")
+    #def close():
 
 if __name__ == "__main__":
     config = './config/dailybuild_server_config.ini'
@@ -230,18 +241,17 @@ if __name__ == "__main__":
     username = ssh_info.get('username', None)
     password = ssh_info.get('password', None)
 
-    obj = SFTPTools(username, password, port, host)
+    obj = SftpTool(username, password, port, host)
 #download_img(obj, config, 'saturn-sfu', 'epon')
 #download_img(obj, config, 'saturn-sfu', 'gpon')
     
     download_img(obj, config, 'g3')
     log_txt = do_telnet('192.168.41.251')
-    #print(log_txt)
     if os.path.exists('./daily_image_sanity_test'):
         pass
     else:
         os.makedirs('./daily_image_sanity_test')
-    with open('./daily_image_sanity_test/'+y_m_d+'g3-sanitytest-log.txt', 'w') as f:
+    with open('./daily_image_sanity_test/'+y_m_d+'-g3-sanitytest-log.txt', 'w') as f:
         f.write(log_txt)
     upload_log(obj, config, 'g3')
-    
+ 
