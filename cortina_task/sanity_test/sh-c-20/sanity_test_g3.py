@@ -287,11 +287,11 @@ if __name__ == "__main__":
     upload_log(obj, config, 'g3')
  
     # Epon sanity test process
-    # download_img(obj, config, 'saturn-sfu', 'epon')
-    # capture_log(config, 'saturn-sfu', epon)
-    # upload_log(obj, config, 'saturn-sfu', 'epon')
+    download_img(obj, config, 'saturn-sfu', 'epon')
+    capture_log(config, 'saturn-sfu', epon)
+    upload_log(obj, config, 'saturn-sfu', 'epon')
 
     # Gpon sanity test process
-    # download_img(obj, config, 'saturn-sfu', 'gpon')
-    # capture_log(config, 'saturn-sfu', 'gpon')
-    # upload_log(obj, config, 'saturn-sfu', 'gpon')
+    download_img(obj, config, 'saturn-sfu', 'gpon')
+    capture_log(config, 'saturn-sfu', 'gpon')
+    upload_log(obj, config, 'saturn-sfu', 'gpon')
