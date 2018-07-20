@@ -253,7 +253,7 @@ def do_telnet(config, target):
     time.sleep(1)
     tn.write(b'uname -a\n')
     time.sleep(1)
-    tn.write(b'exit\n')
+    #tn.write(b'exit\n')
     time.sleep(1)
 
     result_str = tn.read_very_eager()
@@ -275,7 +275,7 @@ def capture_log(config, target, child=''):
         pass
     print(log_file_path)
     log_txt = do_telnet(config, target)
-    with open(local_file_path, 'w') as f:
+    with open(log_file_path, 'w') as f:
         f.write(log_txt)
 
 if __name__ == "__main__":
@@ -289,15 +289,24 @@ if __name__ == "__main__":
 
     # G3 sanity test process
     download_img(obj, config, 'g3')
+    time.sleep(5)
     capture_log(config, 'g3')
+    time.sleep(5)
     upload_log(obj, config, 'g3')
- 
+    time.sleep(5)
+
     # Epon sanity test process
     download_img(obj, config, 'saturn-sfu', 'epon')
+    time.sleep(5)
     capture_log(config, 'saturn-sfu', 'epon')
+    time.sleep(5)
     upload_log(obj, config, 'saturn-sfu', 'epon')
+    time.sleep(5)
 
     # Gpon sanity test process
     download_img(obj, config, 'saturn-sfu', 'gpon')
+    time.sleep(5)
     capture_log(config, 'saturn-sfu', 'gpon')
+    time.sleep(5)
     upload_log(obj, config, 'saturn-sfu', 'gpon')
+    time.sleep(5) 
