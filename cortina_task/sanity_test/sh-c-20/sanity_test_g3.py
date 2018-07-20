@@ -179,6 +179,8 @@ def do_telnet(config, target):
         tftpboot_userubi = tftpboot_info.get('saturn_tftpboot_userubi', None).encode('ascii')
     
     tn = telnetlib.Telnet(host, port, timeout=50)
+    tn.write(b'\r\n')
+    time.sleep(1)
     tn.write(b'root\n')
     time.sleep(1)
     tn.write(b'\r\n')
@@ -209,35 +211,39 @@ def do_telnet(config, target):
 
     # Upgrade gpt
     if target == 'g3':
-        tn.read_until(b'G3# ')
+        written_ok = b'written: OK'
+        target_tag = b'G3# '
     elif target == 'saturn-sfu':
-        tn.read_until(b'SATURN# ')
+        written_ok = b'Written: OK'
+        target_tag = b'SATURN# '
     else:
+        print("ERROR: Input target[%s] invalid!" %s target)
         pass
+    tn.read_until(target_tag)
     tn.write(tftpboot_gpt + b'\r\n')
     time.sleep(1)
     # Upgrade uboot_env
-    tn.read_until(b'written: OK')
+    tn.read_until(written_ok)
     tn.write(tftpboot_ubootenv + b'\r\n')
     time.sleep(1)
     # Upgrade image
-    tn.read_until(b'written: OK')
+    tn.read_until(written_ok)
     tn.write(tftpboot_image + b'\r\n')
     time.sleep(1)
     if target =='saturn-sfu':
-        tn.read_until(b'written: OK')
+        tn.read_until(written_ok)
         tn.write(tftpboot_dtb + b'\r\n')
         time.sleep(1)
-        tn.read_until(b'written: OK')
+        tn.read_until(written_ok)
         tn.write(tftpboot_rootfs + b'\r\n')
         time.sleep(1)
-        tn.read_until(b'written: OK')
+        tn.read_until(written_ok)
         tn.write(tftpboot_userubi + b'\r\n')
         time.sleep(1)
     else:
         pass
     # RESET board
-    tn.read_until(b'written: OK')
+    tn.read_until(written_ok)
     tn.write(reset_set + b'\r\n')
 
     time.sleep(50)
