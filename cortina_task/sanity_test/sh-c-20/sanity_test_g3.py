@@ -275,7 +275,7 @@ def capture_log(config, target, child=''):
         pass
     print(log_file_path)
     log_txt = do_telnet(config, target)
-    with open(local_path_abs + y_m_d +'-'+ target +'-sanitytest-log.txt', 'w') as f:
+    with open(local_file_path, 'w') as f:
         f.write(log_txt)
 
 if __name__ == "__main__":
