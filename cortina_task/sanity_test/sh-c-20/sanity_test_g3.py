@@ -75,7 +75,8 @@ def download_img(obj, config, target, child=''):
     else:
         old_file_list = os.listdir(local_path_abs)
         for item in old_file_list:
-            os.remove(local_path_abs +'/' + item)
+            if not os.path.isdir(local_path_abs + item):
+                os.remove(local_path_abs + item)
     if target == 'g3':
         target_path = path_info.get('g3_path', None)
         local_backup_path_abs = os.path.join(local_path_abs, target)
@@ -111,6 +112,7 @@ def download_img(obj, config, target, child=''):
             getattr(obj, "input")(local_file, remote_file)
             getattr(obj, "get")()
             time.sleep(1)
+            print(local_backup_file)
             getattr(obj, "input")(local_backup_file, remote_file)
             getattr(obj, "get")()
             time.sleep(1)
@@ -276,22 +278,22 @@ if __name__ == "__main__":
     # G3 sanity test process
     download_img(obj, config, 'g3')
     time.sleep(2)
-#capture_log(config, 'g3')
+    capture_log(config, 'g3')
     time.sleep(2)
-#upload_log(obj, config, 'g3')
+    upload_log(obj, config, 'g3')
     time.sleep(2)
 
     # Epon sanity test process
-#download_img(obj, config, 'saturn-sfu', 'epon')
+    download_img(obj, config, 'saturn-sfu', 'epon')
     time.sleep(2)
-#capture_log(config, 'saturn-sfu', 'epon')
+    capture_log(config, 'saturn-sfu', 'epon')
     time.sleep(2)
-#upload_log(obj, config, 'saturn-sfu', 'epon')
+    upload_log(obj, config, 'saturn-sfu', 'epon')
     time.sleep(2)
 
     # Gpon sanity test process
-#download_img(obj, config, 'saturn-sfu', 'gpon')
+    download_img(obj, config, 'saturn-sfu', 'gpon')
     time.sleep(2)
-#capture_log(config, 'saturn-sfu', 'gpon')
+    capture_log(config, 'saturn-sfu', 'gpon')
     time.sleep(2)
-#upload_log(obj, config, 'saturn-sfu', 'gpon')
+    upload_log(obj, config, 'saturn-sfu', 'gpon')
