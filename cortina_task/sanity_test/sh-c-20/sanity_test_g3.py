@@ -73,37 +73,45 @@ def download_img(obj, config, target, child=''):
     if not os.path.exists(local_path_abs):
         os.makedirs(local_path_abs)
     else:
-        oldfile_list = os.listdir(local_path_abs)
-        for item in oldfile_list:
+        old_file_list = os.listdir(local_path_abs)
+        for item in old_file_list:
             os.remove(local_path_abs +'/' + item)
+    if target == 'g3':
+        target_path = path_info.get('g3_path', None)
+        local_backup_path_abs = os.path.join(local_path_abs, target)
+    elif target == 'saturn-sfu':
+        local_backup_path_abs = os.path.join(local_path_abs, child)
+        if child == 'epon':
+            target_path = path_info.get('epon_path', None)
+        elif child == 'gpon':
+             target_path = path_info.get('gpon_path', None)
+        else:
+            print("Target child[%s] is invalid!!" % target)
+    else:
+        print("Target[%s] is invalid!!" % target)
+    if not os.path.exists(local_backup_path_abs):
+        os.makedirs(local_backup_path_abs)
+    else:
+        old_backfile_list = os.listdir(local_backup_path_abs)
+        for item in old_backfile_list:
+            os.remove(local_backup_path_abs +'/' + item)
+    print(local_backup_path_abs)
     remote_path = path_info.get('remote_path', None)
-
-    getattr(obj, "connect")()
     target_info = read_ini(config, target)
+    # Download doing
+    getattr(obj, "connect")()
     for item in target_info.values():
-        if target == 'g3':
-            target_path = path_info.get('g3_path', None)
-        elif target == 'saturn-sfu':
-            if child == 'epon':
-                target_path = path_info.get('epon_path', None)
-            elif child == 'gpon':
-                target_path = path_info.get('gpon_path', None)
-            else:
-                print("Target child[%s] is invalid!!" % target)
-                pass
-        else:
-            print("Target[%s] is invalid!!" % target)
-            pass
-
-        if '-sanitytest-log.txt' in item:
-            pass
-        else:
+        if not '-sanitytest-log.txt' in item:
             remote_file = remote_path+target+'/'+ y_m +'/'+ y_m_d + target_path + item
             print(remote_file)
             # local_file = local_path_abs + item
             local_file = os.path.join(local_path_abs, item)
+            local_backup_file = os.path.join(local_backup_path_abs, item)
             print(local_file)
             getattr(obj, "input")(local_file, remote_file)
+            getattr(obj, "get")()
+            time.sleep(1)
+            getattr(obj, "input")(local_backup_file, remote_file)
             getattr(obj, "get")()
             time.sleep(1)
     getattr(obj, "close")()
@@ -116,25 +124,22 @@ def upload_log(obj, config, target, child=''):
     if not os.path.exists(local_path_abs):
         print("ERROR: local_path[%s] NOT exists!!" % local_path_abs)
     remote_path = path_info.get('remote_path', None)
-
+    if target == 'g3':
+        log_file = target + '-sanitytest-log.txt';
+        target_path = path_info.get('g3_path', None)
+    elif target == 'saturn-sfu':
+        log_file = child + '-sanitytest-log.txt';
+        if child == 'epon':
+            target_path = path_info.get('epon_path', None)
+        elif child == 'gpon':
+            target_path = path_info.get('gpon_path', None)
+        else:
+            print("ERROR: Input saturn-sfu child[%s] is invalid!!" % child)
+    else:
+        print("ERROR: Input target[%s] is invalid!!" % target)
     getattr(obj, "connect")()
     target_info = read_ini(config, target)
     for item in target_info.values():
-        if target == 'g3':
-            log_file = target + '-sanitytest-log.txt';
-            target_path = path_info.get('g3_path', None)
-        elif target == 'saturn-sfu':
-            log_file = child + '-sanitytest-log.txt';
-            if child == 'epon':
-                target_path = path_info.get('epon_path', None)
-            elif child == 'gpon':
-                target_path = path_info.get('gpon_path', None)
-            else:
-                print("ERROR: Input saturn-sfu child[%s] is invalid!!" % child)
-                pass
-        else:
-            print("ERROR: Input target[%s] is invalid!!" % target)
-            pass
         if log_file == item:
             remote_file = remote_path + target +'/'+ y_m +'/'+ y_m_d + target_path + y_m_d +'-'+ item
             print(remote_file)
@@ -145,8 +150,6 @@ def upload_log(obj, config, target, child=''):
             getattr(obj, "input")(local_file, remote_file)
             getattr(obj, "put")()
             time.sleep(1)
-        else:
-            pass
     getattr(obj, "close")()
 
 def do_telnet(config, target):
@@ -273,22 +276,22 @@ if __name__ == "__main__":
     # G3 sanity test process
     download_img(obj, config, 'g3')
     time.sleep(2)
-    capture_log(config, 'g3')
+#capture_log(config, 'g3')
     time.sleep(2)
-    upload_log(obj, config, 'g3')
+#upload_log(obj, config, 'g3')
     time.sleep(2)
 
     # Epon sanity test process
-    download_img(obj, config, 'saturn-sfu', 'epon')
+#download_img(obj, config, 'saturn-sfu', 'epon')
     time.sleep(2)
-    capture_log(config, 'saturn-sfu', 'epon')
+#capture_log(config, 'saturn-sfu', 'epon')
     time.sleep(2)
-    upload_log(obj, config, 'saturn-sfu', 'epon')
+#upload_log(obj, config, 'saturn-sfu', 'epon')
     time.sleep(2)
 
     # Gpon sanity test process
-    download_img(obj, config, 'saturn-sfu', 'gpon')
+#download_img(obj, config, 'saturn-sfu', 'gpon')
     time.sleep(2)
-    capture_log(config, 'saturn-sfu', 'gpon')
+#capture_log(config, 'saturn-sfu', 'gpon')
     time.sleep(2)
-    upload_log(obj, config, 'saturn-sfu', 'gpon')
+#upload_log(obj, config, 'saturn-sfu', 'gpon')
