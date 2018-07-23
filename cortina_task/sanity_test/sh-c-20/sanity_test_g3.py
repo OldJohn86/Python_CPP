@@ -267,7 +267,9 @@ def capture_log(config, target, child=''):
         f.write(log_txt)
 
 if __name__ == "__main__":
-    config = './config/dailybuild_server_config.ini'
+    config = os.path.join(os.getcwd(), 'config/dailybuild_server_config.ini')
+    print(config)
+    # config = './config/dailybuild_server_config.ini'
     ssh_info = read_ini(config, 'ssh')
     host = ssh_info.get('host', None)
     port = int(ssh_info.get('port', None)) # 端口是int类型
