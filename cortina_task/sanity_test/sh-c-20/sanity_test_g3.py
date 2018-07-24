@@ -267,9 +267,14 @@ def capture_log(config, target, child=''):
         f.write(log_txt)
 
 if __name__ == "__main__":
-    config = os.path.join(os.getcwd(), 'config/dailybuild_server_config.ini')
+    g3 = 0
+    saturn_epon = 0
+    saturn_gpon = 0
+
+    current_abs = sys.argv[0].rstrip('/sanity_test_g3.py')
+    #print(current_abs)
+    config = os.path.join(current_abs, 'config/dailybuild_server_config.ini')
     print(config)
-    # config = './config/dailybuild_server_config.ini'
     ssh_info = read_ini(config, 'ssh')
     host = ssh_info.get('host', None)
     port = int(ssh_info.get('port', None)) # 端口是int类型
@@ -277,25 +282,30 @@ if __name__ == "__main__":
     password = ssh_info.get('password', None)
     obj = SftpTool(username, password, port, host)
 
+    print("--- --- --- G3/EPON/GPON Sanity Test Starting!!! --- --- ---")
     # G3 sanity test process
-    download_img(obj, config, 'g3')
-    time.sleep(2)
-    capture_log(config, 'g3')
-    time.sleep(2)
-    upload_log(obj, config, 'g3')
-    time.sleep(2)
+    if g3 == 1:
+        download_img(obj, config, 'g3')
+        time.sleep(2)
+        capture_log(config, 'g3')
+        time.sleep(2)
+        upload_log(obj, config, 'g3')
+        time.sleep(2)
 
     # Epon sanity test process
-    download_img(obj, config, 'saturn-sfu', 'epon')
-    time.sleep(2)
-    capture_log(config, 'saturn-sfu', 'epon')
-    time.sleep(2)
-    upload_log(obj, config, 'saturn-sfu', 'epon')
-    time.sleep(2)
+    if saturn_epon == 1:
+        download_img(obj, config, 'saturn-sfu', 'epon')
+        time.sleep(2)
+        capture_log(config, 'saturn-sfu', 'epon')
+        time.sleep(2)
+        upload_log(obj, config, 'saturn-sfu', 'epon')
+        time.sleep(2)
 
     # Gpon sanity test process
-    download_img(obj, config, 'saturn-sfu', 'gpon')
-    time.sleep(2)
-    capture_log(config, 'saturn-sfu', 'gpon')
-    time.sleep(2)
-    upload_log(obj, config, 'saturn-sfu', 'gpon')
+    if saturn_gpon == 1:
+        download_img(obj, config, 'saturn-sfu', 'gpon')
+        time.sleep(2)
+        capture_log(config, 'saturn-sfu', 'gpon')
+        time.sleep(2)
+        upload_log(obj, config, 'saturn-sfu', 'gpon')
+    print("--- --- --- G3/EPON/GPON Sanity Test completed!!! --- --- ---")
