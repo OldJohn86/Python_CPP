@@ -119,10 +119,11 @@ def download_img(obj, current_path, config, target, child=''):
             else:
                 local_file = os.path.join(local_path_abs, item)
             local_backup_file = os.path.join(local_backup_path_abs, item)
-            print(local_file)
-            getattr(obj, "input")(local_file, remote_file)
-            getattr(obj, "get")()
-            time.sleep(1)
+            if target != 'g3hgu':
+                print(local_file)
+                getattr(obj, "input")(local_file, remote_file)
+                getattr(obj, "get")()
+                time.sleep(1)
             print(local_backup_file + '\r\n')
             getattr(obj, "input")(local_backup_file, remote_file)
             getattr(obj, "get")()
@@ -293,6 +294,9 @@ if __name__ == "__main__":
     password = ssh_info.get('password', None)
     obj = SftpTool(username, password, port, host)
 
+    download_img(obj, current_path, config, 'g3hgu', 'epon')
+    time.sleep(2)
+
     print("--- --- --- G3/EPON/GPON Sanity Test Starting!!! --- --- ---")
     # G3 sanity test process
     if g3 == 1:
@@ -321,5 +325,3 @@ if __name__ == "__main__":
         upload_log(obj, current_path, config, 'saturn-sfu', 'gpon')
     print("--- --- --- G3/EPON/GPON Sanity Test completed!!! --- --- ---")
     
-    download_img(obj, current_path, config, 'g3hgu', 'epon')
-    time.sleep(2)
