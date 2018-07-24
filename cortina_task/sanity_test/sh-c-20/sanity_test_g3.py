@@ -106,13 +106,16 @@ def download_img(obj, config, target, child=''):
             remote_file = remote_path+target+'/'+ y_m +'/'+ y_m_d + target_path + item
             print(remote_file)
             # local_file = local_path_abs + item
-            local_file = os.path.join(local_path_abs, item)
+            if target == 'g3' and item == 'uboot-env.bin':
+                local_file = os.path.join(local_path_abs, target + item)
+            else:
+                local_file = os.path.join(local_path_abs, item)
             local_backup_file = os.path.join(local_backup_path_abs, item)
             print(local_file)
             getattr(obj, "input")(local_file, remote_file)
             getattr(obj, "get")()
             time.sleep(1)
-            print(local_backup_file)
+            print(local_backup_file + '\r\n')
             getattr(obj, "input")(local_backup_file, remote_file)
             getattr(obj, "get")()
             time.sleep(1)
