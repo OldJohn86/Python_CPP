@@ -80,14 +80,22 @@ def download_img(obj, current_path, config, target, child=''):
     if target == 'g3':
         target_path = path_info.get('g3_path', None)
         local_backup_path_abs = os.path.join(local_path_abs, target)
+    elif target == 'g3hgu':
+        local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
+        if child == 'epon':
+            target_path = path_info.get('g3hgu_epon_path', None)
+        elif child == 'gpon':
+            target_path = path_info.get('g3hgu_gpon_path', None)
+        else:
+            print("Target <%s> child[%s] is invalid!!" % target, child)
     elif target == 'saturn-sfu':
-        local_backup_path_abs = os.path.join(local_path_abs, child)
+        local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
         if child == 'epon':
             target_path = path_info.get('epon_path', None)
         elif child == 'gpon':
              target_path = path_info.get('gpon_path', None)
         else:
-            print("Target child[%s] is invalid!!" % target)
+            print("Target <%s> child[%s] is invalid!!" % target, child)
     else:
         print("Target[%s] is invalid!!" % target)
     if not os.path.exists(local_backup_path_abs):
@@ -270,9 +278,9 @@ def capture_log(current_path, config, target, child=''):
         f.write(log_txt)
 
 if __name__ == "__main__":
-    g3 = 1
-    saturn_epon = 1
-    saturn_gpon = 1
+    g3 = 0
+    saturn_epon = 0
+    saturn_gpon = 0
 
     current_path = sys.argv[0].rstrip('/sanity_test_g3.py')
     print(current_path)
@@ -312,3 +320,6 @@ if __name__ == "__main__":
         time.sleep(2)
         upload_log(obj, current_path, config, 'saturn-sfu', 'gpon')
     print("--- --- --- G3/EPON/GPON Sanity Test completed!!! --- --- ---")
+    
+    download_img(obj, current_path, config, 'g3hgu', 'epon')
+    time.sleep(2)
