@@ -279,9 +279,9 @@ def capture_log(current_path, config, target, child=''):
         f.write(log_txt)
 
 if __name__ == "__main__":
-    g3 = 0
-    saturn_epon = 0
-    saturn_gpon = 0
+    g3 = 1
+    saturn_epon = 1
+    saturn_gpon = 1
 
     current_path = sys.argv[0].rstrip('/sanity_test_g3.py')
     print(current_path)
