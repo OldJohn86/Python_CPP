@@ -115,9 +115,9 @@ def download_img(obj, current_path, config, target, child=''):
     return_items = getattr(obj, "connect")(remote_path_abs)
     print(return_items)
     if target == 'g3':
-        log_file = y_m_d +'_'+ target + '-sanitytest-log.txt';
+        log_file = y_m_d +'-'+ target + '-sanitytest-log.txt';
     elif target == 'saturn-sfu':
-        log_file = y_m_d +'_'+ child + '-sanitytest-log.txt';
+        log_file = y_m_d +'-'+ child + '-sanitytest-log.txt';
     if log_file in return_items:
         print("%s HAD put on the server already!!!" % log_file)
         return False
