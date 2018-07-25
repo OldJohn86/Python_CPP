@@ -279,6 +279,10 @@ def capture_log(current_path, config, target, child=''):
         f.write(log_txt)
 
 if __name__ == "__main__":
+    g3 = 1
+    saturn_epon = 1
+    saturn_gpon = 1
+
     current_path = sys.argv[0].rstrip('/sanity_test_g3.py')
     print(current_path)
     config = os.path.join(current_path, 'config/dailybuild_server_config.ini')
@@ -290,16 +294,34 @@ if __name__ == "__main__":
     password = ssh_info.get('password', None)
     obj = SftpTool(username, password, port, host)
 
-#download_img(obj, current_path, config, 'g3hgu', 'epon')
-#time.sleep(2)
+    download_img(obj, current_path, config, 'g3hgu', 'epon')
+    time.sleep(2)
 
-    print("--- --- --- G3 Sanity Test Starting!!! --- --- ---")
+    print("--- --- --- G3/EPON/GPON Sanity Test Starting!!! --- --- ---")
     # G3 sanity test process
-    download_img(obj, current_path, config, 'g3')
-    time.sleep(2)
-    capture_log(current_path, config, 'g3')
-    time.sleep(2)
-    upload_log(obj, current_path, config, 'g3')
-    time.sleep(2)
-    print("--- --- --- G3 Sanity Test completed!!! --- --- ---")
+    if g3 == 1:
+        download_img(obj, current_path, config, 'g3')
+        time.sleep(2)
+        capture_log(current_path, config, 'g3')
+        time.sleep(2)
+        upload_log(obj, current_path, config, 'g3')
+        time.sleep(2)
+
+    # Epon sanity test process
+    if saturn_epon == 1:
+        download_img(obj, current_path, config, 'saturn-sfu', 'epon')
+        time.sleep(2)
+        capture_log(current_path, config, 'saturn-sfu', 'epon')
+        time.sleep(2)
+        upload_log(obj, current_path, config, 'saturn-sfu', 'epon')
+        time.sleep(2)
+
+    # Gpon sanity test process
+    if saturn_gpon == 1:
+        download_img(obj, current_path, config, 'saturn-sfu', 'gpon')
+        time.sleep(2)
+        capture_log(current_path, config, 'saturn-sfu', 'gpon')
+        time.sleep(2)
+        upload_log(obj, current_path, config, 'saturn-sfu', 'gpon')
+    print("--- --- --- G3/EPON/GPON Sanity Test completed!!! --- --- ---")
     

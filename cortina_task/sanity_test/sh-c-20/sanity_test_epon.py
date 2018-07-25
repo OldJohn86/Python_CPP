@@ -279,7 +279,7 @@ def capture_log(current_path, config, target, child=''):
         f.write(log_txt)
 
 if __name__ == "__main__":
-    current_path = sys.argv[0].rstrip('/sanity_test_g3.py')
+    current_path = sys.argv[0].rstrip('/sanity_test_epon.py')
     print(current_path)
     config = os.path.join(current_path, 'config/dailybuild_server_config.ini')
     print(config)
@@ -293,13 +293,13 @@ if __name__ == "__main__":
 #download_img(obj, current_path, config, 'g3hgu', 'epon')
 #time.sleep(2)
 
-    print("--- --- --- G3 Sanity Test Starting!!! --- --- ---")
-    # G3 sanity test process
-    download_img(obj, current_path, config, 'g3')
+    print("--- --- --- EPON Sanity Test Starting!!! --- --- ---")
+    # Epon sanity test process
+    download_img(obj, current_path, config, 'saturn-sfu', 'epon')
     time.sleep(2)
-    capture_log(current_path, config, 'g3')
+    capture_log(current_path, config, 'saturn-sfu', 'epon')
     time.sleep(2)
-    upload_log(obj, current_path, config, 'g3')
+    upload_log(obj, current_path, config, 'saturn-sfu', 'epon')
     time.sleep(2)
-    print("--- --- --- G3 Sanity Test completed!!! --- --- ---")
+    print("--- --- --- EPON Sanity Test completed!!! --- --- ---")
     
