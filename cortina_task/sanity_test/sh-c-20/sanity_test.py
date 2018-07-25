@@ -4,6 +4,7 @@
 import os
 import sys
 import time
+import datetime
 import paramiko
 import telnetlib
 import getpass
@@ -38,7 +39,7 @@ class SftpTool(object):
         self.password = password
         self.port = port
         self.ip = host
-    def connect(self):
+    def connect(self, target_path_abs):
         try:
             self.ssh = paramiko.SSHClient()
             self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -46,6 +47,10 @@ class SftpTool(object):
             print("Host[%s] connect created!!" % self.ip)
         except Exception as e:
             print("ERROR: Failed to connect to Host[%s]!!" % self.ip)
+        self.stdin, self.stdout, self.stderr = self.ssh.exec_command("ls " + target_path_abs)
+        stdout_str = self.stdout.read().decode('ascii')
+        # print(result_str.split())
+        return stdout_str.split()
     def input(self, local_file, remote_file):
         self.local_file_abs = local_file 
         self.remote_file_abs = remote_file
@@ -106,29 +111,46 @@ def download_img(obj, current_path, config, target, child=''):
             os.remove(local_backup_path_abs +'/' + item)
     print(local_backup_path_abs)
     remote_path = path_info.get('remote_path', None)
-    target_info = read_ini(config, target)
+    remote_path_abs = remote_path + target+'/'+ y_m +'/'+ y_m_d + target_path
+    return_items = getattr(obj, "connect")(remote_path_abs)
+    print(return_items)
+    if target == 'g3':
+        log_file = target + '-sanitytest-log.txt';
+    elif target == 'saturn-sfu':
+        log_file = child + '-sanitytest-log.txt';
+
+    if log_file in return_items:
+        print("%s HAD put on the server already!!!" % log_file)
+        return False
     # Download doing
-    getattr(obj, "connect")()
+    target_info = read_ini(config, target)
+    ret = True
     for item in target_info.values():
-        if not '-sanitytest-log.txt' in item:
-            remote_file = remote_path+target+'/'+ y_m +'/'+ y_m_d + target_path + item
-            print(remote_file)
-            # local_file = local_path_abs + item
-            if target == 'g3' and item == 'uboot-env.bin':
-                local_file = os.path.join(local_path_abs, target + item)
-            else:
-                local_file = os.path.join(local_path_abs, item)
-            local_backup_file = os.path.join(local_backup_path_abs, item)
-            if target != 'g3hgu':
-                print(local_file)
-                getattr(obj, "input")(local_file, remote_file)
+            if not '-sanitytest-log.txt' in item:
+                if item in return_items:
+                    print("%s WAS Found on server!!!" % item)
+                else:
+                    print("%s WAS NOT Found on server!!!" % item)
+                    ret = False
+                    break
+                remote_file = remote_path_abs + item
+                # print(remote_file)
+                if target == 'g3' and item == 'uboot-env.bin':
+                    local_file = os.path.join(local_path_abs, target + item)
+                else:
+                    local_file = os.path.join(local_path_abs, item)
+                local_backup_file = os.path.join(local_backup_path_abs, item)
+                if target != 'g3hgu':
+                    print(local_file)
+                    getattr(obj, "input")(local_file, remote_file)
+                    getattr(obj, "get")()
+                    time.sleep(1)
+                # print(local_backup_file + '\r\n')
+                getattr(obj, "input")(local_backup_file, remote_file)
                 getattr(obj, "get")()
                 time.sleep(1)
-            print(local_backup_file + '\r\n')
-            getattr(obj, "input")(local_backup_file, remote_file)
-            getattr(obj, "get")()
-            time.sleep(1)
     getattr(obj, "close")()
+    return ret
 
 def upload_log(obj, current_path, config, target, child=''):
     path_info = read_ini(config, 'path')
@@ -248,7 +270,7 @@ def do_telnet(config, target):
     # RESET board
     tn.read_until(written_ok)
     tn.write(reset_set + b'\r\n')
-    time.sleep(50)
+    time.sleep(60)
     tn.write(b'root\n')
     time.sleep(1)
     tn.write(b'\r\n')
@@ -279,10 +301,6 @@ def capture_log(current_path, config, target, child=''):
         f.write(log_txt)
 
 if __name__ == "__main__":
-    g3 = 1
-    saturn_epon = 1
-    saturn_gpon = 1
-
     current_path = sys.argv[0].rstrip('/sanity_test_g3.py')
     print(current_path)
     config = os.path.join(current_path, 'config/dailybuild_server_config.ini')
@@ -294,34 +312,45 @@ if __name__ == "__main__":
     password = ssh_info.get('password', None)
     obj = SftpTool(username, password, port, host)
 
-    download_img(obj, current_path, config, 'g3hgu', 'epon')
-    time.sleep(2)
+    #g3hgu_img_ok = download_img(obj, current_path, config, 'g3hgu', 'epon')
+    #time.sleep(2)
+    #print("g3hgu img download is %s" % g3hgu_img_ok)
 
-    print("--- --- --- G3/EPON/GPON Sanity Test Starting!!! --- --- ---")
-    # G3 sanity test process
-    if g3 == 1:
-        download_img(obj, current_path, config, 'g3')
+    print("--- --- --- G3/EPON/GPON Sanity Test Start!!! --- --- ---")
+    while True:
+        # G3 sanity test process
+        g3_img_ok = download_img(obj, current_path, config, 'g3')
         time.sleep(2)
-        capture_log(current_path, config, 'g3')
-        time.sleep(2)
-        upload_log(obj, current_path, config, 'g3')
-        time.sleep(2)
+        print("g3 img download is %s" % g3_img_ok)
+        if g3_img_ok == True:
+            capture_log(current_path, config, 'g3')
+            time.sleep(2)
+            upload_log(obj, current_path, config, 'g3')
+            time.sleep(2)
+        else:
+            time.sleep(30*60) # wait 0.5 hour
 
-    # Epon sanity test process
-    if saturn_epon == 1:
-        download_img(obj, current_path, config, 'saturn-sfu', 'epon')
+        # Epon sanity test process
+        epon_img_ok = download_img(obj, current_path, config, 'saturn-sfu', 'epon')
         time.sleep(2)
-        capture_log(current_path, config, 'saturn-sfu', 'epon')
-        time.sleep(2)
-        upload_log(obj, current_path, config, 'saturn-sfu', 'epon')
-        time.sleep(2)
+        print("saturn-sfu_epon img download is %s" % epon_img_ok)
+        if epon_img_ok == True:
+            capture_log(current_path, config, 'saturn-sfu', 'epon')
+            time.sleep(2)
+            upload_log(obj, current_path, config, 'saturn-sfu', 'epon')
+            time.sleep(2)
+        else:
+            time.sleep(30*60)
 
-    # Gpon sanity test process
-    if saturn_gpon == 1:
-        download_img(obj, current_path, config, 'saturn-sfu', 'gpon')
+        # Gpon sanity test process
+        gpon_img_ok = download_img(obj, current_path, config, 'saturn-sfu', 'gpon')
         time.sleep(2)
-        capture_log(current_path, config, 'saturn-sfu', 'gpon')
-        time.sleep(2)
-        upload_log(obj, current_path, config, 'saturn-sfu', 'gpon')
-    print("--- --- --- G3/EPON/GPON Sanity Test completed!!! --- --- ---")
+        print("saturn-sfu_epon img download is %s" % epon_img_ok)
+        if gpon_img_ok == True:
+            capture_log(current_path, config, 'saturn-sfu', 'gpon')
+            time.sleep(2)
+            upload_log(obj, current_path, config, 'saturn-sfu', 'gpon')
+        else:
+            time.sleep(30*60)
+    print("--- --- --- G3/EPON/GPON Sanity Test End!!! --- --- ---")
     
