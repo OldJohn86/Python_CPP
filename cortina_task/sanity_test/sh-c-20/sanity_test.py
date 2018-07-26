@@ -164,7 +164,6 @@ def upload_log(obj, current_path, config, target, child=''):
     print(local_path_abs)
     if not os.path.exists(local_path_abs):
         print("ERROR: local_path[%s] NOT exists!!" % local_path_abs)
-    remote_path = path_info.get('remote_path', None)
     if target == 'g3':
         log_file = target + '-sanitytest-log.txt';
         target_path = path_info.get('g3_path', None)
@@ -178,7 +177,10 @@ def upload_log(obj, current_path, config, target, child=''):
             print("ERROR: Input saturn-sfu child[%s] is invalid!!" % child)
     else:
         print("ERROR: Input target[%s] is invalid!!" % target)
-    getattr(obj, "connect")()
+    remote_path = path_info.get('remote_path', None)
+    remote_path_abs = remote_path + target+'/'+ y_m +'/'+ y_m_d + target_path
+    return_items = getattr(obj, "connect")(remote_path_abs)
+    print(return_items)
     target_info = read_ini(config, target)
     for item in target_info.values():
         if log_file == item:
