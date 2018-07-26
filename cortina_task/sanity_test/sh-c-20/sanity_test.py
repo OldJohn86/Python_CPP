@@ -14,12 +14,10 @@ from configparser import ConfigParser
 
 
 # Get Timestamp
-#y_m_d = '2018-07-18'
-y_m_d = date.today().strftime('%Y-%m-%d')
-#y_m ='2018-07'
-y_m = date.today().strftime('%Y-%m')
-print(y_m_d)
-print(y_m)
+#y_m_d = date.today().strftime('%Y-%m-%d')
+#y_m = date.today().strftime('%Y-%m')
+#print(y_m_d)
+#print(y_m)
 
 # 读取配置文件获取服务器的登录信息
 def read_ini(config, option):
@@ -71,6 +69,10 @@ class SftpTool(object):
         print("Host[%s] connect closed!!" % self.ip)
 
 def download_img(obj, current_path, config, target, child=''):
+    # Get Timestamp First
+    y_m_d = date.today().strftime('%Y-%m-%d')
+    y_m = date.today().strftime('%Y-%m')
+
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
     local_path_abs = os.path.join(current_path, local_path)
@@ -152,6 +154,10 @@ def download_img(obj, current_path, config, target, child=''):
     return ret
 
 def upload_log(obj, current_path, config, target, child=''):
+    # Get Timestamp First
+    y_m_d = date.today().strftime('%Y-%m-%d')
+    y_m = date.today().strftime('%Y-%m')
+
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
     local_path_abs = os.path.join(current_path, local_path)
@@ -283,6 +289,10 @@ def do_telnet(config, target):
     return (result_str.decode('ascii', errors='ignore'))
 
 def capture_log(current_path, config, target, child=''):
+    # Get Timestamp First
+    y_m_d = date.today().strftime('%Y-%m-%d')
+    y_m = date.today().strftime('%Y-%m')
+
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
     local_path_abs = os.path.join(current_path, local_path)
@@ -352,4 +362,3 @@ if __name__ == "__main__":
         else:
             time.sleep(30*60)
     print("--- --- --- G3/EPON/GPON Sanity Test End!!! --- --- ---")
-    
