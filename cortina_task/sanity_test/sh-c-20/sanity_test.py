@@ -327,7 +327,6 @@ if __name__ == "__main__":
     #time.sleep(2)
     #print("g3hgu img download is %s" % g3hgu_img_ok)
 
-    print("--- --- --- G3/EPON/GPON Sanity Test Start!!! --- --- ---")
     while True:
         # G3 sanity test process
         g3_img_ok = download_img(obj, current_path, config, 'g3')
@@ -366,4 +365,3 @@ if __name__ == "__main__":
         else:
             print("saturn-sfu_gpon sanity test process sleep 20 Minutes")
             time.sleep(20*60)
-    print("--- --- --- G3/EPON/GPON Sanity Test End!!! --- --- ---")
