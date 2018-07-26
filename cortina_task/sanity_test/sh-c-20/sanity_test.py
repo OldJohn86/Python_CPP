@@ -105,12 +105,6 @@ def download_img(obj, current_path, config, target, child=''):
             print("Target <%s> child[%s] is invalid!!" % target, child)
     else:
         print("Target[%s] is invalid!!" % target)
-    if not os.path.exists(local_backup_path_abs):
-        os.makedirs(local_backup_path_abs)
-    else:
-        old_backfile_list = os.listdir(local_backup_path_abs)
-        for item in old_backfile_list:
-            os.remove(local_backup_path_abs +'/' + item)
     # print(local_backup_path_abs)
     remote_path = path_info.get('remote_path', None)
     remote_path_abs = remote_path + target+'/'+ y_m +'/'+ y_m_d + target_path
@@ -124,6 +118,12 @@ def download_img(obj, current_path, config, target, child=''):
         print("%s HAD put on the server already!!!" % log_file)
         return False
     # Download doing
+    if not os.path.exists(local_backup_path_abs):
+        os.makedirs(local_backup_path_abs)
+    else:
+        old_backfile_list = os.listdir(local_backup_path_abs)
+        for item in old_backfile_list:
+            os.remove(local_backup_path_abs +'/' + item)
     target_info = read_ini(config, target)
     ret = True
     for item in target_info.values():
@@ -136,11 +136,11 @@ def download_img(obj, current_path, config, target, child=''):
                     break
                 remote_file = remote_path_abs + item
                 # print(remote_file)
+                local_backup_file = os.path.join(local_backup_path_abs, item)
                 if target == 'g3' and item == 'uboot-env.bin':
                     local_file = os.path.join(local_path_abs, target + item)
                 else:
                     local_file = os.path.join(local_path_abs, item)
-                local_backup_file = os.path.join(local_backup_path_abs, item)
                 if target != 'g3hgu':
                     # print(local_file)
                     getattr(obj, "input")(local_file, remote_file)
