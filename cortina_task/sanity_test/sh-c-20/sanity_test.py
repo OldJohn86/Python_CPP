@@ -337,7 +337,7 @@ if __name__ == "__main__":
             upload_log(obj, current_path, config, 'g3')
             time.sleep(2)
         else:
-            time.sleep(30*60) # wait 0.5 hour
+            time.sleep(20*60) # wait 1/3 hour
 
         # Epon sanity test process
         epon_img_ok = download_img(obj, current_path, config, 'saturn-sfu', 'epon')
@@ -349,7 +349,7 @@ if __name__ == "__main__":
             upload_log(obj, current_path, config, 'saturn-sfu', 'epon')
             time.sleep(2)
         else:
-            time.sleep(30*60)
+            time.sleep(20*60)
 
         # Gpon sanity test process
         gpon_img_ok = download_img(obj, current_path, config, 'saturn-sfu', 'gpon')
@@ -360,5 +360,5 @@ if __name__ == "__main__":
             time.sleep(2)
             upload_log(obj, current_path, config, 'saturn-sfu', 'gpon')
         else:
-            time.sleep(30*60)
+            time.sleep(20*60)
     print("--- --- --- G3/EPON/GPON Sanity Test End!!! --- --- ---")
