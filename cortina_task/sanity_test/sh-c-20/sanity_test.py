@@ -19,6 +19,16 @@ from email.mime.multipart import MIMEMultipart
 
 glb_log_file = "sanitytest-log.txt"
 
+def read_ini(config, option):
+    info = dict()
+    cf = ConfigParser()
+    cf.read(config, encoding='utf-8')
+    keys = cf.options(option)
+    for each in keys:
+        info[each] = cf.get(option, each)
+    # print(info)
+    return info
+
 def send_mail(config, target, child=''):
     mail_info = read_ini(config, 'mail')
     mail_user = str(mail_info.get('user', None))
@@ -91,16 +101,6 @@ def log_no_errors(target, child=''):
         return True
     else:
         return False
-
-def read_ini(config, option):
-    info = dict()
-    cf = ConfigParser()
-    cf.read(config, encoding='utf-8')
-    keys = cf.options(option)
-    for each in keys:
-        info[each] = cf.get(option, each)
-    # print(info)
-    return info
 
 class SftpTool(object):
     def __init__(self, username, password, port, host):
