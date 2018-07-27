@@ -187,6 +187,7 @@ def download_img(obj, current_path, config, target, child=''):
         log_file = y_m_d +'-'+ child + '-sanitytest-log.txt';
     if log_file in return_items:
         print("%s HAD put on the server already!!!" % log_file)
+        getattr(obj, "close")()
         return False
     # Download doing
     if not os.path.exists(local_backup_path_abs):
