@@ -456,6 +456,9 @@ if __name__ == "__main__":
                 print("saturn-sfu gpon log file not checked errors")
 
         # Sleep 1 hour
-        if g3_img_ok != True or epon_img_ok != True or gpon_img_ok != True:
+        if g3_img_ok != True and epon_img_ok != True and gpon_img_ok != True:
             print("g3/epon/gpon sanity test process sleep 1 hour")
             time.sleep(60*60)
+        else:
+            print("g3/epon/gpon sanity test process sleep 0.5 hour")
+            time.sleep(30*60)
