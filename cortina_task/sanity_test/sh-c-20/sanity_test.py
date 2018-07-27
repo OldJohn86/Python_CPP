@@ -89,7 +89,7 @@ def get_file_last_line(inputfile, lines_sum):
 
 def log_no_errors(target, child=''):
     print(glb_log_file)
-    last_lines = get_file_last_line(os.path.abspath(glb_lg_file), 20)
+    last_lines = get_file_last_line(os.path.abspath(glb_log_file), 20)
     print(last_lines)
     if target == 'g3':
         cmdline_tag = 'root@g3-eng:~# '
