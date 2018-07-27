@@ -339,7 +339,7 @@ if __name__ == "__main__":
             time.sleep(2)
         else:
             print("g3 sanity test process sleep 20 Minutes")
-            time.sleep(20*60) # wait 1/3 hour
+            # time.sleep(20*60) # wait 1/3 hour
 
         # Epon sanity test process
         epon_img_ok = download_img(obj, current_path, config, 'saturn-sfu', 'epon')
@@ -352,7 +352,7 @@ if __name__ == "__main__":
             time.sleep(2)
         else:
             print("saturn-sfu_epon sanity test process sleep 20 Minutes")
-            time.sleep(20*60)
+            # time.sleep(20*60)
 
         # Gpon sanity test process
         gpon_img_ok = download_img(obj, current_path, config, 'saturn-sfu', 'gpon')
@@ -364,4 +364,9 @@ if __name__ == "__main__":
             upload_log(obj, current_path, config, 'saturn-sfu', 'gpon')
         else:
             print("saturn-sfu_gpon sanity test process sleep 20 Minutes")
-            time.sleep(20*60)
+            # time.sleep(20*60)
+
+        # Sleep 1 hour
+        if g3_img_ok != True or epon_img_ok != True or gpon_img_ok != True:
+            print("g3/epon/gpon sanity test process sleep 1 hour")
+            time.sleep(60*60)
