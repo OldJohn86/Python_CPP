@@ -4,22 +4,94 @@
 import os
 import sys
 import time
-import datetime
+#import datetime
 import paramiko
 import telnetlib
 import getpass
+import smtplib
 
 from datetime import date
 from configparser import ConfigParser
+from email import encoders
+from email.header import Header
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
+glb_log_file = "sanitytest-log.txt"
 
-# Get Timestamp
-#y_m_d = date.today().strftime('%Y-%m-%d')
-#y_m = date.today().strftime('%Y-%m')
-#print(y_m_d)
-#print(y_m)
+def send_mail(config, target, child=''):
+    mail_info = read_ini(config, 'mail')
+    mail_user = str(mail_info.get('user', None))
+    mail_postfix = str(mail_info.get('postfix', None))
+    mail_pwd = str(mail_info.get('pwd', None))
+    mail_host = str(mail_info.get('host', None))
+    mail_port = str(mail_info.get('port', None))
+    to_list = str(mail_info.get('to_list', None))
+    list_mailaddr = to_list.split()
+    # print(list_mailaddr)
+    mailto_list = [x +'@'+ mail_postfix for x in list_mailaddr]
+    print(mailto_list)
 
-# 读取配置文件获取服务器的登录信息
+    my_mail = mail_user +"@" + mail_postfix
+    msg = MIMEMultipart()
+    msg['Subject'] = str(target +' '+ child).upper + " Sanity Test Failed Report..."
+    msg['From'] = my_mail
+    msg['To'] = ";".join(mailto_list)
+    msg.attach(MIMEText('send with sanity test log file...', 'plain', 'utf-8'))
+
+    print(glb_log_file)
+    att1 = MIMEText(open(glb_log_file, 'rb').read(), 'base64', 'utf-8')
+    att1["Content-Type"] = 'application/octet-stream'
+    att1["Content-Disposition"] = 'attachment; filename="sanity-test-log.txt"'
+    msg.attach(att1)
+    try:
+        smtpObj = smtplib.SMTP(mail_host, mail_port)
+        # smtpObj.ehlo()
+        smtpObj.starttls()
+        # smtpObj.ehlo()
+        # smtpObj.set_debuglevel(1)
+        smtpObj.login(my_mail, mail_pwd)
+        smtpObj.sendmail(my_mail, mailto_list, msg.as_string())
+        smtpObj.quit()
+        print("Email send success")
+    except smtplib.SMTPException as e:
+        print("Email send failed", e)
+
+def get_file_last_line(inputfile, lines_sum):
+    filesize = os.path.getsize(inputfile)
+    blocksize = 1024
+    with open(inputfile, 'rb') as f:
+        last_line = ""
+        if filesize > blocksize:
+            maxseekpoint = (filesize // blocksize)
+            f.seek((maxseekpoint - 1) * blocksize)
+        elif filesize:
+            f.seek(0, 0)
+        lines = f.readlines()
+        if lines:
+            lineno = 0
+            for lineno in range(line_sum):
+                while last_line == "":
+                    last_line = lines[lineno - line_sum].strip()
+                    lineno += 1
+                last_line += lines[lineno - line_sum]#.strip()
+        return last_line.decode('ascii')
+
+def log_no_errors(target, child=''):
+    print(glb_log_file)
+    last_lines = get_file_last_line(os.path.abspath(glb_lg_file), 20)
+    print(last_lines)
+    if target == 'g3':
+        cmdline_tag = 'root@g3-eng:~# '
+    elif target == 'sturn-sfu':
+        cmdline_tag = 'root@saturn-sfu-eng:~# '
+    else:
+        print("Target %s is vaild" % target)
+    if cmdline_tag in last_lines:
+        return True
+    else:
+        return False
+
 def read_ini(config, option):
     info = dict()
     cf = ConfigParser()
@@ -30,7 +102,6 @@ def read_ini(config, option):
     # print(info)
     return info
 
-# 定义SSH SFTP Tool 工具类
 class SftpTool(object):
     def __init__(self, username, password, port, host):
         self.user = username
@@ -154,6 +225,7 @@ def download_img(obj, current_path, config, target, child=''):
     return ret
 
 def upload_log(obj, current_path, config, target, child=''):
+    global glb_log_file
     # Get Timestamp First
     y_m_d = date.today().strftime('%Y-%m-%d')
     y_m = date.today().strftime('%Y-%m')
@@ -188,6 +260,8 @@ def upload_log(obj, current_path, config, target, child=''):
             # print(remote_file)
             local_file = os.path.join(local_path_abs, y_m_d +'-'+ item)
             # print(local_file)
+            glb_log_file = local_file
+            print(glb_log_file)
             if not os.path.exists(local_file):
                 print("ERROR: local_file[%s] NOT exists!!" % local_file)
             getattr(obj, "input")(local_file, remote_file)
@@ -326,6 +400,7 @@ if __name__ == "__main__":
     #g3hgu_img_ok = download_img(obj, current_path, config, 'g3hgu', 'epon')
     #time.sleep(2)
     #print("g3hgu img download is %s" % g3hgu_img_ok)
+    #send_mail(current_path, config, 'g3')
 
     while True:
         # G3 sanity test process
@@ -337,9 +412,13 @@ if __name__ == "__main__":
             time.sleep(2)
             upload_log(obj, current_path, config, 'g3')
             time.sleep(2)
-        else:
-            print("g3 sanity test process sleep 20 Minutes")
-            # time.sleep(20*60) # wait 1/3 hour
+            g3_log_ok = log_no_errors('g3')
+            time.sleep(2)
+            if g3_log_ok == False:
+                print("g3 log file has checked errors & send emails!")
+                send_mail(config, 'g3')
+            else:
+                print("g3 log file not checked errors")
 
         # Epon sanity test process
         epon_img_ok = download_img(obj, current_path, config, 'saturn-sfu', 'epon')
@@ -350,9 +429,13 @@ if __name__ == "__main__":
             time.sleep(2)
             upload_log(obj, current_path, config, 'saturn-sfu', 'epon')
             time.sleep(2)
-        else:
-            print("saturn-sfu_epon sanity test process sleep 20 Minutes")
-            # time.sleep(20*60)
+            epon_log_ok = log_no_errors('saturn-sfu', 'epon')
+            time.sleep(2)
+            if epon_log_ok == False:
+                print("saturn-sfu epon log file has checked errors & send emails!")
+                send_mail(config, 'saturn-sfu', 'epon')
+            else:
+                print("saturn-sfu epon log file not checked errors")
 
         # Gpon sanity test process
         gpon_img_ok = download_img(obj, current_path, config, 'saturn-sfu', 'gpon')
@@ -362,9 +445,14 @@ if __name__ == "__main__":
             capture_log(current_path, config, 'saturn-sfu', 'gpon')
             time.sleep(2)
             upload_log(obj, current_path, config, 'saturn-sfu', 'gpon')
-        else:
-            print("saturn-sfu_gpon sanity test process sleep 20 Minutes")
-            # time.sleep(20*60)
+            time.sleep(2)
+            gpon_log_ok = log_no_errors('saturn-sfu', 'gpon')
+            time.sleep(2)
+            if gpon_log_ok == False:
+                print("saturn-sfu gpon log file has checked errors & send emails!")
+                send_mail(config, 'saturn-sfu', 'gpon')
+            else:
+                print("saturn-sfu gpon log file not checked errors")
 
         # Sleep 1 hour
         if g3_img_ok != True or epon_img_ok != True or gpon_img_ok != True:
