@@ -80,11 +80,11 @@ def get_file_last_line(inputfile, lines_sum):
         lines = f.readlines()
         if lines:
             lineno = 0
-            for lineno in range(line_sum):
+            for lineno in range(lines_sum):
                 while last_line == "":
-                    last_line = lines[lineno - line_sum].strip()
+                    last_line = lines[lineno - lines_sum].strip()
                     lineno += 1
-                last_line += lines[lineno - line_sum]#.strip()
+                last_line += lines[lineno - lines_sum]#.strip()
         return last_line.decode('ascii')
 
 def log_no_errors(target, child=''):
