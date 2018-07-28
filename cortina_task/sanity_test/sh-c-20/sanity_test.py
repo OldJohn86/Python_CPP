@@ -92,12 +92,12 @@ def log_no_errors(target, child=''):
     last_lines = get_file_last_line(os.path.abspath(glb_log_file), 20)
     print(last_lines)
     if target == 'g3':
-        cmdline_tag = 'root@g3-eng:~# '
-    elif target == 'sturn-sfu':
-        cmdline_tag = 'root@saturn-sfu-eng:~# '
+        no_error_tag = 'root@g3-eng:~# '
+    elif target == 'saturn-sfu':
+        no_error_tag = 'root@saturn-sfu-eng:~# '
     else:
         print("Target %s is vaild" % target)
-    if cmdline_tag in last_lines:
+    if no_error_tag in last_lines:
         return True
     else:
         return False
