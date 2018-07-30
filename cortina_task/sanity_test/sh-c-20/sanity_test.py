@@ -44,7 +44,7 @@ def send_mail(config, target, child=''):
 
     my_mail = mail_user +"@" + mail_postfix
     msg = MIMEMultipart()
-    msg['Subject'] = str(target +' '+ child).upper + " Sanity Test Failed Report..."
+    msg['Subject'] = (target +' '+ child).upper + " Sanity Test Failed Report..."
     msg['From'] = my_mail
     msg['To'] = ";".join(mailto_list)
     msg.attach(MIMEText('send with sanity test log file...', 'plain', 'utf-8'))
