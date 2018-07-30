@@ -44,7 +44,10 @@ def send_mail(config, target, child=''):
 
     my_mail = mail_user +"@" + mail_postfix
     msg = MIMEMultipart()
-    msg['Subject'] = (target +' '+ child).upper + " Sanity Test Failed Report..."
+    if child != '':
+        msg['Subject'] = target.upper +' '+ child.upper + " Sanity Test Failed Report..."
+    else:
+        msg['Subject'] = target.upper + " Sanity Test Failed Report..."
     msg['From'] = my_mail
     msg['To'] = ";".join(mailto_list)
     msg.attach(MIMEText('send with sanity test log file...', 'plain', 'utf-8'))
@@ -352,7 +355,7 @@ def do_telnet(config, target):
     # RESET board
     tn.read_until(written_ok)
     tn.write(reset_set + b'\r\n')
-    time.sleep(60)
+    time.sleep(70)
     tn.write(b'root\n')
     time.sleep(1)
     tn.write(b'\r\n')
