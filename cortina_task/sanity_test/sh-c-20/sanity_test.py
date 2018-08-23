@@ -16,7 +16,8 @@ from email.header import Header
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-glb_log_file = "daily_image_sanity_test/2018-08-22-g3-sanitytest-log.txt"
+glb_log_file = "sanity_test.py"
+#"daily_image_sanity_test/2018-08-22-g3-sanitytest-log.txt"
 
 def read_ini(config, option):
     info = dict()
@@ -49,15 +50,15 @@ def send_mail(config, target, child=''):
     my_mail = mail_user +"@" + mail_postfix
     msg = MIMEMultipart()
     if child != '':
-        msg['Subject'] = str(target) +' '+ str(child) + " Sanity Test Failed Report..."
-        context_msg = http_link +'/'+ target +'/'+ y_m +'/'+ y_m_d +'/'+ target +'_'+ child +'-eng-major-image/'
+        msg['Subject'] = y_m_d +' '+ str(target) +' '+ str(child) + " Sanity Test Failed Report..."
+        context_msg = http_link + target +'/'+ y_m +'/'+ y_m_d +'/'+ target +'-eng_'+ child +'-major-image/'
     else:
-        msg['Subject'] = str(target) + " Sanity Test Failed Report..."
-        context_msg = http_link +'/'+ target +'/'+ y_m +'/'+ y_m_d +'/'+ target +'-eng-major-image/'
+        msg['Subject'] = y_m_d +' '+ str(target) + " Sanity Test Failed Report..."
+        context_msg = http_link + target +'/'+ y_m +'/'+ y_m_d +'/'+ target +'-eng-major-image/'
     msg['From'] = my_mail
     msg['To'] = ";".join(mailto_list)
     # msg.attach(MIMEText('send with sanity test log file...', 'plain', 'utf-8'))
-    msg.attach(MIMEText('Test image path:' + context_msg, 'plain', 'utf-8'))
+    msg.attach(MIMEText('Test Image: \r\n' + context_msg, 'plain', 'utf-8'))
 
     print(glb_log_file)
     att1 = MIMEText(open(glb_log_file, 'rb').read(), 'base64', 'utf-8')
@@ -426,6 +427,8 @@ if __name__ == "__main__":
     obj = SftpTool(username, password, port, host)
 
     #send_mail(config, 'g3')
+    #send_mail(config, 'saturn-sfu', 'epon')
+    #send_mail(config, 'saturn-sfu', 'gpon')
 
     while True:
         # G3 sanity test process
