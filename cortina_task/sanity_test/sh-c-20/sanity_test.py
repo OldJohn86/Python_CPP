@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 # -*- coding: utf-8 -*-
 import os
 import sys
@@ -31,6 +30,9 @@ def read_ini(config, option):
 
 def send_mail(config, target, child=''):
     global glb_log_file
+    y_m_d = date.today().strftime('%Y-%m-%d')
+    y_m = date.today().strftime('%Y-%m')
+
     mail_info = read_ini(config, 'mail')
     mail_user = str(mail_info.get('user', None))
     mail_postfix = str(mail_info.get('postfix', None))
@@ -38,6 +40,7 @@ def send_mail(config, target, child=''):
     mail_host = str(mail_info.get('host', None))
     mail_port = str(mail_info.get('port', None))
     to_list = str(mail_info.get('to_list', None))
+    http_link = str(mail_info.get('http_link', None))
     list_mailaddr = to_list.split()
     print(list_mailaddr)
     mailto_list = [x +'@'+ mail_postfix for x in list_mailaddr]
@@ -47,11 +50,14 @@ def send_mail(config, target, child=''):
     msg = MIMEMultipart()
     if child != '':
         msg['Subject'] = str(target) +' '+ str(child) + " Sanity Test Failed Report..."
+        context_msg = http_link +'/'+ target +'/'+ y_m +'/'+ y_m_d +'/'+ target +'_'+ child +'-eng-major-image/'
     else:
         msg['Subject'] = str(target) + " Sanity Test Failed Report..."
+        context_msg = http_link +'/'+ target +'/'+ y_m +'/'+ y_m_d +'/'+ target +'-eng-major-image/'
     msg['From'] = my_mail
     msg['To'] = ";".join(mailto_list)
-    msg.attach(MIMEText('send with sanity test log file...', 'plain', 'utf-8'))
+    # msg.attach(MIMEText('send with sanity test log file...', 'plain', 'utf-8'))
+    msg.attach(MIMEText('Test image path:' + context_msg, 'plain', 'utf-8'))
 
     print(glb_log_file)
     att1 = MIMEText(open(glb_log_file, 'rb').read(), 'base64', 'utf-8')
@@ -155,7 +161,6 @@ def download_img(obj, current_path, config, target, child=''):
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
     local_path_abs = os.path.join(current_path, local_path)
-    http_link = path_info.get('http_link', None)
     # print(local_path_abs)
     if not os.path.exists(local_path_abs):
         os.makedirs(local_path_abs)
