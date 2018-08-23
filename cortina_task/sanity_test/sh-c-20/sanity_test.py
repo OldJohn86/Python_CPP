@@ -17,7 +17,7 @@ from email.header import Header
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-glb_log_file = "sanitytest-log.txt"
+glb_log_file = "daily_image_sanity_test/2018-08-22-g3-sanitytest-log.txt"
 
 def read_ini(config, option):
     info = dict()
@@ -30,6 +30,7 @@ def read_ini(config, option):
     return info
 
 def send_mail(config, target, child=''):
+    global glb_log_file
     mail_info = read_ini(config, 'mail')
     mail_user = str(mail_info.get('user', None))
     mail_postfix = str(mail_info.get('postfix', None))
@@ -38,16 +39,16 @@ def send_mail(config, target, child=''):
     mail_port = str(mail_info.get('port', None))
     to_list = str(mail_info.get('to_list', None))
     list_mailaddr = to_list.split()
-    # print(list_mailaddr)
+    print(list_mailaddr)
     mailto_list = [x +'@'+ mail_postfix for x in list_mailaddr]
     print(mailto_list)
 
     my_mail = mail_user +"@" + mail_postfix
     msg = MIMEMultipart()
     if child != '':
-        msg['Subject'] = target.upper +' '+ child.upper + " Sanity Test Failed Report..."
+        msg['Subject'] = str(target) +' '+ str(child) + " Sanity Test Failed Report..."
     else:
-        msg['Subject'] = target.upper + " Sanity Test Failed Report..."
+        msg['Subject'] = str(target) + " Sanity Test Failed Report..."
     msg['From'] = my_mail
     msg['To'] = ";".join(mailto_list)
     msg.attach(MIMEText('send with sanity test log file...', 'plain', 'utf-8'))
@@ -91,19 +92,23 @@ def get_file_last_line(inputfile, lines_sum):
         return last_line.decode('ascii')
 
 def log_no_errors(target, child=''):
-    print(glb_log_file)
-    last_lines = get_file_last_line(os.path.abspath(glb_log_file), 20)
-    print(last_lines)
-    if target == 'g3':
-        no_error_tag = 'root@g3-eng:~# '
-    elif target == 'saturn-sfu':
-        no_error_tag = 'root@saturn-sfu-eng:~# '
-    else:
-        print("Target %s is vaild" % target)
-    if no_error_tag in last_lines:
-        return True
-    else:
+    global glb_log_file
+    if not os.path.exists(glb_log_file):
         return False
+    else:
+        print(glb_log_file)
+        last_lines = get_file_last_line(os.path.abspath(glb_log_file), 20)
+        print(last_lines)
+        if target == 'g3':
+            no_error_tag = 'root@g3-eng:~# '
+        elif target == 'saturn-sfu':
+            no_error_tag = 'root@saturn-sfu-eng:~# '
+        else:
+            print("Target %s is vaild" % target)
+        if no_error_tag in last_lines:
+            return True
+        else:
+            return False
 
 class SftpTool(object):
     def __init__(self, username, password, port, host):
@@ -150,6 +155,7 @@ def download_img(obj, current_path, config, target, child=''):
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
     local_path_abs = os.path.join(current_path, local_path)
+    http_link = path_info.get('http_link', None)
     # print(local_path_abs)
     if not os.path.exists(local_path_abs):
         os.makedirs(local_path_abs)
@@ -264,13 +270,16 @@ def upload_log(obj, current_path, config, target, child=''):
             # print(remote_file)
             local_file = os.path.join(local_path_abs, y_m_d +'-'+ item)
             # print(local_file)
-            glb_log_file = local_file
-            print(glb_log_file)
+            # glb_log_file = local_file
+            # print(glb_log_file)
             if not os.path.exists(local_file):
                 print("ERROR: local_file[%s] NOT exists!!" % local_file)
-            getattr(obj, "input")(local_file, remote_file)
-            getattr(obj, "put")()
-            time.sleep(1)
+            else:
+                glb_log_file = local_file
+                print(glb_log_file)
+                getattr(obj, "input")(local_file, remote_file)
+                getattr(obj, "put")()
+                time.sleep(1)
     getattr(obj, "close")()
 
 def do_telnet(config, target):
@@ -401,10 +410,7 @@ if __name__ == "__main__":
     password = ssh_info.get('password', None)
     obj = SftpTool(username, password, port, host)
 
-    #g3hgu_img_ok = download_img(obj, current_path, config, 'g3hgu', 'epon')
-    #time.sleep(2)
-    #print("g3hgu img download is %s" % g3hgu_img_ok)
-    #send_mail(current_path, config, 'g3')
+    #send_mail(config, 'g3')
 
     while True:
         # G3 sanity test process
