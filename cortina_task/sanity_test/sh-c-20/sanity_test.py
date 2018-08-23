@@ -18,6 +18,7 @@ from email.mime.multipart import MIMEMultipart
 
 glb_log_file = "sanity_test.py"
 #"daily_image_sanity_test/2018-08-22-g3-sanitytest-log.txt"
+glb_img_rev_info = "g3-eng.major-image.2018-08-23-rev.txt"
 
 def read_ini(config, option):
     info = dict()
@@ -29,8 +30,29 @@ def read_ini(config, option):
     # print(info)
     return info
 
+def get_file_last_line(inputfile, lines_sum):
+    filesize = os.path.getsize(inputfile)
+    blocksize = 1024
+    with open(inputfile, 'rb') as f:
+        last_line = ""
+        if filesize > blocksize:
+            maxseekpoint = (filesize // blocksize)
+            f.seek((maxseekpoint - 1) * blocksize)
+        elif filesize:
+            f.seek(0, 0)
+        lines = f.readlines()
+        if lines:
+            lineno = 0
+            for lineno in range(lines_sum):
+                while last_line == "":
+                    last_line = lines[lineno - lines_sum].strip()
+                    lineno += 1
+                last_line += lines[lineno - lines_sum]#.strip()
+        return last_line.decode('ascii')
+
 def send_mail(config, target, child=''):
     global glb_log_file
+    global glb_img_rev_info
     y_m_d = date.today().strftime('%Y-%m-%d')
     y_m = date.today().strftime('%Y-%m')
 
@@ -60,7 +82,14 @@ def send_mail(config, target, child=''):
     # msg.attach(MIMEText('send with sanity test log file...', 'plain', 'utf-8'))
     msg.attach(MIMEText('Test Image: \r\n' + context_msg, 'plain', 'utf-8'))
 
-    print(glb_log_file)
+    if not os.path.exists(glb_img_rev_info):
+        return False
+    else:
+        print(glb_img_rev_info)
+        img_rev_lines = get_file_last_line(os.path.abspath(glb_img_rev_info), 50)
+        print(img_rev_lines)
+        msg.attach(MIMEText('Image Rev Info: \r\n' + img_rev_lines, 'plain', 'utf-8'))
+ 
     att1 = MIMEText(open(glb_log_file, 'rb').read(), 'base64', 'utf-8')
     att1["Content-Type"] = 'application/octet-stream'
     att1["Content-Disposition"] = 'attachment; filename="sanity-test-log.txt"'
@@ -77,26 +106,6 @@ def send_mail(config, target, child=''):
         print("Email send success")
     except smtplib.SMTPException as e:
         print("Email send failed", e)
-
-def get_file_last_line(inputfile, lines_sum):
-    filesize = os.path.getsize(inputfile)
-    blocksize = 1024
-    with open(inputfile, 'rb') as f:
-        last_line = ""
-        if filesize > blocksize:
-            maxseekpoint = (filesize // blocksize)
-            f.seek((maxseekpoint - 1) * blocksize)
-        elif filesize:
-            f.seek(0, 0)
-        lines = f.readlines()
-        if lines:
-            lineno = 0
-            for lineno in range(lines_sum):
-                while last_line == "":
-                    last_line = lines[lineno - lines_sum].strip()
-                    lineno += 1
-                last_line += lines[lineno - lines_sum]#.strip()
-        return last_line.decode('ascii')
 
 def log_no_errors(target, child=''):
     global glb_log_file
@@ -155,6 +164,7 @@ class SftpTool(object):
         print("Host[%s] connect closed!!" % self.ip)
 
 def download_img(obj, current_path, config, target, child=''):
+    global glb_img_rev_info
     # Get Timestamp First
     y_m_d = date.today().strftime('%Y-%m-%d')
     y_m = date.today().strftime('%Y-%m')
@@ -173,6 +183,8 @@ def download_img(obj, current_path, config, target, child=''):
     if target == 'g3':
         target_path = path_info.get('g3_path', None)
         local_backup_path_abs = os.path.join(local_path_abs, target)
+        img_rev_info = target + '-eng.major-image.' + y_m_d + '-rev.txt'
+        print(img_rev_info)
     elif target == 'g3hgu':
         local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
         if child == 'epon':
@@ -183,6 +195,8 @@ def download_img(obj, current_path, config, target, child=''):
             print("Target <%s> child[%s] is invalid!!" % target, child)
     elif target == 'saturn-sfu':
         local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
+        img_rev_info = target + '-eng_'+ child +'.major-image.' + y_m_d + '-rev.txt'
+        print(img_rev_info)
         if child == 'epon':
             target_path = path_info.get('epon_path', None)
         elif child == 'gpon':
@@ -237,6 +251,11 @@ def download_img(obj, current_path, config, target, child=''):
                 getattr(obj, "input")(local_backup_file, remote_file)
                 getattr(obj, "get")()
                 time.sleep(1)
+    local_img_rev_info = os.path.join(local_path_abs, img_rev_info)
+    remote_img_rev_info = remote_path_abs + img_rev_info
+    getattr(obj, "input")(local_img_rev_info, remote_img_rev_info)
+    getattr(obj, "get")()
+    glb_img_rev_info = local_img_rev_info
     getattr(obj, "close")()
     return ret
 
