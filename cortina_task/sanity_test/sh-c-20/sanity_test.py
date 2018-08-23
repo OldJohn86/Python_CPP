@@ -318,6 +318,9 @@ def do_telnet(config, target):
 
     tn = telnetlib.Telnet(host, port, timeout=50)
     tn.write(b'\r\n')
+    time.sleep(1)
+    tn.write(b'root\n')
+    time.sleep(1)
     i, tag, read_all = tn.expect([uboot_tag, cmdline_tag])
     print(tag)
     # Reset from Uboot cmdline
@@ -327,14 +330,11 @@ def do_telnet(config, target):
     # Reboot from Kernel cmdline
     elif i == 1:
         time.sleep(1)
-        tn.write(b'root\n')
-        time.sleep(1)
         tn.write(b'\r\n')
         time.sleep(1)
         tn.write(b'reboot\n')
     else:
         print("ERROR: do_telnet() capture log !")
-    # tn.read_until(cmdline_tag)
     time.sleep(1)
     tn.read_until(b'Hit any key to stop autoboot: ')
     tn.write(b'\r\n')
