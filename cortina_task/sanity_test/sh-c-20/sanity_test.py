@@ -102,7 +102,7 @@ def send_mail(config, target, child=''):
         img_rev_lines = get_file_lines(os.path.abspath(glb_img_rev_file))
         #print(img_rev_lines)
 
-    text_msg = 'Text Image: \r\n'+ context_msg + '\r\n\r\n Image Rev Info: \r\n' + img_rev_lines
+    text_msg = '[Text Image]: \r\n'+ context_msg + '\r\n\r\n [Image Rev Info]: \r\n' + img_rev_lines
     msg.attach(MIMEText(text_msg, 'plain', 'utf-8'))
  
     att1 = MIMEText(open(glb_log_file, 'rb').read(), 'base64', 'utf-8')
