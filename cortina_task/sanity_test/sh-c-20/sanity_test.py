@@ -16,9 +16,8 @@ from email.header import Header
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-glb_log_file = "sanity_test.py"
-#"daily_image_sanity_test/2018-08-22-g3-sanitytest-log.txt"
-glb_img_rev_info = "g3-eng.major-image.2018-08-23-rev.txt"
+glb_log_file = "daily_image_sanity_test/2018-08-22-g3-sanitytest-log.txt"
+glb_img_rev_file = "daily_image_sanity_test/g3-eng.major-image.2018-08-23-rev.txt"
 
 def read_ini(config, option):
     info = dict()
@@ -29,6 +28,16 @@ def read_ini(config, option):
         info[each] = cf.get(option, each)
     # print(info)
     return info
+
+def get_file_lines(inputfile):
+    with open(inputfile, 'r') as f:
+        info_msg = ""
+        lines = f.readlines()
+        line_sum = len(lines)
+        for line in lines:
+            info_msg += line
+        #print(info_msg)
+        return info_msg
 
 def get_file_last_line(inputfile, lines_sum):
     filesize = os.path.getsize(inputfile)
@@ -52,7 +61,8 @@ def get_file_last_line(inputfile, lines_sum):
 
 def send_mail(config, target, child=''):
     global glb_log_file
-    global glb_img_rev_info
+    global glb_img_rev_file
+    # print(glb_img_rev_file)
     y_m_d = date.today().strftime('%Y-%m-%d')
     y_m = date.today().strftime('%Y-%m')
 
@@ -65,7 +75,7 @@ def send_mail(config, target, child=''):
     to_list = str(mail_info.get('to_list', None))
     http_link = str(mail_info.get('http_link', None))
     list_mailaddr = to_list.split()
-    print(list_mailaddr)
+    # print(list_mailaddr)
     mailto_list = [x +'@'+ mail_postfix for x in list_mailaddr]
     print(mailto_list)
 
@@ -74,21 +84,26 @@ def send_mail(config, target, child=''):
     if child != '':
         msg['Subject'] = y_m_d +' '+ str(target) +' '+ str(child) + " Sanity Test Failed Report..."
         context_msg = http_link + target +'/'+ y_m +'/'+ y_m_d +'/'+ target +'-eng_'+ child +'-major-image/'
+        #print(context_msg)
     else:
         msg['Subject'] = y_m_d +' '+ str(target) + " Sanity Test Failed Report..."
         context_msg = http_link + target +'/'+ y_m +'/'+ y_m_d +'/'+ target +'-eng-major-image/'
+        #print(context_msg)
     msg['From'] = my_mail
     msg['To'] = ";".join(mailto_list)
     # msg.attach(MIMEText('send with sanity test log file...', 'plain', 'utf-8'))
-    msg.attach(MIMEText('Test Image: \r\n' + context_msg, 'plain', 'utf-8'))
+    # msg.attach(MIMEText('Test Image: \r\n' + context_msg, 'plain', 'utf-8'))
 
-    if not os.path.exists(glb_img_rev_info):
+    if not os.path.exists(glb_img_rev_file):
+        #print(glb_img_rev_file)
         return False
     else:
-        print(glb_img_rev_info)
-        img_rev_lines = get_file_last_line(os.path.abspath(glb_img_rev_info), 50)
-        print(img_rev_lines)
-        msg.attach(MIMEText('Image Rev Info: \r\n' + img_rev_lines, 'plain', 'utf-8'))
+        #print(glb_img_rev_file)
+        img_rev_lines = get_file_lines(os.path.abspath(glb_img_rev_file))
+        #print(img_rev_lines)
+
+    text_msg = 'Text Image: \r\n'+ context_msg + '\r\n\r\n Image Rev Info: \r\n' + img_rev_lines
+    msg.attach(MIMEText(text_msg, 'plain', 'utf-8'))
  
     att1 = MIMEText(open(glb_log_file, 'rb').read(), 'base64', 'utf-8')
     att1["Content-Type"] = 'application/octet-stream'
@@ -112,9 +127,9 @@ def log_no_errors(target, child=''):
     if not os.path.exists(glb_log_file):
         return False
     else:
-        print(glb_log_file)
+        #print(glb_log_file)
         last_lines = get_file_last_line(os.path.abspath(glb_log_file), 20)
-        print(last_lines)
+        #print(last_lines)
         if target == 'g3':
             no_error_tag = 'root@g3-eng:~# '
         elif target == 'saturn-sfu':
@@ -164,7 +179,7 @@ class SftpTool(object):
         print("Host[%s] connect closed!!" % self.ip)
 
 def download_img(obj, current_path, config, target, child=''):
-    global glb_img_rev_info
+    global glb_img_rev_file
     # Get Timestamp First
     y_m_d = date.today().strftime('%Y-%m-%d')
     y_m = date.today().strftime('%Y-%m')
@@ -252,10 +267,17 @@ def download_img(obj, current_path, config, target, child=''):
                 getattr(obj, "get")()
                 time.sleep(1)
     local_img_rev_info = os.path.join(local_path_abs, img_rev_info)
+    # print(local_img_rev_info)
     remote_img_rev_info = remote_path_abs + img_rev_info
-    getattr(obj, "input")(local_img_rev_info, remote_img_rev_info)
-    getattr(obj, "get")()
-    glb_img_rev_info = local_img_rev_info
+    # print(remote_img_rev_info)
+    if img_rev_info in return_items:
+        print("%s WAS Found on server!!!" % img_rev_info)
+        getattr(obj, "input")(local_img_rev_info, remote_img_rev_info)
+        getattr(obj, "get")()
+        glb_img_rev_file = local_img_rev_info
+    else:
+        print("%s WAS NOT Found on server!!!" % img_rev_info)
+        ret = False
     getattr(obj, "close")()
     return ret
 
@@ -301,7 +323,7 @@ def upload_log(obj, current_path, config, target, child=''):
                 print("ERROR: local_file[%s] NOT exists!!" % local_file)
             else:
                 glb_log_file = local_file
-                print(glb_log_file)
+                # print(glb_log_file)
                 getattr(obj, "input")(local_file, remote_file)
                 getattr(obj, "put")()
                 time.sleep(1)
