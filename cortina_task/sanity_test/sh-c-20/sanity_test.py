@@ -36,12 +36,12 @@ def get_file_lines(inputfile):
         line_sum = len(lines)
         for line in lines:
             info_msg += line
-        #print(info_msg)
+        # print(info_msg)
         return info_msg
 
 def get_file_last_line(inputfile, lines_sum):
     filesize = os.path.getsize(inputfile)
-    blocksize = 1024
+    blocksize = 10240
     with open(inputfile, 'rb') as f:
         last_line = ""
         if filesize > blocksize:
@@ -54,6 +54,7 @@ def get_file_last_line(inputfile, lines_sum):
             lineno = 0
             for lineno in range(lines_sum):
                 while last_line == "":
+                    # print(lineno - lines_sum)
                     last_line = lines[lineno - lines_sum].strip()
                     lineno += 1
                 last_line += lines[lineno - lines_sum]#.strip()
@@ -77,32 +78,32 @@ def send_mail(config, target, child=''):
     list_mailaddr = to_list.split()
     # print(list_mailaddr)
     mailto_list = [x +'@'+ mail_postfix for x in list_mailaddr]
-    print(mailto_list)
+    # print(mailto_list)
 
     my_mail = mail_user +"@" + mail_postfix
     msg = MIMEMultipart()
     if child != '':
         msg['Subject'] = y_m_d +' '+ str(target) +' '+ str(child) + " Sanity Test Failed Report..."
         context_msg = http_link + target +'/'+ y_m +'/'+ y_m_d +'/'+ target +'-eng_'+ child +'-major-image/'
-        #print(context_msg)
+        # print(context_msg)
     else:
         msg['Subject'] = y_m_d +' '+ str(target) + " Sanity Test Failed Report..."
         context_msg = http_link + target +'/'+ y_m +'/'+ y_m_d +'/'+ target +'-eng-major-image/'
-        #print(context_msg)
+        # print(context_msg)
     msg['From'] = my_mail
     msg['To'] = ";".join(mailto_list)
     # msg.attach(MIMEText('send with sanity test log file...', 'plain', 'utf-8'))
     # msg.attach(MIMEText('Test Image: \r\n' + context_msg, 'plain', 'utf-8'))
 
     if not os.path.exists(glb_img_rev_file):
-        #print(glb_img_rev_file)
+        # print(glb_img_rev_file)
         return False
     else:
-        #print(glb_img_rev_file)
+        # print(glb_img_rev_file)
         img_rev_lines = get_file_lines(os.path.abspath(glb_img_rev_file))
-        #print(img_rev_lines)
+        # print(img_rev_lines)
 
-    text_msg = '[Text Image]: \r\n'+ context_msg + '\r\n\r\n [Image Rev Info]: \r\n' + img_rev_lines
+    text_msg = '[Test Image]: \r\n'+ context_msg + '\r\n\r\n [Image Rev Info]: \r\n' + img_rev_lines
     msg.attach(MIMEText(text_msg, 'plain', 'utf-8'))
  
     att1 = MIMEText(open(glb_log_file, 'rb').read(), 'base64', 'utf-8')
@@ -127,9 +128,9 @@ def log_no_errors(target, child=''):
     if not os.path.exists(glb_log_file):
         return False
     else:
-        #print(glb_log_file)
+        # print(glb_log_file)
         last_lines = get_file_last_line(os.path.abspath(glb_log_file), 20)
-        #print(last_lines)
+        # print(last_lines)
         if target == 'g3':
             no_error_tag = 'root@g3-eng:~# '
         elif target == 'saturn-sfu':
@@ -152,7 +153,7 @@ class SftpTool(object):
             self.ssh = paramiko.SSHClient()
             self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             self.ssh.connect(self.ip, self.port, self.user, self.password)
-            print("Host[%s] connect created!!" % self.ip)
+            # print("Host[%s] connect created!!" % self.ip)
         except Exception as e:
             print("ERROR: Failed to connect to Host[%s]!!" % self.ip)
         self.stdin, self.stdout, self.stderr = self.ssh.exec_command("ls " + target_path_abs)
@@ -176,7 +177,7 @@ class SftpTool(object):
         sftp.close()
     def close(self):
         self.ssh.close()
-        print("Host[%s] connect closed!!" % self.ip)
+        # print("Host[%s] connect closed!!" % self.ip)
 
 def download_img(obj, current_path, config, target, child=''):
     global glb_img_rev_file
@@ -199,7 +200,7 @@ def download_img(obj, current_path, config, target, child=''):
         target_path = path_info.get('g3_path', None)
         local_backup_path_abs = os.path.join(local_path_abs, target)
         img_rev_info = target + '-eng.major-image.' + y_m_d + '-rev.txt'
-        print(img_rev_info)
+        # print(img_rev_info)
     elif target == 'g3hgu':
         local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
         if child == 'epon':
@@ -211,7 +212,7 @@ def download_img(obj, current_path, config, target, child=''):
     elif target == 'saturn-sfu':
         local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
         img_rev_info = target + '-eng_'+ child +'.major-image.' + y_m_d + '-rev.txt'
-        print(img_rev_info)
+        # print(img_rev_info)
         if child == 'epon':
             target_path = path_info.get('epon_path', None)
         elif child == 'gpon':
@@ -244,9 +245,7 @@ def download_img(obj, current_path, config, target, child=''):
     ret = True
     for item in target_info.values():
             if not '-sanitytest-log.txt' in item:
-                if item in return_items:
-                    print("%s WAS Found on server!!!" % item)
-                else:
+                if item  not in return_items:
                     print("%s WAS NOT Found on server!!!" % item)
                     ret = False
                     break
@@ -271,7 +270,7 @@ def download_img(obj, current_path, config, target, child=''):
     remote_img_rev_info = remote_path_abs + img_rev_info
     # print(remote_img_rev_info)
     if img_rev_info in return_items:
-        print("%s WAS Found on server!!!" % img_rev_info)
+        # print("%s WAS Found on server!!!" % img_rev_info)
         getattr(obj, "input")(local_img_rev_info, remote_img_rev_info)
         getattr(obj, "get")()
         glb_img_rev_file = local_img_rev_info
@@ -341,25 +340,36 @@ def do_telnet(config, target):
         ipaddr_set = tftpboot_info.get('g3_ipaddr_set', None).encode('ascii')
         serverip_set = tftpboot_info.get('g3_serverip_set', None).encode('ascii')
         tftpboot_gpt = tftpboot_info.get('g3_tftpboot_gpt', None).encode('ascii')
+        upgrade_gpt = tftpboot_info.get('g3_upgrade_gpt', None).encode('ascii')
         tftpboot_ubootenv = tftpboot_info.get('g3_tftpboot_ubootenv', None).encode('ascii')
+        upgrade_ubootenv = tftpboot_info.get('g3_upgrade_ubootenv', None).encode('ascii')
         tftpboot_image = tftpboot_info.get('g3_tftpboot_image', None).encode('ascii')
+        upgrade_image = tftpboot_info.get('g3_upgrade_image', None).encode('ascii')
         uboot_tag = b'G3# '
         cmdline_tag = b'root@g3-eng:~# '
         written_ok = b'written: OK'
+        tftp_done = b'done'
     elif target == "saturn-sfu":
         port = int(telnet_info.get('saturn_port', None))
         activeport_set = tftpboot_info.get('saturn_activeport_set', None).encode('ascii')
         ipaddr_set = tftpboot_info.get('saturn_ipaddr_set', None).encode('ascii')
         serverip_set = tftpboot_info.get('saturn_serverip_set', None).encode('ascii')
         tftpboot_gpt = tftpboot_info.get('saturn_tftpboot_gpt', None).encode('ascii')
+        upgrade_gpt = tftpboot_info.get('saturn_upgrade_gpt', None).encode('ascii')
         tftpboot_ubootenv = tftpboot_info.get('saturn_tftpboot_ubootenv', None).encode('ascii')
+        upgrade_ubootenv = tftpboot_info.get('saturn_upgrade_ubootenv', None).encode('ascii')
         tftpboot_dtb = tftpboot_info.get('saturn_tftpboot_dtb', None).encode('ascii')
+        upgrade_dtb = tftpboot_info.get('saturn_upgrade_dtb', None).encode('ascii')
         tftpboot_image = tftpboot_info.get('saturn_tftpboot_image', None).encode('ascii')
+        upgrade_image = tftpboot_info.get('saturn_upgrade_image', None).encode('ascii')
         tftpboot_rootfs = tftpboot_info.get('saturn_tftpboot_rootfs', None).encode('ascii')
+        upgrade_rootfs = tftpboot_info.get('saturn_upgrade_rootfs', None).encode('ascii')
         tftpboot_userubi = tftpboot_info.get('saturn_tftpboot_userubi', None).encode('ascii')
+        upgrade_userubi = tftpboot_info.get('saturn_upgrade_userubi', None).encode('ascii')
         uboot_tag = b'SATURN# '
         cmdline_tag = b'root@saturn-sfu-eng:~# '
         written_ok = b'Written: OK'
+        tftp_done = b'done'
     else:
         print("ERROR: Input target[%s] is invalid!!" % target)
 
@@ -369,7 +379,7 @@ def do_telnet(config, target):
     tn.write(b'root\n')
     time.sleep(1)
     i, tag, read_all = tn.expect([uboot_tag, cmdline_tag])
-    print(tag)
+    # print(tag)
     # Reset from Uboot cmdline
     if i == 0:
         time.sleep(1)
@@ -392,30 +402,61 @@ def do_telnet(config, target):
     tn.write(saveenv_set + b'\r\n')
     tn.write(reset_set + b'\r\n')
     tn.read_until(b'Hit any key to stop autoboot: ')
-    tn.write(b'\r\n')
+    tn.write(b'\n')
     time.sleep(1)
     # Upgrade gpt
     tn.read_until(uboot_tag)
-    tn.write(tftpboot_gpt + b'\r\n')
     time.sleep(1)
+    # print(tftpboot_gpt)
+    tn.write(tftpboot_gpt + b'\n')
+    tn.read_until(tftp_done)
+    time.sleep(1)
+    # print(upgrade_gpt)
+    tn.write(upgrade_gpt + b'\n')
     # Upgrade uboot_env
     tn.read_until(written_ok)
-    tn.write(tftpboot_ubootenv + b'\r\n')
     time.sleep(1)
+    # print(tftpboot_ubootenv)
+    tn.write(tftpboot_ubootenv + b'\n')
+    # time.sleep(1)
+    tn.read_until(tftp_done)
+    time.sleep(1)
+    # print(upgrade_ubootenv)
+    tn.write(upgrade_ubootenv + b'\n')
     # Upgrade image
     tn.read_until(written_ok)
-    tn.write(tftpboot_image + b'\r\n')
     time.sleep(1)
+    # print(tftpboot_image)
+    tn.write(tftpboot_image + b'\n')
+    tn.read_until(tftp_done)
+    time.sleep(1)
+    # print(upgrade_image)
+    tn.write(upgrade_image + b'\n')
     if target =='saturn-sfu':
         tn.read_until(written_ok)
-        tn.write(tftpboot_dtb + b'\r\n')
         time.sleep(1)
+        # print(tftpboot_dtb)
+        tn.write(tftpboot_dtb + b'\n')
+        tn.read_until(tftp_done)
+        time.sleep(1)
+        # print(upgrade_dtb)
+        tn.write(upgrade_dtb + b'\n')
         tn.read_until(written_ok)
-        tn.write(tftpboot_rootfs + b'\r\n')
         time.sleep(1)
+        # print(tftpboot_rootfs)
+        tn.write(tftpboot_rootfs + b'\n')
+        tn.read_until(tftp_done)
+        time.sleep(1)
+        # print(upgrade_rootfs)
+        tn.write(upgrade_rootfs + b'\n')
         tn.read_until(written_ok)
-        tn.write(tftpboot_userubi + b'\r\n')
         time.sleep(1)
+        # print(tftpboot_userubi)
+        tn.write(tftpboot_userubi + b'\n')
+        tn.read_until(tftp_done)
+        time.sleep(1)
+        # print(upgrade_userubi)
+        tn.write(upgrade_userubi + b'\n')
     else:
         pass
     # RESET board
@@ -457,9 +498,9 @@ def capture_log(current_path, config, target, child=''):
 
 if __name__ == "__main__":
     current_path = sys.argv[0].rstrip('/sanity_test_g3.py')
-    print(current_path)
+    # print(current_path)
     config = os.path.join(current_path, 'config/dailybuild_server_config.ini')
-    print(config)
+    # print(config)
     ssh_info = read_ini(config, 'ssh')
     host = ssh_info.get('host', None)
     port = int(ssh_info.get('port', None)) # 端口是int类型
@@ -484,7 +525,7 @@ if __name__ == "__main__":
             g3_log_ok = log_no_errors('g3')
             time.sleep(2)
             if g3_log_ok == False:
-                print("g3 log file has checked errors & send emails!")
+                print("ERROR: g3 log file has checked errors & send emails!")
                 send_mail(config, 'g3')
             else:
                 print("g3 log file not checked errors")
@@ -501,7 +542,7 @@ if __name__ == "__main__":
             epon_log_ok = log_no_errors('saturn-sfu', 'epon')
             time.sleep(2)
             if epon_log_ok == False:
-                print("saturn-sfu epon log file has checked errors & send emails!")
+                print("ERROR: saturn-sfu epon log file has checked errors & send emails!")
                 send_mail(config, 'saturn-sfu', 'epon')
             else:
                 print("saturn-sfu epon log file not checked errors")
@@ -518,15 +559,15 @@ if __name__ == "__main__":
             gpon_log_ok = log_no_errors('saturn-sfu', 'gpon')
             time.sleep(2)
             if gpon_log_ok == False:
-                print("saturn-sfu gpon log file has checked errors & send emails!")
+                print("ERROR: saturn-sfu gpon log file has checked errors & send emails!")
                 send_mail(config, 'saturn-sfu', 'gpon')
             else:
                 print("saturn-sfu gpon log file not checked errors")
 
         # Sleep 1 hour
         if g3_img_ok != True and epon_img_ok != True and gpon_img_ok != True:
-            print("g3/epon/gpon sanity test process sleep 1 hour")
+            # print("g3/epon/gpon sanity test process sleep 1 hour")
             time.sleep(60*60)
         else:
-            print("g3/epon/gpon sanity test process sleep 0.5 hour")
+            # print("g3/epon/gpon sanity test process sleep 0.5 hour")
             time.sleep(30*60)
