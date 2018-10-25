@@ -13,14 +13,21 @@ cur.execute("USE scraping")
 random.seed(datetime.datetime.now())
 
 def store(title, content):
-    cur.execute("INSERT INTO pages (title, content) VALUES (\"%s\", \"%s\")", (title, content))
-    cur.connection.commit()
+    sql_cmd_insert = "INSERT INTO pages (title, content) VALUES (\"%s\", \"%s\")" % (title, content)
+    print(sql_cmd_insert)
+    try:
+        cur.execute(sql_cmd_insert)
+        conn.commit()
+    except:
+        conn.rollback()
 
 def getLinks(articleUrl):
     html = urlopen("http://en.wikipedia.org"+articleUrl)
     bsObj = BeautifulSoup(html, features="lxml")
     title = bsObj.find("h1").get_text()
     content = bsObj.find("div", {"id":"bodyContent"}).find("p").get_text()
+    #print(title)
+    #print(content)
     store(title, content)
     return bsObj.find("div", {"id":"bodyContent"}).findAll("a", href=re.compile("^(/wiki/)((?!:).)*$"))
 
