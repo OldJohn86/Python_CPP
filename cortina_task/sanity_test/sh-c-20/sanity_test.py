@@ -133,6 +133,8 @@ def log_no_errors(target, child=''):
         # print(last_lines)
         if target == 'g3':
             no_error_tag = 'root@g3-eng:~# '
+        elif target == 'g3hgu':
+            no_error_tag = 'root@g3hgu-eng:~# '
         elif target == 'saturn-sfu':
             no_error_tag = 'root@saturn-sfu-eng:~# '
         else:
@@ -202,10 +204,15 @@ def download_img(obj, current_path, config, target, child=''):
         img_rev_info = target + '-eng.major-image.' + y_m_d + '-rev.txt'
         # print(img_rev_info)
     elif target == 'g3hgu':
-        local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
-        if child == 'epon':
+        if child == '':
+            local_backup_path_abs = os.path.join(local_path_abs, target)
+            target_path = path_info.get('g3hgu_path', None)
+            img_rev_info = target + '-eng.major-image.' + y_m_d + '-rev.txt'
+        elif child == 'epon':
+            local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
             target_path = path_info.get('g3hgu_epon_path', None)
         elif child == 'gpon':
+            local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
             target_path = path_info.get('g3hgu_gpon_path', None)
         else:
             print("Target <%s> child[%s] is invalid!!" % target, child)
@@ -228,6 +235,13 @@ def download_img(obj, current_path, config, target, child=''):
     # print(return_items)
     if target == 'g3':
         log_file = y_m_d +'-'+ target + '-sanitytest-log.txt';
+    elif target == 'g3hgu':
+        if child == '':
+            log_file = y_m_d +'-'+ target + '-sanitytest-log.txt';
+        elif child == 'epon' or child == 'gpon':
+            log_file = y_m_d +'-'+ child + '-sanitytest-log.txt';
+        else:
+            print("Target <%s> child[%s] is invalid!!" % target, child)
     elif target == 'saturn-sfu':
         log_file = y_m_d +'-'+ child + '-sanitytest-log.txt';
     if log_file in return_items:
@@ -252,15 +266,18 @@ def download_img(obj, current_path, config, target, child=''):
                 remote_file = remote_path_abs + item
                 # print(remote_file)
                 local_backup_file = os.path.join(local_backup_path_abs, item)
-                if target == 'g3' and item == 'uboot-env.bin':
-                    local_file = os.path.join(local_path_abs, target + item)
+                if target == 'g3' or target == 'g3hgu':
+                    if item == 'uboot-env.bin':
+                        local_file = os.path.join(local_path_abs, target + item)
+                    else:
+                        local_file = os.path.join(local_path_abs, item)
                 else:
                     local_file = os.path.join(local_path_abs, item)
-                if target != 'g3hgu':
+                #if target != 'g3hgu':
                     # print(local_file)
-                    getattr(obj, "input")(local_file, remote_file)
-                    getattr(obj, "get")()
-                    time.sleep(1)
+                getattr(obj, "input")(local_file, remote_file)
+                getattr(obj, "get")()
+                time.sleep(1)
                 # print(local_backup_file + '\r\n')
                 getattr(obj, "input")(local_backup_file, remote_file)
                 getattr(obj, "get")()
@@ -295,6 +312,18 @@ def upload_log(obj, current_path, config, target, child=''):
     if target == 'g3':
         log_file = target + '-sanitytest-log.txt';
         target_path = path_info.get('g3_path', None)
+    elif target == 'g3hgu':
+        if child == '':
+            log_file = target + '-sanitytest-log.txt';
+            target_path = path_info.get('g3hgu_path', None)
+        elif child == 'epon':
+            log_file = target + '-' + child + '-sanitytest-log.txt';
+            target_path = path_info.get('g3hgu_epon_path', None)
+        elif child == 'gpon':
+            log_file = target + '-' + child + '-sanitytest-log.txt';
+            target_path = path_info.get('g3hgu_gpon_path', None)
+        else:
+            print("ERROR: Input g3hgu child[%s] is invalid!!" % child)
     elif target == 'saturn-sfu':
         log_file = child + '-sanitytest-log.txt';
         if child == 'epon':
@@ -347,6 +376,21 @@ def do_telnet(config, target):
         upgrade_image = tftpboot_info.get('g3_upgrade_image', None).encode('ascii')
         uboot_tag = b'G3# '
         cmdline_tag = b'root@g3-eng:~# '
+        written_ok = b'written: OK'
+        tftp_done = b'done'
+    elif target == 'g3hgu':
+        port = int(telnet_info.get('g3hgu_port', None))
+        activeport_set = tftpboot_info.get('g3hgu_activeport_set', None).encode('ascii')
+        ipaddr_set = tftpboot_info.get('g3hgu_ipaddr_set', None).encode('ascii')
+        serverip_set = tftpboot_info.get('g3hgu_serverip_set', None).encode('ascii')
+        tftpboot_gpt = tftpboot_info.get('g3hgu_tftpboot_gpt', None).encode('ascii')
+        upgrade_gpt = tftpboot_info.get('g3hgu_upgrade_gpt', None).encode('ascii')
+        tftpboot_ubootenv = tftpboot_info.get('g3hgu_tftpboot_ubootenv', None).encode('ascii')
+        upgrade_ubootenv = tftpboot_info.get('g3hgu_upgrade_ubootenv', None).encode('ascii')
+        tftpboot_image = tftpboot_info.get('g3hgu_tftpboot_image', None).encode('ascii')
+        upgrade_image = tftpboot_info.get('g3hgu_upgrade_image', None).encode('ascii')
+        uboot_tag = b'G3# '
+        cmdline_tag = b'root@g3hgu-eng:~# '
         written_ok = b'written: OK'
         tftp_done = b'done'
     elif target == "saturn-sfu":
@@ -485,7 +529,7 @@ def capture_log(current_path, config, target, child=''):
     local_path_abs = os.path.join(current_path, local_path)
     if not os.path.exists(local_path_abs):
         os.makedirs(local_path_abs)
-    if target == 'g3':
+    if target == 'g3' or target == 'g3hgu':
         log_file_path = local_path_abs + y_m_d +'-'+ target +'-sanitytest-log.txt'; 
     elif target == 'saturn-sfu':
         log_file_path = local_path_abs + y_m_d +'-'+ child +'-sanitytest-log.txt'; 
@@ -564,10 +608,27 @@ if __name__ == "__main__":
             else:
                 print("saturn-sfu gpon log file not checked errors")
 
+        # G3HGU sanity test process
+        g3hgu_img_ok = download_img(obj, current_path, config, 'g3hgu')
+        time.sleep(2)
+        print("g3hgu img download is %s" % g3hgu_img_ok)
+        if g3hgu_img_ok == True:
+            capture_log(current_path, config, 'g3hgu')
+            time.sleep(2)
+            upload_log(obj, current_path, config, 'g3hgu')
+            time.sleep(2)
+            g3hgu_log_ok = log_no_errors('g3hgu')
+            time.sleep(2)
+            if g3hgu_log_ok == False:
+                print("ERROR: g3hgu log file has checked errors & send emails!")
+                send_mail(config, 'g3hgu')
+            else:
+                print("g3hgu log file not checked errors")
+
         # Sleep 1 hour
-        if g3_img_ok != True and epon_img_ok != True and gpon_img_ok != True:
-            # print("g3/epon/gpon sanity test process sleep 1 hour")
+        if g3_img_ok != True and epon_img_ok != True and gpon_img_ok != True and g3hgu_img_ok != True:
+            # print("g3/epon/gpon/g3hgu sanity test process sleep 2 hour")
             time.sleep(60*60)
         else:
-            # print("g3/epon/gpon sanity test process sleep 0.5 hour")
+            # print("g3/epon/gpon/g3hgu sanity test process sleep 0.5 hour")
             time.sleep(30*60)
