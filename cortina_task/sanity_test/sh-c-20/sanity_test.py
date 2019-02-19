@@ -268,7 +268,7 @@ def download_img(obj, current_path, config, target, child=''):
                 local_backup_file = os.path.join(local_backup_path_abs, item)
                 if target == 'g3' or target == 'g3hgu':
                     if item == 'uboot-env.bin':
-                        local_file = os.path.join(local_path_abs, target + item)
+                        local_file = os.path.join(local_path_abs, target + '-' + item)
                     else:
                         local_file = os.path.join(local_path_abs, item)
                 else:
@@ -376,7 +376,7 @@ def do_telnet(config, target):
         tftpboot_image = tftpboot_info.get('g3_tftpboot_image', None).encode('ascii')
         upgrade_image = tftpboot_info.get('g3_upgrade_image', None).encode('ascii')
         uboot_tag = b'G3# '
-        cmdline_tag = b'root@g3-eng:~# '
+        cmdline_tag = b'root@g3-eng:'
         written_ok = b'written: OK'
         tftp_done = b'done'
     elif target == 'g3hgu':
@@ -391,7 +391,7 @@ def do_telnet(config, target):
         tftpboot_image = tftpboot_info.get('g3hgu_tftpboot_image', None).encode('ascii')
         upgrade_image = tftpboot_info.get('g3hgu_upgrade_image', None).encode('ascii')
         uboot_tag = b'G3# '
-        cmdline_tag = b'root@g3hgu-eng:~# '
+        cmdline_tag = b'root@g3hgu-eng:'
         written_ok = b'written: OK'
         tftp_done = b'done'
     elif target == "saturn-sfu":
@@ -412,7 +412,7 @@ def do_telnet(config, target):
         tftpboot_userubi = tftpboot_info.get('saturn_tftpboot_userubi', None).encode('ascii')
         upgrade_userubi = tftpboot_info.get('saturn_upgrade_userubi', None).encode('ascii')
         uboot_tag = b'SATURN# '
-        cmdline_tag = b'root@saturn-sfu-eng:~# '
+        cmdline_tag = b'root@saturn-sfu-eng:'
         written_ok = b'Written: OK'
         tftp_done = b'done'
     else:
@@ -552,11 +552,11 @@ if __name__ == "__main__":
     port = int(ssh_info.get('port', None)) # 端口是int类型
     username = ssh_info.get('username', None)
     password = ssh_info.get('password', None)
-
+    
     target_list = ssh_info.get('target', None)
     targets = target_list.split()
     print(targets)
-
+    
     obj = SftpTool(username, password, port, host)
 
     #send_mail(config, 'g3')
