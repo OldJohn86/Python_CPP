@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="x-wiki-content x-main-content"><p>由于我们的Web App建立在asyncio的基础上，因此用aiohttp写一个基本的<code>app.py</code>：</p><center><h1>Day 2 - 编写Web App骨架</h1></center>
+<pre><code>import logging; logging.basicConfig(level=logging.INFO)
+
+import asyncio, os, json, time
+from datetime import datetime
+
+from aiohttp import web
+
+def index(request):
+    return web.Response(body=b'&lt;h1&gt;Awesome&lt;/h1&gt;')
+
+@asyncio.coroutine
+def init(loop):
+    app = web.Application(loop=loop)
+    app.router.add_route('GET', '/', index)
+    srv = yield from loop.create_server(app.make_handler(), '127.0.0.1', 9000)
+    logging.info('server started at http://127.0.0.1:9000...')
+    return srv
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(init(loop))
+loop.run_forever()
+</code></pre><p>运行<code>python app.py</code>，Web App将在<code>9000</code>端口监听HTTP请求，并且对首页<code>/</code>进行响应：</p>
+<pre><code>$ python3 app.py
+INFO:root:server started at http://127.0.0.1:9000...
+</code></pre><p>这里我们简单地返回一个<code>Awesome</code>字符串，在浏览器中可以看到效果：</p>
+<p><img alt="awesome-home" data-src="https://cdn.liaoxuefeng.com/cdn/files/attachments/0014327731340820dbf437504bb4436a96036b490048551000/l" src="https://cdn.liaoxuefeng.com/cdn/static/themes/default/img/loading.gif"/></p>
+<p>这说明我们的Web App骨架已经搭好了，可以进一步往里面添加更多的东西。</p>
+<h3><a name="#-E5-8F-82-E8-80-83-E6-BA-90-E7-A0-81"></a>参考源码</h3>
+<p><a href="https://github.com/michaelliao/awesome-python3-webapp/tree/day-02" target="_blank">day-02</a></p>
+</div>
+</body>
+</html>

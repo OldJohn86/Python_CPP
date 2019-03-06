@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="x-wiki-content x-main-content"><p>现在，ORM框架、Web框架和配置都已就绪，我们可以开始编写一个最简单的MVC，把它们全部启动起来。</p><center><h1>Day 7 - 编写MVC</h1></center>
+<p>通过Web框架的<code>@get</code>和ORM框架的Model支持，可以很容易地编写一个处理首页URL的函数：</p>
+<pre><code>@get('/')
+def index(request):
+    users = yield from User.findAll()
+    return {
+        '__template__': 'test.html',
+        'users': users
+    }
+</code></pre><p><code>'__template__'</code>指定的模板文件是<code>test.html</code>，其他参数是传递给模板的数据，所以我们在模板的根目录<code>templates</code>下创建<code>test.html</code>：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;Test users - Awesome Python Webapp&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;All users&lt;/h1&gt;
+    {% for u in users %}
+    &lt;p&gt;{{ u.name }} / {{ u.email }}&lt;/p&gt;
+    {% endfor %}
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>接下来，如果一切顺利，可以用命令行启动Web服务器：</p>
+<pre><code>$ python3 app.py
+</code></pre><p>然后，在浏览器中访问<code>http://localhost:9000/</code>。</p>
+<p>如果数据库的<code>users</code>表什么内容也没有，你就无法在浏览器中看到循环输出的内容。可以自己在MySQL的命令行里给<code>users</code>表添加几条记录，然后再访问：</p>
+<p><img alt="awesomepy-all-users" data-src="https://cdn.liaoxuefeng.com/cdn/files/attachments/001402361927026669df00c592c42b588bd5bfe834f25c9000" src="https://cdn.liaoxuefeng.com/cdn/static/themes/default/img/loading.gif"/></p>
+<h3><a name="#-E5-8F-82-E8-80-83-E6-BA-90-E7-A0-81"></a>参考源码</h3>
+<p><a href="https://github.com/michaelliao/awesome-python3-webapp/tree/day-07" target="_blank">day-07</a></p>
+</div>
+</body>
+</html>

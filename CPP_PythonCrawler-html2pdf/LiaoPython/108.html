@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="x-wiki-content x-main-content"><p>用<code>asyncio</code>提供的<code>@asyncio.coroutine</code>可以把一个generator标记为coroutine类型，然后在coroutine内部用<code>yield from</code>调用另一个coroutine实现异步操作。</p><center><h1>async/await</h1></center>
+<p>为了简化并更好地标识异步IO，从Python 3.5开始引入了新的语法<code>async</code>和<code>await</code>，可以让coroutine的代码更简洁易读。</p>
+<p>请注意，<code>async</code>和<code>await</code>是针对coroutine的新语法，要使用新的语法，只需要做两步简单的替换：</p>
+<ol>
+<li>把<code>@asyncio.coroutine</code>替换为<code>async</code>；</li>
+<li>把<code>yield from</code>替换为<code>await</code>。</li>
+</ol>
+<p>让我们对比一下上一节的代码：</p>
+<pre><code>@asyncio.coroutine
+def hello():
+    print("Hello world!")
+    r = yield from asyncio.sleep(1)
+    print("Hello again!")
+</code></pre><p>用新语法重新编写如下：</p>
+<pre><code>async def hello():
+    print("Hello world!")
+    r = await asyncio.sleep(1)
+    print("Hello again!")
+</code></pre><p>剩下的代码保持不变。</p>
+<h3><a name="#-E5-B0-8F-E7-BB-93"></a>小结</h3>
+<p>Python从3.5版本开始为<code>asyncio</code>提供了<code>async</code>和<code>await</code>的新语法；</p>
+<p>注意新语法只能用在Python 3.5以及后续版本，如果使用3.4版本，则仍需使用上一节的方案。</p>
+<h3><a name="#-E7-BB-83-E4-B9-A0"></a>练习</h3>
+<p>将上一节的异步获取sina、sohu和163的网站首页源码用新语法重写并运行。</p>
+<h3><a name="#-E5-8F-82-E8-80-83-E6-BA-90-E7-A0-81"></a>参考源码</h3>
+<p><a href="https://github.com/michaelliao/learn-python3/blob/master/samples/async/async_hello2.py" target="_blank">async_hello2.py</a></p>
+<p><a href="https://github.com/michaelliao/learn-python3/blob/master/samples/async/async_wget2.py" target="_blank">async_wget2.py</a></p>
+</div>
+</body>
+</html>

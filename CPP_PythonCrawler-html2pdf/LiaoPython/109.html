@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="x-wiki-content x-main-content"><p><code>asyncio</code>可以实现单线程并发IO操作。如果仅用在客户端，发挥的威力不大。如果把<code>asyncio</code>用在服务器端，例如Web服务器，由于HTTP连接就是IO操作，因此可以用单线程+<code>coroutine</code>实现多用户的高并发支持。</p><center><h1>aiohttp</h1></center>
+<p><code>asyncio</code>实现了TCP、UDP、SSL等协议，<code>aiohttp</code>则是基于<code>asyncio</code>实现的HTTP框架。</p>
+<p>我们先安装<code>aiohttp</code>：</p>
+<pre><code>pip install aiohttp
+</code></pre><p>然后编写一个HTTP服务器，分别处理以下URL：</p>
+<ul>
+<li><p><code>/</code> - 首页返回<code>b'&lt;h1&gt;Index&lt;/h1&gt;'</code>；</p>
+</li>
+<li><p><code>/hello/{name}</code> - 根据URL参数返回文本<code>hello, %s!</code>。</p>
+</li>
+</ul>
+<p>代码如下：</p>
+<pre><code>import asyncio
+
+from aiohttp import web
+
+async def index(request):
+    await asyncio.sleep(0.5)
+    return web.Response(body=b'&lt;h1&gt;Index&lt;/h1&gt;')
+
+async def hello(request):
+    await asyncio.sleep(0.5)
+    text = '&lt;h1&gt;hello, %s!&lt;/h1&gt;' % request.match_info['name']
+    return web.Response(body=text.encode('utf-8'))
+
+async def init(loop):
+    app = web.Application(loop=loop)
+    app.router.add_route('GET', '/', index)
+    app.router.add_route('GET', '/hello/{name}', hello)
+    srv = await loop.create_server(app.make_handler(), '127.0.0.1', 8000)
+    print('Server started at http://127.0.0.1:8000...')
+    return srv
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(init(loop))
+loop.run_forever()
+</code></pre><p>注意<code>aiohttp</code>的初始化函数<code>init()</code>也是一个<code>coroutine</code>，<code>loop.create_server()</code>则利用<code>asyncio</code>创建TCP服务。</p>
+<h3><a name="#-E5-8F-82-E8-80-83-E6-BA-90-E7-A0-81"></a>参考源码</h3>
+<p><a href="https://github.com/michaelliao/learn-python3/blob/master/samples/async/aio_web.py" target="_blank">aio_web.py</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="x-wiki-content x-main-content"><p>在正式开始Web开发前，我们需要编写一个Web框架。</p><center><h1>Day 5 - 编写Web框架</h1></center>
+<p><code>aiohttp</code>已经是一个Web框架了，为什么我们还需要自己封装一个？</p>
+<p>原因是从使用者的角度来说，<code>aiohttp</code>相对比较底层，编写一个URL的处理函数需要这么几步：</p>
+<p>第一步，编写一个用<code>@asyncio.coroutine</code>装饰的函数：</p>
+<pre><code>@asyncio.coroutine
+def handle_url_xxx(request):
+    pass
+</code></pre><p>第二步，传入的参数需要自己从<code>request</code>中获取：</p>
+<pre><code>url_param = request.match_info['key']
+query_params = parse_qs(request.query_string)
+</code></pre><p>最后，需要自己构造<code>Response</code>对象：</p>
+<pre><code>text = render('template', data)
+return web.Response(text.encode('utf-8'))
+</code></pre><p>这些重复的工作可以由框架完成。例如，处理带参数的URL<code>/blog/{id}</code>可以这么写：</p>
+<pre><code>@get('/blog/{id}')
+def get_blog(id):
+    pass
+</code></pre><p>处理<code>query_string</code>参数可以通过关键字参数<code>**kw</code>或者命名关键字参数接收：</p>
+<pre><code>@get('/api/comments')
+def api_comments(*, page='1'):
+    pass
+</code></pre><p>对于函数的返回值，不一定是<code>web.Response</code>对象，可以是<code>str</code>、<code>bytes</code>或<code>dict</code>。</p>
+<p>如果希望渲染模板，我们可以这么返回一个<code>dict</code>：</p>
+<pre><code>return {
+    '__template__': 'index.html',
+    'data': '...'
+}
+</code></pre><p>因此，Web框架的设计是完全从使用者出发，目的是让使用者编写尽可能少的代码。</p>
+<p>编写简单的函数而非引入<code>request</code>和<code>web.Response</code>还有一个额外的好处，就是可以单独测试，否则，需要模拟一个<code>request</code>才能测试。</p>
+<h3><a name="#-40get-E5-92-8C-40post"></a>@get和@post</h3>
+<p>要把一个函数映射为一个URL处理函数，我们先定义<code>@get()</code>：</p>
+<pre><code>def get(path):
+    '''
+    Define decorator @get('/path')
+    '''
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kw):
+            return func(*args, **kw)
+        wrapper.__method__ = 'GET'
+        wrapper.__route__ = path
+        return wrapper
+    return decorator
+</code></pre><p>这样，一个函数通过<code>@get()</code>的装饰就附带了URL信息。</p>
+<p><code>@post</code>与<code>@get</code>定义类似。</p>
+<h3><a name="#-E5-AE-9A-E4-B9-89RequestHandler"></a>定义RequestHandler</h3>
+<p>URL处理函数不一定是一个<code>coroutine</code>，因此我们用<code>RequestHandler()</code>来封装一个URL处理函数。</p>
+<p><code>RequestHandler</code>是一个类，由于定义了<code>__call__()</code>方法，因此可以将其实例视为函数。</p>
+<p><code>RequestHandler</code>目的就是从URL函数中分析其需要接收的参数，从<code>request</code>中获取必要的参数，调用URL函数，然后把结果转换为<code>web.Response</code>对象，这样，就完全符合<code>aiohttp</code>框架的要求：</p>
+<pre><code>class RequestHandler(object):
+
+    def __init__(self, app, fn):
+        self._app = app
+        self._func = fn
+        ...
+
+    @asyncio.coroutine
+    def __call__(self, request):
+        kw = ... 获取参数
+        r = yield from self._func(**kw)
+        return r
+</code></pre><p>再编写一个<code>add_route</code>函数，用来注册一个URL处理函数：</p>
+<pre><code>def add_route(app, fn):
+    method = getattr(fn, '__method__', None)
+    path = getattr(fn, '__route__', None)
+    if path is None or method is None:
+        raise ValueError('@get or @post not defined in %s.' % str(fn))
+    if not asyncio.iscoroutinefunction(fn) and not inspect.isgeneratorfunction(fn):
+        fn = asyncio.coroutine(fn)
+    logging.info('add route %s %s =&gt; %s(%s)' % (method, path, fn.__name__, ', '.join(inspect.signature(fn).parameters.keys())))
+    app.router.add_route(method, path, RequestHandler(app, fn))
+</code></pre><p>最后一步，把很多次<code>add_route()</code>注册的调用：</p>
+<pre><code>add_route(app, handles.index)
+add_route(app, handles.blog)
+add_route(app, handles.create_comment)
+...
+</code></pre><p>变成自动扫描：</p>
+<pre><code># 自动把handler模块的所有符合条件的函数注册了:
+add_routes(app, 'handlers')
+</code></pre><p><code>add_routes()</code>定义如下：</p>
+<pre><code>def add_routes(app, module_name):
+    n = module_name.rfind('.')
+    if n == (-1):
+        mod = __import__(module_name, globals(), locals())
+    else:
+        name = module_name[n+1:]
+        mod = getattr(__import__(module_name[:n], globals(), locals(), [name]), name)
+    for attr in dir(mod):
+        if attr.startswith('_'):
+            continue
+        fn = getattr(mod, attr)
+        if callable(fn):
+            method = getattr(fn, '__method__', None)
+            path = getattr(fn, '__route__', None)
+            if method and path:
+                add_route(app, fn)
+</code></pre><p>最后，在<code>app.py</code>中加入<code>middleware</code>、<code>jinja2</code>模板和自注册的支持：</p>
+<pre><code>app = web.Application(loop=loop, middlewares=[
+    logger_factory, response_factory
+])
+init_jinja2(app, filters=dict(datetime=datetime_filter))
+add_routes(app, 'handlers')
+add_static(app)
+</code></pre><h3><a name="#middleware"></a>middleware</h3>
+<p><code>middleware</code>是一种拦截器，一个URL在被某个函数处理前，可以经过一系列的<code>middleware</code>的处理。</p>
+<p>一个<code>middleware</code>可以改变URL的输入、输出，甚至可以决定不继续处理而直接返回。middleware的用处就在于把通用的功能从每个URL处理函数中拿出来，集中放到一个地方。例如，一个记录URL日志的<code>logger</code>可以简单定义如下：</p>
+<pre><code>@asyncio.coroutine
+def logger_factory(app, handler):
+    @asyncio.coroutine
+    def logger(request):
+        # 记录日志:
+        logging.info('Request: %s %s' % (request.method, request.path))
+        # 继续处理请求:
+        return (yield from handler(request))
+    return logger
+</code></pre><p>而<code>response</code>这个<code>middleware</code>把返回值转换为<code>web.Response</code>对象再返回，以保证满足<code>aiohttp</code>的要求：</p>
+<pre><code>@asyncio.coroutine
+def response_factory(app, handler):
+    @asyncio.coroutine
+    def response(request):
+        # 结果:
+        r = yield from handler(request)
+        if isinstance(r, web.StreamResponse):
+            return r
+        if isinstance(r, bytes):
+            resp = web.Response(body=r)
+            resp.content_type = 'application/octet-stream'
+            return resp
+        if isinstance(r, str):
+            resp = web.Response(body=r.encode('utf-8'))
+            resp.content_type = 'text/html;charset=utf-8'
+            return resp
+        if isinstance(r, dict):
+            ...
+</code></pre><p>有了这些基础设施，我们就可以专注地往<code>handlers</code>模块不断添加URL处理函数了，可以极大地提高开发效率。</p>
+<h3><a name="#-E5-8F-82-E8-80-83-E6-BA-90-E7-A0-81"></a>参考源码</h3>
+<p><a href="https://github.com/michaelliao/awesome-python3-webapp/tree/day-05" target="_blank">day-05</a></p>
+</div>
+</body>
+</html>

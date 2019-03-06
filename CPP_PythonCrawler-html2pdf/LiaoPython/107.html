@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="x-wiki-content x-main-content"><p><code>asyncio</code>是Python 3.4版本引入的标准库，直接内置了对异步IO的支持。</p><center><h1>asyncio</h1></center>
+<p><code>asyncio</code>的编程模型就是一个消息循环。我们从<code>asyncio</code>模块中直接获取一个<code>EventLoop</code>的引用，然后把需要执行的协程扔到<code>EventLoop</code>中执行，就实现了异步IO。</p>
+<p>用<code>asyncio</code>实现<code>Hello world</code>代码如下：</p>
+<pre><code>import asyncio
+
+@asyncio.coroutine
+def hello():
+    print("Hello world!")
+    # 异步调用asyncio.sleep(1):
+    r = yield from asyncio.sleep(1)
+    print("Hello again!")
+
+# 获取EventLoop:
+loop = asyncio.get_event_loop()
+# 执行coroutine
+loop.run_until_complete(hello())
+loop.close()
+</code></pre><p><code>@asyncio.coroutine</code>把一个generator标记为coroutine类型，然后，我们就把这个<code>coroutine</code>扔到<code>EventLoop</code>中执行。</p>
+<p><code>hello()</code>会首先打印出<code>Hello world!</code>，然后，<code>yield from</code>语法可以让我们方便地调用另一个<code>generator</code>。由于<code>asyncio.sleep()</code>也是一个<code>coroutine</code>，所以线程不会等待<code>asyncio.sleep()</code>，而是直接中断并执行下一个消息循环。当<code>asyncio.sleep()</code>返回时，线程就可以从<code>yield from</code>拿到返回值（此处是<code>None</code>），然后接着执行下一行语句。</p>
+<p>把<code>asyncio.sleep(1)</code>看成是一个耗时1秒的IO操作，在此期间，主线程并未等待，而是去执行<code>EventLoop</code>中其他可以执行的<code>coroutine</code>了，因此可以实现并发执行。</p>
+<p>我们用Task封装两个<code>coroutine</code>试试：</p>
+<pre><code>import threading
+import asyncio
+
+@asyncio.coroutine
+def hello():
+    print('Hello world! (%s)' % threading.currentThread())
+    yield from asyncio.sleep(1)
+    print('Hello again! (%s)' % threading.currentThread())
+
+loop = asyncio.get_event_loop()
+tasks = [hello(), hello()]
+loop.run_until_complete(asyncio.wait(tasks))
+loop.close()
+</code></pre><p>观察执行过程：</p>
+<pre><code>Hello world! (&lt;_MainThread(MainThread, started 140735195337472)&gt;)
+Hello world! (&lt;_MainThread(MainThread, started 140735195337472)&gt;)
+(暂停约1秒)
+Hello again! (&lt;_MainThread(MainThread, started 140735195337472)&gt;)
+Hello again! (&lt;_MainThread(MainThread, started 140735195337472)&gt;)
+</code></pre><p>由打印的当前线程名称可以看出，两个<code>coroutine</code>是由同一个线程并发执行的。</p>
+<p>如果把<code>asyncio.sleep()</code>换成真正的IO操作，则多个<code>coroutine</code>就可以由一个线程并发执行。</p>
+<p>我们用<code>asyncio</code>的异步网络连接来获取sina、sohu和163的网站首页：</p>
+<pre><code>import asyncio
+
+@asyncio.coroutine
+def wget(host):
+    print('wget %s...' % host)
+    connect = asyncio.open_connection(host, 80)
+    reader, writer = yield from connect
+    header = 'GET / HTTP/1.0\r\nHost: %s\r\n\r\n' % host
+    writer.write(header.encode('utf-8'))
+    yield from writer.drain()
+    while True:
+        line = yield from reader.readline()
+        if line == b'\r\n':
+            break
+        print('%s header &gt; %s' % (host, line.decode('utf-8').rstrip()))
+    # Ignore the body, close the socket
+    writer.close()
+
+loop = asyncio.get_event_loop()
+tasks = [wget(host) for host in ['www.sina.com.cn', 'www.sohu.com', 'www.163.com']]
+loop.run_until_complete(asyncio.wait(tasks))
+loop.close()
+</code></pre><p>执行结果如下：</p>
+<pre><code>wget www.sohu.com...
+wget www.sina.com.cn...
+wget www.163.com...
+(等待一段时间)
+(打印出sohu的header)
+www.sohu.com header &gt; HTTP/1.1 200 OK
+www.sohu.com header &gt; Content-Type: text/html
+...
+(打印出sina的header)
+www.sina.com.cn header &gt; HTTP/1.1 200 OK
+www.sina.com.cn header &gt; Date: Wed, 20 May 2015 04:56:33 GMT
+...
+(打印出163的header)
+www.163.com header &gt; HTTP/1.0 302 Moved Temporarily
+www.163.com header &gt; Server: Cdn Cache Server V2.0
+...
+</code></pre><p>可见3个连接由一个线程通过<code>coroutine</code>并发完成。</p>
+<h3><a name="#-E5-B0-8F-E7-BB-93"></a>小结</h3>
+<p><code>asyncio</code>提供了完善的异步IO支持；</p>
+<p>异步操作需要在<code>coroutine</code>中通过<code>yield from</code>完成；</p>
+<p>多个<code>coroutine</code>可以封装成一组Task然后并发执行。</p>
+<h3><a name="#-E5-8F-82-E8-80-83-E6-BA-90-E7-A0-81"></a>参考源码</h3>
+<p><a href="https://github.com/michaelliao/learn-python3/blob/master/samples/async/async_hello.py" target="_blank">async_hello.py</a></p>
+<p><a href="https://github.com/michaelliao/learn-python3/blob/master/samples/async/async_wget.py" target="_blank">async_wget.py</a></p>
+</div>
+</body>
+</html>
