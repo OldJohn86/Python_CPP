@@ -1,4 +1,4 @@
-# Python爬虫：抓取廖雪峰老师的Python教程保存为PDF电子书
+# Python爬虫：抓取廖雪峰老师的Python && Git教程保存为PDF电子书
 
 ### 环境
 python3.6
