@@ -1,0 +1,17 @@
+[I 11:49:00.705 NotebookApp] JupyterLab beta preview extension loaded from /anaconda3/lib/python3.6/site-packages/jupyterlab
+[I 11:49:00.705 NotebookApp] JupyterLab application directory is /anaconda3/share/jupyter/lab
+[I 11:49:00.712 NotebookApp] Serving notebooks from local directory: /Users/pchen/github/Python_CPP/CPP_AGu
+[I 11:49:00.712 NotebookApp] 0 active kernels
+[I 11:49:00.712 NotebookApp] The Jupyter Notebook is running at:
+[I 11:49:00.712 NotebookApp] http://localhost:8888/?token=764a6b21d2d8f85967f6c35599ee88367911ce2594aa2483
+[I 11:49:00.712 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 11:49:00.713 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=764a6b21d2d8f85967f6c35599ee88367911ce2594aa2483
+[I 11:49:01.271 NotebookApp] Accepting one-time-token-authenticated connection from 127.0.0.1
+[I 11:51:21.658 NotebookApp] Saving file at /Stocks.py
+[I 11:52:10.520 NotebookApp] Saving file at /HData.py
+[I 11:54:25.147 NotebookApp] Saving file at /Stocks.py
+[I 12:36:09.909 NotebookApp] Saving file at /HData.py
