@@ -7,7 +7,7 @@ import traceback
 import re
 import xlwt
 
-
+#获取html页面text信息
 def getHTMLText(url, code="utf-8"):
     try:
         r = requests.get(url)
@@ -34,7 +34,7 @@ def getStockList(lst, stockURL):
 def getStockInfo(lst, stockURL):
     #创建EXCEL文件
     book=xlwt.Workbook(encoding='utf-8')
-    sheet1=book.add_sheet('sheet1',cell_overwrite_ok=True)
+    sheet1=book.add_sheet('sheet1', cell_overwrite_ok=True)
     heads=['股票名称','最高','最低','今开','昨收','成交额','成交量','净值','折价率']
     num=0
     for head in heads:
@@ -86,4 +86,4 @@ if __name__=='__main__':
     stock_info_url = 'https://gupiao.baidu.com/stock/'
     slist=[]
     getStockList(slist, stock_list_url)
-    getStockInfo(slist, stock_info_url)
+    #getStockInfo(slist, stock_info_url)
