@@ -86,4 +86,5 @@ if __name__=='__main__':
     stock_info_url = 'https://gupiao.baidu.com/stock/'
     slist=[]
     getStockList(slist, stock_list_url)
+    print (slist)
     #getStockInfo(slist, stock_info_url)
