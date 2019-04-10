@@ -26,10 +26,7 @@ def read_ini(config, option):
     # print(info)
     return info
 
-def send_mail(config):
-    y_m_d = date.today().strftime('%Y-%m-%d')
-    y_m = date.today().strftime('%Y-%m')
-
+def send_mail(config, text_msg):
     mail_info = read_ini(config, 'mail')
     mail_user = str(mail_info.get('user', None))
     mail_postfix = str(mail_info.get('postfix', None))
@@ -45,7 +42,7 @@ def send_mail(config):
     my_mail = mail_user +"@" + mail_postfix
 
     msg = MIMEMultipart()
-    msg['Subject'] = y_m_d + " AGu Daily Report..."
+    msg['Subject'] = date.today().strftime('%Y-%m-%d') + " AGu Daily Report..."
     context_msg = 'AAAAAAAAAAAAAAAAAAAAAA'
     # print(context_msg)
     
@@ -54,7 +51,7 @@ def send_mail(config):
     # msg.attach(MIMEText('send with sanity test log file...', 'plain', 'utf-8'))
     # msg.attach(MIMEText('Test Image: \r\n' + context_msg, 'plain', 'utf-8'))
 
-    text_msg = '[Results]: \r\n'+ context_msg + '\r\n\r\n [Rev Info]: \r\n'
+    #text_msg = '[Results]: \r\n'+ context_msg + '\r\n\r\n [Rev Info]: \r\n'
     msg.attach(MIMEText(text_msg, 'plain', 'utf-8'))
  
     #att1 = MIMEText(open(glb_log_file, 'rb').read(), 'base64', 'utf-8')
@@ -76,16 +73,31 @@ def send_mail(config):
 
 
 if __name__ == "__main__":
+    #y_m_d = date.today().strftime('%Y%m%d')
+    #print(y_m_d)
+
     current_path = sys.argv[0].rstrip('/tstest_cpp.py')
     #print(current_path)
-    config = os.path.join(current_path, 'config.ini')
+    config = os.path.join(current_path, 'ts_config.ini')
     #print(config)
 
     ts_info = read_ini(config, 'tushare')
     ts_token = str(ts_info.get('cpp_token', None))
     #print(ts_token)
     pro = ts.pro_api(ts_token)
-    df = pro.daily(trade_date='20190410')
-    print(df)
 
-    #send_mail(config)
+    stock_info = read_ini(config, 'stock')
+    stock_pool = str(stock_info.get('stock_pool', None)).split()
+    print(stock_pool)
+
+    total = len(stock_pool)
+    msg = ''
+    for i in range(len(stock_pool)):
+        try:
+            df = pro.daily(ts_code=stock_pool[i], start_date=date.today().strftime('%Y%m%d'), end_date=date.today().strftime('%Y%m%d'))
+            print('Seq: ' + str(i+1) + ' of ' + str(total) + '   Code: ' + str(stock_pool[i]))
+            msg += str(df) + '\n'
+        except Exception as aa:
+            print(aa)
+    
+    send_mail(config, msg)
