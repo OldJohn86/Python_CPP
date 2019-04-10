@@ -64,12 +64,13 @@ print(np.where(a == b))
 a = np.array([2, 6, 1, 9, 10, 3, 27])
 
 #a = np.arange(15)
+# Method 1
 index = np.where((a >= 5) & (a <= 10))
 print(a[index])
-
+# Method 2
 index = np.where(np.logical_and(a>=5, a<=10))
 print(a[index])
-
+# Method 3
 print(a[(a >= 5) & (a <= 10)])
 
 #15. 如何创建一个python函数来处理scalars并在numpy数组上工作？
@@ -86,6 +87,70 @@ a = np.array([5, 7, 9, 8, 6, 4, 5])
 b = np.array([6, 3, 4, 8, 9, 7, 1])
 
 print(pair_max(a,b))
+
+#16. 如何交换二维numpy数组中的两列？
+arr = np.arange(9).reshape(3,3)
+print(arr)
+print(arr[:,[1,0,2]])
+
+#17. 如何交换二维numpy数组中的两行？
+arr = np.arange(9).reshape(3,3)
+print(arr)
+print(arr[[1,0,2],:])
+
+#18. 如何反转二维数组的行？
+arr = np.arange(9).reshape(3,3)
+print(arr[::-1])
+
+#19. 如何反转二维数组的列？
+arr = np.arange(9).reshape(3,3)
+print(arr[:, ::-1])
+
+#20. 如何创建包含5到10之间随机浮动的二维数组？
+arr = np.arange(9).reshape(3,3)
+
+# Solution Method 1:
+rand_arr = np.random.randint(low=5, high=10, size=(5,3)) + np.random.random((5,3))
+print(rand_arr)
+# Solution Method 2:
+rand_arr = np.random.uniform(5,10, size=(5,3))
+print(rand_arr)
+
+#21. 如何在numpy数组中只打印小数点后三位？
+
+# Create the random array
+rand_arr = np.random.random([5,3])
+
+# Limit to 3 decimal places
+np.set_printoptions(precision=3)
+print(rand_arr[:4])
+
+#22. 如何通过e式科学记数法（如1e10）来打印一个numpy数组？
+
+np.set_printoptions(suppress=False)
+# Create the random array
+np.random.seed(100)
+rand_arr = np.random.random([3,3])/1e3
+print(rand_arr)
+
+np.set_printoptions(suppress=True, precision=6)  # precision is optional
+print(rand_arr)
+
+#23. 如何限制numpy数组输出中打印的项目数？
+a = np.arange(15)
+print(a)
+np.set_printoptions(threshold=6)
+a = np.arange(15)
+print(a)
+
+#24. 如何打印完整的numpy数组而不截断
+np.set_printoptions(threshold=6)
+a = np.arange(15)
+print(a)
+# Solution
+np.set_printoptions(threshold=np.nan)
+print(a)
+
 
 #################################################################################
 #
