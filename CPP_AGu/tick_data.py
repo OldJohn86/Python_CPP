@@ -8,9 +8,12 @@ import time
 import datetime
 import tushare as ts
 import numpy as np
+import pymysql
+pymysql.install_as_MySQLdb()
 from sqlalchemy import create_engine 
 
-symbols = ['600000', '600008', '600848', '600023', '300199', '300001', '002252']
+symbols = ['600519', '000651']
+#symbols = ['600000', '600008', '600848', '600023', '300199', '300001', '002252']
 mysql_engine = create_engine('mysql://root:1q2w3e4R@localhost:3306/test?charset=utf8&use_unicode=1')
 
 """
@@ -46,7 +49,11 @@ def run():
             if last is None:
                 last = this
             else:
-                df = this - last
+                try:
+                    df = this - last
+                except :
+                    print("Get df compare data error!!!")
+                    break
                 last = this
                 df = df[(df.volume > 0) & (df.amount > 0) ]
                 df.columns = ['change', 'volume', 'amount']
@@ -59,9 +66,9 @@ def run():
                     df['time'] = '%s:%s:%s'%(str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2))
                     df = df.reset_index()
                     df['type'] = df['change'].map(lambda x: np.where(x>=0, '买入', '卖出'))
-#                     df.to_sql('STOCK_TICK', mysql_engine, index=False, if_exists='append')
+                    df.to_sql('STOCK_TICK_cpp', mysql_engine, index=False, if_exists='append')
                     print(df)
-        time.sleep(3)
+        time.sleep(2)
         
 
 def tick_test():
@@ -73,5 +80,5 @@ def tick_test():
 
 if __name__ == '__main__':
     run()
-#     tick_test()    
+#    tick_test()    
  

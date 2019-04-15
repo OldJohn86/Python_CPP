@@ -107,4 +107,4 @@ if __name__ == '__main__':
     reportTime = '2017-12-31'
     url = 'http://s.askci.com/stock/a/?reportTime=%s' % reportTime + '&pageNum=%d'
     # 最大设置为178,输入页数就好了
-    main(178)
+    main(2)
