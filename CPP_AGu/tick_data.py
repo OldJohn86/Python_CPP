@@ -51,8 +51,8 @@ def run():
             else:
                 try:
                     df = this - last
-                except :
-                    print("Get df compare data error!!!")
+                except Exception as e:
+                    print("Get df compare data error!!! %s" % e)
                     break
                 last = this
                 df = df[(df.volume > 0) & (df.amount > 0) ]
