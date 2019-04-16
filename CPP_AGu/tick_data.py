@@ -48,7 +48,7 @@ def run():
             print('%s 当天（下午）已收市...%s:%s:%s' % (today, str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2)))
             #break
         elif (hour == 9 and minute < 30) or (hour < 9):
-            print('%s 当天（上午）未开盘...%s:$s:%s' % (today, str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2)))
+            print('%s 当天（上午）未开盘...%s:%s:%s' % (today, str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2)))
             #break
         elif (hour > 11 and hour < 13) or (hour == 11 and minute > 30):
             print('%s 当天（上午）已收市 &（下午）未开盘...%s:%s:%s' % (today, str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2)))
