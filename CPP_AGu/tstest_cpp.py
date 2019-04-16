@@ -7,7 +7,6 @@ import paramiko
 #import telnetlib
 import getpass
 import smtplib
-import tushare as ts
 
 from datetime import date
 from configparser import ConfigParser
@@ -15,6 +14,8 @@ from email import encoders
 from email.header import Header
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+
+import tushare as ts
 
 def read_ini(config, option):
     info = dict()
