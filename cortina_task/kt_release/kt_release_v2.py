@@ -84,6 +84,7 @@ class SSHConnection(object):
 			#print(err.decode('utf8').strip())  #输出错误结果
 			return err.decode('utf8').strip()
 
+	#执行交互命令
 	def invoke_shell_command(self, command):
 		if self._client is None:
 			self._client = paramiko.SSHClient()
