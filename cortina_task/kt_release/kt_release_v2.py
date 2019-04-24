@@ -96,14 +96,14 @@ class SSHConnection(object):
 		chan.sendall(command +'\n')
 		lines = []
 		while True:
-			line = str(chan.recv(1024))
+			line = str(chan.recv(1024).decode('utf8'))
 			if "Summary: " in line:
 				lines.append(line)
 				break
 			lines.append(line)
 		result = ' '.join(lines)
 		#return result
-		return line.decode('utf8').strip()
+		return line
 
 	def close(self):
 		if self._transport:
@@ -178,7 +178,9 @@ def update_version(SSHConnection):
 def build_image(SSHConnection):
 	cmd_bitbake = 'TEMPLATECONF=meta-oe-ca/conf/saturn-sfu-eng-kt; source ./oe-init-build-env; bitbake major-image'
 	build_path = SSHConnection.invoke_shell_command(yocto_path + cmd_bitbake)
+	print("##################################")
 	print(build_path)
+	print("##################################")
 
 def backup_image(SSHConnection):
 	if not os.path.exists('./tmp/' + glb_kt_ver):
