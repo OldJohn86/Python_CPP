@@ -33,6 +33,7 @@ def get_realtime_price():
         except:
             time.sleep(3)
         else:
+            #print(df)
             return df
 
     
@@ -44,17 +45,21 @@ def run():
         hour = datetime.datetime.today().hour
         minute = datetime.datetime.today().minute
         second = datetime.datetime.today().second
-        if (hour > 15):
-            print('%s 当天（下午）已收市...%s:%s:%s' % (today, str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2)))
-            #break
-        elif (hour == 9 and minute < 30) or (hour < 9):
+        if (hour < 9 and hour >= 0) or (hour == 9 and minute < 30):
             print('%s 当天（上午）未开盘...%s:%s:%s' % (today, str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2)))
             #break
-        elif (hour > 11 and hour < 13) or (hour == 11 and minute > 30):
-            print('%s 当天（上午）已收市 &（下午）未开盘...%s:%s:%s' % (today, str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2)))
+        elif (hour == 11 and minute > 30):
+            print('%s 当天（上午）已收市...%s:%s:%s' % (today, str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2)))
+            #break
+        elif (hour >= 12 and hour < 13):
+            print('%s 当天（下午）未开盘...%s:%s:%s' % (today, str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2)))
+            #break
+        elif (hour >= 13 and hour <= 23):
+            print('%s 当天（下午）已收市...%s:%s:%s' % (today, str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2)))
             #break
         else:
             this = get_realtime_price()
+            #print(this)
             if last is None:
                 last = this
             else:
@@ -67,14 +72,17 @@ def run():
                         print('last is None')
                     print('%s' % e)
                     df = pd.DataFrame()
+                #print(df)
                 if df is not None:
                     last = this
+                    #print(this)
                     df = df[(df.volume > 0) & (df.amount > 0) ]
                     df.columns = ['change', 'volume', 'amount']
                     this = this[['price']]
                     df = df.merge(this, left_index=True, right_index=True, how='left')
                     df['volume'] = df['volume'] / 100
                     df['volume'] = df['volume'].astype(int)
+                    #print(df.shape[0])
                     if df.shape[0] > 0:
                         df['date'] = today
                         df['time'] = '%s:%s:%s'%(str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2))
