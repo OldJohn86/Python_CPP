@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 '''
-Created on 2019-04-22 @CPP
+Created on 2019-04-22 @CORTINA CPP
 '''
 import paramiko
 import getpass
@@ -82,9 +82,9 @@ def ssh_gitclone(host, port, username, password):
     ]
     for index, cmd in enumerate(cmd_gitclone):
         if index == 0:
-            gitclone_path = ssh_cmd(host, port, username, password, build_path + cmd);
+            gitclone_path = ssh_cmd(host, port, username, password, build_path + cmd)
         else:
-            gitclone_path = ssh_cmd(host, port, username, password, yocto_path + cmd);
+            gitclone_path = ssh_cmd(host, port, username, password, yocto_path + cmd)
         print(str(index) +': '+ gitclone_path)
 
 # sftp test func
@@ -134,11 +134,11 @@ def version_autoincrement(_file):
                 print("OLD_VER: " + line.strip('\n'))
                 cur_ver = re.compile('"(.*)"').findall(line)
                 key_char = cur_ver[-1].split('.')
-                print(key_char)
+                # print(key_char)
                 key_char[-1] = str(int(key_char[-1]) + 1)
                 kt_ver = '1.0.0.9.'+ key_char[-1]
                 key_char[-1] = key_char[-1].zfill(2)
-                print(key_char)
+                # print(key_char)
                 new_ver = ".".join(key_char)
                 #print(new_ver)
                 line = line.replace(cur_ver[-1], new_ver)
