@@ -213,6 +213,8 @@ def backup_image(SSHConnection):
 		SSHConnection.download(remote_image, local_image)
 
 def send_mail(config, msg1, msg2):
+    kt_upgrade_img_file = './tmp/'+ msg1 + '/major-image-saturn-sfu-eng-kt-upgrade.kt.img'
+    print(kt_upgrade_img_file)
     mail_info = read_ini(config, 'mail')
     mail_user = str(mail_info.get('user', None))
     mail_postfix = str(mail_info.get('postfix', None))
@@ -228,17 +230,17 @@ def send_mail(config, msg1, msg2):
     my_mail = mail_user +"@" + mail_postfix
     msg = MIMEMultipart()
     msg['Subject'] = date.today().strftime('%Y-%m-%d') + " [KT SFU]New official build " + glb_new_ver
-    context_msg = r'\\192.168.40.45\QA Team\pchen\\' + msg1 + '\r\nVersion: ' + msg2 + '\r\r\r\r\nThanks,\r\nPengpeng\r\n'
+    context_msg = r'\\192.168.40.45\QA Team\pchen\ ' + msg1 + '\r\r\nVersion: ' + msg2 + '\r\r\r\r\nThanks,\nPengpeng\r\n'
     print(context_msg)
 
     msg['From'] = my_mail
     msg['To'] = ";".join(mailto_list)
-    msg.attach(MIMEText('Hi ALL, \r\n	Fixed BUG, And release a new KT image. \r\n' + context_msg, 'plain', 'utf-8'))
+    msg.attach(MIMEText('Hi ALL, \r\r\nFixed BUG. \r\r\nAnd release a new KT image. \r\r\n' + context_msg, 'plain', 'utf-8'))
 
-    #att1 = MIMEText(open(glb_log_file, 'rb').read(), 'base64', 'utf-8')
-    #att1["Content-Type"] = 'application/octet-stream'
-    #att1["Content-Disposition"] = 'attachment; filename="sanity-test-log.txt"'
-    #msg.attach(att1)
+    att1 = MIMEText(open(kt_upgrade_img_file, 'rb').read(), 'base64', 'utf-8')
+    att1["Content-Type"] = 'application/octet-stream'
+    att1["Content-Disposition"] = 'attachment; filename="major-image-saturn-sfu-eng-kt-upgrade.kt.img"'
+    msg.attach(att1)
     try:
         smtpObj = smtplib.SMTP(mail_host, mail_port)
         # smtpObj.ehlo()
