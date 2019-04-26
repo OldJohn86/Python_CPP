@@ -183,7 +183,7 @@ def update_version(SSHConnection):
         SSHConnection.download(remotefile, localfile)
         version_autoincrement(localfile)
         SSHConnection.put(localfile, remotefile)
-        print(remotefile)
+        # print(remotefile)
 		
 def build_image(SSHConnection):
 	cmd_bitbake = 'TEMPLATECONF=meta-oe-ca/conf/saturn-sfu-eng-kt; source ./oe-init-build-env; bitbake major-image'
@@ -196,7 +196,7 @@ def backup_image(SSHConnection):
 	if not os.path.exists('./tmp/' + glb_kt_ver):
 		os.makedirs('./tmp/' + glb_kt_ver)
 	remote_image_path = yocto_path.split()[-1].replace(';', '/') + 'build/tmp/deploy/images/saturn-sfu-eng-kt/'
-	print(remote_image_path)
+	# print(remote_image_path)
 	image_file = [
 	'uImage',
 	'saturn_sfu.dtb',
@@ -207,14 +207,14 @@ def backup_image(SSHConnection):
 	local_image_path = './tmp/' + glb_kt_ver +'/'
 	for index, img in enumerate(image_file):
 		local_image = local_image_path + img
-		print(local_image)
+		# print(local_image)
 		remote_image = remote_image_path + img
-		print(remote_image)
+		# print(remote_image)
 		SSHConnection.download(remote_image, local_image)
 
 def send_mail(config, msg1, msg2):
     kt_upgrade_img_file = './tmp/'+ msg1 + '/major-image-saturn-sfu-eng-kt-upgrade.kt.img'
-    print(kt_upgrade_img_file)
+    # print(kt_upgrade_img_file)
     mail_info = read_ini(config, 'mail')
     mail_user = str(mail_info.get('user', None))
     mail_postfix = str(mail_info.get('postfix', None))
@@ -230,12 +230,13 @@ def send_mail(config, msg1, msg2):
     my_mail = mail_user +"@" + mail_postfix
     msg = MIMEMultipart()
     msg['Subject'] = date.today().strftime('%Y-%m-%d') + " [KT SFU]New official build " + glb_new_ver
-    context_msg = r'\\192.168.40.45\QA Team\pchen\ ' + msg1 + '\r\r\nVersion: ' + msg2 + '\r\r\r\r\nThanks,\nPengpeng\r\n'
-    print(context_msg)
+    context_msg = r'\\192.168.40.45\QA Team\pchen\kt_release '+ msg1 + '\r\nSATURN-Version:' + msg2 + '\r\r\r\r\nThanks,\nPengpeng\r\n'
+    #context_msg.replace(' ', '\\')
+    # print(context_msg)
 
     msg['From'] = my_mail
     msg['To'] = ";".join(mailto_list)
-    msg.attach(MIMEText('Hi ALL, \r\r\nFixed BUG. \r\r\nAnd release a new KT image. \r\r\n' + context_msg, 'plain', 'utf-8'))
+    msg.attach(MIMEText('Hi ALL, \r\r\nFixed BUG. \r\r\nAnd release a new KT image. \r\n' + context_msg, 'plain', 'utf-8'))
 
     att1 = MIMEText(open(kt_upgrade_img_file, 'rb').read(), 'base64', 'utf-8')
     att1["Content-Type"] = 'application/octet-stream'
@@ -256,9 +257,9 @@ def send_mail(config, msg1, msg2):
 
 if __name__ == "__main__":
     current_path = sys.argv[0].rstrip('/kt_release_v2.py')
-    print(current_path)
+    # print(current_path)
     config = os.path.join(current_path, 'config.ini')
-    print(config)
+    # print(config)
 
     ssh_info = read_ini(config, 'ssh')
     h = ssh_info.get('host', None)
