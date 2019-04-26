@@ -89,7 +89,11 @@ def run():
                         df['date'] = today
                         df['time'] = '%s:%s:%s'%(str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2))
                         df = df.reset_index()
+<<<<<<< HEAD
                         df['type'] = df['change'].map(lambda x: np.where(x>=0, 'BUY  IN ', 'SELL OUT'))
+=======
+                        df['type'] = df['change'].map(lambda x: np.where(x>=0, 'Buy  IN', 'Sell OUT'))
+>>>>>>> a3d7b89874dc3f63c932d7e720b5d6486dd41217
                         df.to_sql(table_name, mysql_engine, index=False, if_exists='append')
                         print(df)
         time.sleep(3)
