@@ -10,6 +10,7 @@ import datetime
 import tushare as ts
 import pandas as pd
 import numpy as np
+
 import pymysql
 pymysql.install_as_MySQLdb()
 from sqlalchemy import create_engine 
@@ -17,7 +18,7 @@ from sqlalchemy import create_engine
 #symbols = ['600519', '000651']
 symbols = ['600519']
 #symbols = ['600000', '600008', '600848', '600023', '300199', '300001', '002252']
-mysql_engine = create_engine('mysql://root:1q2w3e4R@localhost:3306/test?charset=utf8&use_unicode=1')
+mysql_engine = create_engine('mysql://root:1q2w3e4R@localhost:3306/stock_01?charset=utf8&use_unicode=1')
 
 """
 获取实时行情
@@ -40,6 +41,7 @@ def get_realtime_price():
 def run():
     today  = datetime.datetime.today().date()
     today = str(today).replace('-', '')
+    table_name = 'tick-'+today
     last = None
     while True:
         hour = datetime.datetime.today().hour
@@ -54,7 +56,7 @@ def run():
         elif (hour >= 12 and hour < 13):
             print('%s 当天（下午）未开盘...%s:%s:%s' % (today, str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2)))
             #break
-        elif (hour >= 13 and hour <= 23):
+        elif (hour >= 15 and hour <= 23):
             print('%s 当天（下午）已收市...%s:%s:%s' % (today, str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2)))
             #break
         else:
@@ -87,8 +89,8 @@ def run():
                         df['date'] = today
                         df['time'] = '%s:%s:%s'%(str(hour).zfill(2), str(minute).zfill(2), str(second).zfill(2))
                         df = df.reset_index()
-                        df['type'] = df['change'].map(lambda x: np.where(x>=0, '买入', '卖出'))
-                        df.to_sql('STOCK_TICK_cpp', mysql_engine, index=False, if_exists='append')
+                        df['type'] = df['change'].map(lambda x: np.where(x>=0, 'BUY  IN ', 'SELL OUT'))
+                        df.to_sql(table_name, mysql_engine, index=False, if_exists='append')
                         print(df)
         time.sleep(3)
         
