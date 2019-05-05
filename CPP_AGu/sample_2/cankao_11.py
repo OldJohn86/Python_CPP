@@ -6,9 +6,10 @@ import pandas as pd
 import requests
 import random
 from bs4 import BeautifulSoup
-#import pymysql
+import pymysql
 # 导入MySQL驱动
-import mysql.connector
+#import mysql.connector
+pymysql.install_as_MySQLdb()
 from sqlalchemy import create_engine
 
 
@@ -52,7 +53,7 @@ def parse_one_page(html):
 def generate_mysql(db, user, password, port):
     # 创立连接
     # db就是需要数据库中的schema 选一个schema就好了
-    conn = mysql.connector.connect(
+    conn = pymysql.connect(
         host='localhost',
         user=user,
         password=password,
@@ -65,23 +66,20 @@ def generate_mysql(db, user, password, port):
     sql = 'CREATE DATABASE if not exists %s' % db
     # 执行命令
     cursor.execute(sql)
-
     # 删除旧表
     sql = 'DROP TABLE if exists listed_company'
     # 执行命令
     cursor.execute(sql)
-
     # 创建新表
     sql = 'CREATE TABLE if not exists listed_company (serial_number INT(20) NOT NULL, stock_code VARCHAR(20), stock_abbre VARCHAR(20), company_name VARCHAR (20),province VARCHAR (20), city VARCHAR (20), main_business_income VARCHAR(20), net_profit VARCHAR (20), employee INT (20), listing_date DATE, zhaogushu VARCHAR(20), financial_report VARCHAR (20), industry_classification VARCHAR(20), industry_type VARCHAR(100), main_business VARCHAR(200), PRIMARY KEY (serial_number))'
     # 执行命令
     cursor.execute(sql)
-
     # 断开链接
     conn.close()
 
 
 def write_to_sql(tbl, db, user, password, port):
-    engine = create_engine('mysql+mysqlconnector://%s:%s@localhost:%d/%s?charset=utf8' % (user, password, port, db))
+    engine = create_engine('mysql+pymysql://%s:%s@localhost:%d/%s?charset=utf8' % (user, password, port, db))
     tbl.to_sql('listed_company', con=engine, if_exists='append', index=False)
 
 
