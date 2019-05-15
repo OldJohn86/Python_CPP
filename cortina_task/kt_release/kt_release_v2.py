@@ -1,7 +1,12 @@
-# -*- coding=utf-8 -*-
+# -*- coding: utf-8 -*-
 """
-Created on 2019-04-24 @CORTINA CPP
+@time    : 2019-05-15 19:57
+@author  : John Chen
+@contact : johnchen5372@gmail.com
+@file    : kt_release_v2.py
+@software: Python_CPP
 """
+
 from typing import List, Any, Union
 import paramiko
 # import getpass
@@ -246,9 +251,9 @@ def send_mail(config, msg1, msg2):
     msg['Subject'] = date.today().strftime('%Y-%m-%d') + " [KT SFU]New official build " + glb_new_ver
     context_msg = r'\\192.168.40.45\QA Team\pchen\kt_release ' \
                   + msg1 \
-                  + r'\r\nSATURN-Version:' \
+                  + '\r\nSATURN-Version:' \
                   + msg2 \
-                  + r'\r\r\r\r\nThanks,\nPengpeng\r\n'
+                  + '\r\r\r\r\nThanks,\nPengpeng\r\n'
     # context_msg.replace(' ', '\\')
     # print(context_msg)
 
