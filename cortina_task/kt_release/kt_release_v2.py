@@ -120,7 +120,7 @@ class SSHConnection(object):
                 lines.append(line)
                 break
             lines.append(line)
-        result = ' '.join(lines)
+        # result = ' '.join(lines)
         # return result
         return line
 
@@ -135,17 +135,17 @@ class SSHConnection(object):
 def yocto_gitclone(SSHConnection):
     gitclone_tag = 'git clone -b kt-krogoth-20181211 '
     cmd_gitclone = [
-        gitclone_tag + 'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/yocto yocto-' + datetag,
-        gitclone_tag + 'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-oe-yocto-cortina',
-        gitclone_tag + 'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-ca-bsp',
-        gitclone_tag + 'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/openembedded/meta-openembedded',
-        gitclone_tag + 'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-oe-ca'
+        'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/yocto yocto-' + datetag,
+        'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-oe-yocto-cortina',
+        'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-ca-bsp',
+        'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/openembedded/meta-openembedded',
+        'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-oe-ca'
     ]
     for index, cmd in enumerate(cmd_gitclone):
         if index == 0:
-            gitclone_path = SSHConnection.ssh_command(build_path + cmd)
+            gitclone_path = SSHConnection.ssh_command(build_path + gitclone_tag + cmd)
         else:
-            gitclone_path = SSHConnection.ssh_command(yocto_path + cmd)
+            gitclone_path = SSHConnection.ssh_command(yocto_path + gitclone_tag + cmd)
         print(str(index) + ': ' + gitclone_path)
 
 
