@@ -1,7 +1,12 @@
-# -*- coding=utf-8 -*-
+# -*- coding: utf-8 -*-
 """
-Created on 2019-04-24 @CORTINA CPP
+@time    : 2019-05-15 19:57
+@author  : John Chen
+@contact : johnchen5372@gmail.com
+@file    : kt_release_v2.py
+@software: Python_CPP
 """
+
 from typing import List, Any, Union
 import paramiko
 # import getpass
@@ -115,7 +120,7 @@ class SSHConnection(object):
                 lines.append(line)
                 break
             lines.append(line)
-        result = ' '.join(lines)
+        # result = ' '.join(lines)
         # return result
         return line
 
@@ -130,17 +135,17 @@ class SSHConnection(object):
 def yocto_gitclone(SSHConnection):
     gitclone_tag = 'git clone -b kt-krogoth-20181211 '
     cmd_gitclone = [
-        gitclone_tag + 'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/yocto yocto-' + datetag,
-        gitclone_tag + 'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-oe-yocto-cortina',
-        gitclone_tag + 'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-ca-bsp',
-        gitclone_tag + 'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/openembedded/meta-openembedded',
-        gitclone_tag + 'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-oe-ca'
+        'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/yocto yocto-' + datetag,
+        'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-oe-yocto-cortina',
+        'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-ca-bsp',
+        'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/openembedded/meta-openembedded',
+        'gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-oe-ca'
     ]
     for index, cmd in enumerate(cmd_gitclone):
         if index == 0:
-            gitclone_path = SSHConnection.ssh_command(build_path + cmd)
+            gitclone_path = SSHConnection.ssh_command(build_path + gitclone_tag + cmd)
         else:
-            gitclone_path = SSHConnection.ssh_command(yocto_path + cmd)
+            gitclone_path = SSHConnection.ssh_command(yocto_path + gitclone_tag + cmd)
         print(str(index) + ': ' + gitclone_path)
 
 
@@ -246,9 +251,9 @@ def send_mail(config, msg1, msg2):
     msg['Subject'] = date.today().strftime('%Y-%m-%d') + " [KT SFU]New official build " + glb_new_ver
     context_msg = r'\\192.168.40.45\QA Team\pchen\kt_release ' \
                   + msg1 \
-                  + r'\r\nSATURN-Version:' \
+                  + '\r\nSATURN-Version:' \
                   + msg2 \
-                  + r'\r\r\r\r\nThanks,\nPengpeng\r\n'
+                  + '\r\r\r\r\nThanks,\nPengpeng\r\n'
     # context_msg.replace(' ', '\\')
     # print(context_msg)
 
