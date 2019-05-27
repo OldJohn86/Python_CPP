@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 import os
 import sys
 import time
@@ -513,7 +513,14 @@ def do_telnet(config, target):
     time.sleep(1)
     tn.write(b'uname -a\n')
     time.sleep(1)
-    #tn.write(b'exit\n')
+    tn.write(b'\r\n')
+    time.sleep(1)
+    tn.write(b'lsmod\n')
+    time.sleep(1)
+    tn.write(b'\r\n')
+    tn.write(b'cat /proc/iomem\n')
+    time.sleep(1)
+    tn.write(b'\r\n')
     time.sleep(1)
     result_str = tn.read_very_eager()
     tn.close()
