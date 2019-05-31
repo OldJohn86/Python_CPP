@@ -417,6 +417,8 @@ def do_telnet(config, target):
     else:
         print("ERROR: Input target[%s] is invalid!!" % target)
 
+    serverip = serverip_set.split()[2]
+    print(serverip)
     tn = telnetlib.Telnet(host, port, timeout=50)
     tn.write(b'\r\n')
     time.sleep(1)
@@ -520,6 +522,9 @@ def do_telnet(config, target):
     tn.write(b'\r\n')
     tn.write(b'cat /proc/iomem\n')
     time.sleep(1)
+    tn.write(b'\r\n')
+    tn.write(b'ping -c10 ' + serverip + b'\r\n')
+    time.sleep(15)
     tn.write(b'\r\n')
     time.sleep(1)
     result_str = tn.read_very_eager()
