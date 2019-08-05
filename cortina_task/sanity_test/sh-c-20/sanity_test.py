@@ -147,8 +147,8 @@ def log_no_errors(target, child=''):
         return False
     else:
         # print(glb_log_file)
-        last_lines = get_file_last_line(os.path.abspath(glb_log_file), 40)
-        # print(last_lines)
+        last_lines = get_file_last_line(os.path.abspath(glb_log_file), 200)
+        print(last_lines)
         if target == 'g3':
             no_error_tag = 'root@g3-eng:~# '
         elif target == 'g3hgu':
@@ -158,7 +158,14 @@ def log_no_errors(target, child=''):
         else:
             print("Target %s is vaild" % target)
         if no_error_tag in last_lines:
-            return True
+            if 'error' in last_lines:
+                return False
+            elif 'failure' in last_lines:
+                return False
+            elif 'No such' in last_lines:
+                return False
+            else:
+                return True
         else:
             return False
 
@@ -365,7 +372,7 @@ def upload_log(obj, current_path, config, target, child=''):
             # print(remote_file)
             local_file = os.path.join(local_path_abs, y_m_d +'-'+ item)
             # print(local_file)
-            # glb_log_file = local_file
+            glb_log_file = local_file
             # print(glb_log_file)
             if not os.path.exists(local_file):
                 print("ERROR: local_file[%s] NOT exists!!" % local_file)
