@@ -148,7 +148,7 @@ def log_no_errors(target, child=''):
     else:
         # print(glb_log_file)
         last_lines = get_file_last_line(os.path.abspath(glb_log_file), 200)
-        print(last_lines)
+        #print(last_lines)
         if target == 'g3':
             no_error_tag = 'root@g3-eng:~# '
         elif target == 'g3hgu':
