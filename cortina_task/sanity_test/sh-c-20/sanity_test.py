@@ -162,8 +162,6 @@ def log_no_errors(target, child=''):
                 return False
             elif 'failure' in last_lines:
                 return False
-            elif 'No such' in last_lines:
-                return False
             else:
                 return True
         else:
