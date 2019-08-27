@@ -147,7 +147,7 @@ def log_no_errors(target, child=''):
         return False
     else:
         # print(glb_log_file)
-        last_lines = get_file_last_line(os.path.abspath(glb_log_file), 200)
+        last_lines = get_file_last_line(os.path.abspath(glb_log_file), 100)
         #print(last_lines)
         if target == 'g3':
             no_error_tag = 'root@g3-eng:~# '
@@ -159,12 +159,15 @@ def log_no_errors(target, child=''):
             print("Target %s is vaild" % target)
         if no_error_tag in last_lines:
             if 'error' in last_lines:
+                print(last_lines)
                 return False
             elif 'failure' in last_lines:
+                print(last_lines)
                 return False
             else:
                 return True
         else:
+            print(last_lines)
             return False
 
 class SftpTool(object):
@@ -255,16 +258,16 @@ def download_img(obj, current_path, config, target, child=''):
     return_items = getattr(obj, "connect")(remote_path_abs)
     # print(return_items)
     if target == 'g3':
-        log_file = y_m_d +'-'+ target + '-sanitytest-log.txt';
+        log_file = y_m_d +'-'+ target + '-sanitytest-log.txt'; #_1
     elif target == 'g3hgu':
         if child == '':
-            log_file = y_m_d +'-'+ target + '-sanitytest-log.txt';
+            log_file = y_m_d +'-'+ target + '-sanitytest-log.txt'; #_1
         elif child == 'epon' or child == 'gpon':
             log_file = y_m_d +'-'+ child + '-sanitytest-log.txt';
         else:
             print("Target <%s> child[%s] is invalid!!" % target, child)
     elif target == 'saturn-sfu':
-        log_file = y_m_d +'-'+ child + '-sanitytest-log.txt';
+        log_file = y_m_d +'-'+ child + '-sanitytest-log.txt'; #_1
     if log_file in return_items:
         print("%s HAD put on the server already!!!" % log_file)
         getattr(obj, "close")()
@@ -569,7 +572,7 @@ def do_telnet(config, target):
     # RESET board
     log_str += (tn.read_until(written_ok))
     tn.write(reset_set + b"\r\n")
-    time.sleep(70)
+    time.sleep(100)
     tn.write(b"root\n")
     time.sleep(1)
     tn.write(b"\r\n")
@@ -579,6 +582,9 @@ def do_telnet(config, target):
     tn.write(b"\r\n")
     time.sleep(1)
     tn.write(b"lsmod\n")
+    time.sleep(1)
+    tn.write(b"\r\n")
+    tn.write(b"cat /proc/mtd\n")
     time.sleep(1)
     tn.write(b"\r\n")
     tn.write(b"cat /proc/iomem\n")
