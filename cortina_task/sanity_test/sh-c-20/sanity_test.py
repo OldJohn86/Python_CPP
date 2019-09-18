@@ -141,6 +141,7 @@ def send_email(config, target, child=''):
     except smtplib.SMTPException as e:
         print("Email send failed", e)
 
+key_words = ['error', 'err', 'ERROR', 'failure', 'Unknown']
 def log_no_errors(target, child=''):
     global glb_log_file
     if not os.path.exists(glb_log_file):
@@ -158,14 +159,11 @@ def log_no_errors(target, child=''):
         else:
             print("Target %s is vaild" % target)
         if no_error_tag in last_lines:
-            if 'error' in last_lines:
-                print(last_lines)
-                return False
-            elif 'failure' in last_lines:
-                print(last_lines)
-                return False
-            else:
-                return True
+            for word in key_words:
+                if word in last_lines:
+                    print(last_lines)
+                    return False
+            return True
         else:
             print(last_lines)
             return False
