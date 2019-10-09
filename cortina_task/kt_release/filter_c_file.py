@@ -44,7 +44,9 @@ def coding_verify(f_name):
         data_a
     #endif
 '''
-def parse_case1(lines):
+def case1_parse(lines, macro):
+    #print(lines)
+    #print(macro)
     data_a = ''
     ifdef_index = []
     endif_index = []
@@ -82,24 +84,37 @@ def parse_case1(lines):
     for i in range(len(ret_ifdef)):
         #print(ret_ifdef[i], ret_endif[i])
         macro_flag = lines[ret_ifdef[i]].lstrip(' ').rstrip('\n').split(' ')
-        print(macro_flag)
-        for i in range(ret_ifdef[i], ret_endif[i]+1):
-            data_a += lines[i]
+        #print(macro, macro_flag[1])
+        if macro ==  macro_flag[1]:
+            for i in range(ret_ifdef[i], ret_endif[i]+1):
+                data_a += lines[i]
     #print(data_a)
-    return data_a
+    return (data_a)
 
-def keep_case1(lines, macro):
-    return 0
+def case1_keep(lines, macro):
+    data = ''
+    for line in lines:
+        data += line
+    return data
 
-def remove_case1(lines, macro):
-    return 0
+def case1_remove(lines, macro):
+    data = ''
+    macro_data = ''
+    macro_data = case1_parse(lines, macro)
+    print(macro_data)
+    for line in lines:
+        data += line
+    print(data)
+    str(data).replace(str(macro_data), 'AA')
+    return data
 
-def test_case1(f_name):
+def case1_test(f_name):
     print(f_name)
     data = ''
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
-        data = parse_case1(lines)
+        data = case1_remove(lines, 'AAAA')
+        print(data)
     with open(f_name+".bak", 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
 
@@ -226,4 +241,4 @@ if __name__ == '__main__':
     
  #   remove_headtail_blockline(path) 
  #   deal_file(path)
-    test_case1("./testCodes/demo_case1.c")
+    case1_test("./testCodes/demo_case1.c")
