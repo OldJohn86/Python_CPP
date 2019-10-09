@@ -50,7 +50,6 @@ def parse_case1(lines):
     endif_index = []
     ret_endif = []
     ret_ifdef = []
-    match_flag = False
     length = len(lines)
     #print(length)
     for i in range(length):
@@ -70,7 +69,7 @@ def parse_case1(lines):
             if ifdef_index[j] < endif_index[i]:
                 #print(j, ifdef_index[j])
                 temp_cnt += 1
-        if i + 1 == temp_cnt:
+        if i+1 == temp_cnt:
             #print(i, endif_index[i])
             ret_endif.append(endif_index[i])
     for endif in ret_endif:
@@ -82,10 +81,18 @@ def parse_case1(lines):
 
     for i in range(len(ret_ifdef)):
         #print(ret_ifdef[i], ret_endif[i])
+        macro_flag = lines[ret_ifdef[i]].lstrip(' ').rstrip('\n').split(' ')
+        print(macro_flag)
         for i in range(ret_ifdef[i], ret_endif[i]+1):
             data_a += lines[i]
     #print(data_a)
     return data_a
+
+def keep_case1(lines, macro):
+    return 0
+
+def remove_case1(lines, macro):
+    return 0
 
 def test_case1(f_name):
     print(f_name)
