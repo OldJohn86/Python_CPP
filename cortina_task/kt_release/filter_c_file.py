@@ -46,32 +46,55 @@ def coding_verify(f_name):
 '''
 def parse_case1(lines):
     data_a = ''
-    i = 0
-    ifdef_cnt = 0
-    endif_cnt = 0
-    flag = False
+    ifdef_index = []
+    endif_index = []
+    ret_endif = []
+    ret_ifdef = []
+    match_flag = False
     length = len(lines)
-    print(length)
+    #print(length)
     for i in range(length):
-        if "#ifdef " in lines[i]:    
-            while True:
-                data_a += lines[i]
-                if "#ifdef " in lines[i]:
-                    ifdef_cnt += 1
-                if "#endif" in lines[i]:
-                    endif_cnt += 1
-                if "#endif" in lines[i] and ifdef_cnt == endif_cnt:
-                    flag = True
-                    break
-                i += 1
-    print(data_a)
+        if "#ifdef " in lines[i]:
+            ifdef_index.append(i)
+            #print("["+str(i)+":]" + lines[i])
+        if "#endif" in lines[i]:
+            endif_index.append(i)
+            #print("["+str(i)+":]" + lines[i])
+    #print(ifdef_index, endif_index)
+
+    ret_ifdef.append(ifdef_index[0])
+    for i in range(len(endif_index)):
+        #print(i, endif_index[i])
+        temp_cnt = 0
+        for j in range(len(ifdef_index)):
+            if ifdef_index[j] < endif_index[i]:
+                #print(j, ifdef_index[j])
+                temp_cnt += 1
+        if i + 1 == temp_cnt:
+            #print(i, endif_index[i])
+            ret_endif.append(endif_index[i])
+    for endif in ret_endif:
+        for ifdef in ifdef_index:
+            if ifdef > endif:
+                ret_ifdef.append(ifdef)
+                break
+    #print(ret_ifdef, ret_endif)
+
+    for i in range(len(ret_ifdef)):
+        #print(ret_ifdef[i], ret_endif[i])
+        for i in range(ret_ifdef[i], ret_endif[i]+1):
+            data_a += lines[i]
+    #print(data_a)
     return data_a
 
 def test_case1(f_name):
     print(f_name)
+    data = ''
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
-        parse_case1(lines)
+        data = parse_case1(lines)
+    with open(f_name+".bak", 'w', encoding='utf-8', errors='ignore') as f:
+        f.writelines(data)
 
 '''
 [case 2]:
