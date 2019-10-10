@@ -48,7 +48,7 @@ data_a =
 ]
 '''
 def case1_parse(lines):
-    # print(lines)
+#    print(lines)
     ifdef_all = []
     endif_all = []
     endif_1st = []
@@ -57,7 +57,7 @@ def case1_parse(lines):
     ifdef_2nd = []
     endif_3rd = []
     ifdef_3rd = []
-    # print(len(lines))
+    print(len(lines))
     for i in range(len(lines)):
         if "#ifdef " in lines[i]:
             ifdef_all.append(i)
@@ -112,12 +112,12 @@ def find_macro(lines, macro):
 #    print(lines)
     macro_array = []
     macro_str = ['', '', '', '', '', '', '', '', '','']
-    ifdef_1st = []
-    endif_1st = []
-    ifdef_2nd = []
-    endif_3rd = []
-    ifdef_3rd = []
-    endif_2nd = []
+#    ifdef_1st = []
+#    endif_1st = []
+#    ifdef_2nd = []
+#    endif_2nd = []
+#    ifdef_3rd = []
+#    endif_3rd = []
     (ifdef_1st, endif_1st, ifdef_2nd, endif_2nd, ifdef_3rd, endif_3rd) = case1_parse(lines)
 #    print(len(ifdef_1st), ifdef_1st)
 #    print(len(endif_1st), endif_1st)
@@ -126,6 +126,7 @@ def find_macro(lines, macro):
 #    print(len(ifdef_3rd), ifdef_3rd)
 #    print(len(endif_3rd), endif_3rd)
     index = 0
+
     # check The 1st level #ifdef
     for i in range(len(ifdef_1st)):
 #        print(lines[ifdef_1st[i]].strip(' ').strip('\n').split(' '))
