@@ -40,14 +40,17 @@ def coding_verify(f_name):
 
 '''
 [case 1]:
+data_a =
+[
     #ifdef AAAA
-        data_a
+        data
     #endif
+]
 '''
 def case1_parse(lines, macro):
-    #print(lines)
+    print(lines)
     #print(macro)
-    data_a = ''
+    data_a = []
     ifdef_index = []
     endif_index = []
     ret_endif = []
@@ -87,7 +90,7 @@ def case1_parse(lines, macro):
         #print(macro, macro_flag[1])
         if macro ==  macro_flag[1]:
             for i in range(ret_ifdef[i], ret_endif[i]+1):
-                data_a += lines[i]
+                data_a.append(lines[i])
     #print(data_a)
     return (data_a)
 
@@ -99,13 +102,13 @@ def case1_keep(lines, macro):
 
 def case1_remove(lines, macro):
     data = ''
-    macro_data = ''
+    macro_data = []
     macro_data = case1_parse(lines, macro)
     print(macro_data)
+
     for line in lines:
         data += line
-    print(data)
-    str(data).replace(str(macro_data), 'AA')
+    #print(data)
     return data
 
 def case1_test(f_name):
@@ -114,7 +117,7 @@ def case1_test(f_name):
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
         data = case1_remove(lines, 'AAAA')
-        print(data)
+        #print(data)
     with open(f_name+".bak", 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
 
