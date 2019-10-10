@@ -55,16 +55,18 @@ def case1_parse(lines):
     ifdef_1st = []
     endif_2nd = []
     ifdef_2nd = []
+    endif_3rd = []
+    ifdef_3rd = []
     # print(len(lines))
     for i in range(len(lines)):
         if "#ifdef " in lines[i]:
             ifdef_all.append(i)
-            # print("["+str(i)+":]" + lines[i])
+            print("["+str(i)+":]" + lines[i])
         if "#endif" in lines[i]:
             endif_all.append(i)
-            # print("["+str(i)+":]" + lines[i])
-    # print(len(ifdef_all), ifdef_all)
-    # print(len(endif_all), endif_all)
+            print("["+str(i)+":]" + lines[i])
+    print(len(ifdef_all), ifdef_all)
+    print(len(endif_all), endif_all)
 
     ifdef_1st.append(ifdef_all[0])
     for i in range(len(endif_all)):
@@ -82,13 +84,23 @@ def case1_parse(lines):
             if ifdef > endif:
                 ifdef_1st.append(ifdef)
                 break
-    # print(len(ifdef_1st), ifdef_1st)
-    # print(len(endif_1st), endif_1st)
-    ifdef_2nd = [v for v in ifdef_all if v not in ifdef_1st]
-    # print(len(ifdef_2nd), ifdef_2nd)
-    endif_2nd = [v for v in endif_all if v not in endif_1st]
-    # print(len(endif_2nd), endif_2nd)
-    return (ifdef_1st, endif_1st, ifdef_2nd, endif_2nd)
+    print(len(ifdef_1st), ifdef_1st)
+    print(len(endif_1st), endif_1st)
+
+    for i in range(len(endif_all)-2):
+        print(i, endif_all[i])
+        if endif_all[i] > ifdef_all[i] and endif_all[i] > ifdef_all[i+1] and endif_all[i] > ifdef_all[i+2]:
+            endif_3rd.append(endif_all[i])
+            ifdef_3rd.append(ifdef_all[i+2])
+
+    ifdef_2nd = [v for v in ifdef_all if v not in ifdef_1st and v not in ifdef_3rd]
+    endif_2nd = [v for v in endif_all if v not in endif_1st and v not in endif_3rd]
+    print(len(ifdef_2nd), ifdef_2nd)
+    print(len(endif_2nd), endif_2nd)
+
+    print(len(ifdef_3rd), ifdef_3rd)
+    print(len(endif_3rd), endif_3rd)
+    return (ifdef_1st, endif_1st, ifdef_2nd, endif_2nd, ifdef_3rd, endif_3rd)
 
 def case1_keep(lines, macro):
     data = ''
@@ -97,28 +109,32 @@ def case1_keep(lines, macro):
     return data
 
 def find_macro(lines, macro):
-    # print(lines)
+#    print(lines)
     macro_array = []
-    macro_str = ['', '', '', '', '']
+    macro_str = ['', '', '', '', '', '', '', '', '','']
     ifdef_1st = []
     endif_1st = []
     ifdef_2nd = []
+    endif_3rd = []
+    ifdef_3rd = []
     endif_2nd = []
-    (ifdef_1st, endif_1st, ifdef_2nd, endif_2nd) = case1_parse(lines)
-    print(len(ifdef_1st), ifdef_1st)
-    print(len(endif_1st), endif_1st)
-    print(len(ifdef_2nd), ifdef_2nd)
-    print(len(endif_2nd), endif_2nd)
+    (ifdef_1st, endif_1st, ifdef_2nd, endif_2nd, ifdef_3rd, endif_3rd) = case1_parse(lines)
+#    print(len(ifdef_1st), ifdef_1st)
+#    print(len(endif_1st), endif_1st)
+#    print(len(ifdef_2nd), ifdef_2nd)
+#    print(len(endif_2nd), endif_2nd)
+#    print(len(ifdef_3rd), ifdef_3rd)
+#    print(len(endif_3rd), endif_3rd)
     index = 0
-    # check The first level #ifdef
+    # check The 1st level #ifdef
     for i in range(len(ifdef_1st)):
-        # print(lines[ifdef_1st[i]].strip(' ').strip('\n').split(' '))
+#        print(lines[ifdef_1st[i]].strip(' ').strip('\n').split(' '))
         if macro == (lines[ifdef_1st[i]].strip(' ').strip('\n').split(' '))[1]:
             print(i, ifdef_1st[i]+1, endif_1st[i]+1)
             for i in range(ifdef_1st[i], endif_1st[i]+1):
                 macro_str[index] += lines[i]
-            # print(str(index) +"*************************************************************")
-            # print(macro_str[index])
+#            print(str(index) +"*************************************************************")
+#            print(macro_str[index])
             macro_array.append(macro_str[index])
             if index < len(macro_str):
                 index += 1
@@ -126,18 +142,18 @@ def find_macro(lines, macro):
                 print("ERROR: macro_str[] list index out of range!")
                 break
         else:
-            # print(lines[ifdef_1st[i]].strip(' ').strip('\n').split(' '))
-            # print(i, ifdef_1st[i]+1, endif_1st[i]+1)
+#            print(lines[ifdef_1st[i]].strip(' ').strip('\n').split(' '))
+#            print(i, ifdef_1st[i]+1, endif_1st[i]+1)
             pass
-    # check The second level #ifdef
+    # check The 2nd level #ifdef
     for i in range(len(ifdef_2nd)):
-        # print(lines[ifdef_2nd[i]].strip(' ').strip('\n').split(' '))
+#        print(lines[ifdef_2nd[i]].strip(' ').strip('\n').split(' '))
         if macro == (lines[ifdef_2nd[i]].strip(' ').strip('\n').split(' '))[1]:
             print(i, ifdef_2nd[i]+1, endif_2nd[i]+1)
             for i in range(ifdef_2nd[i], endif_2nd[i]+1):
                 macro_str[index] += lines[i]
-            # print(str(index) +"*************************************************************")
-            # print(macro_str[index])
+#            print(str(index) +"*************************************************************")
+#            print(macro_str[index])
             macro_array.append(macro_str[index])
             if index < len(macro_str):
                 index += 1
@@ -145,8 +161,27 @@ def find_macro(lines, macro):
                 print("ERROR: macro_str[] list index out of range!")
                 break
         else:
-            # print(lines[ifdef_2nd[i]].strip(' ').strip('\n').split(' '))
-            # print(i, ifdef_2nd[i]+1, endif_2nd[i]+1)
+#            print(lines[ifdef_2nd[i]].strip(' ').strip('\n').split(' '))
+#            print(i, ifdef_2nd[i]+1, endif_2nd[i]+1)
+             pass
+    # check The 3rd level #ifdef
+    for i in range(len(ifdef_3rd)):
+#        print(lines[ifdef_3rd[i]].strip(' ').strip('\n').split(' '))
+        if macro == (lines[ifdef_3rd[i]].strip(' ').strip('\n').split(' '))[1]:
+            print(i, ifdef_3rd[i]+1, endif_3rd[i]+1)
+            for i in range(ifdef_3rd[i], endif_3rd[i]+1):
+                macro_str[index] += lines[i]
+#            print(str(index) +"*************************************************************")
+#            print(macro_str[index])
+            macro_array.append(macro_str[index])
+            if index < len(macro_str):
+                index += 1
+            else:
+                print("ERROR: macro_str[] list index out of range!")
+                break
+        else:
+#            print(lines[ifdef_3rd[i]].strip(' ').strip('\n').split(' '))
+#            print(i, ifdef_3rd[i]+1, endif_3rd[i]+1)
              pass
     return (macro_array)
 
@@ -160,7 +195,7 @@ def case1_remove(lines, macro):
         data += line
     for i in range(len(macro_array)):
         if data.find(macro_array[i]) != -1:
-            data = data.replace(macro_array[i], ' ')
+            data = data.replace(macro_array[i], '')
     return data
 
 def case1_test(f_name):
@@ -168,7 +203,7 @@ def case1_test(f_name):
     data = ''
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
-        data = case1_remove(lines, 'CCCC')
+        data = case1_remove(lines, 'aaaa')
         # print(data)
     with open(f_name.replace('.c','.bak.c'), 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
