@@ -47,52 +47,41 @@ data_a =
     #endif
 ]
 '''
-def case1_parse(lines, macro):
-    #print(lines)
-    #print(macro)
+def case1_parse(lines):
+    # print(lines)
     data_a = []
     ifdef_index = []
     endif_index = []
     ret_endif = []
     ret_ifdef = []
-    length = len(lines)
-    #print(length)
-    for i in range(length):
+    # print(len(lines))
+    for i in range(len(lines)):
         if "#ifdef " in lines[i]:
             ifdef_index.append(i)
-            #print("["+str(i)+":]" + lines[i])
+            # print("["+str(i)+":]" + lines[i])
         if "#endif" in lines[i]:
             endif_index.append(i)
-            #print("["+str(i)+":]" + lines[i])
-    #print(ifdef_index, endif_index)
+            # print("["+str(i)+":]" + lines[i])
+    # print(ifdef_index, endif_index)
 
     ret_ifdef.append(ifdef_index[0])
     for i in range(len(endif_index)):
-        #print(i, endif_index[i])
+        # print(i, endif_index[i])
         temp_cnt = 0
         for j in range(len(ifdef_index)):
             if ifdef_index[j] < endif_index[i]:
-                #print(j, ifdef_index[j])
+                # print(j, ifdef_index[j])
                 temp_cnt += 1
         if i+1 == temp_cnt:
-            #print(i, endif_index[i])
+            # print(i, endif_index[i])
             ret_endif.append(endif_index[i])
     for endif in ret_endif:
         for ifdef in ifdef_index:
             if ifdef > endif:
                 ret_ifdef.append(ifdef)
                 break
-    #print(ret_ifdef, ret_endif)
-
-    for i in range(len(ret_ifdef)):
-        #print(ret_ifdef[i], ret_endif[i])
-        macro_flag = lines[ret_ifdef[i]].lstrip(' ').rstrip('\n').split(' ')
-        #print(macro, macro_flag[1])
-        if macro ==  macro_flag[1]:
-            for i in range(ret_ifdef[i], ret_endif[i]+1):
-                data_a.append(lines[i])
-    #print(data_a)
-    return (data_a)
+    # print(ret_ifdef, ret_endif)
+    return (ret_ifdef, ret_endif)
 
 def case1_keep(lines, macro):
     data = ''
@@ -101,22 +90,35 @@ def case1_keep(lines, macro):
     return data
 
 def case1_remove(lines, macro):
-    print(lines)
+    #print(lines)
     data = ''
-    bg = 0
-    ed = 0
-    macro_data = []
-    macro_data = case1_parse(lines, macro)
-    print(macro_data)
-    for i in range(len(lines)):
-        if lines[i] == macro_data[0]:
-            bg = i
-    ed = bg + len(macro_data)
-    lines = lines[:bg] + lines[ed:]
-    print(lines)
+    data_a = []
+    macro_str = ['', '', '', '', '']
+    ret_ifdef = []
+    ret_endif = []
+    (ret_ifdef, ret_endif) = case1_parse(lines)
+    # print(ret_ifdef, ret_endif)
+    # print(len(ret_ifdef), len(ret_endif))
+    index = 0
+    for i in range(len(ret_ifdef)):
+        if macro == (lines[ret_ifdef[i]].strip(' ').strip('\n').split(' '))[1]:
+            # print(i, ret_ifdef[i], ret_endif[i]+1)
+            for i in range(ret_ifdef[i], ret_endif[i]+1):
+                macro_str[index] += lines[i]
+            # print(str(index) +"*************************************************************")
+            # print(macro_str[index])
+            data_a.append(macro_str[index])
+            if index < len(macro_str):
+                index += 1
+            else:
+                print("ERROR: macro_str[] list index out of range!")
+                break
+    print(data_a)
     for line in lines:
         data += line
-    #print(data)
+    for i in range(len(data_a)):
+        if data.find(data_a[i]) != -1:
+            data = data.replace(data_a[i], ' ')
     return data
 
 def case1_test(f_name):
@@ -125,8 +127,8 @@ def case1_test(f_name):
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
         data = case1_remove(lines, 'CCCC')
-        #print(data)
-    with open(f_name+".bak", 'w', encoding='utf-8', errors='ignore') as f:
+        print(data)
+    with open(f_name.replace('.c','.bak.c'), 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
 
 '''
