@@ -48,7 +48,7 @@ data_a =
 ]
 '''
 def case1_parse(lines, macro):
-    print(lines)
+    #print(lines)
     #print(macro)
     data_a = []
     ifdef_index = []
@@ -101,11 +101,19 @@ def case1_keep(lines, macro):
     return data
 
 def case1_remove(lines, macro):
+    print(lines)
     data = ''
+    bg = 0
+    ed = 0
     macro_data = []
     macro_data = case1_parse(lines, macro)
     print(macro_data)
-
+    for i in range(len(lines)):
+        if lines[i] == macro_data[0]:
+            bg = i
+    ed = bg + len(macro_data)
+    lines = lines[:bg] + lines[ed:]
+    print(lines)
     for line in lines:
         data += line
     #print(data)
@@ -116,7 +124,7 @@ def case1_test(f_name):
     data = ''
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
-        data = case1_remove(lines, 'AAAA')
+        data = case1_remove(lines, 'CCCC')
         #print(data)
     with open(f_name+".bak", 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
