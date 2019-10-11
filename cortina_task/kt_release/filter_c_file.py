@@ -1,11 +1,15 @@
 #!/usr/bin/python
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
+
 '''
+Author: pengpeng.chen@cortina-access.com
+Date:   2019-10-10
 '''
+
+
 import re
 import os
 from os import walk
-
 
 keywords = [
     '#if ',
@@ -40,12 +44,9 @@ def coding_verify(f_name):
 
 '''
 [case1]:
-data_a =
-[
     #ifdef AAAA
         data
     #endif
-]
 '''
 def ifend_parse(lines):
 #    print(lines)
@@ -57,49 +58,49 @@ def ifend_parse(lines):
     ifdef_2nd = []
     endif_3rd = []
     ifdef_3rd = []
-    print(len(lines))
+#    print(len(lines))
     for i in range(len(lines)):
         if "#ifdef " in lines[i]:
             ifdef_all.append(i)
-            print("["+str(i)+":]" + lines[i])
+#            print("["+str(i)+":]" + lines[i])
         if "#endif" in lines[i]:
             endif_all.append(i)
-            print("["+str(i)+":]" + lines[i])
-    print(len(ifdef_all), ifdef_all)
-    print(len(endif_all), endif_all)
+#            print("["+str(i)+":]" + lines[i])
+#    print(len(ifdef_all), ifdef_all)
+#    print(len(endif_all), endif_all)
 
     ifdef_1st.append(ifdef_all[0])
     for i in range(len(endif_all)):
-        # print(i, endif_all[i])
+#        print(i, endif_all[i])
         temp_cnt = 0
         for j in range(len(ifdef_all)):
             if ifdef_all[j] < endif_all[i]:
-                # print(j, ifdef_all[j])
+#                print(j, ifdef_all[j])
                 temp_cnt += 1
         if i+1 == temp_cnt:
-            # print(i, endif_all[i])
+#            print(i, endif_all[i])
             endif_1st.append(endif_all[i])
     for endif in endif_1st:
         for ifdef in ifdef_all:
             if ifdef > endif:
                 ifdef_1st.append(ifdef)
                 break
-    print(len(ifdef_1st), ifdef_1st)
-    print(len(endif_1st), endif_1st)
+#    print(len(ifdef_1st), ifdef_1st)
+#    print(len(endif_1st), endif_1st)
 
     for i in range(len(endif_all)-2):
-        print(i, endif_all[i])
+#        print(i, endif_all[i])
         if endif_all[i] > ifdef_all[i] and endif_all[i] > ifdef_all[i+1] and endif_all[i] > ifdef_all[i+2]:
             endif_3rd.append(endif_all[i])
             ifdef_3rd.append(ifdef_all[i+2])
 
     ifdef_2nd = [v for v in ifdef_all if v not in ifdef_1st and v not in ifdef_3rd]
     endif_2nd = [v for v in endif_all if v not in endif_1st and v not in endif_3rd]
-    print(len(ifdef_2nd), ifdef_2nd)
-    print(len(endif_2nd), endif_2nd)
+#    print(len(ifdef_2nd), ifdef_2nd)
+#    print(len(endif_2nd), endif_2nd)
 
-    print(len(ifdef_3rd), ifdef_3rd)
-    print(len(endif_3rd), endif_3rd)
+#    print(len(ifdef_3rd), ifdef_3rd)
+#    print(len(endif_3rd), endif_3rd)
     return (ifdef_1st, endif_1st, ifdef_2nd, endif_2nd, ifdef_3rd, endif_3rd)
 
 def ifend_keep(lines, macro):
@@ -112,78 +113,31 @@ def ifend_find_macro(lines, macro):
 #    print(lines)
     macro_array = []
     macro_str = ['', '', '', '', '', '', '', '', '','']
-#    ifdef_1st = []
-#    endif_1st = []
-#    ifdef_2nd = []
-#    endif_2nd = []
-#    ifdef_3rd = []
-#    endif_3rd = []
     (ifdef_1st, endif_1st, ifdef_2nd, endif_2nd, ifdef_3rd, endif_3rd) = ifend_parse(lines)
-#    print(len(ifdef_1st), ifdef_1st)
-#    print(len(endif_1st), endif_1st)
-#    print(len(ifdef_2nd), ifdef_2nd)
-#    print(len(endif_2nd), endif_2nd)
-#    print(len(ifdef_3rd), ifdef_3rd)
-#    print(len(endif_3rd), endif_3rd)
     index = 0
 
     # check The 1st level #ifdef
-    for i in range(len(ifdef_1st)):
-#        print(lines[ifdef_1st[i]].strip(' ').strip('\n').split(' '))
-        if macro == (lines[ifdef_1st[i]].strip(' ').strip('\n').split(' '))[1]:
-            print(i, ifdef_1st[i]+1, endif_1st[i]+1)
-            for i in range(ifdef_1st[i], endif_1st[i]+1):
-                macro_str[index] += lines[i]
-#            print(str(index) +"*************************************************************")
-#            print(macro_str[index])
-            macro_array.append(macro_str[index])
-            if index < len(macro_str):
-                index += 1
-            else:
-                print("ERROR: macro_str[] list index out of range!")
-                break
-        else:
-#            print(lines[ifdef_1st[i]].strip(' ').strip('\n').split(' '))
-#            print(i, ifdef_1st[i]+1, endif_1st[i]+1)
-            pass
     # check The 2nd level #ifdef
-    for i in range(len(ifdef_2nd)):
-#        print(lines[ifdef_2nd[i]].strip(' ').strip('\n').split(' '))
-        if macro == (lines[ifdef_2nd[i]].strip(' ').strip('\n').split(' '))[1]:
-            print(i, ifdef_2nd[i]+1, endif_2nd[i]+1)
-            for i in range(ifdef_2nd[i], endif_2nd[i]+1):
-                macro_str[index] += lines[i]
-#            print(str(index) +"*************************************************************")
-#            print(macro_str[index])
-            macro_array.append(macro_str[index])
-            if index < len(macro_str):
-                index += 1
-            else:
-                print("ERROR: macro_str[] list index out of range!")
-                break
-        else:
-#            print(lines[ifdef_2nd[i]].strip(' ').strip('\n').split(' '))
-#            print(i, ifdef_2nd[i]+1, endif_2nd[i]+1)
-             pass
     # check The 3rd level #ifdef
-    for i in range(len(ifdef_3rd)):
-#        print(lines[ifdef_3rd[i]].strip(' ').strip('\n').split(' '))
-        if macro == (lines[ifdef_3rd[i]].strip(' ').strip('\n').split(' '))[1]:
-            print(i, ifdef_3rd[i]+1, endif_3rd[i]+1)
-            for i in range(ifdef_3rd[i], endif_3rd[i]+1):
-                macro_str[index] += lines[i]
-#            print(str(index) +"*************************************************************")
-#            print(macro_str[index])
-            macro_array.append(macro_str[index])
-            if index < len(macro_str):
-                index += 1
+    for (ifdef, endif) in [(ifdef_1st, endif_1st),(ifdef_2nd, endif_2nd),(ifdef_3rd, endif_3rd)]:
+        print(ifdef, endif)
+        for i in range(len(ifdef)):
+#            print(lines[ifdef[i]].strip(' ').strip('\n').split(' '))
+            if macro == (lines[ifdef[i]].strip(' ').strip('\n').split(' '))[1]:
+                print(i, ifdef[i]+1, endif[i]+1)
+                for i in range(ifdef[i], endif[i]+1):
+                    macro_str[index] += lines[i]
+#                print(macro_str[index])
+                macro_array.append(macro_str[index])
+                if index < len(macro_str):
+                    index += 1
+                else:
+                    print("ERROR: macro_str[] list index out of range!")
+                    break
             else:
-                print("ERROR: macro_str[] list index out of range!")
-                break
-        else:
-#            print(lines[ifdef_3rd[i]].strip(' ').strip('\n').split(' '))
-#            print(i, ifdef_3rd[i]+1, endif_3rd[i]+1)
-             pass
+#                print(lines[ifdef[i]].strip(' ').strip('\n').split(' '))
+#                print(i, ifdef[i]+1, endif[i]+1)
+                pass
     return (macro_array)
 
 def ifend_remove(lines, macro):
@@ -210,7 +164,7 @@ def ifend_test(f_name):
         f.writelines(data)
 
 '''
-[case 2]:
+[case2]:
     #ifdef AAAA
         data_a
     #else
@@ -219,16 +173,18 @@ def ifend_test(f_name):
 '''
 def parse_case2(lines, macro):
     length = len(lines)
+
 '''
-[case 3]:
+[case3]:
     #ifndef AAAA
         data_a
     #endif
 '''
-def parse_case2(lines, macro):
+def parse_case3(lines, macro):
     length = len(lines)
+
 '''
-[case 4]:
+[case4]:
     #ifndef AAAA
         data_a
     #else
@@ -238,25 +194,6 @@ def parse_case2(lines, macro):
 def parse_case4(lines, macro):
     length = len(lines)
 
-'''
-        if "#if" in lines[i]:
-            templist = lines[i].lstrip(' ').rstrip('\n').split(' ')
-            if templist[1] == words:
-                print('[' + str(i) + ']: ' + lines[i])
-                print(templist)
-                #for j in range(i+1, length):
-                #    if "#elif" in lines[j]:
-                #        print('[' + str(j) + ']: ' + lines[j])
-                #    if "#endif" in lines[j]:
-                #        print('[' + str(j) + ']: ' + lines[j])
-                #        break
-        if "#elif" in lines[i]:
-                print('[' + str(i) + ']: ' + lines[i])
-        if "#else" in lines[i]:
-                print('[' + str(i) + ']: ' + lines[i])
-        if "#endif" in lines[i]:
-                print('[' + str(i) + ']: ' + lines[i])
-'''
 '''
 '''
 def deal_file(path):
@@ -268,7 +205,7 @@ def deal_file(path):
                 data = ''
                 with open(os.path.join(root, f_name), 'r', encoding='utf-8', errors='ignore') as f:
                     lines = f.readlines()
-                    parse_case1(lines)
+                    parse_ifend_(lines)
 '''
 '''
 def remove_headtail_blockline(path):
