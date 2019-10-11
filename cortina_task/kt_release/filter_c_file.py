@@ -101,7 +101,7 @@ def get_ifend_2ndIndex(lines, ifdef_all, endif_all):
     endif_2nd = [v for v in endif_tmp if v not in endif_3rd]
 #    print(len(ifdef_2nd), ifdef_2nd)
 #    print(len(endif_2nd), endif_2nd)
-    return (ifdef_2nd, endif_2nd)
+    return (ifdef_2nd, endif_2nd, ifdef_3rd, endif_3rd)
 
 def get_ifend_3rdIndex(lines, ifdef_all, endif_all):
     endif_3rd = []
@@ -127,11 +127,11 @@ def ifend_find_3level(lines, macro):
     index = 0
     (ifdef_all, endif_all) = get_ifend_allIndex(lines)
     (ifdef_1st, endif_1st) = get_ifend_1stIndex(lines, ifdef_all, endif_all)
-    (ifdef_2nd, endif_2nd) = get_ifend_2ndIndex(lines, ifdef_all, endif_all)
-    (ifdef_3rd, endif_3rd) = get_ifend_3rdIndex(lines, ifdef_all, endif_all)
-    # check The 1st level #ifdef
-    # check The 2nd level #ifdef
-    # check The 3rd level #ifdef
+    (ifdef_2nd, endif_2nd, ifdef_3rd, endif_3rd) = get_ifend_2ndIndex(lines, ifdef_all, endif_all)
+#    (ifdef_3rd, endif_3rd) = get_ifend_3rdIndex(lines, ifdef_all, endif_all)
+#    check The 1st level #ifdef
+#    check The 2nd level #ifdef
+#    check The 3rd level #ifdef
     for (ifdef, endif) in [(ifdef_1st, endif_1st),(ifdef_2nd, endif_2nd),(ifdef_3rd, endif_3rd)]:
 #        print(ifdef, endif)
         for i in range(len(ifdef)):
@@ -153,27 +153,50 @@ def ifend_find_3level(lines, macro):
                 pass
     return macro_array
 
-def ifend_find_iter(lines, macro):
-    data_a = ''
-    macro_array= []
+def get_data_once(lines, macro):
+    data_array = []
+    macro_array = []
     macro_str = ['', '', '', '', '', '', '', '', '','']
     index = 0
+    (ifdef_all, endif_all) = get_ifend_allIndex(lines)
+    (ifdef_1st, endif_1st) = get_ifend_1stIndex(lines, ifdef_all, endif_all)
+    for i in range(len(ifdef_1st)):
+        if macro == (lines[ifdef_1st[i]].strip(' ').strip('\n').split(' '))[1]:
+            for i in range(ifdef_1st[i], endif_1st[i]+1):
+                macro_str[index] += lines[i]
+            macro_array.append(macro_str[index])
+            if index < len(macro_str):
+                index += 1
+            else:
+                print("ERROR: macro_str[] list index out of range!")
+                break
+        else:
+            for i in range(ifdef_1st[i]+1, endif_1st[i]):
+                data_array.append(lines[i])
+    return (macro_array, data_array)
+
+glb_macro_array = []
+def ifend_find_iter(lines, macro):
     ifdef_cnt = 0
     endif_cnt = 0
+    global glb_macro_array
     for line in lines:
         if "#ifdef " in line:
             ifdef_cnt += 1
         if "#endif" in line:
             endif_cnt += 1
+#    print(ifdef_cnt, endif_cnt)
     if ifdef_cnt == endif_cnt == 0:
-        return macro_array
+        return glb_macro_array
+    (macro_array, data_a) = get_data_once(lines, macro)
+#    print(macro_array)
+    glb_macro_array.extend(macro_array)
     return ifend_find_iter(data_a, macro)
-
 
 def ifend_remove(lines, macro):
     data = ''
-    macro_array = ifend_find_3level(lines, macro)
-    #macro_array = ifend_find_iter(lines, macro)
+#    macro_array = ifend_find_3level(lines, macro)
+    macro_array = ifend_find_iter(lines, macro)
     print(macro_array)
     for line in lines:
         data += line

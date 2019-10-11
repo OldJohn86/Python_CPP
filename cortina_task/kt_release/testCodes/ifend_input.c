@@ -7,7 +7,6 @@ bbbbbbbbbbb
 #ifdef AAAA
 ccccccccccc
 #endif
-
 #ifdef AAAA
 iiiiiiiiiii
 #endif
@@ -22,15 +21,16 @@ eeeeeeeeeee
 aaaaaaaaaaa
 #ifdef AAAA
 bbbbbbbbbbb
-
+#ifdef CCCC
+asdsdfsdfd
+#endif
+werewfrewfregfr
 #ifdef aaaa
 ccccccccccc
 #endif
-
 #ifdef aaaa
 kkkkkkkkkkk
 #endif
-
 ddddddddddd
 #endif
 eeeeeeeeeee
@@ -40,6 +40,9 @@ Q!@#E!@#@!#
 [2]
 #ifdef AAAA
 00000000000
+#ifdef CCCC
+dfhgfhgjhg
+#endif
 #endif
 
 [3]
