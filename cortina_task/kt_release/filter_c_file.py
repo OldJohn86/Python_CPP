@@ -10,6 +10,7 @@ Date:   2019-10-10
 import re
 import os
 from os import walk
+import sys
 
 keywords = [
     '#if ',
@@ -48,17 +49,9 @@ def coding_verify(f_name):
         data
     #endif
 '''
-def ifend_parse(lines):
-#    print(lines)
+def get_ifend_allIndex(lines):
     ifdef_all = []
     endif_all = []
-    endif_1st = []
-    ifdef_1st = []
-    endif_2nd = []
-    ifdef_2nd = []
-    endif_3rd = []
-    ifdef_3rd = []
-#    print(len(lines))
     for i in range(len(lines)):
         if "#ifdef " in lines[i]:
             ifdef_all.append(i)
@@ -68,7 +61,11 @@ def ifend_parse(lines):
 #            print("["+str(i)+":]" + lines[i])
 #    print(len(ifdef_all), ifdef_all)
 #    print(len(endif_all), endif_all)
+    return (ifdef_all, endif_all)
 
+def get_ifend_1stIndex(lines, ifdef_all, endif_all):
+    ifdef_1st = []
+    endif_1st = []
     ifdef_1st.append(ifdef_all[0])
     for i in range(len(endif_all)):
 #        print(i, endif_all[i])
@@ -87,21 +84,30 @@ def ifend_parse(lines):
                 break
 #    print(len(ifdef_1st), ifdef_1st)
 #    print(len(endif_1st), endif_1st)
+    return (ifdef_1st, endif_1st)
 
+def get_ifend_3rdIndex(lines, ifdef_all, endif_all):
+    endif_3rd = []
+    ifdef_3rd = []
     for i in range(len(endif_all)-2):
 #        print(i, endif_all[i])
         if endif_all[i] > ifdef_all[i] and endif_all[i] > ifdef_all[i+1] and endif_all[i] > ifdef_all[i+2]:
             endif_3rd.append(endif_all[i])
             ifdef_3rd.append(ifdef_all[i+2])
+#    print(len(ifdef_3rd), ifdef_3rd)
+#    print(len(endif_3rd), endif_3rd)
+    return (ifdef_3rd, endif_3rd)
 
+def get_ifend_2ndIndex(lines, ifdef_all, endif_all):
+    endif_2nd = []
+    ifdef_2nd = []
+    (ifdef_1st, endif_1st) = get_ifend_1stIndex(lines, ifdef_all, endif_all)
+    (ifdef_3rd, endif_3rd) = get_ifend_3rdIndex(lines, ifdef_all, endif_all)
     ifdef_2nd = [v for v in ifdef_all if v not in ifdef_1st and v not in ifdef_3rd]
     endif_2nd = [v for v in endif_all if v not in endif_1st and v not in endif_3rd]
 #    print(len(ifdef_2nd), ifdef_2nd)
 #    print(len(endif_2nd), endif_2nd)
-
-#    print(len(ifdef_3rd), ifdef_3rd)
-#    print(len(endif_3rd), endif_3rd)
-    return (ifdef_1st, endif_1st, ifdef_2nd, endif_2nd, ifdef_3rd, endif_3rd)
+    return (ifdef_2nd, endif_2nd)
 
 def ifend_keep(lines, macro):
     data = ''
@@ -109,13 +115,14 @@ def ifend_keep(lines, macro):
         data += line
     return data
 
-def ifend_find_macro(lines, macro):
-#    print(lines)
+def ifend_find_3level(lines, macro):
     macro_array = []
     macro_str = ['', '', '', '', '', '', '', '', '','']
-    (ifdef_1st, endif_1st, ifdef_2nd, endif_2nd, ifdef_3rd, endif_3rd) = ifend_parse(lines)
     index = 0
-
+    (ifdef_all, endif_all) = get_ifend_allIndex(lines)
+    (ifdef_1st, endif_1st) = get_ifend_1stIndex(lines, ifdef_all, endif_all)
+    (ifdef_2nd, endif_2nd) = get_ifend_2ndIndex(lines, ifdef_all, endif_all)
+    (ifdef_3rd, endif_3rd) = get_ifend_3rdIndex(lines, ifdef_all, endif_all)
     # check The 1st level #ifdef
     # check The 2nd level #ifdef
     # check The 3rd level #ifdef
@@ -138,13 +145,29 @@ def ifend_find_macro(lines, macro):
 #                print(lines[ifdef[i]].strip(' ').strip('\n').split(' '))
 #                print(i, ifdef[i]+1, endif[i]+1)
                 pass
-    return (macro_array)
+    return macro_array
+
+def ifend_find_iter(lines, macro):
+    data_a = ''
+    macro_array= []
+    macro_str = ['', '', '', '', '', '', '', '', '','']
+    index = 0
+    ifdef_cnt = 0
+    endif_cnt = 0
+    for line in lines:
+        if "#ifdef " in line:
+            ifdef_cnt += 1
+        if "#endif" in line:
+            endif_cnt += 1
+    if ifdef_cnt == endif_cnt == 0:
+        return macro_array
+    return ifend_find_iter(data_a, macro)
+
 
 def ifend_remove(lines, macro):
-    # print(lines)
     data = ''
-    macro_array = []
-    macro_array = ifend_find_macro(lines, macro)
+    macro_array = ifend_find_3level(lines, macro)
+    #macro_array = ifend_find_iter(lines, macro)
     print(macro_array)
     for line in lines:
         data += line
@@ -159,7 +182,6 @@ def ifend_test(f_name):
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
         data = ifend_remove(lines, 'aaaa')
-        # print(data)
     with open(f_name.replace('input','output'), 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
 
