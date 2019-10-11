@@ -1,11 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
 '''
 Author: pengpeng.chen@cortina-access.com
 Date:   2019-10-10
 '''
-
 
 import re
 import os
@@ -86,6 +84,7 @@ def get_ifend_1stIndex(lines, ifdef_all, endif_all):
 #    print(len(endif_1st), endif_1st)
     return (ifdef_1st, endif_1st)
 
+'''
 def get_ifend_2ndIndex(lines, ifdef_all, endif_all):
     endif_2nd = []
     ifdef_2nd = []
@@ -114,12 +113,6 @@ def get_ifend_3rdIndex(lines, ifdef_all, endif_all):
 #    print(len(ifdef_3rd), ifdef_3rd)
 #    print(len(endif_3rd), endif_3rd)
     return (ifdef_3rd, endif_3rd)
-
-def ifend_keep(lines, macro):
-    data = ''
-    for line in lines:
-        data += line
-    return data
 
 def ifend_find_3level(lines, macro):
     macro_array = []
@@ -152,6 +145,7 @@ def ifend_find_3level(lines, macro):
 #                print(i, ifdef[i]+1, endif[i]+1)
                 pass
     return macro_array
+'''
 
 def get_data_once(lines, macro):
     data_array = []
@@ -205,12 +199,18 @@ def ifend_remove(lines, macro):
             data = data.replace(macro_array[i], '')
     return data
 
+def ifend_keep(lines, macro):
+    data = ''
+    for line in lines:
+        data += line
+    return data
+
 def ifend_test(f_name):
     print(f_name)
     data = ''
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
-        data = ifend_remove(lines, 'aaaa')
+        data = ifend_remove(lines, 'DDDD')
     with open(f_name.replace('input','output'), 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
 
@@ -245,79 +245,7 @@ def parse_case3(lines, macro):
 def parse_case4(lines, macro):
     length = len(lines)
 
-'''
-'''
-def deal_file(path):
-    for root, dirs, files in os.walk(path):
-        for f_name in files:
-            if f_name.endswith('.c') or f_name.endswith('.h'):
-                ff_name = os.path.join(root, f_name)
-                print(ff_name)
-                data = ''
-                with open(os.path.join(root, f_name), 'r', encoding='utf-8', errors='ignore') as f:
-                    lines = f.readlines()
-                    parse_ifend_(lines)
-'''
-'''
-def remove_headtail_blockline(path):
-    for root, dirs, files in os.walk(path):
-        for f_name in files:
-            if f_name.endswith('.c') or f_name.endswith('.h'):
-                ff_name = os.path.join(root, f_name)
-                print(ff_name)
-                data = ''
-                with open(os.path.join(root, f_name), 'r', encoding='utf-8', errors='ignore') as f:
-                    lines = f.readlines()
-                    #for line in lines:
-                    #    print(line)
-                    length = len(lines)
-                    for i in range(length):
-                        if (i >= 0 and i < 5) or (i >= length-5 and i < length):
-                            if lines[i] == '\n':
-                                print(i)
-                                pass
-                            else:
-                                data += lines[i]
-                        else:
-                            data += lines[i]
-                with open(os.path.join(root, f_name), 'w', encoding='utf-8', errors='ignore') as f:
-                    f.writelines(data)
-'''
-                    #    lines.remove(lines[i])
-                    #print(lines)
-                    #print(lines)
-                    #for i in range(0, len(lines)):
-                    #    if lines[i] == '\n':
-                    #        lines.remove(lines[i])
-                    #print(lines)
-                    #print(len(lines))
-                    #for line in lines:
-                        #print(line)
-                    #    data += line
-                    #print(data)
-
-                #parse_ifdef(lines)
-
-#                length = len(lines)
-#                print(length)
-#                result = []
-#                i = 0
-#                while i < length:
-#                    for words in keywords:
-#                        if words in lines[i]:
-#                            print('[' + str(i) + ']: ' + lines[i])
-#                    i += 1
-                    #line = line.replace('\n', '').replace('\t', '').replace(' ', '').replace('\r', '')
-                    #result.append(line)
-                #f = open (path+filename.replace('.c', '.bak.c').replace ('.h', '.bak.h'), 'w')
-                #for i in result:  # 写文件
-                #    f.write (i)
-                #f.close ()
-'''
-
 if __name__ == '__main__':
     path='./testCodes/'
     
- #   remove_headtail_blockline(path) 
- #   deal_file(path)
     ifend_test("./testCodes/ifend_input.c")
