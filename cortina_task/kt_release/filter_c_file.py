@@ -84,69 +84,6 @@ def get_ifend_1stIndex(lines, ifdef_all, endif_all):
 #    print(len(endif_1st), endif_1st)
     return (ifdef_1st, endif_1st)
 
-'''
-def get_ifend_2ndIndex(lines, ifdef_all, endif_all):
-    endif_2nd = []
-    ifdef_2nd = []
-    ifdef_tmp = []
-    endif_tmp = []
-    for i in range(len(endif_all)-1):
-#        print(i, endif_all[i])
-        if endif_all[i] > ifdef_all[i] and endif_all[i] > ifdef_all[i+1]:
-            endif_tmp.append(endif_all[i])
-            ifdef_tmp.append(ifdef_all[i+1])
-    (ifdef_3rd, endif_3rd) = get_ifend_3rdIndex(lines, ifdef_all, endif_all)
-    ifdef_2nd = [v for v in ifdef_tmp if v not in ifdef_3rd]
-    endif_2nd = [v for v in endif_tmp if v not in endif_3rd]
-#    print(len(ifdef_2nd), ifdef_2nd)
-#    print(len(endif_2nd), endif_2nd)
-    return (ifdef_2nd, endif_2nd, ifdef_3rd, endif_3rd)
-
-def get_ifend_3rdIndex(lines, ifdef_all, endif_all):
-    endif_3rd = []
-    ifdef_3rd = []
-    for i in range(len(endif_all)-2):
-#        print(i, endif_all[i])
-        if endif_all[i] > ifdef_all[i] and endif_all[i] > ifdef_all[i+1] and endif_all[i] > ifdef_all[i+2]:
-            endif_3rd.append(endif_all[i])
-            ifdef_3rd.append(ifdef_all[i+2])
-#    print(len(ifdef_3rd), ifdef_3rd)
-#    print(len(endif_3rd), endif_3rd)
-    return (ifdef_3rd, endif_3rd)
-
-def ifend_find_3level(lines, macro):
-    macro_array = []
-    macro_str = ['', '', '', '', '', '', '', '', '','']
-    index = 0
-    (ifdef_all, endif_all) = get_ifend_allIndex(lines)
-    (ifdef_1st, endif_1st) = get_ifend_1stIndex(lines, ifdef_all, endif_all)
-    (ifdef_2nd, endif_2nd, ifdef_3rd, endif_3rd) = get_ifend_2ndIndex(lines, ifdef_all, endif_all)
-#    (ifdef_3rd, endif_3rd) = get_ifend_3rdIndex(lines, ifdef_all, endif_all)
-#    check The 1st level #ifdef
-#    check The 2nd level #ifdef
-#    check The 3rd level #ifdef
-    for (ifdef, endif) in [(ifdef_1st, endif_1st),(ifdef_2nd, endif_2nd),(ifdef_3rd, endif_3rd)]:
-#        print(ifdef, endif)
-        for i in range(len(ifdef)):
-#            print(lines[ifdef[i]].strip(' ').strip('\n').split(' '))
-            if macro == (lines[ifdef[i]].strip(' ').strip('\n').split(' '))[1]:
-#                print(i, ifdef[i]+1, endif[i]+1)
-                for i in range(ifdef[i], endif[i]+1):
-                    macro_str[index] += lines[i]
-#                print(macro_str[index])
-                macro_array.append(macro_str[index])
-                if index < len(macro_str):
-                    index += 1
-                else:
-                    print("ERROR: macro_str[] list index out of range!")
-                    break
-            else:
-#                print(lines[ifdef[i]].strip(' ').strip('\n').split(' '))
-#                print(i, ifdef[i]+1, endif[i]+1)
-                pass
-    return macro_array
-'''
-
 def get_data_once(lines, macro):
     data_array = []
     macro_array = []
@@ -189,7 +126,6 @@ def ifend_find_iter(lines, macro):
 
 def ifend_remove(lines, macro):
     data = ''
-#    macro_array = ifend_find_3level(lines, macro)
     macro_array = ifend_find_iter(lines, macro)
     print(macro_array)
     for line in lines:
