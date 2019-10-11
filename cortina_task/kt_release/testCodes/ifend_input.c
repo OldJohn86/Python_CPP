@@ -7,6 +7,10 @@ bbbbbbbbbbb
 #ifdef AAAA
 ccccccccccc
 #endif
+
+#ifdef AAAA
+iiiiiiiiiii
+#endif
 ddddddddddd
 #endif
 eeeeeeeeeee
@@ -18,9 +22,15 @@ eeeeeeeeeee
 aaaaaaaaaaa
 #ifdef AAAA
 bbbbbbbbbbb
+
 #ifdef aaaa
 ccccccccccc
 #endif
+
+#ifdef aaaa
+kkkkkkkkkkk
+#endif
+
 ddddddddddd
 #endif
 eeeeeeeeeee
