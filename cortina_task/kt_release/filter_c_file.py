@@ -4,7 +4,6 @@
 Author: pengpeng.chen@cortina-access.com
 Date:   2019-10-10
 '''
-
 import re
 import os
 from os import walk
@@ -87,7 +86,8 @@ def get_ifend_1stIndex(lines, ifdef_all, endif_all):
 def get_data_once(lines, macro):
     data_array = []
     macro_array = []
-    macro_str = ['', '', '', '', '', '', '', '', '','']
+    macro_str = ['' for i in range(1000)]
+    print(len(macro_str))
     index = 0
     (ifdef_all, endif_all) = get_ifend_allIndex(lines)
     (ifdef_1st, endif_1st) = get_ifend_1stIndex(lines, ifdef_all, endif_all)
