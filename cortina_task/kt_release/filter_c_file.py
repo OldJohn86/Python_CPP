@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 '''
 Author: pengpeng.chen@cortina-access.com
@@ -137,8 +137,14 @@ def ifend_remove(lines, macro):
 
 def ifend_keep(lines, macro):
     data = ''
+    macro_array = ifend_find_iter(lines, macro)
+    print(macro_array)
     for line in lines:
         data += line
+    for i in range(len(macro_array)):
+        if data.find(macro_array[i]) != -1:
+#            print(macro_array[i].replace("#ifdef "+ macro, '')[:-7])
+            data = data.replace(macro_array[i], macro_array[i].replace("#ifdef "+macro, '')[:-7])
     return data
 
 def ifend_test(f_name):
@@ -146,7 +152,8 @@ def ifend_test(f_name):
     data = ''
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
-        data = ifend_remove(lines, 'DDDD')
+#        data = ifend_remove(lines, 'DDDD')
+        data = ifend_keep(lines, 'aaaa')
     with open(f_name.replace('input','output'), 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
 
