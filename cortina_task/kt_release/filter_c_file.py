@@ -39,7 +39,7 @@ def coding_verify(f_name):
                     print(str(line))
 
 '''
-[case 1]:
+[case1]:
 data_a =
 [
     #ifdef AAAA
@@ -47,7 +47,7 @@ data_a =
     #endif
 ]
 '''
-def case1_parse(lines):
+def ifend_parse(lines):
 #    print(lines)
     ifdef_all = []
     endif_all = []
@@ -102,13 +102,13 @@ def case1_parse(lines):
     print(len(endif_3rd), endif_3rd)
     return (ifdef_1st, endif_1st, ifdef_2nd, endif_2nd, ifdef_3rd, endif_3rd)
 
-def case1_keep(lines, macro):
+def ifend_keep(lines, macro):
     data = ''
     for line in lines:
         data += line
     return data
 
-def find_macro(lines, macro):
+def ifend_find_macro(lines, macro):
 #    print(lines)
     macro_array = []
     macro_str = ['', '', '', '', '', '', '', '', '','']
@@ -118,7 +118,7 @@ def find_macro(lines, macro):
 #    endif_2nd = []
 #    ifdef_3rd = []
 #    endif_3rd = []
-    (ifdef_1st, endif_1st, ifdef_2nd, endif_2nd, ifdef_3rd, endif_3rd) = case1_parse(lines)
+    (ifdef_1st, endif_1st, ifdef_2nd, endif_2nd, ifdef_3rd, endif_3rd) = ifend_parse(lines)
 #    print(len(ifdef_1st), ifdef_1st)
 #    print(len(endif_1st), endif_1st)
 #    print(len(ifdef_2nd), ifdef_2nd)
@@ -186,11 +186,11 @@ def find_macro(lines, macro):
              pass
     return (macro_array)
 
-def case1_remove(lines, macro):
+def ifend_remove(lines, macro):
     # print(lines)
     data = ''
     macro_array = []
-    macro_array = find_macro(lines, macro)
+    macro_array = ifend_find_macro(lines, macro)
     print(macro_array)
     for line in lines:
         data += line
@@ -199,14 +199,14 @@ def case1_remove(lines, macro):
             data = data.replace(macro_array[i], '')
     return data
 
-def case1_test(f_name):
+def ifend_test(f_name):
     print(f_name)
     data = ''
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
-        data = case1_remove(lines, 'aaaa')
+        data = ifend_remove(lines, 'aaaa')
         # print(data)
-    with open(f_name.replace('.c','.bak.c'), 'w', encoding='utf-8', errors='ignore') as f:
+    with open(f_name.replace('input','output'), 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
 
 '''
@@ -332,4 +332,4 @@ if __name__ == '__main__':
     
  #   remove_headtail_blockline(path) 
  #   deal_file(path)
-    case1_test("./testCodes/demo_case1.c")
+    ifend_test("./testCodes/ifend_input.c")

@@ -1,16 +1,44 @@
 @#@!@#!@#!@
+[0]
+#ifdef CCCC
+aaaaaaaaaaa
+#ifdef aaaa
+bbbbbbbbbbb
+#ifdef AAAA
+ccccccccccc
+#endif
+ddddddddddd
+#endif
+eeeeeeeeeee
+#endif
+
+@#@!@#!@#!@
 [1]
+#ifdef DDDD
+aaaaaaaaaaa
+#ifdef AAAA
+bbbbbbbbbbb
+#ifdef aaaa
+ccccccccccc
+#endif
+ddddddddddd
+#endif
+eeeeeeeeeee
+#endif
+
+Q!@#E!@#@!#
+[2]
 #ifdef AAAA
 00000000000
 #endif
 
-[2]
+[3]
 @#@!@#!@#!@
 #ifdef aaaa
 11111111111
 #endif
 
-[3]
+[4]
 @#@!@#!@#!@
 #ifdef AAAA
 22222222222
@@ -20,7 +48,7 @@
 44444444444
 #endif
 
-[4]
+[5]
 @!E#!@#@!@#
 #ifdef aaaa
 55555555555
@@ -30,7 +58,7 @@
 77777777777
 #endif
 
-[5]
+[6]
 @!#!@#@!#@!
 #ifdef BBBB
 88888888888
@@ -42,19 +70,5 @@ xxxxxxxxxxx
 yyyyyyyyyyy
 #endif
 zzzzzzzzzzz
-#endif
-
-[6]
-Q!@#E!@#@!#
-#ifdef CCCC
-aaaaaaaaaaa
-#ifdef AAAA
-bbbbbbbbbbb
-#ifdef aaaa
-ccccccccccc
-#endif
-ddddddddddd
-#endif
-eeeeeeeeeee
 #endif
 Q!@#E!@#@!#
