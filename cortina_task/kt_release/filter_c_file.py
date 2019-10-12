@@ -87,7 +87,7 @@ def parse_outer_ifend(lines, macro):
     data_a = ''
     data_array = []
     macro_array = []
-#    macro_str = ['' for i in range(1000)]
+    macro_str = ['' for i in range(1000)]
     lines_array = [list('') for i in range(1000)]
 #    print(len(macro_str))
     index = 0
@@ -96,31 +96,25 @@ def parse_outer_ifend(lines, macro):
     for i in range(len(ifdef_1st)):
         if macro == (lines[ifdef_1st[i]].strip(' ').strip('\n').split(' '))[1]:
             for i in range(ifdef_1st[i], endif_1st[i]+1):
-#                macro_str[index] += lines[i]
                 lines_array[index].append(lines[i])
             parse_str = parse_else_from_ifend(lines_array[index])
             print("begin******************")
-            print(parse_str)
-            for i in range(len(parse_str)):
-                data_a += parse_str[i]
-            print(data_a)
+#            print(parse_str)
+#            for i in range(len(parse_str)):
+#                macro_str[index] += parse_str[i]
+#            print(macro_str[index])
             print("end******************")
-#           macro_array.append(macro_str[index])
-#            if index < len(macro_str):
-#                index += 1
-#            else:
-#                print("ERROR: macro_str[] list index out of range!")
-#                break
-            macro_array.append(data_a)
-            if index < len(lines_array):
+#            macro_array.append(macro_str[index])
+            macro_array.append(parse_str)
+            if index < len(macro_str):
                 index += 1
             else:
-                print("ERROR: lines_array[] index out of range!")
+                print("ERROR: macro_str[] list index out of range!")
                 break
         else:
             for i in range(ifdef_1st[i]+1, endif_1st[i]):
                 data_array.append(lines[i])
-    print(macro_array)
+#    print(macro_array)
     return (macro_array, data_array)
 
 glb_macro_array = []
@@ -143,21 +137,31 @@ def ifend_find_iter(lines, macro):
 
 def ifend_remove(lines, macro):
     data = ''
-    macro_array = ifend_find_iter(lines, macro)
-#    print(macro_array)
     for line in lines:
         data += line
+    macro_array = ifend_find_iter(lines, macro)
+    print(macro_array)
+    print(len(macro_array))
+    old_data = ['' for i in range(len(macro_array))]
+    new_data = ['' for i in range(len(macro_array))]
     for i in range(len(macro_array)):
-        if data.find(macro_array[i]) != -1:
-            data = data.replace(macro_array[i], '')
+        print(len(macro_array[i]))
+        for j in range(len(macro_array[i])):
+            old_data[i] += macro_array[i][j]# A+B
+        new_data[i] += macro_array[i][-2]# B
+        print(old_data[i])
+        print("+++++++++++")
+        print(new_data[i])
+        if data.find(old_data[i]) != -1:
+            data = data.replace(old_data[i], new_data[i])
     return data
 
 def ifend_keep(lines, macro):
     data = ''
-    macro_array = ifend_find_iter(lines, macro)
-#    print(macro_array)
     for line in lines:
         data += line
+    macro_array = ifend_find_iter(lines, macro)
+#    print(macro_array)
     for i in range(len(macro_array)):
         if data.find(macro_array[i]) != -1:
 #            print(macro_array[i].replace("#ifdef "+ macro, '')[:-7])
@@ -200,7 +204,7 @@ def parse_else_from_ifend(lines):
             data_a += lines[i]
     else:
         for index in range(len(else_index)):
-            print(else_index[index])
+#            print(else_index[index])
             if_cnt = 0
             end_cnt = 0
             for i in range(1, else_index[index]):
@@ -209,8 +213,8 @@ def parse_else_from_ifend(lines):
                 if "#endif" in lines[i]:
                     end_cnt += 1
             if if_cnt == end_cnt:
-                print(if_cnt, end_cnt)
-                print(lines)
+#                print(if_cnt, end_cnt)
+#                print(lines)
                 for i in range(1, else_index[index]):
                     data_a += lines[i]
                 for i in range(else_index[index]+1, len(lines)-1):
