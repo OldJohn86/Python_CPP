@@ -54,12 +54,12 @@ def get_ifend_allIndex(lines):
     for i in range(len(lines)):
         if lines[i].strip(' ').startswith('#if'):
             if_allIndex.append(i)
-            print("["+str(i)+":]" + lines[i])
+#            print("["+str(i)+":]" + lines[i])
         if lines[i].strip(' ').startswith('#endif'):
             endif_allIndex.append(i)
-            print("["+str(i)+":]" + lines[i])
-    print(len(if_allIndex), if_allIndex)
-    print(len(endif_allIndex), endif_allIndex)
+#            print("["+str(i)+":]" + lines[i])
+#    print(len(if_allIndex), if_allIndex)
+#    print(len(endif_allIndex), endif_allIndex)
     return (if_allIndex, endif_allIndex)
 
 def get_ifend_outerIndex(lines, if_allIndex, endif_allIndex):
@@ -81,8 +81,8 @@ def get_ifend_outerIndex(lines, if_allIndex, endif_allIndex):
             if if_index > endif_index:
                 if_outer.append(if_index)
                 break
-    print(len(if_outer), if_outer)
-    print(len(endif_outer), endif_outer)
+#    print(len(if_outer), if_outer)
+#    print(len(endif_outer), endif_outer)
     return (if_outer, endif_outer)
 
 def parse_outer_ifend(lines, macro):
@@ -98,9 +98,8 @@ def parse_outer_ifend(lines, macro):
         parse_outer = parse_else_from_ifend(outer_macro[i])
 #        print(parse_outer)
         ifLine_list = lines[if_outer[i]].lstrip(' ').strip('\n').split(' ')
-        print(ifLine_list)
+#        print(ifLine_list)
         if '#ifdef' == ifLine_list[0]:
-            print(ifLine_list)
             if macro == ifLine_list[1]:# matched
                 this_array.append(parse_outer)
             else:# unmatched
