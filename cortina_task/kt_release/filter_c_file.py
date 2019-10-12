@@ -99,21 +99,11 @@ def parse_outer_ifend(lines, macro):
 #        print(parse_outer)
         ifLine_list = lines[if_outer[i]].lstrip(' ').strip('\n').split(' ')
 #        print(ifLine_list)
-        if '#ifdef' == ifLine_list[0]:
-            if macro == ifLine_list[1]:# matched
-                this_array.append(parse_outer)
-            else:# unmatched
-                next_ab += parse_outer[1]
-                next_ab += parse_outer[3]
-        elif '#ifndef' == ifLine_list[0]:
-            print("#ifndef - Line was found!!!")
-        elif '#if' == ifLine_list[0]:
-            if '0' == ifLine_list[1]:
-                print("#if 0 - Line was found!!!")
-            if '1' == ifLine_list[1]:
-                print("#if 1 - Line was found!!!")
-        else:
-            pass
+        if macro == ifLine_list[1]:# matched
+            this_array.append(parse_outer)
+        else:# unmatched
+            next_ab += parse_outer[1]
+            next_ab += parse_outer[3]
     next_lines = next_ab.split('\n')
 #    print(len(next_lines), next_lines)
     for i in range(len(next_lines)):
@@ -128,7 +118,7 @@ def iter_parse_ifend(lines, macro):
     endif_cnt = 0
     global glb_macro_array
     for line in lines:
-        if line.lstrip(' ').startswith('#ifdef '):
+        if line.lstrip(' ').startswith('#if'):
             ifdef_cnt += 1
         if line.lstrip(' ').startswith('#endif'):
             endif_cnt += 1
@@ -145,8 +135,8 @@ def ifdef_deal(lines, macro, opt):
     for line in lines:
         data += line
     macro_array = iter_parse_ifend(lines, macro)
-#    print(macro_array)
-#    print(len(macro_array))
+    print(macro_array)
+    print(len(macro_array))
     old_data = ['' for i in range(len(macro_array))]
     new_data = ['' for i in range(len(macro_array))]
     for i in range(len(macro_array)):
@@ -154,9 +144,21 @@ def ifdef_deal(lines, macro, opt):
         for j in range(len(macro_array[i])):
             old_data[i] += macro_array[i][j]# A+B
         if opt == "remove":
-            new_data[i] += macro_array[i][3]# B: index is 3 or -2
+            if macro_array[i][0].lstrip(' ').startswith("#ifdef "):
+#                print(macro_array[i][0])
+                new_data[i] += macro_array[i][3]# B: index is 3 or -2
+            elif macro_array[i][0].lstrip(' ').startswith("#ifndef "):
+                print(macro_array[i][0])
+                new_data[i] += macro_array[i][1]# A: index is 1
         elif opt == "keep":
-            new_data[i] += macro_array[i][1]# A: index is 1
+            if macro_array[i][0].lstrip(' ').startswith("#ifdef "):
+#                print(macro_array[i][0])
+                new_data[i] += macro_array[i][1]# A: index is 1
+            elif macro_array[i][0].lstrip(' ').startswith("#ifndef "):
+                print(macro_array[i][0])
+                new_data[i] += macro_array[i][3]# B: index is 3 or -2
+        else:
+            print("which input opt is neither remove nor keep!!!")
         if data.find(old_data[i]) != -1:
             data = data.replace(old_data[i], new_data[i])
     return data
