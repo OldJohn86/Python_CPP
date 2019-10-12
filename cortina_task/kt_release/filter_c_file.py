@@ -48,6 +48,12 @@ def coding_verify(f_name):
         data
     #endif
 '''
+'''
+[case3]:
+    #ifndef AAAA
+        data_a
+    #endif
+'''
 def get_ifend_allIndex(lines):
     if_allIndex = []
     endif_allIndex = []
@@ -171,6 +177,14 @@ def ifdef_deal(lines, macro, opt):
         data_b
     #endif
 '''
+'''
+[case4]:
+    #ifndef AAAA
+        data_a
+    #else
+        data_b
+    #endif
+'''
 def parse_else_from_ifend(lines):
     parse_str = ['' for i in range(5)]
     data_a = ''
@@ -210,25 +224,6 @@ def parse_else_from_ifend(lines):
     parse_str[4] += lines[-1]
     return parse_str
 
-'''
-[case3]:
-    #ifndef AAAA
-        data_a
-    #endif
-'''
-def parse_case3(lines, macro):
-    length = len(lines)
-
-'''
-[case4]:
-    #ifndef AAAA
-        data_a
-    #else
-        data_b
-    #endif
-'''
-def parse_case4(lines, macro):
-    length = len(lines)
 
 def demo_test(f_name):
     print(f_name)
