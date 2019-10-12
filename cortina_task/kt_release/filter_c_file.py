@@ -100,7 +100,6 @@ def parse_outer_ifdef(lines, macro):
         else:# unmatched
             next_ab += parse_outer[1]
             next_ab += parse_outer[3]
-#    print(next_ab)
     next_lines = next_ab.split('\n')
 #    print(len(next_lines), next_lines)
     for i in range(len(next_lines)):
@@ -203,7 +202,6 @@ def parse_else_from_ifdef(lines):
     parse_str[2] += data_else
     parse_str[3] += data_b
     parse_str[4] += lines[-1]
-#    print(parse_str)
     return parse_str
 
 '''
