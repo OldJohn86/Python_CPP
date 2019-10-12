@@ -95,13 +95,26 @@ def parse_outer_ifend(lines, macro):
     for i in range(len(if_outer)):
         for index in range(if_outer[i], endif_outer[i]+1):
             outer_macro[i].append(lines[index])
-        parse_outer = parse_else_from_ifdef(outer_macro[i])
+        parse_outer = parse_else_from_ifend(outer_macro[i])
 #        print(parse_outer)
-        if macro == (lines[if_outer[i]].strip(' ').strip('\n').split(' '))[1]:# matched
-            this_array.append(parse_outer)
-        else:# unmatched
-            next_ab += parse_outer[1]
-            next_ab += parse_outer[3]
+        ifLine_list = lines[if_outer[i]].lstrip(' ').strip('\n').split(' ')
+        print(ifLine_list)
+        if '#ifdef' == ifLine_list[0]:
+            print(ifLine_list)
+            if macro == ifLine_list[1]:# matched
+                this_array.append(parse_outer)
+            else:# unmatched
+                next_ab += parse_outer[1]
+                next_ab += parse_outer[3]
+        elif '#ifndef' == ifLine_list[0]:
+            print("#ifndef - Line was found!!!")
+        elif '#if' == ifLine_list[0]:
+            if '0' == ifLine_list[1]:
+                print("#if 0 - Line was found!!!")
+            if '1' == ifLine_list[1]:
+                print("#if 1 - Line was found!!!")
+        else:
+            pass
     next_lines = next_ab.split('\n')
 #    print(len(next_lines), next_lines)
     for i in range(len(next_lines)):
@@ -111,28 +124,28 @@ def parse_outer_ifend(lines, macro):
     return (this_array, next_array)
 
 glb_macro_array = []
-def ifdef_find_iter(lines, macro):
+def iter_parse_ifend(lines, macro):
     ifdef_cnt = 0
     endif_cnt = 0
     global glb_macro_array
     for line in lines:
-        if line.strip(' ').startswith('#ifdef '):
+        if line.lstrip(' ').startswith('#ifdef '):
             ifdef_cnt += 1
-        if line.strip(' ').startswith('#endif'):
+        if line.lstrip(' ').startswith('#endif'):
             endif_cnt += 1
     print(ifdef_cnt, endif_cnt)
     if ifdef_cnt == endif_cnt == 0:
         return glb_macro_array
     (macro_array, data_array) = parse_outer_ifend(lines, macro)
     glb_macro_array.extend(macro_array)
-    return ifdef_find_iter(data_array, macro)
+    return iter_parse_ifend(data_array, macro)
 
 def ifdef_deal(lines, macro, opt):
 #    print(lines)
     data = ''
     for line in lines:
         data += line
-    macro_array = ifdef_find_iter(lines, macro)
+    macro_array = iter_parse_ifend(lines, macro)
 #    print(macro_array)
 #    print(len(macro_array))
     old_data = ['' for i in range(len(macro_array))]
@@ -157,14 +170,14 @@ def ifdef_deal(lines, macro, opt):
         data_b
     #endif
 '''
-def parse_else_from_ifdef(lines):
+def parse_else_from_ifend(lines):
     parse_str = ['' for i in range(5)]
     data_a = ''
     data_else = ''
     data_b = ''
     else_index= []
     for i in range(len(lines)):
-        if lines[i].strip(' ').startswith('#else'):
+        if lines[i].lstrip(' ').startswith('#else'):
 #            print("["+str(i)+":]" + lines[i])
             else_index.append(i)
 #    print(len(else_index), else_index)
@@ -176,9 +189,9 @@ def parse_else_from_ifdef(lines):
             if_cnt = 0
             end_cnt = 0
             for i in range(1, else_index[index]):
-                if lines[i].strip(' ').startswith('#ifdef '):
+                if lines[i].lstrip(' ').startswith('#ifdef '):
                     if_cnt += 1
-                if lines[i].strip(' ').startswith('#endif'):
+                if lines[i].lstrip(' ').startswith('#endif'):
                     end_cnt += 1
             if if_cnt == end_cnt:
                 for i in range(1, else_index[index]):
@@ -230,21 +243,21 @@ def demo_test(f_name):
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
         for line in lines:
-            if line.strip(' ').startswith('#if'):
+            if line.lstrip(' ').startswith('#if'):
                 if_cnt += 1
-            if line.strip(' ').startswith('#ifdef '):
+            if line.lstrip(' ').startswith('#ifdef '):
                 ifdef_cnt += 1
-            if line.strip(' ').startswith('#ifndef '):
+            if line.lstrip(' ').startswith('#ifndef '):
                 ifndef_cnt += 1
-            if line.strip(' ').startswith('#if 0'):
+            if line.lstrip(' ').startswith('#if 0'):
                 ifzero_cnt += 1
-            if line.strip(' ').startswith('#if 1'):
+            if line.lstrip(' ').startswith('#if 1'):
                 ifone_cnt += 1
-            if line.strip(' ').startswith('#endif'):
+            if line.lstrip(' ').startswith('#endif'):
                 endif_cnt += 1
-            if line.strip(' ').startswith('#else'):
+            if line.lstrip(' ').startswith('#else'):
                 else_cnt += 1
-            if line.strip(' ').startswith('#elif '):
+            if line.lstrip(' ').startswith('#elif '):
                 elif_cnt += 1
         print("[total of #if :] " + str(if_cnt))
         print(" #ifdef : " + str(ifdef_cnt))
