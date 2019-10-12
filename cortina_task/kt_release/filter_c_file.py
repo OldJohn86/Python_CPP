@@ -11,10 +11,12 @@ import sys
 
 keywords = [
     '#if ',
+    '#if 0',
+    '#if 1',
     '#ifdef',
     '#ifndef',
-    '#else',
     '#elif',
+    '#else',
     '#endif'
 ]
 
@@ -47,43 +49,43 @@ def coding_verify(f_name):
     #endif
 '''
 def get_ifend_allIndex(lines):
-    ifdef_all = []
-    endif_all = []
+    if_allIndex = []
+    endif_allIndex = []
     for i in range(len(lines)):
-        if lines[i].strip(' ').startswith('#ifdef '):
-            ifdef_all.append(i)
-#            print("["+str(i)+":]" + lines[i])
+        if lines[i].strip(' ').startswith('#if'):
+            if_allIndex.append(i)
+            print("["+str(i)+":]" + lines[i])
         if lines[i].strip(' ').startswith('#endif'):
-            endif_all.append(i)
-#            print("["+str(i)+":]" + lines[i])
-#    print(len(ifdef_all), ifdef_all)
-#    print(len(endif_all), endif_all)
-    return (ifdef_all, endif_all)
+            endif_allIndex.append(i)
+            print("["+str(i)+":]" + lines[i])
+    print(len(if_allIndex), if_allIndex)
+    print(len(endif_allIndex), endif_allIndex)
+    return (if_allIndex, endif_allIndex)
 
-def get_ifend_outerIndex(lines, ifdef_all, endif_all):
-    ifdef_outer = []
+def get_ifend_outerIndex(lines, if_allIndex, endif_allIndex):
+    if_outer = []
     endif_outer = []
-    ifdef_outer.append(ifdef_all[0])
-    for i in range(len(endif_all)):
-#        print(i, endif_all[i])
+    if_outer.append(if_allIndex[0])
+    for i in range(len(endif_allIndex)):
+#        print(i, endif_allIndex[i])
         temp_cnt = 0
-        for j in range(len(ifdef_all)):
-            if ifdef_all[j] < endif_all[i]:
-#                print(j, ifdef_all[j])
+        for j in range(len(if_allIndex)):
+            if if_allIndex[j] < endif_allIndex[i]:
+#                print(j, if_allIndex[j])
                 temp_cnt += 1
         if i+1 == temp_cnt:
-#            print(i, endif_all[i])
-            endif_outer.append(endif_all[i])
-    for endif in endif_outer:
-        for ifdef in ifdef_all:
-            if ifdef > endif:
-                ifdef_outer.append(ifdef)
+#            print(i, endif_allIndex[i])
+            endif_outer.append(endif_allIndex[i])
+    for endif_index in endif_outer:
+        for if_index in if_allIndex:
+            if if_index > endif_index:
+                if_outer.append(if_index)
                 break
-#    print(len(ifdef_outer), ifdef_outer)
-#    print(len(endif_outer), endif_outer)
-    return (ifdef_outer, endif_outer)
+    print(len(if_outer), if_outer)
+    print(len(endif_outer), endif_outer)
+    return (if_outer, endif_outer)
 
-def parse_outer_ifdef(lines, macro):
+def parse_outer_ifend(lines, macro):
     this_array = []
     next_array = []
     next_ab = ''
@@ -121,7 +123,7 @@ def ifdef_find_iter(lines, macro):
     print(ifdef_cnt, endif_cnt)
     if ifdef_cnt == endif_cnt == 0:
         return glb_macro_array
-    (macro_array, data_array) = parse_outer_ifdef(lines, macro)
+    (macro_array, data_array) = parse_outer_ifend(lines, macro)
     glb_macro_array.extend(macro_array)
     return ifdef_find_iter(data_array, macro)
 
@@ -217,29 +219,41 @@ def parse_case4(lines, macro):
 def demo_test(f_name):
     print(f_name)
     data = ''
+    if_cnt = 0
     ifdef_cnt = 0
     ifndef_cnt = 0
-    endif_cnt = 0
-    else_cnt = 0
+    ifzero_cnt = 0
+    ifone_cnt = 0
     elif_cnt = 0
+    else_cnt = 0
+    endif_cnt = 0
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
         for line in lines:
+            if line.strip(' ').startswith('#if'):
+                if_cnt += 1
             if line.strip(' ').startswith('#ifdef '):
                 ifdef_cnt += 1
             if line.strip(' ').startswith('#ifndef '):
                 ifndef_cnt += 1
+            if line.strip(' ').startswith('#if 0'):
+                ifzero_cnt += 1
+            if line.strip(' ').startswith('#if 1'):
+                ifone_cnt += 1
             if line.strip(' ').startswith('#endif'):
                 endif_cnt += 1
             if line.strip(' ').startswith('#else'):
                 else_cnt += 1
             if line.strip(' ').startswith('#elif '):
                 elif_cnt += 1
-        print("#ifdef : " + str(ifdef_cnt))
-        print("#ifndef: " + str(ifndef_cnt))
-        print("#endif : " + str(endif_cnt))
-        print("#else  : " + str(else_cnt))
-        print("#elif  : " + str(elif_cnt))
+        print("[total of #if :] " + str(if_cnt))
+        print(" #ifdef : " + str(ifdef_cnt))
+        print(" #ifndef: " + str(ifndef_cnt))
+        print(" #if 0  : " + str(ifzero_cnt))
+        print(" #if 1  : " + str(ifone_cnt))
+        print("[#elif        :] " + str(elif_cnt))
+        print("[#else        :] " + str(else_cnt))
+        print("[#endif       :] " + str(endif_cnt))
 #        data = ifdef_deal(lines, 'AAAA', 'remove')
         data = ifdef_deal(lines, 'AAAA', 'keep')
     with open(f_name.replace('input','output'), 'w', encoding='utf-8', errors='ignore') as f:
