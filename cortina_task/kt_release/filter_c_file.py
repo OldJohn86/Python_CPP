@@ -89,15 +89,15 @@ def parse_outer_ifend(lines, macro):
     this_array = []
     next_array = []
     next_ab = ''
-    (ifdef_all, endif_all) = get_ifend_allIndex(lines)
-    (ifdef_outer, endif_outer) = get_ifend_outerIndex(lines, ifdef_all, endif_all)
-    outer_macro = [list('') for i in range(len(ifdef_outer))]
-    for i in range(len(ifdef_outer)):
-        for index in range(ifdef_outer[i], endif_outer[i]+1):
+    (if_allIndex, endif_allIndex) = get_ifend_allIndex(lines)
+    (if_outer, endif_outer) = get_ifend_outerIndex(lines, if_allIndex, endif_allIndex)
+    outer_macro = [list('') for i in range(len(if_outer))]
+    for i in range(len(if_outer)):
+        for index in range(if_outer[i], endif_outer[i]+1):
             outer_macro[i].append(lines[index])
         parse_outer = parse_else_from_ifdef(outer_macro[i])
 #        print(parse_outer)
-        if macro == (lines[ifdef_outer[i]].strip(' ').strip('\n').split(' '))[1]:# matched
+        if macro == (lines[if_outer[i]].strip(' ').strip('\n').split(' '))[1]:# matched
             this_array.append(parse_outer)
         else:# unmatched
             next_ab += parse_outer[1]
