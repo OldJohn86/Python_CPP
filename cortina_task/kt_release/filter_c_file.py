@@ -147,16 +147,6 @@ def ifdef_deal(lines, macro, opt):
             data = data.replace(old_data[i], new_data[i])
     return data
 
-def ifdef_test(f_name):
-    print(f_name)
-    data = ''
-    with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
-        lines = f.readlines()
-#        data = ifdef_deal(lines, 'AAAA', 'remove')
-        data = ifdef_deal(lines, 'AAAA', 'keep')
-    with open(f_name.replace('input','output'), 'w', encoding='utf-8', errors='ignore') as f:
-        f.writelines(data)
-
 '''
 [case2]:
     #ifdef AAAA
@@ -224,7 +214,38 @@ def parse_case3(lines, macro):
 def parse_case4(lines, macro):
     length = len(lines)
 
+def demo_test(f_name):
+    print(f_name)
+    data = ''
+    ifdef_cnt = 0
+    ifndef_cnt = 0
+    endif_cnt = 0
+    else_cnt = 0
+    elif_cnt = 0
+    with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
+        lines = f.readlines()
+        for line in lines:
+            if "#ifdef " in line:
+                ifdef_cnt += 1
+            if "#ifndef " in line:
+                ifndef_cnt += 1
+            if "#endif" in line:
+                endif_cnt += 1
+            if "else" in line:
+                else_cnt += 1
+            if "elif " in line:
+                elif_cnt += 1
+        print("#ifdef : " + str(ifdef_cnt))
+        print("#ifndef: " + str(ifndef_cnt))
+        print("#endif : " + str(endif_cnt))
+        print("#else  : " + str(else_cnt))
+        print("#elif  : " + str(elif_cnt))
+#        data = ifdef_deal(lines, 'AAAA', 'remove')
+        data = ifdef_deal(lines, 'AAAA', 'keep')
+    with open(f_name.replace('input','output'), 'w', encoding='utf-8', errors='ignore') as f:
+        f.writelines(data)
+
 if __name__ == '__main__':
     path='./testCodes/'
     
-    ifdef_test("./testCodes/ifend_input.c")
+    demo_test("./testCodes/ifend_input.c")
