@@ -135,7 +135,7 @@ def ifend_find_iter(lines, macro):
     glb_macro_array.extend(macro_array)
     return ifend_find_iter(data_a, macro)
 
-def ifend_remove(lines, macro):
+def deal_ifend(lines, macro, opt):
     data = ''
     for line in lines:
         data += line
@@ -148,7 +148,10 @@ def ifend_remove(lines, macro):
         print(len(macro_array[i]))
         for j in range(len(macro_array[i])):
             old_data[i] += macro_array[i][j]# A+B
-        new_data[i] += macro_array[i][-2]# B
+        if opt == "remove":
+            new_data[i] += macro_array[i][3]# B: index is 3 or -2
+        elif opt == "keep":
+            new_data[i] += macro_array[i][1]# A: index is 1
         print(old_data[i])
         print("+++++++++++")
         print(new_data[i])
@@ -156,25 +159,13 @@ def ifend_remove(lines, macro):
             data = data.replace(old_data[i], new_data[i])
     return data
 
-def ifend_keep(lines, macro):
-    data = ''
-    for line in lines:
-        data += line
-    macro_array = ifend_find_iter(lines, macro)
-#    print(macro_array)
-    for i in range(len(macro_array)):
-        if data.find(macro_array[i]) != -1:
-#            print(macro_array[i].replace("#ifdef "+ macro, '')[:-7])
-            data = data.replace(macro_array[i], macro_array[i].replace("#ifdef "+macro, '')[:-7])
-    return data
-
 def ifend_test(f_name):
     print(f_name)
     data = ''
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
-        data = ifend_remove(lines, 'AAAA')
-#        data = ifend_keep(lines, 'AAAA')
+#        data = deal_ifend(lines, 'AAAA', 'remove')
+        data = deal_ifend(lines, 'AAAA', 'keep')
     with open(f_name.replace('input','output'), 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
 
