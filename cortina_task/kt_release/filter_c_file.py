@@ -46,7 +46,7 @@ def coding_verify(f_name):
         data
     #endif
 '''
-def get_ifend_allIndex(lines):
+def get_ifdef_allIndex(lines):
     ifdef_all = []
     endif_all = []
     for i in range(len(lines)):
@@ -60,7 +60,7 @@ def get_ifend_allIndex(lines):
 #    print(len(endif_all), endif_all)
     return (ifdef_all, endif_all)
 
-def get_ifend_1stIndex(lines, ifdef_all, endif_all):
+def get_ifdef_1stIndex(lines, ifdef_all, endif_all):
     ifdef_1st = []
     endif_1st = []
     ifdef_1st.append(ifdef_all[0])
@@ -83,42 +83,34 @@ def get_ifend_1stIndex(lines, ifdef_all, endif_all):
 #    print(len(endif_1st), endif_1st)
     return (ifdef_1st, endif_1st)
 
-def parse_outer_ifend(lines, macro):
-    data_a = ''
-    data_array = []
-    macro_array = []
-    macro_str = ['' for i in range(1000)]
-    lines_array = [list('') for i in range(1000)]
-#    print(len(macro_str))
-    index = 0
-    (ifdef_all, endif_all) = get_ifend_allIndex(lines)
-    (ifdef_1st, endif_1st) = get_ifend_1stIndex(lines, ifdef_all, endif_all)
+def parse_outer_ifdef(lines, macro):
+    this_array = []
+    next_array = []
+    next_ab = ''
+    (ifdef_all, endif_all) = get_ifdef_allIndex(lines)
+    (ifdef_1st, endif_1st) = get_ifdef_1stIndex(lines, ifdef_all, endif_all)
+    outer_macro = [list('') for i in range(len(ifdef_1st))]
     for i in range(len(ifdef_1st)):
-        if macro == (lines[ifdef_1st[i]].strip(' ').strip('\n').split(' '))[1]:
-            for i in range(ifdef_1st[i], endif_1st[i]+1):
-                lines_array[index].append(lines[i])
-            parse_str = parse_else_from_ifend(lines_array[index])
-            print("begin******************")
-#            print(parse_str)
-#            for i in range(len(parse_str)):
-#                macro_str[index] += parse_str[i]
-#            print(macro_str[index])
-            print("end******************")
-#            macro_array.append(macro_str[index])
-            macro_array.append(parse_str)
-            if index < len(macro_str):
-                index += 1
-            else:
-                print("ERROR: macro_str[] list index out of range!")
-                break
-        else:
-            for i in range(ifdef_1st[i]+1, endif_1st[i]):
-                data_array.append(lines[i])
-#    print(macro_array)
-    return (macro_array, data_array)
+        for index in range(ifdef_1st[i], endif_1st[i]+1):
+            outer_macro[i].append(lines[index])
+        parse_outer = parse_else_from_ifdef(outer_macro[i])
+#        print(parse_outer)
+        if macro == (lines[ifdef_1st[i]].strip(' ').strip('\n').split(' '))[1]:# matched
+            this_array.append(parse_outer)
+        else:# unmatched
+            next_ab += parse_outer[1]
+            next_ab += parse_outer[3]
+#    print(next_ab)
+    next_lines = next_ab.split('\n')
+#    print(len(next_lines), next_lines)
+    for i in range(len(next_lines)):
+        next_array.append(next_lines[i] + '\n')
+#    print(this_array)
+#    print(next_array)
+    return (this_array, next_array)
 
 glb_macro_array = []
-def ifend_find_iter(lines, macro):
+def ifdef_find_iter(lines, macro):
     ifdef_cnt = 0
     endif_cnt = 0
     global glb_macro_array
@@ -130,42 +122,39 @@ def ifend_find_iter(lines, macro):
     print(ifdef_cnt, endif_cnt)
     if ifdef_cnt == endif_cnt == 0:
         return glb_macro_array
-    (macro_array, data_a) = parse_outer_ifend(lines, macro)
-#    print(macro_array)
+    (macro_array, data_array) = parse_outer_ifdef(lines, macro)
     glb_macro_array.extend(macro_array)
-    return ifend_find_iter(data_a, macro)
+    return ifdef_find_iter(data_array, macro)
 
-def deal_ifend(lines, macro, opt):
+def ifdef_deal(lines, macro, opt):
+#    print(lines)
     data = ''
     for line in lines:
         data += line
-    macro_array = ifend_find_iter(lines, macro)
-    print(macro_array)
-    print(len(macro_array))
+    macro_array = ifdef_find_iter(lines, macro)
+#    print(macro_array)
+#    print(len(macro_array))
     old_data = ['' for i in range(len(macro_array))]
     new_data = ['' for i in range(len(macro_array))]
     for i in range(len(macro_array)):
-        print(len(macro_array[i]))
+#        print(len(macro_array[i]))
         for j in range(len(macro_array[i])):
             old_data[i] += macro_array[i][j]# A+B
         if opt == "remove":
             new_data[i] += macro_array[i][3]# B: index is 3 or -2
         elif opt == "keep":
             new_data[i] += macro_array[i][1]# A: index is 1
-        print(old_data[i])
-        print("+++++++++++")
-        print(new_data[i])
         if data.find(old_data[i]) != -1:
             data = data.replace(old_data[i], new_data[i])
     return data
 
-def ifend_test(f_name):
+def ifdef_test(f_name):
     print(f_name)
     data = ''
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
-#        data = deal_ifend(lines, 'AAAA', 'remove')
-        data = deal_ifend(lines, 'AAAA', 'keep')
+#        data = ifdef_deal(lines, 'AAAA', 'remove')
+        data = ifdef_deal(lines, 'AAAA', 'keep')
     with open(f_name.replace('input','output'), 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
 
@@ -177,14 +166,12 @@ def ifend_test(f_name):
         data_b
     #endif
 '''
-def parse_else_from_ifend(lines):
-#    print(lines)
+def parse_else_from_ifdef(lines):
     parse_str = ['' for i in range(5)]
     data_a = ''
     data_else = ''
     data_b = ''
     else_index= []
-#    print(len(lines), lines[0], lines[-1])
     for i in range(len(lines)):
         if "else" in lines[i]:
 #            print("["+str(i)+":]" + lines[i])
@@ -195,7 +182,6 @@ def parse_else_from_ifend(lines):
             data_a += lines[i]
     else:
         for index in range(len(else_index)):
-#            print(else_index[index])
             if_cnt = 0
             end_cnt = 0
             for i in range(1, else_index[index]):
@@ -204,8 +190,6 @@ def parse_else_from_ifend(lines):
                 if "#endif" in lines[i]:
                     end_cnt += 1
             if if_cnt == end_cnt:
-#                print(if_cnt, end_cnt)
-#                print(lines)
                 for i in range(1, else_index[index]):
                     data_a += lines[i]
                 for i in range(else_index[index]+1, len(lines)-1):
@@ -214,10 +198,6 @@ def parse_else_from_ifend(lines):
                 break
             else:
                  pass
-#        print("++++++data_a++++++")
-#        print(data_a)
-#        print("++++++data_b++++++")
-#        print(data_b)
     parse_str[0] += lines[0]
     parse_str[1] += data_a
     parse_str[2] += data_else
@@ -249,4 +229,4 @@ def parse_case4(lines, macro):
 if __name__ == '__main__':
     path='./testCodes/'
     
-    ifend_test("./testCodes/ifend_input.c")
+    ifdef_test("./testCodes/ifend_input.c")
