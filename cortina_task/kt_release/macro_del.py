@@ -48,14 +48,14 @@ def get_ifend_allIndex(lines):
     if_allIndex = []
     endif_allIndex = []
     for i in range(len(lines)):
-        if lines[i].strip(' ').startswith('#if'):
+        if lines[i].lstrip(' ').lstrip('\t').startswith('#if'):
             if_allIndex.append(i)
-#            print("["+str(i)+":]" + lines[i])
-        if lines[i].strip(' ').startswith('#endif'):
+            print("["+str(i)+":]" + lines[i])
+        if lines[i].lstrip(' ').lstrip('\t').startswith('#endif'):
             endif_allIndex.append(i)
-#            print("["+str(i)+":]" + lines[i])
-#    print(len(if_allIndex), if_allIndex)
-#    print(len(endif_allIndex), endif_allIndex)
+            print("["+str(i)+":]" + lines[i])
+    print(len(if_allIndex), if_allIndex)
+    print(len(endif_allIndex), endif_allIndex)
     return (if_allIndex, endif_allIndex)
 
 def get_ifend_outerIndex(lines, if_allIndex, endif_allIndex):
@@ -93,7 +93,7 @@ def parse_outer_ifend(lines, macro):
             outer_macro[i].append(lines[index])
         parse_outer = parse_else_from_ifend(outer_macro[i])
 #        print(parse_outer)
-        ifLine_list = lines[if_outer[i]].lstrip(' ').strip('\n').split(' ')
+        ifLine_list = lines[if_outer[i]].lstrip(' ').lstrip('\t').strip('\n').split(' ')
 #        print(ifLine_list)
         if macro == ifLine_list[1]:# matched
             this_array.append(parse_outer)
@@ -114,9 +114,9 @@ def iter_parse_ifend(lines, macro):
     endif_cnt = 0
     global glb_macro_array
     for line in lines:
-        if line.lstrip(' ').startswith('#if'):
+        if line.lstrip(' ').lstrip('\t').startswith('#if'):
             ifdef_cnt += 1
-        if line.lstrip(' ').startswith('#endif'):
+        if line.lstrip(' ').lstrip('\t').startswith('#endif'):
             endif_cnt += 1
     print(ifdef_cnt, endif_cnt)
     if ifdef_cnt == endif_cnt == 0:
@@ -140,17 +140,17 @@ def ifend_deal(lines, cmd, macro):
         for j in range(len(macro_array[i])):
             old_data[i] += macro_array[i][j]# A+B
         if cmd == "remove":
-            if macro_array[i][0].lstrip(' ').startswith("#ifdef "):
+            if macro_array[i][0].lstrip(' ').lstrip('\t').startswith("#ifdef "):
 #                print(macro_array[i][0])
                 new_data[i] += macro_array[i][3]# B: index is 3 or -2
-            elif macro_array[i][0].lstrip(' ').startswith("#ifndef "):
+            elif macro_array[i][0].lstrip(' ').lstrip('\t').startswith("#ifndef "):
 #                print(macro_array[i][0])
                 new_data[i] += macro_array[i][1]# A: index is 1
         elif cmd == "keep":
-            if macro_array[i][0].lstrip(' ').startswith("#ifdef "):
+            if macro_array[i][0].lstrip(' ').lstrip('\t').startswith("#ifdef "):
 #                print(macro_array[i][0])
                 new_data[i] += macro_array[i][1]# A: index is 1
-            elif macro_array[i][0].lstrip(' ').startswith("#ifndef "):
+            elif macro_array[i][0].lstrip(' ').lstrip('\t').startswith("#ifndef "):
 #                print(macro_array[i][0])
                 new_data[i] += macro_array[i][3]# B: index is 3 or -2
         else:
@@ -183,7 +183,7 @@ def parse_else_from_ifend(lines):
     data_b = ''
     else_index= []
     for i in range(len(lines)):
-        if lines[i].lstrip(' ').startswith('#else'):
+        if lines[i].lstrip(' ').lstrip('\t').startswith('#else'):
 #            print("["+str(i)+":]" + lines[i])
             else_index.append(i)
 #    print(len(else_index), else_index)
@@ -195,9 +195,9 @@ def parse_else_from_ifend(lines):
             if_cnt = 0
             end_cnt = 0
             for i in range(1, else_index[index]):
-                if lines[i].lstrip(' ').startswith('#if'):
+                if lines[i].lstrip(' ').lstrip('\t').startswith('#if'):
                     if_cnt += 1
-                if lines[i].lstrip(' ').startswith('#endif'):
+                if lines[i].lstrip(' ').lstrip('\t').startswith('#endif'):
                     end_cnt += 1
             if if_cnt == end_cnt:
                 for i in range(1, else_index[index]):
@@ -244,24 +244,25 @@ def show_ifend_cnt(f_name):
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
         for line in lines:
-            if line.lstrip(' ').startswith('#if'):
+            if line.lstrip(' ').lstrip('\t').startswith('#if'):
                 if_cnt += 1
-                if line.lstrip(' ').startswith('#ifdef '):
+                if line.lstrip(' ').lstrip('\t').startswith('#ifdef '):
                     ifdef_cnt += 1
-                elif line.lstrip(' ').startswith('#ifndef '):
+                elif line.lstrip(' ').lstrip('\t').startswith('#ifndef '):
                     ifndef_cnt += 1
-                elif line.lstrip(' ').startswith('#if 0'):
+                elif line.lstrip(' ').lstrip('\t').startswith('#if 0'):
                     ifzero_cnt += 1
-                elif line.lstrip(' ').startswith('#if 1'):
+                elif line.lstrip(' ').lstrip('\t').startswith('#if 1'):
                     ifone_cnt += 1
                 else:
                     ifother_cnt += 1
-            if line.lstrip(' ').startswith('#endif'):
+            if line.lstrip(' ').lstrip('\t').startswith('#endif'):
                 endif_cnt += 1
-            if line.lstrip(' ').startswith('#else'):
+            if line.lstrip(' ').lstrip('\t').startswith('#else'):
                 else_cnt += 1
-            if line.lstrip(' ').startswith('#elif '):
+            if line.lstrip(' ').lstrip('\t').startswith('#elif'):
                 elif_cnt += 1
+        print("length of file lines: " + str(len(lines)))
         print("[total of #if :] " + str(if_cnt))
         print(" #ifdef : " + str(ifdef_cnt))
         print(" #ifndef: " + str(ifndef_cnt))
