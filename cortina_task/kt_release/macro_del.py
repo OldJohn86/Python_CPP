@@ -1,13 +1,16 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+
 '''
 Author: pengpeng.chen@cortina-access.com
 Date:   2019-10-10
 '''
+
 import re
+import sys
 import os
 from os import walk
-import sys
+import argparse
 
 keywords = [
     '#if ',
@@ -279,7 +282,21 @@ def demo_test(f_name):
         f.writelines(data)
 
 if __name__ == '__main__':
-    path='./testCodes/'
+    parser = argparse.ArgumentParser()
+    parser.description='please enter there parameters p, c and m ...'
+    parser.add_argument("-p", help="this is parameter - path", dest="path",  type=str, default="./testCodes/")
+    parser.add_argument("-c", help="this is parameter - command", dest="cmd",  type=str, default="remove")
+    parser.add_argument("-m", help="this is parameter - macro name", dest="macro",  type=str, default="AAAA")
+    args = parser.parse_args()
+    print(args)
+    print("parameter p is :", args.path)
+    print("parameter c is :", args.cmd)
+    print("parameter m is :", args.macro)
+
+    path = args.path
+    command = args.cmd
+    macro_name = args.macro
+
     for root, dirs, files in os.walk(path):
         for f_name in files:
             if f_name.endswith('.c') or f_name.endswith('.h'):
