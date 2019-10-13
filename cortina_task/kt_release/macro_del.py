@@ -93,7 +93,10 @@ def parse_outer_ifend(lines, macro):
             outer_macro[i].append(lines[index])
         parse_outer = parse_else_from_ifend(outer_macro[i])
 #        print(parse_outer)
+#        print(lines[if_outer[i]])
         ifLine_list = lines[if_outer[i]].lstrip(' ').lstrip('\t').strip('\n').split(' ')
+        if len(ifLine_list) == 1:
+            ifLine_list = lines[if_outer[i]].lstrip(' ').lstrip('\t').strip('\n').split('\t')
 #        print(ifLine_list)
         if macro == ifLine_list[1]:# matched
             this_array.append(parse_outer)
