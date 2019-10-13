@@ -29,7 +29,6 @@ macro = [
     'CONFIG_ARCH_CORTINA_SATURN'
 ]
 
-
 '''
 [case1]:
     #ifdef AAAA
@@ -213,7 +212,7 @@ def parse_else_from_ifend(lines):
     return parse_str
 
 def input_coding_verify(f_name):
-    print(f_name)
+#    print(f_name)
     cnt = 0
     with open(f_name, 'rb') as f:
         while True:
@@ -228,7 +227,7 @@ def input_coding_verify(f_name):
                     print(str(line))
 
 def show_ifend_cnt(f_name):
-    print(f_name)
+#    print(f_name)
     if_cnt = 0
     ifdef_cnt = 0
     ifndef_cnt = 0
@@ -270,7 +269,7 @@ def show_ifend_cnt(f_name):
         print("[#endif       :] " + str(endif_cnt))
 
 def demo_test(f_name):
-    print(f_name)
+#    print(f_name)
     data = ''
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
@@ -281,6 +280,16 @@ def demo_test(f_name):
 
 if __name__ == '__main__':
     path='./testCodes/'
-    input_coding_verify("./testCodes/ifend_input.c")
-    show_ifend_cnt("./testCodes/ifend_input.c")
-    demo_test("./testCodes/ifend_input.c")
+    for root, dirs, files in os.walk(path):
+        for f_name in files:
+            if f_name.endswith('.c') or f_name.endswith('.h'):
+                abs_f_name = os.path.join(root, f_name)
+                print(abs_f_name)
+                input_coding_verify(abs_f_name)
+                show_ifend_cnt(abs_f_name)
+#                demo_test(abs_f_name)
+#                with open(os.path.join(root, f_name), 'r', encoding='utf-8', errors='ignore') as f:
+#                    lines = f.readlines()
+#                    data = ifend_deal(lines, 'AAAA', 'remove')
+#                    data = ifend_deal(lines, 'AAAA', 'keep')
+
