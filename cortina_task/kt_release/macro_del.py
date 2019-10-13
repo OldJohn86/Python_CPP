@@ -272,13 +272,12 @@ def show_ifend_cnt(f_name):
         print("[#else        :] " + str(else_cnt))
         print("[#endif       :] " + str(endif_cnt))
 
-def demo_test(f_name):
+def demo_test(f_name, cmd, macro):
 #    print(f_name)
     data = ''
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
-#        data = ifend_deal(lines, 'AAAA', 'remove')
-        data = ifend_deal(lines, 'AAAA', 'keep')
+        data = ifend_deal(lines, cmd, macro)
     with open(f_name.replace('input','output'), 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
 
@@ -304,10 +303,5 @@ if __name__ == '__main__':
                 print(abs_f_name)
                 input_coding_verify(abs_f_name)
                 show_ifend_cnt(abs_f_name)
-#                demo_test(abs_f_name)
-                with open(abs_f_name, 'r', encoding='utf-8', errors='ignore') as f:
-                    lines = f.readlines()
-                    data = ifend_deal(lines, command, macro_name)
-                with open(abs_f_name.replace('input','output'), 'w', encoding='utf-8', errors='ignore') as f:
-                    f.writelines(data)
+                demo_test(abs_f_name, command, macro_name)
 
