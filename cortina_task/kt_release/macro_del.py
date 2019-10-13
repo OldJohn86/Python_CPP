@@ -125,36 +125,37 @@ def iter_parse_ifend(lines, macro):
     glb_macro_array.extend(macro_array)
     return iter_parse_ifend(data_array, macro)
 
-def ifend_deal(lines, macro, opt):
+def ifend_deal(lines, cmd, macro):
 #    print(lines)
     data = ''
     for line in lines:
         data += line
     macro_array = iter_parse_ifend(lines, macro)
     print(macro_array)
-    print(len(macro_array))
+#    print(len(macro_array))
     old_data = ['' for i in range(len(macro_array))]
     new_data = ['' for i in range(len(macro_array))]
     for i in range(len(macro_array)):
 #        print(len(macro_array[i]))
         for j in range(len(macro_array[i])):
             old_data[i] += macro_array[i][j]# A+B
-        if opt == "remove":
+        if cmd == "remove":
             if macro_array[i][0].lstrip(' ').startswith("#ifdef "):
 #                print(macro_array[i][0])
                 new_data[i] += macro_array[i][3]# B: index is 3 or -2
             elif macro_array[i][0].lstrip(' ').startswith("#ifndef "):
-                print(macro_array[i][0])
+#                print(macro_array[i][0])
                 new_data[i] += macro_array[i][1]# A: index is 1
-        elif opt == "keep":
+        elif cmd == "keep":
             if macro_array[i][0].lstrip(' ').startswith("#ifdef "):
 #                print(macro_array[i][0])
                 new_data[i] += macro_array[i][1]# A: index is 1
             elif macro_array[i][0].lstrip(' ').startswith("#ifndef "):
-                print(macro_array[i][0])
+#                print(macro_array[i][0])
                 new_data[i] += macro_array[i][3]# B: index is 3 or -2
         else:
-            print("which input opt is neither remove nor keep!!!")
+            print("ERROR: which input cmd is neither remove nor keep!!!")
+            break
         if data.find(old_data[i]) != -1:
             data = data.replace(old_data[i], new_data[i])
     return data
@@ -289,10 +290,9 @@ if __name__ == '__main__':
     parser.add_argument("-m", help="this is parameter - macro name", dest="macro",  type=str, default="AAAA")
     args = parser.parse_args()
     print(args)
-    print("parameter p is :", args.path)
-    print("parameter c is :", args.cmd)
-    print("parameter m is :", args.macro)
-
+#    print("parameter p is :", args.path)
+#    print("parameter c is :", args.cmd)
+#    print("parameter m is :", args.macro)
     path = args.path
     command = args.cmd
     macro_name = args.macro
@@ -305,8 +305,9 @@ if __name__ == '__main__':
                 input_coding_verify(abs_f_name)
                 show_ifend_cnt(abs_f_name)
 #                demo_test(abs_f_name)
-#                with open(os.path.join(root, f_name), 'r', encoding='utf-8', errors='ignore') as f:
-#                    lines = f.readlines()
-#                    data = ifend_deal(lines, 'AAAA', 'remove')
-#                    data = ifend_deal(lines, 'AAAA', 'keep')
+                with open(abs_f_name, 'r', encoding='utf-8', errors='ignore') as f:
+                    lines = f.readlines()
+                    data = ifend_deal(lines, command, macro_name)
+                with open(abs_f_name.replace('input','output'), 'w', encoding='utf-8', errors='ignore') as f:
+                    f.writelines(data)
 
