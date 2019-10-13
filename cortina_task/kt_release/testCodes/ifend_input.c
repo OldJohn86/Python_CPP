@@ -128,7 +128,7 @@ sdsfsfdsfdsfds
                 
 [9]
 @&@$&@$&$@&@&
-#ifndef DDDD
+#ifndef AAAA
 nnnnnnnnnnnnnnm
 #endif
 ^&**&*&*&^*&^
@@ -139,4 +139,11 @@ asdsadas
 #if 0
 qwewqewqeqweq
 #endif
-!@!&@!@&!(@
+!@!&@!@&!(@i
+阿斯顿撒上
+撒打算打算·
+#if defind(AAAA)
+asdasdsadasd
+#endif
+asdsadsa
+

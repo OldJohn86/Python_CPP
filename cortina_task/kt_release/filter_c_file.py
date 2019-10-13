@@ -29,18 +29,6 @@ macro = [
     'CONFIG_ARCH_CORTINA_SATURN'
 ]
 
-def coding_verify(f_name):
-    with open(f_name, 'rb') as f:
-        while True:
-            line = f.readline()
-            if not line:
-                break
-            else:
-                try:
-                    #print(line.decode('utf8'))
-                    line.decode('utf8')
-                except:
-                    print(str(line))
 
 '''
 [case1]:
@@ -135,7 +123,7 @@ def iter_parse_ifend(lines, macro):
     glb_macro_array.extend(macro_array)
     return iter_parse_ifend(data_array, macro)
 
-def ifdef_deal(lines, macro, opt):
+def ifend_deal(lines, macro, opt):
 #    print(lines)
     data = ''
     for line in lines:
@@ -204,7 +192,7 @@ def parse_else_from_ifend(lines):
             if_cnt = 0
             end_cnt = 0
             for i in range(1, else_index[index]):
-                if lines[i].lstrip(' ').startswith('#ifdef '):
+                if lines[i].lstrip(' ').startswith('#if'):
                     if_cnt += 1
                 if lines[i].lstrip(' ').startswith('#endif'):
                     end_cnt += 1
@@ -224,15 +212,29 @@ def parse_else_from_ifend(lines):
     parse_str[4] += lines[-1]
     return parse_str
 
-
-def demo_test(f_name):
+def input_coding_verify(f_name):
     print(f_name)
-    data = ''
+    cnt = 0
+    with open(f_name, 'rb') as f:
+        while True:
+            line = f.readline()
+            if not line:
+                break
+            else:
+                try:
+                    #print(line.decode('utf8'))
+                    line.decode('utf8')
+                except:
+                    print(str(line))
+
+def show_ifend_cnt(f_name):
+    print(f_name)
     if_cnt = 0
     ifdef_cnt = 0
     ifndef_cnt = 0
     ifzero_cnt = 0
     ifone_cnt = 0
+    ifother_cnt = 0
     elif_cnt = 0
     else_cnt = 0
     endif_cnt = 0
@@ -241,14 +243,16 @@ def demo_test(f_name):
         for line in lines:
             if line.lstrip(' ').startswith('#if'):
                 if_cnt += 1
-            if line.lstrip(' ').startswith('#ifdef '):
-                ifdef_cnt += 1
-            if line.lstrip(' ').startswith('#ifndef '):
-                ifndef_cnt += 1
-            if line.lstrip(' ').startswith('#if 0'):
-                ifzero_cnt += 1
-            if line.lstrip(' ').startswith('#if 1'):
-                ifone_cnt += 1
+                if line.lstrip(' ').startswith('#ifdef '):
+                    ifdef_cnt += 1
+                elif line.lstrip(' ').startswith('#ifndef '):
+                    ifndef_cnt += 1
+                elif line.lstrip(' ').startswith('#if 0'):
+                    ifzero_cnt += 1
+                elif line.lstrip(' ').startswith('#if 1'):
+                    ifone_cnt += 1
+                else:
+                    ifother_cnt += 1
             if line.lstrip(' ').startswith('#endif'):
                 endif_cnt += 1
             if line.lstrip(' ').startswith('#else'):
@@ -260,15 +264,23 @@ def demo_test(f_name):
         print(" #ifndef: " + str(ifndef_cnt))
         print(" #if 0  : " + str(ifzero_cnt))
         print(" #if 1  : " + str(ifone_cnt))
+        print(" others : " + str(ifother_cnt))
         print("[#elif        :] " + str(elif_cnt))
         print("[#else        :] " + str(else_cnt))
         print("[#endif       :] " + str(endif_cnt))
-#        data = ifdef_deal(lines, 'AAAA', 'remove')
-        data = ifdef_deal(lines, 'AAAA', 'keep')
+
+def demo_test(f_name):
+    print(f_name)
+    data = ''
+    with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
+        lines = f.readlines()
+#        data = ifend_deal(lines, 'AAAA', 'remove')
+        data = ifend_deal(lines, 'AAAA', 'keep')
     with open(f_name.replace('input','output'), 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
 
 if __name__ == '__main__':
     path='./testCodes/'
-    
+    input_coding_verify("./testCodes/ifend_input.c")
+    show_ifend_cnt("./testCodes/ifend_input.c")
     demo_test("./testCodes/ifend_input.c")
