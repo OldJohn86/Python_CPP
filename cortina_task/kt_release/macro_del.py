@@ -105,27 +105,34 @@ def get_ifend_outerIndex(lines, if_allIndex, endif_allIndex):
 #    print(len(endif_outer), endif_outer)
     return (if_outer, endif_outer)
 
-def parse_outer_ifend(lines, macro):
+def parse_outer_ifend(lines, cmd, macro):
     this_array = []
     next_array = []
     next_ab = ''
     (if_allIndex, endif_allIndex) = get_ifend_allIndex(lines)
     (if_outer, endif_outer) = get_ifend_outerIndex(lines, if_allIndex, endif_allIndex)
+#    print(if_outer, endif_outer)
     outer_macro = [list('') for i in range(len(if_outer))]
     for i in range(len(if_outer)):
         for index in range(if_outer[i], endif_outer[i]+1):
             outer_macro[i].append(lines[index])
         parse_outer = parse_else_from_ifend(outer_macro[i])
-#        print(parse_outer)
-        lines[if_outer[i]] = deal_startTabLine(lines[if_outer[i]])
-        ifLine_list = lines[if_outer[i]].lstrip(' ').strip('\n').split(' ')
+#        print(parse_outer[0], parse_outer[1], parse_outer[2], parse_outer[4])
+        parse_outer[0] = deal_startTabLine(parse_outer[0])
+        ifLine_list = parse_outer[0].lstrip(' ').strip('\n').split(' ')
 #        print(ifLine_list)
+#        print(if_outer[i], endif_outer[i])
+#        print(macro, ifLine_list[1])
         if macro == ifLine_list[1]:# matched
             this_array.append(parse_outer)
-            print(parse_outer[0], parse_outer[-1])
+#            print(parse_outer[1])
+#            if cmd == 'remove':
+#                next_ab += parse_outer[3]
+#            if cmd == 'keep':
+#                next_ab += parse_outer[1]
         else:# unmatched
-            next_ab += parse_outer[1]
-            next_ab += parse_outer[3]
+            next_ab += parse_outer[1] # A
+            next_ab += parse_outer[3] # B
     next_lines = next_ab.split('\n')
 #    print(len(next_lines), next_lines)
     for i in range(len(next_lines)):
@@ -135,7 +142,7 @@ def parse_outer_ifend(lines, macro):
     return (this_array, next_array)
 
 glb_macro_array = []
-def iter_parse_ifend(lines, macro):
+def iter_parse_ifend(lines, cmd, macro):
     ifdef_cnt = 0
     endif_cnt = 0
     global glb_macro_array
@@ -154,16 +161,17 @@ def iter_parse_ifend(lines, macro):
     print(ifdef_cnt, endif_cnt)
     if ifdef_cnt == endif_cnt == 0:
         return glb_macro_array
-    (macro_array, data_array) = parse_outer_ifend(lines, macro)
+    (macro_array, data_array) = parse_outer_ifend(lines, cmd, macro)
     glb_macro_array.extend(macro_array)
-    return iter_parse_ifend(data_array, macro)
+#    print(glb_macro_array)
+    return iter_parse_ifend(data_array, cmd, macro)
 
 def ifend_deal(lines, cmd, macro):
 #    print(lines)
     data = ''
     for line in lines:
         data += line
-    macro_array = iter_parse_ifend(lines, macro)
+    macro_array = iter_parse_ifend(lines, cmd, macro)
 #    print(macro_array)
 #    print(len(macro_array))
     old_data = ['' for i in range(len(macro_array))]
@@ -171,8 +179,11 @@ def ifend_deal(lines, cmd, macro):
     for i in range(len(macro_array)):
 #        print(len(macro_array[i]))
         for j in range(len(macro_array[i])):
+#            print(len(macro_array[i][j]))
             old_data[i] += macro_array[i][j]# A+B
-        macro_array[i][0] = deal_startTabLine(macro_array[i][0])
+#        print(old_data[i])
+#        macro_array[i][0] = deal_startTabLine(macro_array[i][0])
+#        print(macro_array[i][0])
         if cmd == "remove":
             if macro_array[i][0].lstrip(' ').startswith("#ifdef "):
 #                print(macro_array[i][0])
@@ -181,15 +192,17 @@ def ifend_deal(lines, cmd, macro):
 #                print(macro_array[i][0])
                 new_data[i] += macro_array[i][1]# A: index is 1
         elif cmd == "keep":
-            if macro_array[i][0].lstrip(' ').startswith("#ifdef "):
+            if macro_array[i][0].lstrip(' ').startswith("#ifdef"):
 #                print(macro_array[i][0])
                 new_data[i] += macro_array[i][1]# A: index is 1
-            elif macro_array[i][0].lstrip(' ').startswith("#ifndef "):
+            elif macro_array[i][0].lstrip(' ').startswith("#ifndef"):
 #                print(macro_array[i][0])
                 new_data[i] += macro_array[i][3]# B: index is 3 or -2
         else:
             print("ERROR: which input cmd is neither remove nor keep!!!")
             break
+#        print(new_data[i])
+#        print(old_data[i])
         if data.find(old_data[i]) != -1:
             data = data.replace(old_data[i], new_data[i])
     return data
@@ -241,15 +254,18 @@ def parse_else_from_ifend(lines):
                             pass
                     else:
                         end_cnt += 1
+#            print("if_cnt: "+ str(if_cnt) +"end_cnt: " + str(end_cnt))
             if if_cnt == end_cnt:
                 for i in range(1, else_index[index]):
                     data_a += lines[i]
                 for i in range(else_index[index]+1, len(lines)-1):
                     data_b += lines[i]
                 data_else += lines[else_index[index]]
-                break
+            elif if_cnt > end_cnt:
+                for i in range(1, len(lines)-1):
+                    data_a += lines[i]
             else:
-                 pass
+                print("There should be error!!")
     parse_str[0] += lines[0]
     parse_str[1] += data_a
     parse_str[2] += data_else
@@ -313,10 +329,10 @@ def show_ifend_cnt(f_name):
                 elif_cnt += 1
         print("length of file lines: " + str(len(lines)))
         print("[total of #if :] " + str(if_cnt))
-        print(" #ifdef : " + str(ifdef_cnt))
-        print(" #ifndef: " + str(ifndef_cnt))
-        print(" #if 0  : " + str(ifzero_cnt))
-        print(" #if 1  : " + str(ifone_cnt))
+#        print(" #ifdef : " + str(ifdef_cnt))
+#        print(" #ifndef: " + str(ifndef_cnt))
+#        print(" #if 0  : " + str(ifzero_cnt))
+#        print(" #if 1  : " + str(ifone_cnt))
         print(" others : " + str(ifother_cnt))
         print("[#elif        :] " + str(elif_cnt))
         print("[#else        :] " + str(else_cnt))
@@ -338,7 +354,7 @@ if __name__ == '__main__':
     parser.add_argument("-c", help="this is parameter - command(remove or keep)", dest="cmd",  type=str, default="remove")
     parser.add_argument("-m", help="this is parameter - macro name", dest="macro",  type=str, default="AAAA")
     args = parser.parse_args()
-    print(args)
+#    print(args)
 #    print("parameter p is :", args.path)
 #    print("parameter c is :", args.cmd)
 #    print("parameter m is :", args.macro)
@@ -351,8 +367,8 @@ if __name__ == '__main__':
             if f_name.endswith('.c') or f_name.endswith('.h'):
                 abs_f_name = os.path.join(root, f_name)
                 print(abs_f_name)
-                input_coding_verify(abs_f_name)
+#                input_coding_verify(abs_f_name)
                 show_ifend_cnt(abs_f_name)
-#                deal_file(abs_f_name)
+                deal_file(abs_f_name)
                 demo_test(abs_f_name, command, macro_name)
 
