@@ -13,6 +13,7 @@ from os import walk
 import argparse
 
 keywords = [
+    '#if',
     '#if ',
     '#if 0',
     '#if 1',
@@ -69,7 +70,13 @@ def get_ifend_allIndex(lines):
             if_allIndex.append(i)
 #            print("["+str(i)+":]" + lines[i])
         if lines[i].lstrip(' ').startswith('#endif'):
-            endif_allIndex.append(i)
+            if '*/' in lines[i]:
+                if '/*' in lines[i]:
+                    endif_allIndex.append(i)
+                else:
+                    pass
+            else:
+                endif_allIndex.append(i)
 #            print("["+str(i)+":]" + lines[i])
 #    print(len(if_allIndex), if_allIndex)
 #    print(len(endif_allIndex), endif_allIndex)
@@ -136,7 +143,13 @@ def iter_parse_ifend(lines, macro):
         if line.lstrip(' ').startswith('#if'):
             ifdef_cnt += 1
         if line.lstrip(' ').startswith('#endif'):
-            endif_cnt += 1
+            if '*/' in line:
+                if '/*' in line:
+                    endif_cnt += 1
+                else:
+                    pass
+            else:
+                    endif_cnt += 1
     print(ifdef_cnt, endif_cnt)
     if ifdef_cnt == endif_cnt == 0:
         return glb_macro_array
@@ -220,7 +233,13 @@ def parse_else_from_ifend(lines):
                 if lines[i].lstrip(' ').startswith('#if'):
                     if_cnt += 1
                 if lines[i].lstrip(' ').startswith('#endif'):
-                    end_cnt += 1
+                    if '*/' in lines[i]:
+                        if '/*' in lines[i]:
+                            end_cnt += 1
+                        else:
+                            pass
+                    else:
+                        end_cnt += 1
             if if_cnt == end_cnt:
                 for i in range(1, else_index[index]):
                     data_a += lines[i]
@@ -280,7 +299,13 @@ def show_ifend_cnt(f_name):
                 else:
                     ifother_cnt += 1
             if line.lstrip(' ').startswith('#endif'):
-                endif_cnt += 1
+                if '*/' in line:
+                    if '/*' in line:
+                        endif_cnt += 1
+                    else:
+                        pass
+                else:
+                    endif_cnt += 1
             if line.lstrip(' ').startswith('#else'):
                 else_cnt += 1
             if line.lstrip(' ').startswith('#elif '):
