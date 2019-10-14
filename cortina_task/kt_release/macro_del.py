@@ -277,9 +277,12 @@ def parse_else_from_ifend(lines):
                 data_else += lines[else_index[index]]
                 break
             elif if_cnt > end_cnt:
-                for i in range(1, len(lines)-1):
-                    data_a += lines[i]
-                break
+                if index + 1 == len(else_index):
+                    for i in range(1, len(lines)-1):
+                        data_a += lines[i]
+                    break
+                else:
+                    pass
             else:
                 print("There should be error!!")
     parse_str[0] += lines[0]
