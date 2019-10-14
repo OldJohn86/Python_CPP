@@ -44,12 +44,21 @@ macro = [
         data_a
     #endif
 '''
-# replace '\t' with '    '
 def deal_startTabLine(line):
     if line.startswith('\t'):
 #        print(line)
         line = line.replace('\t', '    ')
     return line
+
+def deal_file(f_name):
+#    print(f_name)
+    data = ''
+    with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
+        lines = f.readlines()
+        for line in lines:
+            data += deal_startTabLine(line)
+    with open(f_name, 'w', encoding='utf-8', errors='ignore') as f:
+        f.writelines(data)
 
 def get_ifend_allIndex(lines):
     if_allIndex = []
@@ -293,7 +302,7 @@ def demo_test(f_name, cmd, macro):
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
         data = ifend_deal(lines, cmd, macro)
-    with open(f_name.replace('input','output'), 'w', encoding='utf-8', errors='ignore') as f:
+    with open(f_name, 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
 
 if __name__ == '__main__':
@@ -318,5 +327,6 @@ if __name__ == '__main__':
                 print(abs_f_name)
                 input_coding_verify(abs_f_name)
                 show_ifend_cnt(abs_f_name)
+#                deal_file(abs_f_name)
                 demo_test(abs_f_name, command, macro_name)
 
