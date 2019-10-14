@@ -122,6 +122,7 @@ def parse_outer_ifend(lines, macro):
 #        print(ifLine_list)
         if macro == ifLine_list[1]:# matched
             this_array.append(parse_outer)
+            print(parse_outer[0], parse_outer[-1])
         else:# unmatched
             next_ab += parse_outer[1]
             next_ab += parse_outer[3]
@@ -163,7 +164,7 @@ def ifend_deal(lines, cmd, macro):
     for line in lines:
         data += line
     macro_array = iter_parse_ifend(lines, macro)
-    print(macro_array)
+#    print(macro_array)
 #    print(len(macro_array))
     old_data = ['' for i in range(len(macro_array))]
     new_data = ['' for i in range(len(macro_array))]
