@@ -94,7 +94,7 @@ def get_ifend_outerIndex(lines, if_allIndex, endif_allIndex):
 #                print(j, if_allIndex[j])
                 temp_cnt += 1
         if i+1 == temp_cnt:
-#            print(i, endif_allIndex[i])
+#           print(i, endif_allIndex[i])
             endif_outer.append(endif_allIndex[i])
     for endif_index in endif_outer:
         for if_index in if_allIndex:
@@ -110,14 +110,17 @@ def parse_outer_ifend(lines, cmd, macro):
     next_array = []
     next_ab = ''
     (if_allIndex, endif_allIndex) = get_ifend_allIndex(lines)
+#    print(if_allIndex, endif_allIndex)
     (if_outer, endif_outer) = get_ifend_outerIndex(lines, if_allIndex, endif_allIndex)
 #    print(if_outer, endif_outer)
+#    print(len(if_outer))
     outer_macro = [list('') for i in range(len(if_outer))]
     for i in range(len(if_outer)):
         for index in range(if_outer[i], endif_outer[i]+1):
             outer_macro[i].append(lines[index])
+#        print(outer_macro[i])
         parse_outer = parse_else_from_ifend(outer_macro[i])
-#        print(parse_outer[0], parse_outer[1], parse_outer[2], parse_outer[4])
+#        print(parse_outer[0], parse_outer[2], parse_outer[3], parse_outer[4])
         parse_outer[0] = deal_startTabLine(parse_outer[0])
         ifLine_list = parse_outer[0].lstrip(' ').strip('\n').split(' ')
 #        print(ifLine_list)
@@ -131,10 +134,12 @@ def parse_outer_ifend(lines, cmd, macro):
 #            if cmd == 'keep':
 #                next_ab += parse_outer[1]
         else:# unmatched
+#            print(parse_outer[1])
+#            print(parse_outer[3])
             next_ab += parse_outer[1] # A
             next_ab += parse_outer[3] # B
     next_lines = next_ab.split('\n')
-#    print(len(next_lines), next_lines)
+#    print(len(next_lines))
     for i in range(len(next_lines)):
         next_array.append(next_lines[i] + '\n')
 #    print(this_array)
@@ -143,6 +148,7 @@ def parse_outer_ifend(lines, cmd, macro):
 
 glb_macro_array = []
 def iter_parse_ifend(lines, cmd, macro):
+#    print(lines)
     ifdef_cnt = 0
     endif_cnt = 0
     global glb_macro_array
@@ -161,10 +167,18 @@ def iter_parse_ifend(lines, cmd, macro):
     print(ifdef_cnt, endif_cnt)
     if ifdef_cnt == endif_cnt == 0:
         return glb_macro_array
-    (macro_array, data_array) = parse_outer_ifend(lines, cmd, macro)
-    glb_macro_array.extend(macro_array)
-#    print(glb_macro_array)
-    return iter_parse_ifend(data_array, cmd, macro)
+    else:
+        (macro_array, data_array) = parse_outer_ifend(lines, cmd, macro)
+#        print(macro_array)
+#        print(data_array)
+#        data = ''
+#        for i in data_array:
+#            data += i
+#        print(data)
+        glb_macro_array.extend(macro_array)
+#        print(glb_macro_array)
+#        print(data_array)
+        return iter_parse_ifend(data_array, cmd, macro)
 
 def ifend_deal(lines, cmd, macro):
 #    print(lines)
@@ -261,9 +275,11 @@ def parse_else_from_ifend(lines):
                 for i in range(else_index[index]+1, len(lines)-1):
                     data_b += lines[i]
                 data_else += lines[else_index[index]]
+                break
             elif if_cnt > end_cnt:
                 for i in range(1, len(lines)-1):
                     data_a += lines[i]
+                break
             else:
                 print("There should be error!!")
     parse_str[0] += lines[0]
@@ -329,17 +345,17 @@ def show_ifend_cnt(f_name):
                 elif_cnt += 1
         print("length of file lines: " + str(len(lines)))
         print("[total of #if :] " + str(if_cnt))
-#        print(" #ifdef : " + str(ifdef_cnt))
-#        print(" #ifndef: " + str(ifndef_cnt))
-#        print(" #if 0  : " + str(ifzero_cnt))
-#        print(" #if 1  : " + str(ifone_cnt))
+        print(" #ifdef : " + str(ifdef_cnt))
+        print(" #ifndef: " + str(ifndef_cnt))
+        print(" #if 0  : " + str(ifzero_cnt))
+        print(" #if 1  : " + str(ifone_cnt))
         print(" others : " + str(ifother_cnt))
         print("[#elif        :] " + str(elif_cnt))
         print("[#else        :] " + str(else_cnt))
         print("[#endif       :] " + str(endif_cnt))
 
 def demo_test(f_name, cmd, macro):
-#    print(f_name)
+    print(f_name)
     data = ''
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
@@ -367,7 +383,7 @@ if __name__ == '__main__':
             if f_name.endswith('.c') or f_name.endswith('.h'):
                 abs_f_name = os.path.join(root, f_name)
                 print(abs_f_name)
-#                input_coding_verify(abs_f_name)
+                input_coding_verify(abs_f_name)
                 show_ifend_cnt(abs_f_name)
                 deal_file(abs_f_name)
                 demo_test(abs_f_name, command, macro_name)
