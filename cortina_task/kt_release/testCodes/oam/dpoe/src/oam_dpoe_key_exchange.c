@@ -55,15 +55,15 @@ oam_uint32 oam_dpoe_key_exchange_expir_timer_get(
 oam_uint32 oam_dpoe_key_exhange_mode_set(ca_oam_key_exchange_mode_t key_exchange_mode)
 {
     ca_status_t ret = CA_E_OK;
-	ca_uint32_t pon_port = CA_PORT_ID(CA_PORT_TYPE_EPON, CA_PORT_ID_NI7);
+    ca_uint32_t pon_port = CA_PORT_ID(CA_PORT_TYPE_EPON, CA_PORT_ID_NI7);
 
     switch(key_exchange_mode){
-		case CA_OAM_KEY_EXCHANGE_MODE_NONE:
+        case CA_OAM_KEY_EXCHANGE_MODE_NONE:
             OAM_ORG_DEBUG("%d,Now is CA_OAM_KEY_EXCHANGE_MODE_NONE\n",__LINE__);
             ret = ca_port_encryption_enable_set(0,pon_port,CA_DIRECTION_ENC_BI,FALSE);
             CA_RET_VALUE_CHECK(ret);
             g_key_exchange_mode = key_exchange_mode;
-			return OAM_E_OK;
+            return OAM_E_OK;
         case CA_OAM_KEY_EXCHANGE_MODE_1G_DOWN_ONLY:
             OAM_ORG_DEBUG("%d,Now is CA_OAM_KEY_EXCHANGE_MODE_1G_DOWN_ONLY\n",__LINE__);
             ret = ca_port_encryption_enable_set(0,pon_port,CA_DIRECTION_ENC_RX,TRUE);
@@ -88,7 +88,7 @@ oam_uint32 oam_dpoe_key_exhange_mode_set(ca_oam_key_exchange_mode_t key_exchange
 
     g_key_exchange_mode = key_exchange_mode;
 
-	return OAM_E_OK;
+    return OAM_E_OK;
 }
 
 void oam_dpoe_key_exhange_mode_set_callback(void *data){
@@ -139,7 +139,7 @@ oam_uint32 oam_dpoe_key_exhange_mode_get(ca_oam_key_exchange_mode_t *key_exchang
 
     *key_exchange_mode = g_key_exchange_mode;
 
-	return OAM_E_OK;
+    return OAM_E_OK;
 }
 
 /*Set new key send from OLT
@@ -152,9 +152,9 @@ oam_uint32 oam_dpoe_key_from_olt_set(
     oam_uint8 *key_value)
 {
     ca_status_t ret = CA_E_OK;
-	ca_uint32_t pon_port = CA_PORT_ID(CA_PORT_TYPE_EPON, CA_PORT_ID_NI7);
+    ca_uint32_t pon_port = CA_PORT_ID(CA_PORT_TYPE_EPON, CA_PORT_ID_NI7);
 
-	OAM_ASSERT_RET(key_value,OAM_E_PARAM);
+    OAM_ASSERT_RET(key_value,OAM_E_PARAM);
 
     OAM_ORG_DEBUG("Now is %s:%d \n ",__FUNCTION__,__LINE__);
 
@@ -210,7 +210,7 @@ void dpoe_encrypt_llid_dereg(oam_llid_t llid, oam_uint16 index)
 
 void oam_key_exch_timer_expire_handle(oam_uint8 index)
 {
-	ca_uint32_t pon_port = CA_PORT_ID(CA_PORT_TYPE_EPON, CA_PORT_ID_NI7);
+    ca_uint32_t pon_port = CA_PORT_ID(CA_PORT_TYPE_EPON, CA_PORT_ID_NI7);
     oam_uint8 key[16],tmp_key[16];
     oam_uint32 r;
     oam_uint8 i = 0;

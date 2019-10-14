@@ -1402,10 +1402,10 @@ handle_dpoe_oams(
             dpoe_oam_handle_key_exchange(llid, frame, len);
             break;
 
-		case OAM_PDU_DPOE_FILE_TRANS:/*0x09*/
-			OAM_ORG_DEBUG("Recv OAM_PDU_DPOE_FILE_TRANS \n");
-			dpoe_oam_handle_file_trans(llid, frame, len);
-			break;
+        case OAM_PDU_DPOE_FILE_TRANS:/*0x09*/
+            OAM_ORG_DEBUG("Recv OAM_PDU_DPOE_FILE_TRANS \n");
+            dpoe_oam_handle_file_trans(llid, frame, len);
+            break;
 
         default:
             OAM_ORG_LOG("Recv Unknow Opcode = %d \n", dpoe_frame->opcode);

@@ -44,11 +44,11 @@
 #endif
 
 typedef struct oam_kt_upg_tftp_addr_ctx{
-	oam_uint32 ipAddr;
-	oam_uint32 ipMask;
-	oam_uint32 gw;
-	oam_uint16 vlan;
-	oam_uint8  priority;
+    oam_uint32 ipAddr;
+    oam_uint32 ipMask;
+    oam_uint32 gw;
+    oam_uint16 vlan;
+    oam_uint8  priority;
 }oam_kt_upg_tftp_addr_ctx_t;
 
 typedef enum oam_kt_upg_tftp_state{
@@ -86,10 +86,10 @@ typedef struct oam_kt_dev_ctx{
 }oam_kt_dev_ctx_t;
 
 typedef struct oam_kt_upg_mgr_ctx{
-	oam_uint32                 upg_state;
-	oam_kt_upg_tftp_addr_ctx_t tftp_addr;
-	oam_uint8                  dl_state;
-	oam_kt_upg_auto_reboot_e   auto_reboot;
+    oam_uint32                 upg_state;
+    oam_kt_upg_tftp_addr_ctx_t tftp_addr;
+    oam_uint8                  dl_state;
+    oam_kt_upg_auto_reboot_e   auto_reboot;
     oam_uint32                 tftpd_thread_state;
     oam_kt_dev_ctx_t           dev_ctx;
 }oam_kt_upg_mgr_ctx_t;
@@ -101,7 +101,7 @@ oam_uint32 oam_onu_upg_tftp_auto_reboot_set(
         oam_kt_upg_auto_reboot_e auto_reboot);
 
 oam_uint32 oam_onu_upg_tftp_dl_state_get(
-	oam_uint8  *dl_state);
+    oam_uint8  *dl_state);
 
 void oam_kt_upg_evt_handler(void *msg);
 void tk_oam_onu_upg_init(void);

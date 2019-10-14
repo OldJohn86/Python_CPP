@@ -151,20 +151,20 @@ oam_status oam_llid_enable_init_adapt();
 
 ca_uint32_t oam_reg_status_event_handler
 (
-	ca_device_id_t 		device_id,
-	ca_uint32_t 		event_id,
-	ca_void_t 		*event,
-	ca_uint32_t 		len,
-	ca_void_t		*cookie
+    ca_device_id_t         device_id,
+    ca_uint32_t         event_id,
+    ca_void_t         *event,
+    ca_uint32_t         len,
+    ca_void_t        *cookie
 );
 
 ca_uint32_t oam_port_link_event_handler
 (
-	ca_device_id_t 		device_id,
-	ca_uint32_t 		event_id,
-	ca_void_t 		*event,
-	ca_uint32_t 		len,
-	ca_void_t		*cookie
+    ca_device_id_t         device_id,
+    ca_uint32_t         event_id,
+    ca_void_t         *event,
+    ca_uint32_t         len,
+    ca_void_t        *cookie
 );
 
 

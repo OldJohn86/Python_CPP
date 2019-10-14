@@ -627,9 +627,9 @@ static oam_int32  zte_build_information_packet(     )
 
     /*send a TCP reponse*/
     /*
-    ¡G"GET /ReportVersion.servlet?status=SendVersion&deviceType=d42x&productMAC=00:d0:d0:9a:47:29&deviceSN=00000000000000000000000000
+    G"GET /ReportVersion.servlet?status=SendVersion&deviceType=d42x&productMAC=00:d0:d0:9a:47:29&deviceSN=00000000000000000000000000
     000000&deviceID=00000000000000000000000000000000&deviceIP=192.168.1.1&oldVersionNo=V2.0.0T6 HTTP/1.1..Host: 192.168.1.100:5678..
-    Content-Type: text/xml; charset="utf-8"..Keep-Alive: ..Connection: TE, Keep-Alive..TE: trailers...¡±
+    Content-Type: text/xml; charset="utf-8"..Keep-Alive: ..Connection: TE, Keep-Alive..TE: trailers...
     */
 
 

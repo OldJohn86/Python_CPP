@@ -1185,7 +1185,7 @@ oam_status tk_oam_uni_phy_admin_adapt(
     OAM_UNI_PORT_ID_CHECK(port);
     ca_port = OAM_UNI_PORT_ID_TO_CA_PORT(port);
 
-	ca_port_enable_set(0, ca_port, enable);
+    ca_port_enable_set(0, ca_port, enable);
 
     return OAM_E_OK;
 }
@@ -2674,10 +2674,10 @@ oam_status tk_oam_port_statistics_get_adapt(
         statis->excessive_collisions = 0;
         statis->internal_mac_tx_errors = 0;
         statis->carrier_sense_errors = 0;
-		statis->frame_too_longs = pon_stats.pon_oversize_cnt;
+        statis->frame_too_longs = pon_stats.pon_oversize_cnt;
         statis->internal_mac_rx_errors = 0;
         statis->symbol_errors = pon_stats.pon_err_symbol;
-		statis->in_pause_frames = pon_stats.pon_pauseframe_cnt;
+        statis->in_pause_frames = pon_stats.pon_pauseframe_cnt;
         statis->out_pause_frames = pon_stats.pon_txpausecnt;
 
     } else {

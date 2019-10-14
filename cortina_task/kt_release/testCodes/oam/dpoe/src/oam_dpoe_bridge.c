@@ -1807,22 +1807,22 @@ oam_uint32 dpoe_oam_queue_cfg_get(
 {
     oam_uint32 pdu_len = 0;
     oam_dpoe_queue_cfg_t *queue_cfg = (oam_dpoe_uint8_t *)out;
-	oam_uint8 type  = 0;
-	oam_uint16 port = 0;
+    oam_uint8 type  = 0;
+    oam_uint16 port = 0;
 
-	type = mgmt_obj.obj.uni.hdr.leaf;
+    type = mgmt_obj.obj.uni.hdr.leaf;
 
-	if (type == OAM_DPOE_LEAF_OBJ_LLID){
-		port = mgmt_obj.obj.llid.value;
-	}else if(type == OAM_DPOE_LEAF_OBJ_UNI){
-		port = mgmt_obj.obj.uni.value;
-	}
+    if (type == OAM_DPOE_LEAF_OBJ_LLID){
+        port = mgmt_obj.obj.llid.value;
+    }else if(type == OAM_DPOE_LEAF_OBJ_UNI){
+        port = mgmt_obj.obj.uni.value;
+    }
 
-	dpoe_oam_queue_cfg_get_adapt(mgmt_obj.obj.uni.hdr.leaf,port,&queue_cfg->queue_count,queue_cfg->size);
+    dpoe_oam_queue_cfg_get_adapt(mgmt_obj.obj.uni.hdr.leaf,port,&queue_cfg->queue_count,queue_cfg->size);
 
-	if(type == OAM_DPOE_LEAF_OBJ_LLID){
-		queue_cfg->queue_count = 0x1;
-	}
+    if(type == OAM_DPOE_LEAF_OBJ_LLID){
+        queue_cfg->queue_count = 0x1;
+    }
 
     queue_cfg->hdr.width = 1;
 
@@ -1857,7 +1857,7 @@ oam_uint32 dpoe_oam_queue_cfg_set(
 
 
 /*
-	This function according to [1904.1A], subclause 14.4.3.2.15.
+    This function according to [1904.1A], subclause 14.4.3.2.15.
 */
 oam_uint32 dpoe_oam_multicast_llid_get(
     dpoe_oam_mgmt_obj_t mgmt_obj,
@@ -1865,17 +1865,17 @@ oam_uint32 dpoe_oam_multicast_llid_get(
     oam_uint32   *proc_recv_len,
     oam_uint8    *out)
 {
-	oam_uint32 pdu_len = 0;
+    oam_uint32 pdu_len = 0;
     oam_uint8 num = 0;
     oam_uint16 mc_llid[64];
     oam_dpoe_onu_mc_llid_tlv_t *onu_mc_llid = (oam_dpoe_onu_mc_llid_tlv_t *)out;
     memset(mc_llid,0,64*sizeof(oam_uint16));
     
     dpoe_oam_multicast_llid_get_adapt(&num,mc_llid);
-	onu_mc_llid->hdr.width = 2*num;
+    onu_mc_llid->hdr.width = 2*num;
     memcpy(onu_mc_llid->mc_llid,mc_llid,2*num);
-	pdu_len = sizeof(oam_var_cont_t)+2*num;
-	return pdu_len;
+    pdu_len = sizeof(oam_var_cont_t)+2*num;
+    return pdu_len;
 }
 
 

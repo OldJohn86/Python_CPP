@@ -82,7 +82,7 @@ typedef struct{
 
 typedef struct{
     oam_int32  fd;
-	oam_uint16 block_num;
+    oam_uint16 block_num;
     oam_uint16 block_size;
     oam_uint16 block_width;
     oam_uint16 next_block_num;
@@ -107,7 +107,7 @@ typedef struct{
 
 typedef struct{
     dpoe_oam_upg_fsm_ctx_t         dpoe_oam_upg_fsm_ctx;
-	dpoe_oam_img_ctrl_ctx_t        dpoe_oam_img_ctrl_ctx;
+    dpoe_oam_img_ctrl_ctx_t        dpoe_oam_img_ctrl_ctx;
     dpoe_oam_upg_cfg_ctx_t         dpoe_oam_upg_cfg_ctx;
     dpoe_oam_upg_trans_ctx_t       dpoe_oam_upg_trans_ctx;
     dpoe_oam_img_upg_fsm_handler_t img_upg_fsm_handler[DPOE_OAM_UPG_MAX_STATE][DPOE_OAM_UPG_MAX_EVENT];

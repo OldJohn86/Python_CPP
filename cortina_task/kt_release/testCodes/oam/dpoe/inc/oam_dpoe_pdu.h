@@ -558,8 +558,8 @@ typedef struct {
 }__attribute__((packed)) oam_dpoe_queue_cfg_t;
 
 typedef struct{
-	oam_var_cont_t      hdr;
-	oam_uint16 			onu_max_frame_size_capability;
+    oam_var_cont_t      hdr;
+    oam_uint16             onu_max_frame_size_capability;
 }__attribute__((packed)) oam_dpoe_onu_max_frame_capability_t;
 
 typedef struct{

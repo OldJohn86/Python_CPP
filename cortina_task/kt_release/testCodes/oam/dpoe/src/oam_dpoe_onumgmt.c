@@ -416,7 +416,7 @@ oam_uint32 dpoe_oam_pkt_buff_get(
     data->ds_buf = htons(data->ds_buf);
 
 #endif
-	data->up_queue = 0x1f;
+    data->up_queue = 0x1f;
     data->up_queue_link = 0x1f;
     data->up_queue_increment = 0x04;
     data->ds_queue = 0x10;

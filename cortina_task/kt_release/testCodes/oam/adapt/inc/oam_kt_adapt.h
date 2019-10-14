@@ -276,30 +276,30 @@ typedef struct {
 } kt_oam_reset_set_timer_adapt_t;
 
 enum vlan_ioctl_cmds {
-	ADD_VLAN_CMD,
-	DEL_VLAN_CMD,
-	SET_VLAN_INGRESS_PRIORITY_CMD,
-	SET_VLAN_EGRESS_PRIORITY_CMD,
-	GET_VLAN_INGRESS_PRIORITY_CMD,
-	GET_VLAN_EGRESS_PRIORITY_CMD,
-	SET_VLAN_NAME_TYPE_CMD,
-	SET_VLAN_FLAG_CMD
+    ADD_VLAN_CMD,
+    DEL_VLAN_CMD,
+    SET_VLAN_INGRESS_PRIORITY_CMD,
+    SET_VLAN_EGRESS_PRIORITY_CMD,
+    GET_VLAN_INGRESS_PRIORITY_CMD,
+    GET_VLAN_EGRESS_PRIORITY_CMD,
+    SET_VLAN_NAME_TYPE_CMD,
+    SET_VLAN_FLAG_CMD
 };
 
 struct vlan_ioctl_args {
-	int cmd; /* Should be one of the vlan_ioctl_cmds enum above. */
-	char device1[24];
+    int cmd; /* Should be one of the vlan_ioctl_cmds enum above. */
+    char device1[24];
 
-	union {
-		char device2[24];
-		int VID;
-		unsigned int skb_priority;
-		unsigned int name_type;
-		unsigned int bind_type;
-		unsigned int flag; /* Matches vlan_dev_info flags */
-	} u;
+    union {
+        char device2[24];
+        int VID;
+        unsigned int skb_priority;
+        unsigned int name_type;
+        unsigned int bind_type;
+        unsigned int flag; /* Matches vlan_dev_info flags */
+    } u;
 
-	short vlan_qos;
+    short vlan_qos;
 };
 
 oam_status kt_oam_action_reset_adapt (

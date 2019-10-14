@@ -700,11 +700,11 @@ typedef struct {
 } __attribute__((packed)) tk_oam_queue_stats_t;
 
 typedef struct {
-	oam_uint32 ipAddr;
-	oam_uint32 ipMask;
-	oam_uint32 gw;
-	oam_uint16 vlan;
-	oam_uint8  priority;
+    oam_uint32 ipAddr;
+    oam_uint32 ipMask;
+    oam_uint32 gw;
+    oam_uint16 vlan;
+    oam_uint8  priority;
 }__attribute__((packed)) tk_oam_upg_tftp_addr_t;
 
 

@@ -145,13 +145,13 @@ oam_status oam_onu_port_info_init_adapt()
                         g_oam_ext_mode_str[oam_ext_mode] );
                 }
             }
-			else if ( oam_ext_mode == OAM_EXT_MODE_CTC )
-			{
+            else if ( oam_ext_mode == OAM_EXT_MODE_CTC )
+            {
                 //
                 // ctc oam, shift up user_port_id with 1, because port 0 is pon port.
                 //
                 user_port_id [ i ] += 1;
-			}
+            }
 
             oam_onu_port_info.user_port_id[uni_num] = user_port_id[i];
             oam_onu_port_info.ca_port_id[uni_num] = CA_PORT_ID(CA_PORT_TYPE_ETHERNET, i);
@@ -431,10 +431,10 @@ oam_status oam_llid_mac_get_adapt(
 /* $rtn_hdr_end                                                              */
 /*****************************************************************************/
 {
-	ca_status_t ret = 0;
-	ca_uint32_t i = 0;
+    ca_status_t ret = 0;
+    ca_uint32_t i = 0;
     oam_uint8 onu_mac[OAM_MACADDR_LEN] = {0x00, 0x13, 0x25, 0x00, 0x00, 0x01};
-	ca_device_config_tlv_t dev_cfg_tlv;
+    ca_device_config_tlv_t dev_cfg_tlv;
     OAM_ASSERT_RET(mac != NULL, OAM_E_PARAM);
 
     memset(&dev_cfg_tlv, 0, sizeof(ca_device_config_tlv_t));
@@ -1044,11 +1044,11 @@ ca_uint32_t oam_frame_handler(ca_device_id_t device_id, ca_pkt_t *pkt, void *coo
 }
 ca_uint32_t oam_reg_status_event_handler
 (
-	ca_device_id_t 		device_id,
-	ca_uint32_t 		event_id,
-	ca_void_t 		*event,
-	ca_uint32_t 		len,
-	ca_void_t		*cookie
+    ca_device_id_t         device_id,
+    ca_uint32_t         event_id,
+    ca_void_t         *event,
+    ca_uint32_t         len,
+    ca_void_t        *cookie
 )
 {
     oam_onu_reg_evt_t reg_evt;
@@ -1107,11 +1107,11 @@ ca_uint32_t oam_reg_status_event_handler
 
 ca_uint32_t oam_port_link_event_handler
 (
-	ca_device_id_t 		device_id,
-	ca_uint32_t 		event_id,
-	ca_void_t 		*event,
-	ca_uint32_t 		len,
-	ca_void_t		*cookie
+    ca_device_id_t         device_id,
+    ca_uint32_t         event_id,
+    ca_void_t         *event,
+    ca_uint32_t         len,
+    ca_void_t        *cookie
 )
 {
     oam_onu_port_link_evt_t link_evt;
@@ -1229,7 +1229,7 @@ oam_status oam_pkt_send_adapt(
 
     pkt_data = (ca_pkt_block_t *)OAM_MALLOC(sizeof(ca_pkt_block_t));
     pkt_data->len = len;
-	//pkt_data->len = len + OAM_SATURN_PKT_HEADER_LEN;
+    //pkt_data->len = len + OAM_SATURN_PKT_HEADER_LEN;
     pkt_data->data = (ca_uint8 *)OAM_MALLOC(pkt_data->len);
 
     //puc_da[5] = (puc_da[5] & 0x3f) | intf->index; /* add llid info to puc_da[5:0] */
@@ -1384,39 +1384,39 @@ oam_status oam_pon_led_set_adapt(oam_uint8 action)
 static ca_uint32_t g_oam_traffic_rule_index[OAM_UNI_PORT_NUM_MAX];
 oam_status oam_traffic_enable_adapt(oam_uint8 enable)
 {
-	ca_uint32_t i = 0;
-	ca_port_id_t pon_port;
-	ca_classifier_key_t key;
-	ca_classifier_key_mask_t mask;
-	ca_classifier_action_t action;
+    ca_uint32_t i = 0;
+    ca_port_id_t pon_port;
+    ca_classifier_key_t key;
+    ca_classifier_key_mask_t mask;
+    ca_classifier_action_t action;
 
-	ca_vlan_port_control_t control;
+    ca_vlan_port_control_t control;
 
     pon_port = OAM_PON_PORT_ID_TO_CA_PORT();
-	memset(&key, 0, sizeof(ca_classifier_key_t));
-	memset(&mask, 0, sizeof(ca_classifier_key_mask_t));
-	memset(&action, 0, sizeof(ca_classifier_action_t));
+    memset(&key, 0, sizeof(ca_classifier_key_t));
+    memset(&mask, 0, sizeof(ca_classifier_key_mask_t));
+    memset(&action, 0, sizeof(ca_classifier_action_t));
 
-	for(i = OAM_UNI_PORT_ID1; i <= OAM_UNI_PORT_NUM; i++){
-		if(enable == 1){
-			mask.src_port = 1;
-			key.src_port = CA_PORT_ID(CA_PORT_TYPE_ETHERNET, i+2);
-			action.dest.port = pon_port;
-			action.forward = CA_CLASSIFIER_FORWARD_PORT;
-			action.options.masks.action_handle = 1;
-			action.options.action_handle.flow_id = 0;
-			//ca_classifier_rule_add(0, 0, &key, &mask, &action, &g_oam_traffic_rule_index[i-1]);
-		}else{
-			//ca_classifier_rule_delete(0, g_oam_traffic_rule_index[i-1]);
-		}
-	}
+    for(i = OAM_UNI_PORT_ID1; i <= OAM_UNI_PORT_NUM; i++){
+        if(enable == 1){
+            mask.src_port = 1;
+            key.src_port = CA_PORT_ID(CA_PORT_TYPE_ETHERNET, i+2);
+            action.dest.port = pon_port;
+            action.forward = CA_CLASSIFIER_FORWARD_PORT;
+            action.options.masks.action_handle = 1;
+            action.options.action_handle.flow_id = 0;
+            //ca_classifier_rule_add(0, 0, &key, &mask, &action, &g_oam_traffic_rule_index[i-1]);
+        }else{
+            //ca_classifier_rule_delete(0, g_oam_traffic_rule_index[i-1]);
+        }
+    }
 
-	memset(&control, 0, sizeof(ca_vlan_port_control_t));
-	ca_l2_vlan_port_control_get(0, pon_port, &control);
-	control.drop_unknown_vlan = !enable;
-	ca_l2_vlan_port_control_set(0, pon_port, &control);
+    memset(&control, 0, sizeof(ca_vlan_port_control_t));
+    ca_l2_vlan_port_control_get(0, pon_port, &control);
+    control.drop_unknown_vlan = !enable;
+    ca_l2_vlan_port_control_set(0, pon_port, &control);
 
-	return OAM_E_OK;
+    return OAM_E_OK;
 }
 
 oam_status oam_port_control_set_adapt(oam_uint8 enable){
@@ -1438,17 +1438,17 @@ static ca_boolean_t g_oam_traffic_status = 0;
 oam_status oam_traffic_set_adapt(oam_uint8 link_status)
 {
     ca_device_config_tlv_t *dev_cfg_tlv = NULL;
-	oam_uint8 enable;
+    oam_uint8 enable;
     dev_cfg_tlv = ca_malloc(sizeof(ca_device_config_tlv_t));
-	dev_cfg_tlv->type = CA_CFG_ID_EN_TRAFFIC_AFTER_OAM_DISCOVERY;
-	ca_device_config_tlv_get(0, dev_cfg_tlv);
-	enable = dev_cfg_tlv->value[0];
-	if(enable == TRUE){
-		if(link_status != g_oam_traffic_status){
-		    ca_printf("traffic %s after oam link change\r\n", (link_status!=0)?"enable":"disable");
-		    oam_traffic_enable_adapt(link_status);
-		    g_oam_traffic_status = link_status;
-		}
+    dev_cfg_tlv->type = CA_CFG_ID_EN_TRAFFIC_AFTER_OAM_DISCOVERY;
+    ca_device_config_tlv_get(0, dev_cfg_tlv);
+    enable = dev_cfg_tlv->value[0];
+    if(enable == TRUE){
+        if(link_status != g_oam_traffic_status){
+            ca_printf("traffic %s after oam link change\r\n", (link_status!=0)?"enable":"disable");
+            oam_traffic_enable_adapt(link_status);
+            g_oam_traffic_status = link_status;
+        }
     }else {
         //clear all default cls for bug#50715
         oam_port_control_set_adapt(enable);
@@ -1496,7 +1496,7 @@ oam_status oam_llid_enable_init_adapt()
     ca_port_id_t  port = 0;
     ca_uint32_t i = 0;
     ca_uint8_t reg_mode = 1;
-	ca_device_config_tlv_t reg_scfg;
+    ca_device_config_tlv_t reg_scfg;
     ca_device_config_tlv_t llid_mode_scfg;
     ca_device_config_tlv_t llid_num_scfg;
     ca_uint8_t llid_mode = CA_EPON_MPCP_S_LLID;

@@ -188,7 +188,7 @@ oam_status kt_oam_action_reset_adapt(
 {
     oam_uint32 delay = KT_NORMAL_RESET_DELAY_ADAPT;
 
-	OAM_ORG_LOG_MAJ("start to reset ONU\r\n");
+    OAM_ORG_LOG_MAJ("start to reset ONU\r\n");
     if(force){
         delay = KT_NORMAL_RESET_DELAY_ADAPT;
     }
@@ -977,13 +977,13 @@ oam_status kt_prv_oam_onu_per_port_mac_entries_get_adapt (ca_uint8 port, oam_kt_
     ca_iterator_t return_entry;
     ca_status_t status;
     ca_port_id_t ca_port;
-	ca_boolean_t get_all = FALSE;
-	int port_cnt[4] = {0};
+    ca_boolean_t get_all = FALSE;
+    int port_cnt[4] = {0};
     int j = 0;
     ca_uint32_t oam_port;
 
-	if(OAM_ALL_UNI_PORT_ID == port)
-		get_all = TRUE;
+    if(OAM_ALL_UNI_PORT_ID == port)
+        get_all = TRUE;
 
     memset(&return_entry, 0, sizeof(ca_iterator_t));
     memset(&l2_entry, 0, sizeof(ca_l2_addr_entry_t));
@@ -1108,8 +1108,8 @@ oam_status kt_prv_oam_opm_ddm_get_adapt(
     opm_diag_info_t diag_info;
 
 
-	if(NULL == temperature || NULL == tx_power || NULL == rx_power || NULL == voltage || NULL == tx_bias)
-		return CA_E_ERROR;
+    if(NULL == temperature || NULL == tx_power || NULL == rx_power || NULL == voltage || NULL == tx_bias)
+        return CA_E_ERROR;
 
     memset(&diag_info, 0, sizeof(opm_diag_info_t));
 
@@ -1535,15 +1535,15 @@ void oam_kt_pon_act_handle(void *arg, void *data)
     ca_eth_port_link_status_t link = CA_PORT_LINK_DOWN, temp_link;
     ca_eth_port_speed_t speed;
     int i;
-	oam_uint32 enable = 0;
+    oam_uint32 enable = 0;
 
-	/* PON port */
-	oam_stats_polling_enable_get(0, &enable);
+    /* PON port */
+    oam_stats_polling_enable_get(0, &enable);
 
-	if(!enable)
-	{
-		return;
-	}
+    if(!enable)
+    {
+        return;
+    }
 
     memset(&port_stats, 0x0, sizeof(ca_epon_port_stats_t));
 

@@ -208,13 +208,13 @@ tk_oam_onu_port_statis_get(
 
     tmp_value = 0;
 
-	if(!g_oam_tk_port_stats_get)
-	{
-		g_oam_tk_port_stats_get = 1;
+    if(!g_oam_tk_port_stats_get)
+    {
+        g_oam_tk_port_stats_get = 1;
         ret = tk_oam_port_statistics_get_adapt(mgmtObj.port,&tk_statis);
     }
-	else
-		ret = OAM_E_OK;
+    else
+        ret = OAM_E_OK;
 
 
     if(OAM_E_OK == ret)
@@ -1649,7 +1649,7 @@ tk_oam_onu_port_vlan_member_set(
     tk_oam_tlv_t *p_tlv = (tk_oam_tlv_t *)pRecv;
     tk_oam_onu_port_vlan_member_set_t2 *p_set = NULL;
     epon_tk_port_vlan_member_config_t *tmp_vlan_mbr = NULL;
-	epon_tk_port_vlan_member_config_t  vlan_mbr;
+    epon_tk_port_vlan_member_config_t  vlan_mbr;
 
 
     p_set  = (tk_oam_onu_port_vlan_member_set_t2 *)p_tlv->data;
@@ -2739,12 +2739,12 @@ tk_oam_queue_stats_get(
     queue = mgmtObj.queue;
     
     if(!g_oam_tk_port_stats_get)
-	{
-		g_oam_tk_port_stats_get = 1;
+    {
+        g_oam_tk_port_stats_get = 1;
         ret = tk_oam_queue_stats_get_adapt(port, queue, &stats);
     }
-	else
-		ret = OAM_E_OK;
+    else
+        ret = OAM_E_OK;
 
     if(OAM_E_OK == ret)
     {

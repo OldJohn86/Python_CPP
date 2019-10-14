@@ -343,21 +343,21 @@ void oam_event_period_counter_get(
     oam_uint64 *in_err_symb)
 {
     oam_uint64 frames = 0, errors = 0, err_symb = 0;
-	oam_uint32 enable = 0;
+    oam_uint32 enable = 0;
 
-	/* PON port */
-	oam_stats_polling_enable_get(0, &enable);
+    /* PON port */
+    oam_stats_polling_enable_get(0, &enable);
 
-	if(!enable)
-	{ 
-		*in_frames = 0;
+    if(!enable)
+    { 
+        *in_frames = 0;
     	*in_errors = 0;
     	*in_err_symb = 0;
-		return;
-	}
-	
-	oam_pon_stats_summary_get_adapt(FALSE, &frames, &errors, &err_symb);
-	
+        return;
+    }
+    
+    oam_pon_stats_summary_get_adapt(FALSE, &frames, &errors, &err_symb);
+    
     *in_frames = frames - g_last_counter.in_frames;
     *in_errors = errors - g_last_counter.in_errors;
     *in_err_symb = err_symb - g_last_counter.in_err_symb;
@@ -366,7 +366,7 @@ void oam_event_period_counter_get(
     g_last_counter.in_errors = errors;
     g_last_counter.in_err_symb = err_symb;
 
-	return;
+    return;
 }
 
 static void oam_event_polling_timer_expire(void *data)

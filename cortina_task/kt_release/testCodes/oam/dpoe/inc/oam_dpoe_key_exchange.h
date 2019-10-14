@@ -8,7 +8,7 @@
 #include "oam_core.h"
 
 typedef enum{
-	CA_OAM_KEY_EXCHANGE_MODE_NONE 		   = 0,	// none
+    CA_OAM_KEY_EXCHANGE_MODE_NONE            = 0,    // none
     CA_OAM_KEY_EXCHANGE_MODE_1G_DOWN_ONLY  = 1, // 1G Downstream only
     CA_OAM_KEY_EXCHANGE_MODE_10G_DOWN_ONLY = 2, // 10G Downstream only
     CA_OAM_KEY_EXCHANGE_MODE_10G_BI        = 3  // 10G Bidirectional

@@ -178,11 +178,11 @@ void oam_build_lao_event(oam_uint8 status)
 
 void
 oam_build_mac_limit_3_event(
-	ca_device_id_t 		device_id,
-	ca_uint32_t 		event_id,
-	ca_void_t 			*event,
-	ca_uint32_t 		len,
-	ca_void_t           *cookie
+    ca_device_id_t         device_id,
+    ca_uint32_t         event_id,
+    ca_void_t             *event,
+    ca_uint32_t         len,
+    ca_void_t           *cookie
 )
 {
     oam_uint32 length = 0;
@@ -267,7 +267,7 @@ void oam_build_switch_error_event(oam_uint8 module, oam_uint8 alarmId)
     {
         cap_log_msg(0, CA_MOD_OAM_APP, CAP_LOG_EMERGENCY,0,"스위치 LED 모드가 변경됨 \r\n"); /* switch led mode changed */
     }
-	return;
+    return;
 }
 
 ca_uint32_t oam_switch_event_handler(

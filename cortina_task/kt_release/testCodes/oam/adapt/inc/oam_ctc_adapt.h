@@ -142,10 +142,10 @@ typedef enum {
 #define CTC_MCVLAN_OPER_GET 3
 
 typedef enum {
-	CTC_INGR_FRM_UNTAG = 0,
-	CTC_INGR_FRM_SNGLTAG,
-	CTC_INGR_FRM_DBLTAG,
-	MAX_CTC_INGR_FRM
+    CTC_INGR_FRM_UNTAG = 0,
+    CTC_INGR_FRM_SNGLTAG,
+    CTC_INGR_FRM_DBLTAG,
+    MAX_CTC_INGR_FRM
 } ctc_ingr_frame_tag_e;
 
 typedef enum {

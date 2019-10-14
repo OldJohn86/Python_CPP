@@ -42,7 +42,7 @@ oam_uint32 dpoe_oam_key_exch_timer_get(
         return sizeof(oam_var_cont_t);
     }
 #endif
-	mgmt_obj.obj.llid.value = 0;
+    mgmt_obj.obj.llid.value = 0;
     ret = oam_dpoe_key_exchange_expir_timer_get(mgmt_obj.obj.llid.value, &time);
     OAM_ORG_DEBUG("ret = %d, llid = 0x%x, time = %d\r\n", ret, mgmt_obj.obj.llid.value, time);
 
@@ -83,8 +83,8 @@ oam_uint32 dpoe_oam_key_exch_timer_set(
         return sizeof(oam_var_cont_t);
     }
 #endif
-	mgmt_obj.obj.llid.value = 0;
-	in->value = ntohs(in->value);
+    mgmt_obj.obj.llid.value = 0;
+    in->value = ntohs(in->value);
     if((in->value)<10 && (in->value)>0){
         in->value = 10;
         OAM_ORG_LOG("dpoe_oam_key_exch_timer_set: the timer min is 10 , so chang it\n\r");
@@ -92,7 +92,7 @@ oam_uint32 dpoe_oam_key_exch_timer_set(
     ret = oam_dpoe_key_exchange_expir_timer_set(mgmt_obj.obj.llid.value, in->value);
     OAM_ORG_DEBUG("ret = %d, llid = 0x%x, value = %d\r\n", ret, mgmt_obj.obj.llid.value, in->value);
 
-	if(ret != OAM_E_OK){
+    if(ret != OAM_E_OK){
         data->width = OAM_DPOE_RSP_HW_FAILURE;
     }else{
         data->width = OAM_DPOE_RSP_OK;
@@ -109,7 +109,7 @@ oam_uint32 dpoe_oam_encrypt_mode_get(
     oam_uint32   *proc_recv_len,
     oam_uint8    *out)
 {
-	oam_status ret = OAM_E_OK;
+    oam_status ret = OAM_E_OK;
     oam_dpoe_uint8_t *data = (oam_dpoe_uint8_t *)out;
     oam_uint32 pdu_len = 0;
     ca_oam_key_exchange_mode_t mode;
@@ -126,7 +126,7 @@ oam_uint32 dpoe_oam_encrypt_mode_get(
         return sizeof(oam_var_cont_t);
     }
 #endif
-	mgmt_obj.obj.llid.value = 0;
+    mgmt_obj.obj.llid.value = 0;
     ret = oam_dpoe_key_exhange_mode_get(&mode);
     OAM_ORG_DEBUG("ret = %d, llid = 0x%x, mode = %d\r\n", ret, mgmt_obj.obj.llid.value, mode);
 
@@ -164,11 +164,11 @@ oam_uint32 dpoe_oam_encrypt_mode_set(
         return sizeof(oam_var_cont_t);
     }
 #endif
-	mgmt_obj.obj.llid.value = 0;
+    mgmt_obj.obj.llid.value = 0;
     ret = oam_dpoe_key_exhange_mode_set(in->value);
     OAM_ORG_DEBUG("ret = %d, llid = 0x%x, value = %d\r\n", ret, mgmt_obj.obj.llid.value, in->value);
 
-	if(ret != OAM_E_OK){
+    if(ret != OAM_E_OK){
         data->width = OAM_DPOE_RSP_HW_FAILURE;
     }else{
         data->width = OAM_DPOE_RSP_OK;
@@ -239,7 +239,7 @@ void dpoe_oam_handle_key_exchange(
 
 void oam_key_exchange_request(oam_uint16 llid, oam_uint8 number, oam_uint8 *key)
 {
-	oam_llid_t llid_value;
+    oam_llid_t llid_value;
     oam_uint8    pdu[OAM_MAX_OAMPDU_SIZE];
     oam_dpoe_onu_key_assign_t *key_assign;
     oam_int32   outPktLen = 0;
@@ -270,7 +270,7 @@ void oam_key_exchange_request(oam_uint16 llid, oam_uint8 number, oam_uint8 *key)
 
 void oam_key_exchange_ack(oam_uint16 llid, oam_uint8 number)
 {
-	oam_llid_t llid_value;
+    oam_llid_t llid_value;
     oam_uint8    pdu[OAM_MAX_OAMPDU_SIZE];
     oam_dpoe_onu_key_ack_t *key_ack;
     oam_int32   outPktLen = 0;
@@ -298,7 +298,7 @@ void oam_key_exchange_ack(oam_uint16 llid, oam_uint8 number)
 
 void oam_key_exchange_failure_alarm(oam_uint16 llid, oam_uint8 raise)
 {
-	oam_llid_t llid_value;
+    oam_llid_t llid_value;
     oam_uint8    pdu[OAM_MAX_OAMPDU_SIZE];
     oam_int32   outPktLen = 0;
     oam_pdu_dpoe_t   *pOutPkt = (oam_pdu_dpoe_t *)pdu;

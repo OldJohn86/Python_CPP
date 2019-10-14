@@ -222,10 +222,10 @@ void oam_link_complete(oam_if_t *intf)
 /* $rtn_hdr_end                                                              */
 /*****************************************************************************/
 {
-	if (intf == NULL)
-	    return;
+    if (intf == NULL)
+        return;
 
-	oam_dying_gasp_init_adapt(intf);
+    oam_dying_gasp_init_adapt(intf);
     oam_traffic_set_adapt(1);
 #ifdef CONFIG_ARCH_CORTINA_SATURN_SFU
 #ifdef HAVE_LOOP_DETECT
@@ -268,9 +268,9 @@ void oam_link_lost(oam_if_t *intf)
 {
     oam_pon_led_set_adapt(0);
 
-	if(intf->BEGIN == 0){
-		oam_traffic_set_adapt(0);
-	}
+    if(intf->BEGIN == 0){
+        oam_traffic_set_adapt(0);
+    }
 #ifdef CONFIG_ARCH_CORTINA_SATURN_SFU
 #ifdef HAVE_LOOP_DETECT
     if (oam_ext_mode == OAM_EXT_MODE_KT)

@@ -185,13 +185,13 @@ typedef struct {
 typedef struct {
     oam_var_cont_t  hdr;
     oam_uint8
-    k1;        /*Bit3-Bit0±íÊ¾·¢³öÇëÇóµÄĞÅµÀºÅ£º 0000-protection channel£»0001-working channel
-    ·¢ËÍµÄK1×Ö½ÚÖ¸Ê¾±¾µØ×îĞ¡ĞÅµÀºÅÉÏµÄ×î¸ßÓÅÏÈ¼¶ÇëÇó¡£
-    Èç£º 1100 0001±íÊ¾¹¤×÷Í¨µÀ³öÏÖSF*/
-    oam_uint8       k2;       /*Bit7-Bit4Ö¸Ê¾ĞÅµÀºÅ£¬Í¬K1µÄBit3-Bit0¶¨Òå¡£
-    Bit3±íÊ¾±£»¤¼Ü¹¹Ä£Ê½£¨1±íÊ¾1£ºn¼Ü¹¹£»0±íÊ¾1+1¼Ü¹¹£©£¬
-    Bit2-Bit0ÓÃÀ´Ö¸Ê¾ÇĞ»»Ä£Ê½£¨100-µ¥Ïò£¬101Ë«Ïò£©
-    Ä¿Ç°K2µÍ4BITÈ±Ê¡Îª0xd£¨1101*/
+    k1;        /*Bit3-Bit0Ê¾ÅµÅ£ 0000-protection channel0001-working channel
+    ÍµK1Ö½Ö¸Ê¾Ğ¡ÅµÏµÈ¼
+    ç£º 1100 0001Ê¾Í¨SF*/
+    oam_uint8       k2;       /*Bit7-Bit4Ö¸Ê¾ÅµÅ£Í¬K1Bit3-Bit0å¡£
+    Bit3Ê¾Ü¹Ä£Ê½1Ê¾1nÜ¹0Ê¾1+1Ü¹
+    Bit2-Bit0Ö¸Ê¾Ğ»Ä£Ê½100-101Ë«
+    Ä¿Ç°K24BITÈ±Ê¡Îª0xd1101*/
 } __attribute__((packed)) oam_zte_onu_typec_t;
 
 /* Alarm ID */

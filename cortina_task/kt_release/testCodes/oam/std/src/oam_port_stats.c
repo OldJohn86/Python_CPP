@@ -130,7 +130,7 @@ typedef struct{
     oam_pon_stats_t pon_stats_last;
     oam_uni_stats64_t *uni_stats;
     oam_queue_stats64_t queue_stats[OAM_STATS_PORT_NUM_MAX][OAM_PORT_QUEUE_NUM_MAX];
-    /* ca_queue_stats_get don't support read_keepï¼?It is read clear by default */
+    /* ca_queue_stats_get don't support read_keep?It is read clear by default */
     //oam_queue_stats_t queue_stats_last[OAM_STATS_PORT_NUM_MAX][OAM_PORT_QUEUE_NUM_MAX];
     ca_uint pon_stats_mutex;
     ca_uint uni_stats_mutex;
@@ -552,8 +552,8 @@ oam_status oam_uni_stats_reset(oam_port_id_t port)
     
     oam_uni_stats_clear_adapt(port);
     
-	ca_mutex_lock(g_oam_stats_mgmt.uni_stats_mutex);
-	
+    ca_mutex_lock(g_oam_stats_mgmt.uni_stats_mutex);
+    
     memset(&g_oam_stats_mgmt.uni_stats[i], 0x00,sizeof(oam_uni_stats64_t));
     
     ca_mutex_unlock(g_oam_stats_mgmt.uni_stats_mutex);
@@ -571,7 +571,7 @@ oam_status oam_queue_stats_reset(oam_port_id_t port, oam_uint8 queue)
     oam_queue_stats_clear_adapt(port, queue);
     
     ca_mutex_lock(g_oam_stats_mgmt.queue_stats_mutex);
-	
+    
     memset(&g_oam_stats_mgmt.queue_stats[port][queue], 0, sizeof(oam_queue_stats64_t));
     
     ca_mutex_unlock(g_oam_stats_mgmt.queue_stats_mutex);

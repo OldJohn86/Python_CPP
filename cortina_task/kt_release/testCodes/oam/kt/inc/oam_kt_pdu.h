@@ -381,34 +381,34 @@ typedef struct {
 typedef struct {
         oam_kt_var_cont_t hdr;
         oam_uint8 uni_port;
-		oam_macaddr_t mac;
+        oam_macaddr_t mac;
 } __attribute__((packed)) oam_kt_onu_per_port_mac_entries_t;
 
 typedef struct {
         oam_kt_var_cont_t hdr;
         oam_uint8 	port_id;
-		oam_uint16  	mask;
-		oam_uint64  	txFrames;
-		oam_uint64  	txBytes;
-		oam_uint64	txUnicastFrames;
-		oam_uint64	txMCFrames;
-		oam_uint64	txBCFrames;
-		oam_uint64	txDropFrames;
-		oam_uint64  	rxFrames;
-		oam_uint64  	rxBytes;
-		oam_uint64	rxUnicastFrames;
-		oam_uint64	rxMCFrames;
-		oam_uint64	rxBCFrames;
-		oam_uint64	rxOverSizeFrames;
-		oam_uint64	rxUnderSizeFrames;
-		oam_uint64	rxCRCFrames;
-		oam_uint64	inpause;
+        oam_uint16      mask;
+        oam_uint64      txFrames;
+        oam_uint64      txBytes;
+        oam_uint64    txUnicastFrames;
+        oam_uint64    txMCFrames;
+        oam_uint64    txBCFrames;
+        oam_uint64    txDropFrames;
+        oam_uint64      rxFrames;
+        oam_uint64      rxBytes;
+        oam_uint64    rxUnicastFrames;
+        oam_uint64    rxMCFrames;
+        oam_uint64    rxBCFrames;
+        oam_uint64    rxOverSizeFrames;
+        oam_uint64    rxUnderSizeFrames;
+        oam_uint64    rxCRCFrames;
+        oam_uint64    inpause;
 } __attribute__((packed)) oam_kt_onu_per_port_statistics_entries_t;
 
 typedef struct {
         oam_kt_var_cont_t hdr;
         oam_uint8 	port_id;
-		oam_uint16  	cable_length;
+        oam_uint16      cable_length;
 } __attribute__((packed)) oam_kt_onu_uni_port_rtct_t;
 
 typedef struct {
@@ -420,8 +420,8 @@ typedef struct {
 typedef struct {
         oam_kt_var_cont_t hdr;
         oam_uint8 	port;
-		oam_uint8  	pkt_type;
-		oam_uint16 	threshold;
+        oam_uint8      pkt_type;
+        oam_uint16     threshold;
 } __attribute__((packed)) oam_kt_onu_per_port_storm_control_set_t;
 
 typedef struct {
@@ -433,47 +433,47 @@ typedef struct {
 typedef struct {
         oam_kt_var_cont_t hdr;
         oam_uint8 	filter;
-		oam_uint8	fmac[6];
+        oam_uint8    fmac[6];
 } __attribute__((packed)) oam_kt_onu_mac_filter_set_t;
 
 typedef struct {
         oam_kt_var_cont_t hdr;
         oam_uint8 	port;
-		oam_uint8	admin;
+        oam_uint8    admin;
 } __attribute__((packed)) oam_kt_onu_uni_link_status_set_t;
 
 typedef struct {
         oam_kt_var_cont_t hdr;
         oam_uint8 	port;
-		oam_uint16 	rj45_failure;
-		oam_uint16   cnt_up2down;
+        oam_uint16     rj45_failure;
+        oam_uint16   cnt_up2down;
 } __attribute__((packed)) oam_kt_onu_uni_link_status_cnt_get_t;
 
 typedef struct {
         oam_kt_var_cont_t hdr;
         oam_uint8 	port;
-		oam_uint8 	status;
+        oam_uint8     status;
 } __attribute__((packed)) oam_kt_onu_uni_link_status_get_t;
 
 typedef struct {
         oam_kt_var_cont_t hdr;
         oam_uint8 	module;
-		//oam_uint8	clear;
+        //oam_uint8    clear;
 } __attribute__((packed)) oam_kt_onu_critical_event_log_set_t;
 
 
 typedef struct {
         oam_kt_var_cont_t hdr;
-		oam_uint8 	module;
-		oam_uint8	trig_time[19];
-		oam_uint8  	faultId;
+        oam_uint8     module;
+        oam_uint8    trig_time[19];
+        oam_uint8      faultId;
 } __attribute__((packed)) oam_kt_onu_critical_event_log_get_t;
 typedef struct {
         oam_kt_var_cont_t hdr;
         oam_uint8 	port;
-		oam_uint16  	bc_threshold;
-		oam_uint16 	mc_threshold;
-		oam_uint16 	uuc_threshold;
+        oam_uint16      bc_threshold;
+        oam_uint16     mc_threshold;
+        oam_uint16     uuc_threshold;
 } __attribute__((packed)) oam_kt_onu_per_port_storm_control_get_t;
 
 

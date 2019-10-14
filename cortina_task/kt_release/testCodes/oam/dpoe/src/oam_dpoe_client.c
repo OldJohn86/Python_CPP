@@ -175,8 +175,8 @@ void oam_dpoe_proc_pdu_info(
         break;
     }
 #endif
-	if (OAM_DPOE_STATUS_NONE == intf->dpoe_status) {
-			intf->dpoe_status = OAM_DPOE_STATUS_START;
+    if (OAM_DPOE_STATUS_NONE == intf->dpoe_status) {
+            intf->dpoe_status = OAM_DPOE_STATUS_START;
 
             OAM_LOG_DEBUG("DPOE discovery for llid %d\r\n", llid);
      }

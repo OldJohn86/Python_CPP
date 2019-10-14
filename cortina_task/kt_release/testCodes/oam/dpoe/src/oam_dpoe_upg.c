@@ -153,9 +153,9 @@ oam_int32 dpoe_oam_handle_file_trans(
     outPktLen   = dpoe_oam_build_file_trans_pdu_header(pRecvPkt->oui, llid, pdu,
                                                     OAM_PDU_DPOE_FILE_TRANS,
                                                     DPOE_OAM_UPG_FILE_TRANS_OPECODE_FTA);
-	
+    
     dpoe_oam_upg_trans_llid_set(llid);
-	
+    
     dpoe_oam_upg_file_trans_opcode_dipatch(pRecvPkt->fileTransOpcode, frame, (oam_uint8 *)pOutPkt, &len);
 
     if(!len)
@@ -808,8 +808,8 @@ oam_int32 dpoe_oam_upg_img_commit(void)
         dpoe_oam_upg_img_active_set(0,1,0);
         dpoe_oam_upg_img_commit_set(0, 0, 1);
         dpoe_oam_upg_img_commit_set(0, 1, 0);
-		dpoe_oam_upg_img_executed_set(0, 1, 1);
-		dpoe_oam_upg_img_executed_set(0, 0, 0);
+        dpoe_oam_upg_img_executed_set(0, 1, 1);
+        dpoe_oam_upg_img_executed_set(0, 0, 0);
         return 0;
     }
 
@@ -817,8 +817,8 @@ oam_int32 dpoe_oam_upg_img_commit(void)
     dpoe_oam_upg_img_active_set(0,1,1);
     dpoe_oam_upg_img_commit_set(0, 0, 0);
     dpoe_oam_upg_img_commit_set(0, 1, 1);
-	dpoe_oam_upg_img_executed_set(0, 0, 1);
-	dpoe_oam_upg_img_executed_set(0, 1, 0);
+    dpoe_oam_upg_img_executed_set(0, 0, 1);
+    dpoe_oam_upg_img_executed_set(0, 1, 0);
 
     return 0;
 }
@@ -915,7 +915,7 @@ oam_int32 dpoe_oam_upg_init(void)
     dpoe_oam_upg_fsm_ctx_init();
     dpoe_oam_img_ctrl_ctx_init();
     dpoe_oam_upg_cfg_ctx_init();
-	dpoe_oam_img_upg_fsm_handler_init();
+    dpoe_oam_img_upg_fsm_handler_init();
 
     return 0;
 }

@@ -373,7 +373,7 @@ oam_uint32 oam_onu_upg_tftp_auto_reboot_set(
 }
 
 oam_uint32 oam_onu_upg_tftp_dl_state_get(
-	oam_uint8  *dl_state)
+    oam_uint8  *dl_state)
 {
     oam_kt_upg_mgr_ctx_t *upg_mgr   = oam_kt_upg_mgr_ctx_gl_get();
 
