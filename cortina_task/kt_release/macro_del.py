@@ -113,7 +113,6 @@ def parse_outer_ifend(lines, cmd, macro):
 #    print(if_allIndex, endif_allIndex)
     (if_outer, endif_outer) = get_ifend_outerIndex(lines, if_allIndex, endif_allIndex)
 #    print(if_outer, endif_outer)
-#    print(len(if_outer))
     outer_macro = [list('') for i in range(len(if_outer))]
     for i in range(len(if_outer)):
         for index in range(if_outer[i], endif_outer[i]+1):
@@ -196,7 +195,7 @@ def ifend_deal(lines, cmd, macro):
 #            print(len(macro_array[i][j]))
             old_data[i] += macro_array[i][j]# A+B
 #        print(old_data[i])
-#        macro_array[i][0] = deal_startTabLine(macro_array[i][0])
+        macro_array[i][0] = deal_startTabLine(macro_array[i][0])
 #        print(macro_array[i][0])
         if cmd == "remove":
             if macro_array[i][0].lstrip(' ').startswith("#ifdef "):
