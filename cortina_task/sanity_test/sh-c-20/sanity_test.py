@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+'''
+Author: pengpeng.chen@cortina-access.com
+Date: 2018-01-01
+'''
 
 import os
 import sys
@@ -481,6 +485,7 @@ def do_telnet(config, target):
         f.write('\r\n'.join(run_cmds))
     serverip = serverip_set.split()[2]
     print(serverip)
+    print(host, port)
     tn = telnetlib.Telnet(host, port, timeout=50)
     tn.write(b"\r\n")
     time.sleep(1)
