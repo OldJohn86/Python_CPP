@@ -365,7 +365,7 @@ def demo_test(f_name, cmd, macro):
     with open(f_name, 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser()
     parser.description='please enter there parameters p, c and m ...'
     parser.add_argument("-p", help="this is parameter - path", dest="path",  type=str, default="./testCodes/")
@@ -379,7 +379,6 @@ if __name__ == '__main__':
     path = args.path
     command = args.cmd
     macro_name = args.macro
-
     for root, dirs, files in os.walk(path):
         for f_name in files:
             if f_name.endswith('.c') or f_name.endswith('.h'):
@@ -390,3 +389,5 @@ if __name__ == '__main__':
                 deal_file(abs_f_name)
                 demo_test(abs_f_name, command, macro_name)
 
+if __name__ == '__main__':
+    main()
