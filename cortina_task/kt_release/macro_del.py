@@ -105,36 +105,24 @@ def get_ifend_outerIndex(lines, if_allIndex, endif_allIndex):
 #    print(len(endif_outer), endif_outer)
     return (if_outer, endif_outer)
 
-def parse_outer_ifend(lines, cmd, macro):
+def parse_outer_ifend(lines, macro):
     this_array = []
     next_array = []
     next_ab = ''
     (if_allIndex, endif_allIndex) = get_ifend_allIndex(lines)
-#    print(if_allIndex, endif_allIndex)
     (if_outer, endif_outer) = get_ifend_outerIndex(lines, if_allIndex, endif_allIndex)
-#    print(if_outer, endif_outer)
     outer_macro = [list('') for i in range(len(if_outer))]
     for i in range(len(if_outer)):
         for index in range(if_outer[i], endif_outer[i]+1):
             outer_macro[i].append(lines[index])
-#        print(outer_macro[i])
         parse_outer = parse_else_from_ifend(outer_macro[i])
-#        print(parse_outer[0], parse_outer[2], parse_outer[3], parse_outer[4])
         parse_outer[0] = deal_startTabLine(parse_outer[0])
         ifLine_list = parse_outer[0].lstrip(' ').strip('\n').split(' ')
-#        print(ifLine_list)
-#        print(if_outer[i], endif_outer[i])
 #        print(macro, ifLine_list[1])
         if macro == ifLine_list[1]:# matched
             this_array.append(parse_outer)
-#            print(parse_outer[1])
-#            if cmd == 'remove':
-#                next_ab += parse_outer[3]
-#            if cmd == 'keep':
-#                next_ab += parse_outer[1]
+#            print(parse_outer)
         else:# unmatched
-#            print(parse_outer[1])
-#            print(parse_outer[3])
             next_ab += parse_outer[1] # A
             next_ab += parse_outer[3] # B
     next_lines = next_ab.split('\n')
@@ -146,7 +134,7 @@ def parse_outer_ifend(lines, cmd, macro):
     return (this_array, next_array)
 
 glb_macro_array = []
-def iter_parse_ifend(lines, cmd, macro):
+def iter_parse_ifend(lines, macro):
 #    print(lines)
     ifdef_cnt = 0
     endif_cnt = 0
@@ -167,24 +155,18 @@ def iter_parse_ifend(lines, cmd, macro):
     if ifdef_cnt == endif_cnt == 0:
         return glb_macro_array
     else:
-        (macro_array, data_array) = parse_outer_ifend(lines, cmd, macro)
-#        print(macro_array)
-#        print(data_array)
-#        data = ''
-#        for i in data_array:
-#            data += i
-#        print(data)
+        (macro_array, data_array) = parse_outer_ifend(lines, macro)
         glb_macro_array.extend(macro_array)
 #        print(glb_macro_array)
 #        print(data_array)
-        return iter_parse_ifend(data_array, cmd, macro)
+        return iter_parse_ifend(data_array, macro)
 
 def ifend_deal(lines, cmd, macro):
 #    print(lines)
     data = ''
     for line in lines:
         data += line
-    macro_array = iter_parse_ifend(lines, cmd, macro)
+    macro_array = iter_parse_ifend(lines, macro)
 #    print(macro_array)
 #    print(len(macro_array))
     old_data = ['' for i in range(len(macro_array))]
@@ -197,15 +179,17 @@ def ifend_deal(lines, cmd, macro):
 #        print(old_data[i])
         macro_array[i][0] = deal_startTabLine(macro_array[i][0])
 #        print(macro_array[i][0])
+#        print(macro_array[i][3])
         if cmd == "remove":
-            if macro_array[i][0].lstrip(' ').startswith("#ifdef "):
+            if macro_array[i][0].lstrip(' ').startswith("#if"):
 #                print(macro_array[i][0])
+#                print(macro_array[i][3])
                 new_data[i] += macro_array[i][3]# B: index is 3 or -2
             elif macro_array[i][0].lstrip(' ').startswith("#ifndef "):
 #                print(macro_array[i][0])
                 new_data[i] += macro_array[i][1]# A: index is 1
         elif cmd == "keep":
-            if macro_array[i][0].lstrip(' ').startswith("#ifdef"):
+            if macro_array[i][0].lstrip(' ').startswith("#if"):
 #                print(macro_array[i][0])
                 new_data[i] += macro_array[i][1]# A: index is 1
             elif macro_array[i][0].lstrip(' ').startswith("#ifndef"):
@@ -357,7 +341,7 @@ def show_ifend_cnt(f_name):
         print("[#endif       :] " + str(endif_cnt))
 
 def demo_test(f_name, cmd, macro):
-    print(f_name)
+#    print(f_name)
     data = ''
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
