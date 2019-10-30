@@ -370,7 +370,7 @@ def main():
                 print(abs_f_name)
                 input_coding_verify(abs_f_name)
                 show_ifend_cnt(abs_f_name)
-                deal_file(abs_f_name)
+#                deal_file(abs_f_name)
                 demo_test(abs_f_name, command, macro_name)
 
 if __name__ == '__main__':
