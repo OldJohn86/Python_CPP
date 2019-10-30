@@ -119,6 +119,8 @@ def parse_outer_ifend(lines, macro):
         parse_outer[0] = deal_startTabLine(parse_outer[0])
         ifLine_list = parse_outer[0].lstrip(' ').strip('\n').split(' ')
 #        print(macro, ifLine_list[1])
+        if len(ifLine_list) > 2:
+            print(ifLine_list)
         if macro == ifLine_list[1]:# matched
             this_array.append(parse_outer)
 #            print(parse_outer)
