@@ -147,3 +147,13 @@ asdasdsadasd
 #endif
 asdsadsa
 
+#if 0
+#ifdef CONFIG_CORTINA_BOARD_FPGA
+    fdb_ctrl.aging_en                    = 0;
+#else
+    fdb_ctrl.aging_en                    = 1;
+#endif
+#else
+    fdb_ctrl.aging_en                    = 1;
+#endif
+
