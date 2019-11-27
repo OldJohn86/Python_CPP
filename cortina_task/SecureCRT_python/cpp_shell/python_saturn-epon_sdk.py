@@ -80,17 +80,17 @@ def main():
 
 	# Upgrade rootfs
 	if crt.Screen.WaitForStrings("Written: OK") == 1:
-		crt.Screen.Send("tftpboot 0x86000000 major-image-saturn-sfu-eng.rootfs.squashfs.ubi;")
+		crt.Screen.Send("tftpboot 0x86000000 sdk-image-saturn-sfu-eng.rootfs.squashfs.ubi;")
 		crt.Screen.Send("spi_nand erase 0xC00000 0x2800000; spi_nand write 0x86000000 0xC00000 ${filesize};\r\n")
 	else:
 		crt.Dialog.MessageBox("Upgrade rootfs Timed out!")
 
 	# Upgrade user.ubi
-	if crt.Screen.WaitForStrings("Written: OK") == 1:
-		crt.Screen.Send("tftpboot 0x87000000 major-image-saturn-sfu-eng_user.ubi;")
-		crt.Screen.Send("spi_nand erase 0x6300000 0x1400000; spi_nand write 0x87000000 0x6300000 ${filesize};\r\n")
-	else:
-		crt.Dialog.MessageBox("Upgrade user.ubi Timed out!")
+	# if crt.Screen.WaitForStrings("Written: OK") == 1:
+		# crt.Screen.Send("tftpboot 0x87000000 sdk-image-saturn-sfu-eng_user.ubi;")
+		# crt.Screen.Send("spi_nand erase 0x6300000 0x1400000; spi_nand write 0x87000000 0x6300000 ${filesize};\r\n")
+	# else:
+		# crt.Dialog.MessageBox("Upgrade user.ubi Timed out!")
 
 	# Reset target when upgraded success this time
 	if crt.Screen.WaitForStrings("Written: OK", 180) == 1:

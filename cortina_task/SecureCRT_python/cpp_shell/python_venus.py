@@ -1,4 +1,3 @@
-
 # $language = "python"
 # $interface = "1.0"
 
@@ -28,8 +27,8 @@ crt.Screen.IgnoreCase = True
 
 # For G3 sanity test dailybuild
 def main():
-	#crt.Screen.Send("\r\nreboot\r\n")
-	#crt.Screen.Send("\r\nreset\r\n")
+	crt.Screen.Send("\r\nreboot\r\n")
+	crt.Screen.Send("\r\nreset\r\n")
 
 	if crt.Screen.WaitForStrings("Hit any key to stop autoboot:") == 1:
 		crt.Screen.Send("\r\n")
@@ -37,11 +36,11 @@ def main():
 		crt.Dialog.MessageBox("Waiting <Hit any key> Timed out!")
 
 	# Setenv
-	crt.Screen.Send("setenv active_port 1;\r\n")
-	crt.Screen.Send("setenv serverip 192.168.1.123;\r\n")
-	crt.Screen.Send("setenv ipaddr 192.168.1.4;\r\n")
+	crt.Screen.Send("setenv active_port 4;\r\n")
+	crt.Screen.Send("setenv serverip 192.168.1.128;\r\n")
+	crt.Screen.Send("setenv ipaddr 192.168.1.2;\r\n")
 	crt.Screen.Send("saveenv;\r\n")
-	#crt.Screen.Send("reset\r\n")
+	crt.Screen.Send("reset\r\n")
 
 	if crt.Screen.WaitForStrings("Hit any key to stop autoboot:") == 1:
 		crt.Screen.Send("\r\n")
@@ -49,42 +48,47 @@ def main():
 		crt.Dialog.MessageBox("Waiting <Hit any key> Timed out!")
 
 	# Upgrade gpt
-	if crt.Screen.WaitForStrings("G3#") == 1:
-		crt.Screen.Send("tftpboot 0x04100000 major-image-g3hgu-eng-gpt-nandinfo.img;")
-		crt.Screen.Send("nand erase 0x0 0x400000; nand write 0x04100000 0x0 0x300000;\r\n")
-	else:
-		crt.Dialog.MessageBox("Upgrade gpt Timed out!")
+	# if crt.Screen.WaitForStrings("G3#") == 1:
+		# crt.Screen.Send("tftpboot 0x04100000 major-image-g3-eng-gpt-nandinfo.img;")
+		# crt.Screen.Send("nand erase 0x0 0x400000; nand write 0x04100000 0x0 0x300000;\r\n")
+	# else:
+		# crt.Dialog.MessageBox("Upgrade gpt Timed out!")
 
 	# Upgrade uboot-env
-	if crt.Screen.WaitForStrings("written: OK") == 1:
-		crt.Screen.Send("tftpboot 0x04000000 uboot-env.bin;")
-		crt.Screen.Send("nand erase 0x400000 0x100000; nand write 0x04000000 0x400000 0x20000;\r\n")
+	if crt.Screen.WaitForStrings("VENUS#") == 1:
+		crt.Screen.Send("tftpboot 0x05000000 uboot-env.bin;")
+		crt.Screen.Send("nand erase 0x400000 0x80000; nand write 0x05000000 0x400000 0x20000;\r\n")
 	else:
 		crt.Dialog.MessageBox("Upgrade uboot-env Timed out!")
 
 	# Upgrade kernel
 	if crt.Screen.WaitForStrings("written: OK") == 1:
-		crt.Screen.Send("tftpboot 0x05000000 major-image-g3hgu-eng.mubi;")
+		crt.Screen.Send("tftpboot 0x05000000 major-image-venus-eng.mubi;")
 		crt.Screen.Send("nand erase 0x500000 0xD000000; nand write 0x05000000 0x500000 0x${filesize};\r\n")
 	else:
 		crt.Dialog.MessageBox("Upgrade kernel Timed out!")
 
-	#Reset target when upgraded success this time
 	# if crt.Screen.WaitForStrings("written: OK") == 1:
-		# crt.Screen.Send("reset\r\n")
+		# crt.Screen.Send("tftpboot 0x05000000 major-image-g3-eng.mubi;")
+		# crt.Screen.Send("nand erase 0xD500000 0xD000000; nand write 0x05000000 0xD500000 0x${filesize};\r\n")
 	# else:
-		# crt.Dialog.MessageBox("Total Upgrade Images Timed out!")
+		# crt.Dialog.MessageBox("Upgrade kernel Timed out!")
 
-	if crt.Screen.WaitForStrings("g3-eng login:") == 1:
-		#crt.Screen.Send("\r\nroot\r\n")
+	# Reset target when upgraded success this time
+	if crt.Screen.WaitForStrings("written: OK") == 1:
+		crt.Screen.Send("reset\r\n")
+	else:
+		crt.Dialog.MessageBox("Total Upgrade Images Timed out!")
+
+	if crt.Screen.WaitForStrings("venus-eng login:") == 1:
+		crt.Screen.Send("\r\nroot\r\n")
 	else:
 		crt.Dialog.MessageBox("ROOT Login Timed out!")
 
-	if crt.Screen.WaitForStrings("root@g3-eng:~#") == 1:
+	if crt.Screen.WaitForStrings("root@venus-eng:~#") == 1:
 		crt.Screen.Send("r\n")
 		crt.Screen.Send("r\n")
 		crt.Screen.Send("uname -a\r\n")
-
 	else:
 		crt.Dialog.MessageBox("Get 'uname -a' Timed out!")
 

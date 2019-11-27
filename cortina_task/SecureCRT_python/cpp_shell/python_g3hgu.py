@@ -1,4 +1,3 @@
-
 # $language = "python"
 # $interface = "1.0"
 
@@ -28,8 +27,8 @@ crt.Screen.IgnoreCase = True
 
 # For G3 sanity test dailybuild
 def main():
-	#crt.Screen.Send("\r\nreboot\r\n")
-	#crt.Screen.Send("\r\nreset\r\n")
+	crt.Screen.Send("\r\nreboot\r\n")
+	crt.Screen.Send("\r\nreset\r\n")
 
 	if crt.Screen.WaitForStrings("Hit any key to stop autoboot:") == 1:
 		crt.Screen.Send("\r\n")
@@ -38,10 +37,10 @@ def main():
 
 	# Setenv
 	crt.Screen.Send("setenv active_port 1;\r\n")
-	crt.Screen.Send("setenv serverip 192.168.1.123;\r\n")
-	crt.Screen.Send("setenv ipaddr 192.168.1.4;\r\n")
+	crt.Screen.Send("setenv serverip 192.168.1.129;\r\n")
+	crt.Screen.Send("setenv ipaddr 192.168.1.2;\r\n")
 	crt.Screen.Send("saveenv;\r\n")
-	#crt.Screen.Send("reset\r\n")
+	crt.Screen.Send("reset\r\n")
 
 	if crt.Screen.WaitForStrings("Hit any key to stop autoboot:") == 1:
 		crt.Screen.Send("\r\n")
@@ -69,22 +68,21 @@ def main():
 	else:
 		crt.Dialog.MessageBox("Upgrade kernel Timed out!")
 
-	#Reset target when upgraded success this time
-	# if crt.Screen.WaitForStrings("written: OK") == 1:
-		# crt.Screen.Send("reset\r\n")
-	# else:
-		# crt.Dialog.MessageBox("Total Upgrade Images Timed out!")
+	# Reset target when upgraded success this time
+	if crt.Screen.WaitForStrings("written: OK") == 1:
+		crt.Screen.Send("reset\r\n")
+	else:
+		crt.Dialog.MessageBox("Total Upgrade Images Timed out!")
 
-	if crt.Screen.WaitForStrings("g3-eng login:") == 1:
-		#crt.Screen.Send("\r\nroot\r\n")
+	if crt.Screen.WaitForStrings("g3hgu-eng login:") == 1:
+		crt.Screen.Send("\r\nroot\r\n")
 	else:
 		crt.Dialog.MessageBox("ROOT Login Timed out!")
 
-	if crt.Screen.WaitForStrings("root@g3-eng:~#") == 1:
+	if crt.Screen.WaitForStrings("root@g3hgu-eng:~#") == 1:
 		crt.Screen.Send("r\n")
 		crt.Screen.Send("r\n")
 		crt.Screen.Send("uname -a\r\n")
-
 	else:
 		crt.Dialog.MessageBox("Get 'uname -a' Timed out!")
 

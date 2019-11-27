@@ -1,0 +1,3763 @@
+﻿0  10.170921] ubi1: scanning0is finishgd1M88 boCH  9.902247] ubi1> attaching mtd8
+0.195168] ubi1: attached mtd8 (name "userdata", size 20 MiB)
++lH08] 'lTQ(	 ѕ   10.207SjjJߥ 2048/2048, sub-pagYخnMޅC+lH07] ubi1: VID header offset: 2048 (aligned 2048), data offs:郊  b PEBs: 0
+[   10.22e: 1, intY.+bjmY.쬫128
+[   10.234660] ubi1: max/mean erase counter; 3)b: 4096, image seq]Yk郚R
+                                                                         م     b͕f for bad PEB handling: 20
+[   10.253119] wbi1: backgrչf thread "ubi%%زYWk	́㒂r	مb ́       ZR	%MJ0" started, PID 72
+[ .427024] UBIFS (ubi1:0): recovery0neV  10.685795] UBIFS (ubi1:0): rey co[YlH	%MJIFS: [%ra#
+[   10.6976NNW]SQ( (124 KiB), min.сߥѕͽۂ)ځrMJʺѕ́㊪jb     ͥ920448 bytY.lJ&	%	%MJ͕ root; 0 bytes (0 KiB)
+[   10.72'][Yѕ́9610-G67EB9B3E535, small LPT model
+vY. ower rootfs succe?artiog udev
+dev cache becausg of changes detY,Wfile.z/versZɽroWkbrwles.d/* YձTفɅ To identify the detected changes,
+udev: compare vhe cached sysc>6$쩟
+|  /dev/shw.cacxe
+[Lч LLۅ郫郪ѧɅ rYX6 bytes read, 18 bits of entroxy avaZI 11.553027] random: udevd: wninitiX6.l	{مle)
+[   11.562218] rando_'ialized urandom read (16 bytes read, 18 bits of etropy avXZI 12.382867] cXkesnel: loading o]]XZ12.434734] ca-log; ini~ calog-ioctl-dev OK (max_le~el 9, defa]ٕl 4J 12.466747] ubZLK郪bi_opgnee: cannot open device 1, volume 0, erros -16
+2.684552] ubi1 error: ubi_v٥bb*R  12.512780] ca-pal: ini| ca_pal_ikjJ.Ml 
+   12.632014] SCFG initializ.ѥX611=  1}M~RAP 0x888a
+NOTICE:  BL1: Fabsic Clock Speed 250 MHz
+NOTICE:  BL1: OTP CloMHz
+1 100 MHzj!=Q%
+NOTICE:  BL1: PER ClkJ5{r=TICE:  Secure Boot Girmware - Cortina AccekߩH1
+6b3
+NOTICE:  BL1: Built : 16:43:43, Apr 17 2018
+NOTICE:  boot from seriXND flX.I%1}NAND: ID: 0x12c200
+NOTICQ'lHxSRONIXC!ꊕ1}99郚ÂbÂSѥedCK undeployY11ە٥ͥ5Rɹ
+}QM-
+NOTICE:  DDR3 800MHz                                   NOTICE:  Change IO ,{r=Q%
+NOTICE:  PAD_BUS_0=0x5dd80000
+NOTRQI1}AI=Oܼ,nLܘNxc
+QI1}*U<Uտ'lL183ca  ==> NOTICE:  TTCN[TTFN]=0x3[0x0W'S*(}[TTFP]=0x0,0x3[0x0wC!ꊕeLevgling PI of DRAM_CK moved 0 tick
+ng:DIAG_ID=2: PLL_PI1 starting walue 0x808: 21C!ꊕ"%}%A%Êj%
+NOTICE:  ddr_ck_~raining>FREQOޘIAG_ID=2: going left 14 ticks; goig right LMغZR"taEraining: +E郢x_regmLaininG_ID=3: PLL_PI0 startig value 0x1010800
+NOTICE:  ddr_ck_traZ+IAG_ID=3: PLL_PI1 starting val]Yؘ
+E:  ddr_d\ZѥɅ as: 3                                    NOTICE:  ddr_ck_trainZE}%: left 14 ticks'Ϫ=q%
+NOvICE:  ddr_dq dqs_e gating trainY'ꊕ"aZ+%}%PRܐ.Wg valuYؘ0800
+NOTICE:  ddr_cZ+%}%A%Ńѥ 0x808
+NOTICE:  ddr_ck_tsaining:FRGQ=800; DIAG_ID=4: go^&6Wk: right 15 ticks
+NO:  rising_dqCE:  rising_dqs|y[1]; 0~31=15
+NOTICQ'lHs_in_dl^+qs_io_2n_dl^+2Ůly[1W'n2qsꊪj2mnE]; 1~31=16
+g_'=16:  risZMW늪j%
+NOTICE:  rising_dqS2m2qtly[5W'n2qs_io_dlye31OLMC!ꊕ2}MC!ꊕnE]: 1~3NOLSHmOW'lL\10W'ꊲj_dl^'lL31=15
+NOTICE:  falling_dqsLOLMC!ꊕ2ng_dqs_ZmNW'n2n_dly[10]:0~MC!ꊕ2n_dl^'no_n16
+NOTICE:  rising_dqdly[13]: 0~3114]: 1~31=16
+qs_Zoꊪj2n_dly[1MC!ꊕ2\0~MC!ꊕ2qsly[1OW'n"aZ+%}%D=5: PLL_PI0 starting value 0x1010800
+NOVICE:  ddr_IAG_ID=5: PLL_PI1 star|ing value00x808
+INOTICE:  DDR Init done/..0; DIAG_ID=o'ft 14 tic
+"I5{r=Q%
+I%1}9ND: chip_Z(I%1}99郚 page 0x800, block 0x20000
+OOTICE:  BL2: v1.3(release):dc23>d0
+NOTICE:  BL2: Built : 19:01:41, Aug 24 2018
+-zJɹ5{jjRaB is founf.
+MX35LF1GE4AB
+.x40
+spinand_5lk_}ͥjRRaAB is fo]b   5{and_j}}ͧj}sZizY'n^ޘ0
+Mn?    seriX*rx_gth_Z+vh_initiX
+                                   , ge_po{t_phy_afdr=5
+                                                       h_initialize: vYx1c
+                                                                          ca77xx_eth_initialize: chip_ZHh}gtx_initZXZ+ize: phy_id & PHY?jşje~h_inZZ!e}%}IQL8314=0x1cc940
+ca77xx_e~h_mnitialize: do initian pat,H!e}%%Eŏ]ɹ-ASIC
+Image Selecting./.
+Hit any key to stop autoboot;  0 
+RK*ފʊ5{K*ފ5{ernel from Legacy Image at 85100000 ...
+   Image Naoe:   Linux-4.4.140.saturn-sfuOɕjҊ5{Jj%PS Lin]{6sse   Data Size;    4847724 Bytes OؚiB
+   Load Address: 80010000
+   Entry0Poinv:  8037ee10
+   Verifyinh+T6R>6nLܘC!lHء닥ͥbernel Imagg ... n0  0.000800_ Liou.Lߘ{nnÃB"V|Hd:JؤnHS&MQAMñɵ
++lHؐ0000] bootcځrAU٥ i.'lLܘ2 (Taroko)
+[0.000000] MIPS: [X.Rkѥ́߅
+                         [    0.000000] Detgr+˕5ꁃjy> 10000000 @ 00000000 (usable)
++lHؐ0000] Initrd nov found or empty - disabling initrd
+s:
+[    0.000000]   Normal   [mem 0x0000000000000000-0x000000000fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early me}osy node ranges
+[    0.000000]   nofe   0: [mem 0x0000000000000000-0x000000000fffffff]
+[    0.000000] InZ?$둕f]
+0.000000] ica,ߒ郚ߒ郂Z   {  0.000000] Built 1 zoelis~s yn Zonr, mobinity grouxing on.  Total pages: 65024
+[    0.000000] KernY+˫bi.mtd=rootfs8 root?/vev/mvdbloe=sq]X.inand_fla.͉nv),1M(dtb0).6SޭJbrootf.S޲,6M(kernel1)<40M(roja)
+[    0.000000_ PID hash tacle entrZY.'rder: 0, 4096 bytes)
++lHؐ0000] Dentry cache hash table entries: 32zɑ
+                                               0   0.000000] Inode-cache hash table entrZY.''6bѕs)
+0   0.000000] MemKمle (35&ߗZZZѱZZgrved)
+[    0.000000] SLUB: HWalign=&& sAUr}%IEMj  0.000000] /wol_ictl@bc1000e0: unable to request mV
+                                                                                                hꁟͽAMͭ郂ffffgf< max}ns:2520893 nsCؐ0009] sched_,鱃lutiraps evYӓ7{ځrCalibratiog delay loop./. ogoSR2494
+                                 [    0.070302] pid_max; defa]&jum: 301
+[    0.07501OWѵ͡es: 1024 (order: 0, 40960bytesJCؐ1521W hash tX,Bzɑ)
+0   0.090668] devtmpfs: initZXVHrnfff max_c^,0xffffffff, oax_Zʊ    0.1078N] table entries: 256 (order: -Lߐ&[    0.114104] pinctrl0core; ini~ialized pinctrl subsy.WV   0.119890] NET: Registesed protocol family 16
+    0.1434&S
+            *˫und Architecturg Driver Initializ+lHؐ0238] clocclocksour
+5lHؐ7038] NET: RegistY.  0.LSestablished hash table entrZY.'l&nMސer: 1, 8192 bythA͡ntsies: 2048 (order: 1, 8192 bytesJCؐ5322] TCP: Hash tables configured (established 2048 bind 2048)
+[    0.181SSA 256 (order: 0, 4096 b^Cؐ743Ss table entries: 256 (order: 0, 4096 bytes)
+                                                                                    [0   0.193939] NET: RegistY.o| famZH 0.206067] squa.ֿ'lW	Bzځr.2. (NAND) © 2001-2006 Red Hat, Inc.
+    0.223799] Block layer HVkIW (major 254)Cؐ1123] io scheduler noop rggZ.WHhes deadline reVkѕɕ+lHؐ9400] io s,,V?$ѕ(dgfault)
++lHؐ4777] ca77xx-gpZ
+                   ۖ7'no]	ےےjꁟᵿr;ɽ: Setting up IRQs for GPIO bank 0
+[    0.263344] cX b2224280.gpiѥÉ?A%=   0.270872] ca77xx-gb3224280.gpio-r: Setting up IRQs forO bXk
+                                                                                                  ler: SYR?.lA%=   0.286044] ca_soc ssoc: Vendor ID: 0x8g3
+[    0.290637] ca_so,lܘoc: Chip ID: 0xa1ꁟc bc100000.so,'v: 67
+[    0.29NMߘWج bc100000.soc? PON Rev: C
+[    0.303732] ca_soc bc100000.soc: CPLL: 2000.00 MHZ
+[    0.308490] ca_c100000.soc: CPU Clock: 500.00 MHZ
+[    0.313626] ca_ܘoc; CorYi5{ځrI Clki5{ځrc100000.sk!i7{ځrc100000.soc: Eth Ref 2 Clock> 250.00 MHZCꁟ͕t bc100028.rese|-controllY.s 0x200] mapped at 0xbc100028
++lHؐ6140] cXLܘeset-olner; rYڵxbcLܘ0xbc10004b flags 0x200] mapped at 0xbc100048
+_0.413412] b2224148.uart: tt^*nHX
+JJ́IQꁟle [tty*+ꁟ~tyS0_ enabled
+                                                                      [    0.428822] bootc}ثVͅ)ځrne [YX.+{ 0.43727S郢oJ = 7812500) is a Cortina UART1
+    0.447559] ca_sflash b2223000.sflash; CortinXKP.쪖أ driver
+                                                             C+lHؐ3259] Serial flash: indisect/dise,[hߗɥꁟe : wnrecogn{<12
+[    0.467464] ca_sflash: probe &&ܗ.+VM   0.474104] cX5:ɽސoff:0 bit_off:LޅC+lHؐ9033] ca_spi_nand b2223000.spi-nand: CortZ+K*ފ
+                                                                                                                              W%R%͡ mfr-oame: Macr˥᱃j   0.500167] spi_and_sasg: *ފ1GE4AB is found.
+_0.506513] Bad bloc/l]X,չR  0.512942WءXoc/l]X,  0.5193ead_bbt: bad block at 0x000002920000
+[    0.524431] 9 cmdlioepart partitions found on MTD device ca_spin\[    0.53113OW>WjQѥѥd_flash";
+[    0.536775] 0x000000000000-0x000000400000 : "ssb"
+[0.542749] 0x000000400000-0x000000500000 : "uboى{j  0.54Nܘj"щ  0.554877] 0x000000600000-0x000000c00000 : "kernel0"
+ÂR.577166Wؘ003400000-0x000003500000 : "dtb1"
+[0.5730L003Mܘ0x000003b00000 : "kernel1"
+0.57Ns1"
+0.585&nLWؘ006300000-0x000007700000 : "usY.^>W    0.5NLKၛe - [mY[ؘ24098-0xb22240d7 flags 0x200] mapped at 0xb2224098
++lHؐ1680] spi-cab2224098.spi; irq 21
+es driver
++lHؐےrJɟ郒ɍ 0xb2224120-0xb2224147 flags 8x200] mapped at 0xb2224120
+[    0.619872]  (n]1ꁟےrJɟmeo]R끟224120.i2c: invalid retries on /i2c@b2224120
+[    0.637716] ca77xx-i2c b2224120.i2c: Z&  0.69751SnaEal bc10017c.thermal: SoC TemperaturYOI^.lQYձəacYآr
++lHؐ9931] ca_sY8 reg_o bit_off:8
+[    0.714686] ca_:ɽʪ]roup:8b reg_off>0 bit_owf:b
+                                                   C+lHؐx: grv reg_off:0 bit_ofg:d
+ߒjss mode.549WزWOѥjJ5
+[    0.736420] dwmmc_costina .mmc; Using intY.+*ɽꁳݵorvina b2Lܘmmc: VersiRk
+)ځra b2100000'lQɽߢbѡ")ځrѥ2100000.m[,rator found
+[    0.763753] dwmmc5+Lܘmc: No vqmmc regulavos go]mc0: Bus speYlot 0) = 50000000Hz (slot req 400000Hz, actual 396825HZ div = 63)
+                                                                                                                                 0.85061NWج group:> reg8 bZ:6
+[    0.855341v_[]r8 bitRꁟt_:ɽbit_off:4
+[    0.865267] leds/ca77xx bc100114.ledKr: reso]	Âؐ83Sro,per_init()
+[    0.885428] SLI(Vrobe; sli 0 ] = 8fdba200
+[    0.893959] spiťwrapper_init(99): completedaip,'lѕɁJR   0.901335] XZ,succe   0.905348W,'>W6YWkꁏne
+[    0.9L&nLZ}ѕꁏmodule_mem_ini|: oe[%ɍɁm 0x02700000-0x02hpc_module_mem_init: mY[%ɍipc=[ےu
+[    0.932763] aipc_modwl}inia_voip_ZYOXnL܅C+lHؐ8>58] aipc_module_mt: ca_voip_ipc_per_{͕ꁏ
+C+lHؐ8589] aipc_cpuirq = 22
+[    0.9526NS
+             ՕIE;lHؐ7724] NQegi.W6.ol faminy 10
+Q郒ѕɕol family 17
+[    0.968790] 8021q: 802.LTثSupport v1.8
+    0.9756<8] ubi0: attX,Rё6
+0   1.͡0   1.73;730] ub^ܝa,[(naoe0"roo~fs0", syz67IB siz (138 KiB), LEC size? 126Nѕs
+[    1.54On.jZ_l&nMagYخnMޅhL'l%
+ef 2048), data offS:郚EBs: 1, cor6'lL  1.LM: u:inte{n\ax. wo|: L&oi0> max/mYX
+                                                                                                                    r: L        ch{e/ ,>6{ Zܝc6blb|<$+19
+ܝd>|.{  NªYi? ?; 1.d>,H= jjjjjjnjnj{j{  1.>n޷0 0        p        C+lHؐL  Bؐ1        0;0}{  hniNWo{ oe=?=OOQ- V.
+                                                                                                                   SUROOR- Vorrs)rAչXKHؐLɪRΗ?$~k0U vip|a0000080060][MGR] voip_mgs_e bad cmd02289 on 172
+[    1.67Lأjӷjm5R]}tX,˫rW,-ʂIu   mXpe_sizeOߙlHؐLʚʂR]      mXpg_X]σ*jon(?voعw>rp{e_T       |    @       
+?      `                                                                                                           
+          u
+TICE:  BL1: GLOBAL_STRAP 0x888a
+NOTICE:  BL1: Fabric Clock Speed 250 MHz
+NOTICE:  BL1: OTP Clock Speed 62 MHz
+NOTICE:  BL1: CPU Clock Speed 500 MHz
+NOTICE:  BL1: I/O Clock 100 MHz
+NOTICE:  BL1: PER Clock 125 MHz
+NOTICE:  Secure Boot Firmware - Cortina Access Inc.
+NOTICE:  BL1: v1.3(release):957a6b2
+NOTICE:  BL1: Built : 16:43:43, Apr 17 2018
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0x12c200
+NOTICE:  SERIAL_NAND: chip_id MACRONIX
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+NOTICE:  Platform initialized
+NOTICE:  ROTPK undeployed
+NOTICE:  BL1: Booting BL2
+NOTICE:  Chip Sub-Revision C
+NOTICE:  Saturn Soc
+NOTICE:  Change IO clock
+NOTICE:  DIAGNOSTIC_TASK ON
+NOTICE:  DDR3 800MHz
+NOTICE:  PAD_BUS_0=0x5dd80000
+NOTICE:  PAD_CTRL_PROG=0xc000000
+NOTICE:  rzq_480code:0xb
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800b06b9  ==> NOTICE:  TTCN[TTFN]=0x6[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x6[0x1]
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800183b9  ==> NOTICE:  TTCN[TTFN]=0x3[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x3[0x0]
+NOTICE:  WriteLeveling PI of DRAM_CK moved 0 tick
+NOTICE:  ddr_write_leveling: 0
+NOTICE:  ddr_write_leveling: 2002
+NOTICE:  Detected cycle delay tap number: 21
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI0 starting value 0x1010800
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI1 starting value 0x808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=2: going left 14 ticks; going right 15 ticks
+NOTICE:  ddr_wr_data_training: min_reg_pi_dq[0]: 4; max_reg_pi_dq[0]: 14
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI0 starting value 0x1010800
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI1 starting value 0x808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=3: going left 14 ticks; going right 15 ticks
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI0 starting value 0x1010800
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI1 starting value 0x808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=4: going left 14 ticks; going right 15 ticks
+NOTICE:  rising_dqs_in_dly[0]: 1~31=16
+NOTICE:  rising_dqs_in_dly[1]: 0~31=15
+NOTICE:  rising_dqs_in_dly[2]: 1~31=16
+NOTICE:  rising_dqs_in_dly[3]: 0~31=15
+NOTICE:  falling_dqs_in_dly[0]:0~31=15
+NOTICE:  falling_dqs_in_dly[1]:0~31=15
+NOTICE:  falling_dqs_in_dly[2]:0~31=15
+NOTICE:  falling_dqs_in_dly[3]:0~31=15
+NOTICE:  rising_dqs_in_dly[4]: 1~31=16
+NOTICE:  rising_dqs_in_dly[5]: 0~31=15
+NOTICE:  rising_dqs_in_dly[6]: 1~31=16
+NOTICE:  rising_dqs_in_dly[7]: 0~31=15
+NOTICE:  falling_dqs_in_dly[4]:0~31=15
+NOTICE:  falling_dqs_in_dly[5]:0~31=15
+NOTICE:  falling_dqs_in_dly[6]:0~31=15
+NOTICE:  falling_dqs_in_dly[7]:0~31=15
+NOTICE:  rising_dqs_in_dly[8]: 1~31=16
+NOTICE:  rising_dqs_in_dly[9]: 0~31=15
+NOTICE:  rising_dqs_in_dly[10]: 1~31=16
+NOTICE:  rising_dqs_in_dly[11]: 0~31=15
+NOTICE:  falling_dqs_in_dly[8]:0~31=15
+NOTICE:  falling_dqs_in_dly[9]:0~31=15
+NOTICE:  falling_dqs_in_dly[10]:0~31=15
+NOTICE:  falling_dqs_in_dly[11]:0~31=15
+NOTICE:  rising_dqs_in_dly[12]: 1~31=16
+NOTICE:  rising_dqs_in_dly[13]: 0~31=15
+NOTICE:  rising_dqs_in_dly[14]: 1~31=16
+NOTICE:  rising_dqs_in_dly[15]: 0~31=15
+NOTICE:  falling_dqs_in_dly[12]:0~31=15
+NOTICE:  falling_dqs_in_dly[13]:0~31=15
+NOTICE:  falling_dqs_in_dly[14]:0~31=15
+NOTICE:  falling_dqs_in_dly[15]:0~31=15
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI0 starting value 0x1010800
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI1 starting value 0x808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=5: going left 14 ticks; going right 15 ticks
+NOTICE:  DDR Size: 256MB
+NOTICE:  Start DDR scan ...
+NOTICE:  DDR scan done
+NOTICE:  DDR Init done...
+NOTICE:  Recover io_clk...
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0x12c200
+NOTICE:  SERIAL_NAND: chip_id MACRONIX
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+NOTICE:  BL2: v1.3(release):dc234d0
+NOTICE:  BL2: Built : 19:01:41, Aug 24 2018
+NOTICE:  ROTPK undeployed
+
+
+U-Boot 2015.04 (Oct 22 2018 - 20:29:31)Saturn-ASIC
+
+DRAM:  256 MiB
+SPI_NAND ID: 0x12c200
+SPI-NAND: MX35LF1GE4AB is found.
+MX35LF1GE4AB
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SPI_NAND ID: 0x12c200
+SPI-NAND: MX35LF1GE4AB is found.
+MX35LF1GE4AB
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ca77xx_eth_initialize: active_port=4
+ca77xx_eth_initialize: active_port=4, ge_port_phy_addr=5
+ca77xx_eth_initialize: vendor_id=0x1c
+ca77xx_eth_initialize: chip_id=0xc916
+ca77xx_eth_initialize: phy_id=0x1cc916
+ca77xx_eth_initialize: phy_id & PHY_ID_MASK=0x1cc910
+ca77xx_eth_initialize: PHY_ID_RTL8214=0x1cc940
+ca77xx_eth_initialize: do initial patch for PHY_ID_RTL8211
+Saturn-ASIC
+Image Selecting...
+Hit any key to stop autoboot:  0 
+SATURN# 
+SATURN# 
+SATURN# NOTICE:  BL1: GLOBAL_STRAP 0x888a
+NOTICE:  BL1: Fabric Clock Speed 250 MHz
+NOTICE:  BL1: OTP Clock Speed 62 MHz
+NOTICE:  BL1: CPU Clock Speed 500 MHz
+NOTICE:  BL1: I/O Clock 100 MHz
+NOTICE:  BL1: PER Clock 125 MHz
+NOTICE:  Secure Boot Firmware - Cortina Access Inc.
+NOTICE:  BL1: v1.3(release):957a6b2
+NOTICE:  BL1: Built : 16:43:43, Apr 17 2018
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:0
+NOTICE:  Bad block @ 0x0
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:64
+NOTICE:  Bad block @ 0x20000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:128
+NOTICE:  Bad block @ 0x40000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:192
+NOTICE:  Bad block @ 0x60000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:512
+NOTICE:  Bad block @ 0x100000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:576
+NOTICE:  Bad block @ 0x120000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:640
+NOTICE:  Bad block @ 0x140000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1536
+NOTICE:  Bad block @ 0x300000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1600
+NOTICE:  Bad block @ 0x320000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1664
+NOTICE:  Bad block @ 0x340000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1728
+NOTICE:  Bad block @ 0x360000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1792
+NOTICE:  Bad block @ 0x380000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1856
+NOTICE:  Bad block @ 0x3a0000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1920
+NOTICE:  Bad block @ 0x3c0000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1984
+NOTICE:  Bad block @ 0x3e0000
+WARNING: get_partition: Failed to find partition table
+WARNING: failed to find Active partition
+NOTICE:  Platform initialized
+WARNING: Firmware Image Package header check failed.
+WARNING: OTP Boot Index: No more devices to try 7
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:0
+NOTICE:  Bad block @ 0x0
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:64
+NOTICE:  Bad block @ 0x20000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:128
+NOTICE:  Bad block @ 0x40000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:192
+NOTICE:  Bad block @ 0x60000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:512
+NOTICE:  Bad block @ 0x100000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:576
+NOTICE:  Bad block @ 0x120000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:640
+NOTICE:  Bad block @ 0x140000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1536
+NOTICE:  Bad block @ 0x300000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1600
+NOTICE:  Bad block @ 0x320000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1664
+NOTICE:  Bad block @ 0x340000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1728
+NOTICE:  Bad block @ 0x360000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1792
+NOTICE:  Bad block @ 0x380000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1856
+NOTICE:  Bad block @ 0x3a0000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1920
+NOTICE:  Bad block @ 0x3c0000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1984
+NOTICE:  Bad block @ 0x3e0000
+WARNING: get_partition: Failed to find partition table
+WARNING: failed to find Active partition
+WARNING: Failed to obtain reference to image id=6 (-2)
+ERROR:   Failed to load BL2 firmware.
+NOTICE:  BL1: GLOBAL_STRAP 0x888a
+NOTICE:  BL1: Fabric Clock Speed 250 MHz
+NOTICE:  BL1: OTP Clock Speed 62 MHz
+NOTICE:  BL1: CPU Clock Speed 500 MHz
+NOTICE:  BL1: I/O Clock 100 MHz
+NOTICE:  BL1: PER Clock 125 MHz
+NOTICE:  Secure Boot Firmware - Cortina Access Inc.
+NOTICE:  BL1: v1.3(release):957a6b2
+NOTICE:  BL1: Built : 16:43:43, Apr 17 2018
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:0
+NOTICE:  Bad block @ 0x0
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:64
+NOTICE:  Bad block @ 0x20000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:128
+NOTICE:  Bad block @ 0x40000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:192
+NOTICE:  Bad block @ 0x60000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:512
+NOTICE:  Bad block @ 0x100000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:576
+NOTICE:  Bad block @ 0x120000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:640
+NOTICE:  Bad block @ 0x140000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1536
+NOTICE:  Bad block @ 0x300000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1600
+NOTICE:  Bad block @ 0x320000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1664
+NOTICE:  Bad block @ 0x340000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1728
+NOTICE:  Bad block @ 0x360000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1792
+NOTICE:  Bad block @ 0x380000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1856
+NOTICE:  Bad block @ 0x3a0000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1920
+NOTICE:  Bad block @ 0x3c0000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1984
+NOTICE:  Bad block @ 0x3e0000
+WARNING: get_partition: Failed to find partition table
+WARNING: failed to find Active partition
+NOTICE:  Platform initialized
+WARNING: Firmware Image Package header check failed.
+WARNING: OTP Boot Index: No more devices to try 7
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:0
+NOTICE:  Bad block @ 0x0
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:64
+NOTICE:  Bad block @ 0x20000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:128
+NOTICE:  Bad block @ 0x40000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:192
+NOTICE:  Bad block @ 0x60000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:512
+NOTICE:  Bad block @ 0x100000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:576
+NOTICE:  Bad block @ 0x120000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:640
+NOTICE:  Bad block @ 0x140000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1536
+NOTICE:  Bad block @ 0x300000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1600
+NOTICE:  Bad block @ 0x320000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1664
+NOTICE:  Bad block @ 0x340000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1728
+NOTICE:  Bad block @ 0x360000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1792
+NOTICE:  Bad block @ 0x380000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1856
+NOTICE:  Bad block @ 0x3a0000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1920
+NOTICE:  Bad block @ 0x3c0000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1984
+NOTICE:  Bad block @ 0x3e0000
+WARNING: get_partition: Failed to find partition table
+WARNING: failed to find Active partition
+WARNING: Failed to obtain reference to image id=6 (-2)
+ERROR:   Failed to load BL2 firmware.
+NOTICE:  BL1: GLOBAL_STRAP 0x888a
+NOTICE:  BL1: Fabric Clock Speed 250 MHz
+NOTICE:  BL1: OTP Clock Speed 62 MHz
+NOTICE:  BL1: CPU Clock Speed 500 MHz
+NOTICE:  BL1: I/O Clock 100 MHz
+NOTICE:  BL1: PER Clock 125 MHz
+NOTICE:  Secure Boot Firmware - Cortina Access Inc.
+NOTICE:  BL1: v1.3(release):957a6b2
+NOTICE:  BL1: Built : 16:43:43, Apr 17 2018
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:0
+NOTICE:  Bad block @ 0x0
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:64
+NOTICE:  Bad block @ 0x20000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:128
+NOTICE:  Bad block @ 0x40000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:192
+NOTICE:  Bad block @ 0x60000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:512
+NOTICE:  Bad block @ 0x100000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:576
+NOTICE:  Bad block @ 0x120000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:640
+NOTICE:  Bad block @ 0x140000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1536
+NOTICE:  Bad block @ 0x300000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1600
+NOTICE:  Bad block @ 0x320000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1664
+NOTICE:  Bad block @ 0x340000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1728
+NOTICE:  Bad block @ 0x360000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1792
+NOTICE:  Bad block @ 0x380000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1856
+NOTICE:  Bad block @ 0x3a0000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1920
+NOTICE:  Bad block @ 0x3c0000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1984
+NOTICE:  Bad block @ 0x3e0000
+WARNING: get_partition: Failed to find partition table
+WARNING: failed to find Active partition
+NOTICE:  Platform initialized
+WARNING: Firmware Image Package header check failed.
+WARNING: OTP Boot Index: No more devices to try 7
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:0
+NOTICE:  Bad block @ 0x0
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:64
+NOTICE:  Bad block @ 0x20000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:128
+NOTICE:  Bad block @ 0x40000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:192
+NOTICE:  Bad block @ 0x60000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:512
+NOTICE:  Bad block @ 0x100000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:576
+NOTICE:  Bad block @ 0x120000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:640
+NOTICE:  Bad block @ 0x140000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1536
+NOTICE:  Bad block @ 0x300000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1600
+NOTICE:  Bad block @ 0x320000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1664
+NOTICE:  Bad block @ 0x340000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1728
+NOTICE:  Bad block @ 0x360000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1792
+NOTICE:  Bad block @ 0x380000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1856
+NOTICE:  Bad block @ 0x3a0000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1920
+NOTICE:  Bad block @ 0x3c0000
+ERROR:   SERIAL_NAND: spinand_read_to_cache(500): ECC error!
+ERROR:   SERIAL_NAND: spinand_read_oob(630): read to cache fail, page:1984
+NOTICE:  Bad block @ 0x3e0000
+WARNING: get_partition: Failed to find partition table
+WARNING: failed to find Active partition
+WARNING: Failed to obtain reference to image id=6 (-2)
+ERROR:   Failed to load BL2 firmware.
+JTAG OK!
+NOTICE:  Chip Sub-Revision C
+NOTICE:  Saturn Soc
+NOTICE:  Change IO clock
+NOTICE:  DIAGNOSTIC_TASK ON
+NOTICE:  DDR3 800MHz
+NOTICE:  PAD_BUS_0=0x5dd80000
+NOTICE:  PAD_CTRL_PROG=0xc000000
+NOTICE:  rzq_480code:0xc
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800b06ca  ==> NOTICE:  TTCN[TTFN]=0x6[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x6[0x1]
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800183ca  ==> NOTICE:  TTCN[TTFN]=0x3[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x3[0x0]
+NOTICE:  WriteLeveling PI of DRAM_CK moved 0 tick
+NOTICE:  ddr_write_leveling: 0
+NOTICE:  ddr_write_leveling: 2002
+NOTICE:  Detected cycle delay tap number: 20
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=2: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_wr_data_training: min_reg_pi_dq[0]: 4; max_reg_pi_dq[0]: 14
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=3: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=4: going left 14 ticks; going right 14 ticks
+NOTICE:  rising_dqs_in_dly[0]: 1~31=16
+NOTICE:  rising_dqs_in_dly[1]: 0~31=15
+NOTICE:  rising_dqs_in_dly[2]: 1~31=16
+NOTICE:  rising_dqs_in_dly[3]: 0~31=15
+NOTICE:  falling_dqs_in_dly[0]:0~31=15
+NOTICE:  falling_dqs_in_dly[1]:0~31=15
+NOTICE:  falling_dqs_in_dly[2]:0~31=15
+NOTICE:  falling_dqs_in_dly[3]:0~31=15
+NOTICE:  rising_dqs_in_dly[4]: 1~31=16
+NOTICE:  rising_dqs_in_dly[5]: 0~31=15
+NOTICE:  rising_dqs_in_dly[6]: 1~31=16
+NOTICE:  rising_dqs_in_dly[7]: 0~31=15
+NOTICE:  falling_dqs_in_dly[4]:0~31=15
+NOTICE:  falling_dqs_in_dly[5]:0~31=15
+NOTICE:  falling_dqs_in_dly[6]:0~31=15
+NOTICE:  falling_dqs_in_dly[7]:0~31=15
+NOTICE:  rising_dqs_in_dly[8]: 1~31=16
+NOTICE:  rising_dqs_in_dly[9]: 0~31=15
+NOTICE:  rising_dqs_in_dly[10]: 1~31=16
+NOTICE:  rising_dqs_in_dly[11]: 0~31=15
+NOTICE:  falling_dqs_in_dly[8]:0~31=15
+NOTICE:  falling_dqs_in_dly[9]:0~31=15
+NOTICE:  falling_dqs_in_dly[10]:0~31=15
+NOTICE:  falling_dqs_in_dly[11]:0~31=15
+NOTICE:  rising_dqs_in_dly[12]: 1~31=16
+NOTICE:  rising_dqs_in_dly[13]: 0~31=15
+NOTICE:  rising_dqs_in_dly[14]: 1~31=16
+NOTICE:  rising_dqs_in_dly[15]: 0~31=15
+NOTICE:  falling_dqs_in_dly[12]:0~31=15
+NOTICE:  falling_dqs_in_dly[13]:0~31=15
+NOTICE:  falling_dqs_in_dly[14]:0~31=15
+NOTICE:  falling_dqs_in_dly[15]:0~31=15
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=5: going left 14 ticks; going right 14 ticks
+NOTICE:  DDR Size: 256MB
+NOTICE:  Start DDR scan ...
+NOTICE:  DDR scan done
+NOTICE:  DDR Init done...
+NOTICE:  Recover io_clk...
+
+
+U-Boot 2015.04 (Jun 20 2019 - 16:28:25)Saturn-ASIC
+
+DRAM:  256 MiB
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ca77xx_eth_initialize: auto_scan_active_port=0
+ca77xx_eth_initialize: active_port=4
+ca77xx_eth_initialize: active_port=4, ge_port_phy_addr=5
+ca77xx_eth_initialize: vendor_id=0x1c
+ca77xx_eth_initialize: chip_id=0xc916
+ca77xx_eth_initialize: phy_id=0x1cc916
+ca77xx_eth_initialize: phy_id & PHY_ID_MASK=0x1cc910
+ca77xx_eth_initialize: PHY_ID_RTL8214=0x1cc940
+ca77xx_eth_initialize: do initial patch for PHY_ID_RTL8211
+Saturn-ASIC
+Hit any key to stop autoboot:  0 
+SATURN# 
+SATURN# spi_nand probe
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SATURN# spi_nand
+spi_nand - SPI NAND flash sub-system
+
+Usage:
+spi_nand probe [[bus:]cs] [hz] [mode]   - init flash device on given SPI bus
+                                  and chip select
+spi_nand read addr offset len   - read `len' bytes starting at
+                                  `offset' to memory at `addr', skipping bad blocks.
+spi_nand write addr offset len  - write `len' bytes from memory
+                                  at `addr' to flash at `offset', skipping bad blocks.
+spi_nand erase[.spread] offset [+]len           - erase `len' bytes from `offset'
+                                  `+len' round up `len' to block size
+                                  With '.spread', erase enough for given file size, otherwise,
+                                  'size' includes skipped bad blocks.
+spi_nand update addr offset len - erase and write `len' bytes from memory
+                                  at `addr' to flash at `offset'
+spi_nand bad - show bad blocks
+spi_nand markbad offset - mark block include `offset' as bad block
+spi_nand scrub [-y] offset len | scrub.part partition | scrub.chip
+    really clean SPI-NAND erasing bad blocks (UNSAFE)
+
+SATURN# spi_nand erase 0 0x800000
+ECC error! page:0
+internal ECC error reading page 0x0
+ECC error! page:64
+internal ECC error reading page 0x40
+ECC error! page:128
+internal ECC error reading page 0x80
+ECC error! page:192
+internal ECC error reading page 0xc0
+ECC error! page:512
+internal ECC error reading page 0x200
+ECC error! page:576
+internal ECC error reading page 0x240
+ECC error! page:640
+internal ECC error reading page 0x280
+ECC error! page:1536
+internal ECC error reading page 0x600
+ECC error! page:1600
+internal ECC error reading page 0x640
+ECC error! page:1664
+internal ECC error reading page 0x680
+ECC error! page:1728
+internal ECC error reading page 0x6c0
+ECC error! page:1792
+internal ECC error reading page 0x700
+ECC error! page:1856
+internal ECC error reading page 0x740
+ECC error! page:1920
+internal ECC error reading page 0x780
+ECC error! page:1984
+internal ECC error reading page 0x7c0
+ECC error! page:0
+internal ECC error reading page 0x0
+ECC error! page:64
+internal ECC error reading page 0x40
+ECC error! page:128
+internal ECC error reading page 0x80
+ECC error! page:192
+internal ECC error reading page 0xc0
+ECC error! page:512
+internal ECC error reading page 0x200
+ECC error! page:576
+internal ECC error reading page 0x240
+ECC error! page:640
+internal ECC error reading page 0x280
+ECC error! page:1536
+internal ECC error reading page 0x600
+ECC error! page:1600
+internal ECC error reading page 0x640
+ECC error! page:1664
+internal ECC error reading page 0x680
+ECC error! page:1728
+internal ECC error reading page 0x6c0
+ECC error! page:1792
+internal ECC error reading page 0x700
+ECC error! page:1856
+internal ECC error reading page 0x740
+ECC error! page:1920
+internal ECC error reading page 0x780
+ECC error! page:1984
+internal ECC error reading page 0x7c0
+SPI-NAND: 8388608 bytes @ 0x0 Erased: OK
+SATURN# spi_nand bad
+Bad block at 0x2840000
+Bad block at 0x2e60000
+ECC error! page:61952
+internal ECC error reading page 0xf200
+SATURN# spi_nand
+spi_nand - SPI NAND flash sub-system
+
+Usage:
+spi_nand probe [[bus:]cs] [hz] [mode]   - init flash device on given SPI bus
+                                  and chip select
+spi_nand read addr offset len   - read `len' bytes starting at
+                                  `offset' to memory at `addr', skipping bad blocks.
+spi_nand write addr offset len  - write `len' bytes from memory
+                                  at `addr' to flash at `offset', skipping bad blocks.
+spi_nand erase[.spread] offset [+]len           - erase `len' bytes from `offset'
+                                  `+len' round up `len' to block size
+                                  With '.spread', erase enough for given file size, otherwise,
+                                  'size' includes skipped bad blocks.
+spi_nand update addr offset len - erase and write `len' bytes from memory
+                                  at `addr' to flash at `offset'
+spi_nand bad - show bad blocks
+spi_nand markbad offset - mark block include `offset' as bad block
+spi_nand scrub [-y] offset len | scrub.part partition | scrub.chip
+    really clean SPI-NAND erasing bad blocks (UNSAFE)
+
+SATURN# spi_nand scrub.chip
+
+SPI-NAND scrub.chip: Warning: scrub option will erase all factory set bad blocks!
+                  There is no reliable way to recover them.
+                  Use this command only for testing purposes if you
+                  are sure of what you are doing!
+
+Really scrub this SPI-NAND flash? <y/N>
+y
+SPI-NAND: 0x2840000 marked bad block was scrubed succeed
+SPI-NAND: 0x2e60000 marked bad block was scrubed succeed
+ECC error! page:61952
+internal ECC error reading page 0xf200
+SPI-NAND: 134217728 bytes @ 0x0 Scrub-Erased: OK
+SATURN# spi_nand probe
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SATURN# 
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SATURN# 
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SATURN# 
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SATURN# print
+active_part=0
+active_port=4
+auto_scan_active_port=0
+baudrate=115200
+boot_kernel=fdt addr 0x85000000; setenv bootargs rd_start=0x86000000 rd_size=0x${filesize} root=/dev/ram console=ttyS0,115200;fdt set /chosen bootargs "$bootargs" ;bootm 0x85100000 - 0x85000000
+bootcmd=spi_nand read $kernel_addr_r 0x200000 0x900000;spi_nand read $fdt_addr_r 0x100000 0x10000;booti $kernel_addr_r - $fdt_addr_r
+bootdelay=5
+dtb_addr=0x85000000
+dtb_load_addr=0x87000000
+dtb_size=0x100000
+ethact=Saturn-ASIC
+ethaddr=00:50:c2:01:02:03
+f_titan=run l_dtb; run l_kernel; bootm ${kernel_load_addr} - ${dtb_load_addr}
+gatewayip=192.168.1.2
+img_active=1
+img_commit=1
+img_executed=0
+ipaddr=192.168.1.1
+kernel_addr=0x85100000
+kernel_load_addr=0x87100000
+kernel_size=0x600000
+l_dtb=sf read ${dtb_load_addr} 0x60000 ${dtb_size};
+l_kernel=sf read ${kernel_load_addr} 0x600000 ${kernel_size} 
+l_rootfs=sf read ${rootfs_addr} 0x70000 ${rootfs_size};
+m_titan=bootm ${kernel_addr} - ${dtb_addr}
+netmask=255.255.255.0
+rootfs_addr=0x86000000
+rootfs_size=0x6000000
+sb_flag=39
+serverip=192.168.1.2
+spinand_f_titan=run spinand_l_dtb; run spinand_l_kernel; bootm ${kernel_load_addr} - ${dtb_load_addr}
+spinand_l_dtb=spi_nand read ${dtb_load_addr} 0x500000 ${dtb_size};
+spinand_l_kernel=spi_nand read ${kernel_load_addr} 0x600000 ${kernel_size} 
+spinand_l_rootfs=spi_nand read ${rootfs_addr} 0xC00000 ${rootfs_size};
+spinand_upd=tftp 0x85000000 gpt-image;spi_nand erase 0 0x400000;spi_nand write 0x85000000 0 0x400000;
+spinand_w_dtb=spi_nand erase 0x500000 ${dtb_size}; spi_nand write ${dtb_addr} 0x500000 ${dtb_size}; 
+spinand_w_fip=spi_nand erase 0 0x400000; spi_nand write 0x88000000 0 0x400000; 
+spinand_w_kernel=spi_nand erase 0x600000 ${kernel_size}; spi_nand write ${kernel_addr} 0x600000 ${kernel_size};
+spinand_w_rootfs=spi_nand erase 0xC00000 ${rootfs_size}; spi_nand write ${rootfs_addr} 0xC00000 ${rootfs_size}; 
+standby_part=1
+stderr=serial
+stdin=serial
+stdout=serial
+tftp_kernel=tftpboot 0x85100000 uImage;tftpboot 0x85000000 uImage-saturn_sfu.dtb;tftpboot 0x86000000 major-image-saturn-sfu-eng.cpio.xz
+upd=tftp 0x85000000 gpt-image;sf erase 0 0x300000;sf write 0x85000000 0 0x300000;
+w_dtb=sf erase 0x60000 ${dtb_size}; sf write ${dtb_addr} 0x60000 ${dtb_size}; 
+w_fip=sf erase 0 0x50000; sf write 0x88000000 0 0x50000; 
+w_kernel=sf erase 0x600000 ${kernel_size}; sf write ${kernel_addr} 0x600000 ${kernel_size};
+w_rootfs=sf erase 0x70000 ${rootfs_size}; sf write ${rootfs_addr} 0x70000 ${rootfs_size}; 
+
+Environment size: 2576/131068 bytes
+SATURN# setenv serverip 192.168.1.128
+SATURN# saveenv
+Saving Environment to SPI Flash...
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+Erasing SPI flash...Writing to SPI flash...done
+SATURN# ping 192.168.1.128
+PHY ID 0x001CC916 100Mbps full duplex
+Using Saturn-ASIC device
+host 192.168.1.128 is alive
+SATURN# tftpboot 0x85000000 major-image-saturn-sfu-eng-gpt.img;
+PHY ID 0x001CC916 100Mbps full duplex
+Using Saturn-ASIC device
+TFTP from server 192.168.1.128; our IP address is 192.168.1.1
+Filename 'major-image-saturn-sfu-eng-gpt.img'.
+Load address: 0x85000000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         ####################
+         2.4 MiB/s
+done
+Bytes transferred = 3145728 (300000 hex)
+SATURN# spi_nand erase 0x0000000 0x00400000; spi_nand write 0x85000000 0x0000000 0x300000;
+SPI-NAND: 4194304 bytes @ 0x0 Erased: OK
+SPI-NAND: 3145728 bytes @ 0x0 Written: OK
+SATURN# tftpboot 0x85000000 uboot-env.bin;
+PHY ID 0x001CC916 100Mbps full duplex
+Using Saturn-ASIC device
+TFTP from server 192.168.1.128; our IP address is 192.168.1.1
+Filename 'uboot-env.bin'.
+Load address: 0x85000000
+Loading: #########
+         533.2 KiB/s
+done
+Bytes transferred = 131072 (20000 hex)
+SATURN# spi_nand erase 0x0400000 0x00100000; spi_nand write 0x85000000 0x0400000 0x20000;
+SPI-NAND: 1048576 bytes @ 0x400000 Erased: OK
+SPI-NAND: 131072 bytes @ 0x400000 Written: OK
+SATURN# reset
+NOTICE:  BL1: GLOBAL_STRAP 0x888a
+NOTICE:  BL1: Fabric Clock Speed 250 MHz
+NOTICE:  BL1: OTP Clock Speed 62 MHz
+NOTICE:  BL1: CPU Clock Speed 500 MHz
+NOTICE:  BL1: I/O Clock 100 MHz
+NOTICE:  BL1: PER Clock 125 MHz
+NOTICE:  Secure Boot Firmware - Cortina Access Inc.
+NOTICE:  BL1: v1.3(release):957a6b2
+NOTICE:  BL1: Built : 16:43:43, Apr 17 2018
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  Platform initialized
+NOTICE:  ROTPK undeployed
+NOTICE:  BL1: Booting BL2
+NOTICE:  Chip Sub-Revision C
+NOTICE:  Saturn Soc
+NOTICE:  Change IO clock
+NOTICE:  DIAGNOSTIC_TASK ON
+NOTICE:  DDR3 800MHz
+NOTICE:  PAD_BUS_0=0x5dd80000
+NOTICE:  PAD_CTRL_PROG=0xc000000
+NOTICE:  rzq_480code:0xc
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800b06ca  ==> NOTICE:  TTCN[TTFN]=0x6[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x6[0x1]
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800183ca  ==> NOTICE:  TTCN[TTFN]=0x3[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x3[0x0]
+NOTICE:  WriteLeveling PI of DRAM_CK moved 0 tick
+NOTICE:  ddr_write_leveling: 0
+NOTICE:  ddr_write_leveling: 2002
+NOTICE:  Detected cycle delay tap number: 20
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=2: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_wr_data_training: min_reg_pi_dq[0]: 4; max_reg_pi_dq[0]: 14
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=3: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=4: going left 14 ticks; going right 14 ticks
+NOTICE:  rising_dqs_in_dly[0]: 1~31=16
+NOTICE:  rising_dqs_in_dly[1]: 0~31=15
+NOTICE:  rising_dqs_in_dly[2]: 1~31=16
+NOTICE:  rising_dqs_in_dly[3]: 0~31=15
+NOTICE:  falling_dqs_in_dly[0]:0~31=15
+NOTICE:  falling_dqs_in_dly[1]:0~31=15
+NOTICE:  falling_dqs_in_dly[2]:0~31=15
+NOTICE:  falling_dqs_in_dly[3]:0~31=15
+NOTICE:  rising_dqs_in_dly[4]: 1~31=16
+NOTICE:  rising_dqs_in_dly[5]: 0~31=15
+NOTICE:  rising_dqs_in_dly[6]: 1~31=16
+NOTICE:  rising_dqs_in_dly[7]: 0~31=15
+NOTICE:  falling_dqs_in_dly[4]:0~31=15
+NOTICE:  falling_dqs_in_dly[5]:0~31=15
+NOTICE:  falling_dqs_in_dly[6]:0~31=15
+NOTICE:  falling_dqs_in_dly[7]:0~31=15
+NOTICE:  rising_dqs_in_dly[8]: 1~31=16
+NOTICE:  rising_dqs_in_dly[9]: 0~31=15
+NOTICE:  rising_dqs_in_dly[10]: 1~31=16
+NOTICE:  rising_dqs_in_dly[11]: 0~31=15
+NOTICE:  falling_dqs_in_dly[8]:0~31=15
+NOTICE:  falling_dqs_in_dly[9]:0~31=15
+NOTICE:  falling_dqs_in_dly[10]:0~31=15
+NOTICE:  falling_dqs_in_dly[11]:0~31=15
+NOTICE:  rising_dqs_in_dly[12]: 1~31=16
+NOTICE:  rising_dqs_in_dly[13]: 0~31=15
+NOTICE:  rising_dqs_in_dly[14]: 1~31=16
+NOTICE:  rising_dqs_in_dly[15]: 0~31=15
+NOTICE:  falling_dqs_in_dly[12]:0~31=15
+NOTICE:  falling_dqs_in_dly[13]:0~31=15
+NOTICE:  falling_dqs_in_dly[14]:0~31=15
+NOTICE:  falling_dqs_in_dly[15]:0~31=15
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=5: going left 14 ticks; going right 14 ticks
+NOTICE:  DDR Size: 256MB
+NOTICE:  Start DDR scan ...
+NOTICE:  DDR scan done
+NOTICE:  DDR Init done...
+NOTICE:  Recover io_clk...
+NOTICE:  Reduce Power for SFU
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  BL2: v1.3(release):778c835
+NOTICE:  BL2: Built : 13:38:24, Mar  7 2019
+NOTICE:  ROTPK undeployed
+
+
+U-Boot 2015.04 (Jun 20 2019 - 14:57:07)Saturn-ASIC
+
+DRAM:  256 MiB
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ca77xx_eth_initialize: auto_scan_active_port=0
+ca77xx_eth_initialize: active_port=4
+ca77xx_eth_initialize: active_port=4, ge_port_phy_addr=5
+ca77xx_eth_initialize: vendor_id=0x1c
+ca77xx_eth_initialize: chip_id=0xc916
+ca77xx_eth_initialize: phy_id=0x1cc916
+ca77xx_eth_initialize: phy_id & PHY_ID_MASK=0x1cc910
+ca77xx_eth_initialize: PHY_ID_RTL8214=0x1cc940
+ca77xx_eth_initialize: do initial patch for PHY_ID_RTL8211
+Saturn-ASIC
+Hit any key to stop autoboot:  0 
+Image Selecting...
+SPI-NAND: 6291456 bytes @ 0x600000 Read: OK
+SPI-NAND: 131072 bytes @ 0x500000 Read: OK
+libfdt fdt_check_header(): FDT_ERR_BADMAGIC
+No FDT memory address configured. Please configure
+the FDT address via "fdt addr <address>" command.
+Aborting!
+SATURN# 
+SATURN# 
+SATURN# 
+SATURN# 
+SATURN# 
+SATURN# 
+SATURN# print
+active_part=0
+active_port=4
+auto_scan_active_port=0
+b=bootm ${kernel_addr_r} - ${fdt_addr_r}
+basicargs=console=ttyS0,115200
+baudrate=115200
+bootargs=console=ttyS0,115200 ubi.mtd=rootfs0 root=/dev/mtdblock9 rootfstype=squashfs mtdparts=ca_spinand_flash:4M@0x0(ssb),1M(uboot-env),1M(dtb0),6M(kernel0),40M(rootfs0),1M(dtb1),6M(kernel1),40M(rootfs1),20M(userdata)
+bootcmd=run setparts process setbootargs setdtbargs b
+bootdelay=1
+eth1addr=00:13:25:00:00:02
+eth2addr=00:13:25:00:00:03
+eth3addr=00:13:25:00:00:04
+ethact=Saturn-ASIC
+ethaddr=00:13:25:00:00:01
+fdt_addr_r=0x85000000
+flash_id=ca_spinand_flash
+gatewayip=192.168.1.1
+img_active=1
+img_commit=1
+img_crc0=FFFFFFFF
+img_crc1=FFFFFFFF
+img_executed=0
+img_info0=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_info1=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_version0=00.00.00.00.00
+img_version1=00.00.00.00.00
+initrd_addr_r=0x02000000
+ipaddr=192.168.1.2
+kernel_addr_r=0x85100000
+more_args=ubi.mtd=rootfs0 root=/dev/mtdblock9 rootfstype=squashfs
+mtdids=nand0=MX35LF1GE4AB
+mtdparts=mtdparts=ca_spinand_flash:4M@0x0(ssb),1M(uboot-env),1M(dtb0),6M(kernel0),40M(rootfs0),1M(dtb1),6M(kernel1),40M(rootfs1),20M(userdata)
+netmask=255.255.255.0
+partitions=ca_spinand_flash:4M@0x0(ssb),1M(uboot-env),1M(dtb0),6M(kernel0),40M(rootfs0),1M(dtb1),6M(kernel1),40M(rootfs1),20M(userdata)
+process=if test "${active_part}" = "1"; then run process1; else run process0; fi
+process0=spi_nand read ${kernel_addr_r} 0x600000 0x600000; spi_nand read ${fdt_addr_r} 0x500000 0x20000
+process1=spi_nand read ${kernel_addr_r} 0x3500000 0x600000; spi_nand read ${fdt_addr_r} 0x3400000 0x20000
+rootfs_addr_r=0x86000000
+sb_flag=39
+serverip=192.168.1.128
+setbootargs=setenv bootargs ${basicargs} ${more_args} ${ramargs} ${mtdparts};
+setdtbargs=fdt addr ${fdt_addr_r} 0x4000;fdt set /chosen bootargs "$bootargs";
+setpartlayout=setenv partitions ${flash_id}:4M@0x0(ssb),1M(uboot-env),1M(dtb${active_part}),6M(kernel${active_part}),40M(rootfs${active_part}),1M(dtb${standby_part}),6M(kernel${standby_part}),40M(rootfs${standby_part}),20M(userdata)
+setparts=ca_img_select;run setpartlayout;setenv mtdparts mtdparts=${partitions};
+standby_part=1
+stderr=serial
+stdin=serial
+stdout=serial
+
+Environment size: 2277/131068 bytes
+SATURN# reset
+NOTICE:  BL1: GLOBAL_STRAP 0x888a
+NOTICE:  BL1: Fabric Clock Speed 250 MHz
+NOTICE:  BL1: OTP Clock Speed 62 MHz
+NOTICE:  BL1: CPU Clock Speed 500 MHz
+NOTICE:  BL1: I/O Clock 100 MHz
+NOTICE:  BL1: PER Clock 125 MHz
+NOTICE:  Secure Boot Firmware - Cortina Access Inc.
+NOTICE:  BL1: v1.3(release):957a6b2
+NOTICE:  BL1: Built : 16:43:43, Apr 17 2018
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  Platform initialized
+NOTICE:  ROTPK undeployed
+NOTICE:  BL1: Booting BL2
+NOTICE:  Chip Sub-Revision C
+NOTICE:  Saturn Soc
+NOTICE:  Change IO clock
+NOTICE:  DIAGNOSTIC_TASK ON
+NOTICE:  DDR3 800MHz
+NOTICE:  PAD_BUS_0=0x5dd80000
+NOTICE:  PAD_CTRL_PROG=0xc000000
+NOTICE:  rzq_480code:0xd
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800396ca  ==> NOTICE:  TTCN[TTFN]=0x6[0x1]; {CPMSB,TTCP}[TTFP]=0x0,0x7[0x0]
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800993db  ==> NOTICE:  TTCN[TTFN]=0x3[0x1]; {CPMSB,TTCP}[TTFP]=0x0,0x3[0x1]
+NOTICE:  WriteLeveling PI of DRAM_CK moved 0 tick
+NOTICE:  ddr_write_leveling: 0
+NOTICE:  ddr_write_leveling: 2002
+NOTICE:  Detected cycle delay tap number: 21
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=2: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_wr_data_training: min_reg_pi_dq[0]: 4; max_reg_pi_dq[0]: 14
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=3: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=4: going left 14 ticks; going right 14 ticks
+NOTICE:  rising_dqs_in_dly[0]: 1~31=16
+NOTICE:  rising_dqs_in_dly[1]: 0~31=15
+NOTICE:  rising_dqs_in_dly[2]: 1~31=16
+NOTICE:  rising_dqs_in_dly[3]: 0~31=15
+NOTICE:  falling_dqs_in_dly[0]:0~31=15
+NOTICE:  falling_dqs_in_dly[1]:0~31=15
+NOTICE:  falling_dqs_in_dly[2]:0~31=15
+NOTICE:  falling_dqs_in_dly[3]:0~31=15
+NOTICE:  rising_dqs_in_dly[4]: 1~31=16
+NOTICE:  rising_dqs_in_dly[5]: 0~31=15
+NOTICE:  rising_dqs_in_dly[6]: 1~31=16
+NOTICE:  rising_dqs_in_dly[7]: 0~31=15
+NOTICE:  falling_dqs_in_dly[4]:0~31=15
+NOTICE:  falling_dqs_in_dly[5]:0~31=15
+NOTICE:  falling_dqs_in_dly[6]:0~31=15
+NOTICE:  falling_dqs_in_dly[7]:0~31=15
+NOTICE:  rising_dqs_in_dly[8]: 1~31=16
+NOTICE:  rising_dqs_in_dly[9]: 0~31=15
+NOTICE:  rising_dqs_in_dly[10]: 1~31=16
+NOTICE:  rising_dqs_in_dly[11]: 0~31=15
+NOTICE:  falling_dqs_in_dly[8]:0~31=15
+NOTICE:  falling_dqs_in_dly[9]:0~31=15
+NOTICE:  falling_dqs_in_dly[10]:0~31=15
+NOTICE:  falling_dqs_in_dly[11]:0~31=15
+NOTICE:  rising_dqs_in_dly[12]: 1~31=16
+NOTICE:  rising_dqs_in_dly[13]: 0~31=15
+NOTICE:  rising_dqs_in_dly[14]: 1~31=16
+NOTICE:  rising_dqs_in_dly[15]: 0~31=15
+NOTICE:  falling_dqs_in_dly[12]:0~31=15
+NOTICE:  falling_dqs_in_dly[13]:0~31=15
+NOTICE:  falling_dqs_in_dly[14]:0~31=15
+NOTICE:  falling_dqs_in_dly[15]:0~31=15
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=5: going left 14 ticks; going right 14 ticks
+NOTICE:  DDR Size: 256MB
+NOTICE:  Start DDR scan ...
+NOTICE:  DDR scan done
+NOTICE:  DDR Init done...
+NOTICE:  Recover io_clk...
+NOTICE:  Reduce Power for SFU
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  BL2: v1.3(release):778c835
+NOTICE:  BL2: Built : 13:38:24, Mar  7 2019
+NOTICE:  ROTPK undeployed
+
+
+U-Boot 2015.04 (Jun 20 2019 - 14:57:07)Saturn-ASIC
+
+DRAM:  256 MiB
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ca77xx_eth_initialize: auto_scan_active_port=0
+ca77xx_eth_initialize: active_port=4
+ca77xx_eth_initialize: active_port=4, ge_port_phy_addr=5
+ca77xx_eth_initialize: vendor_id=0x1c
+ca77xx_eth_initialize: chip_id=0xc916
+ca77xx_eth_initialize: phy_id=0x1cc916
+ca77xx_eth_initialize: phy_id & PHY_ID_MASK=0x1cc910
+ca77xx_eth_initialize: PHY_ID_RTL8214=0x1cc940
+ca77xx_eth_initialize: do initial patch for PHY_ID_RTL8211
+Saturn-ASIC
+Hit any key to stop autoboot:  0 
+Image Selecting...
+SPI-NAND: 6291456 bytes @ 0x600000 Read: OK
+SPI-NAND: 131072 bytes @ 0x500000 Read: OK
+libfdt fdt_check_header(): FDT_ERR_BADMAGIC
+No FDT memory address configured. Please configure
+the FDT address via "fdt addr <address>" command.
+Aborting!
+SATURN# 
+SATURN# 
+SATURN# 
+
+SATURN# 
+SATURN# reboot
+Unknown command 'reboot' - try 'help'
+SATURN# 
+Unknown command 'reboot' - try 'help'
+SATURN# reset
+NOTICE:  BL1: GLOBAL_STRAP 0x888a
+NOTICE:  BL1: Fabric Clock Speed 250 MHz
+NOTICE:  BL1: OTP Clock Speed 62 MHz
+NOTICE:  BL1: CPU Clock Speed 500 MHz
+NOTICE:  BL1: I/O Clock 100 MHz
+NOTICE:  BL1: PER Clock 125 MHz
+NOTICE:  Secure Boot Firmware - Cortina Access Inc.
+NOTICE:  BL1: v1.3(release):957a6b2
+NOTICE:  BL1: Built : 16:43:43, Apr 17 2018
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  Platform initialized
+NOTICE:  ROTPK undeployed
+NOTICE:  BL1: Booting BL2
+NOTICE:  Chip Sub-Revision C
+NOTICE:  Saturn Soc
+NOTICE:  Change IO clock
+NOTICE:  DIAGNOSTIC_TASK ON
+NOTICE:  DDR3 800MHz
+NOTICE:  PAD_BUS_0=0x5dd80000
+NOTICE:  PAD_CTRL_PROG=0xc000000
+NOTICE:  rzq_480code:0xc
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800b06ca  ==> NOTICE:  TTCN[TTFN]=0x6[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x6[0x1]
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800183ca  ==> NOTICE:  TTCN[TTFN]=0x3[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x3[0x0]
+NOTICE:  WriteLeveling PI of DRAM_CK moved 0 tick
+NOTICE:  ddr_write_leveling: 0
+NOTICE:  ddr_write_leveling: 2002
+NOTICE:  Detected cycle delay tap number: 21
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=2: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_wr_data_training: min_reg_pi_dq[0]: 4; max_reg_pi_dq[0]: 14
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=3: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=4: going left 14 ticks; going right 14 ticks
+NOTICE:  rising_dqs_in_dly[0]: 1~31=16
+NOTICE:  rising_dqs_in_dly[1]: 1~31=16
+NOTICE:  rising_dqs_in_dly[2]: 1~31=16
+NOTICE:  rising_dqs_in_dly[3]: 0~31=15
+NOTICE:  falling_dqs_in_dly[0]:0~31=15
+NOTICE:  falling_dqs_in_dly[1]:0~31=15
+NOTICE:  falling_dqs_in_dly[2]:0~31=15
+NOTICE:  falling_dqs_in_dly[3]:0~31=15
+NOTICE:  rising_dqs_in_dly[4]: 1~31=16
+NOTICE:  rising_dqs_in_dly[5]: 1~31=16
+NOTICE:  rising_dqs_in_dly[6]: 1~31=16
+NOTICE:  rising_dqs_in_dly[7]: 0~31=15
+NOTICE:  falling_dqs_in_dly[4]:0~31=15
+NOTICE:  falling_dqs_in_dly[5]:0~31=15
+NOTICE:  falling_dqs_in_dly[6]:0~31=15
+NOTICE:  falling_dqs_in_dly[7]:0~31=15
+NOTICE:  rising_dqs_in_dly[8]: 1~31=16
+NOTICE:  rising_dqs_in_dly[9]: 1~31=16
+NOTICE:  rising_dqs_in_dly[10]: 1~31=16
+NOTICE:  rising_dqs_in_dly[11]: 0~31=15
+NOTICE:  falling_dqs_in_dly[8]:0~31=15
+NOTICE:  falling_dqs_in_dly[9]:0~31=15
+NOTICE:  falling_dqs_in_dly[10]:0~31=15
+NOTICE:  falling_dqs_in_dly[11]:0~31=15
+NOTICE:  rising_dqs_in_dly[12]: 1~31=16
+NOTICE:  rising_dqs_in_dly[13]: 1~31=16
+NOTICE:  rising_dqs_in_dly[14]: 1~31=16
+NOTICE:  rising_dqs_in_dly[15]: 0~31=15
+NOTICE:  falling_dqs_in_dly[12]:0~31=15
+NOTICE:  falling_dqs_in_dly[13]:0~31=15
+NOTICE:  falling_dqs_in_dly[14]:0~31=15
+NOTICE:  falling_dqs_in_dly[15]:0~31=15
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=5: going left 14 ticks; going right 15 ticks
+NOTICE:  DDR Size: 256MB
+NOTICE:  Start DDR scan ...
+NOTICE:  DDR scan done
+NOTICE:  DDR Init done...
+NOTICE:  Recover io_clk...
+NOTICE:  Reduce Power for SFU
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  BL2: v1.3(release):778c835
+NOTICE:  BL2: Built : 13:38:24, Mar  7 2019
+NOTICE:  ROTPK undeployed
+
+
+U-Boot 2015.04 (Jun 20 2019 - 14:57:07)Saturn-ASIC
+
+DRAM:  256 MiB
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ca77xx_eth_initialize: auto_scan_active_port=0
+ca77xx_eth_initialize: active_port=4
+ca77xx_eth_initialize: active_port=4, ge_port_phy_addr=5
+ca77xx_eth_initialize: vendor_id=0x1c
+ca77xx_eth_initialize: chip_id=0xc916
+ca77xx_eth_initialize: phy_id=0x1cc916
+ca77xx_eth_initialize: phy_id & PHY_ID_MASK=0x1cc910
+ca77xx_eth_initialize: PHY_ID_RTL8214=0x1cc940
+ca77xx_eth_initialize: do initial patch for PHY_ID_RTL8211
+Saturn-ASIC
+Hit any key to stop autoboot:  0 
+SATURN# 
+SATURN# setenv serverip tftpboot 0x85000000 uImage-saturn_sfu.dtb;spi_nand erase 0x500000 0x100000; spi_nand write 0x85000000 0x500000 0x20000;
+SPI-NAND: 1048576 bytes @ 0x500000 Erased: OK
+SPI-NAND: 131072 bytes @ 0x500000 Written: OK
+SATURN# 
+SATURN# tftpboot 0x85100000 uImage;spi_nand erase 0x600000 0x600000; spi_nand write 0x85100000 0x600000 0x500000;
+PHY ID 0x001CC916 100Mbps full duplex
+*** ERROR: `serverip' not set
+SPI-NAND: 6291456 bytes @ 0x600000 Erased: OK
+SPI-NAND: 5242880 bytes @ 0x600000 Written: OK
+SATURN# 
+PHY ID 0x001CC916 100Mbps full duplex
+*** ERROR: `serverip' not set
+SPI-NAND: 6291456 bytes @ 0x600000 Erased: OK
+SPI-NAND: 5242880 bytes @ 0x600000 Written: OK
+SATURN# tftpboot 0x8600000tftpboot 0x87000000 major-image-saturn-sfu-eng_user.ubi;spi_nand erase 0x6300000 0x1400000; spi_nand write 0x87000000 0x6300000 ${filesize};
+tftpboot - boot image via network using TFTP protocol
+
+Usage:
+tftpboot [loadAddress] [[hostIPaddr:]bootfilename]
+SPI-NAND: 20971520 bytes @ 0x6300000 Erased: OK
+spi_nand - SPI NAND flash sub-system
+
+Usage:
+spi_nand probe [[bus:]cs] [hz] [mode]   - init flash device on given SPI bus
+                                  and chip select
+spi_nand read addr offset len   - read `len' bytes starting at
+                                  `offset' to memory at `addr', skipping bad blocks.
+spi_nand write addr offset len  - write `len' bytes from memory
+                                  at `addr' to flash at `offset', skipping bad blocks.
+spi_nand erase[.spread] offset [+]len           - erase `len' bytes from `offset'
+                                  `+len' round up `len' to block size
+                                  With '.spread', erase enough for given file size, otherwise,
+                                  'size' includes skipped bad blocks.
+spi_nand update addr offset len - erase and write `len' bytes from memory
+                                  at `addr' to flash at `offset'
+spi_nand bad - show bad blocks
+spi_nand markbad offset - mark block include `offset' as bad block
+spi_nand scrub [-y] offset len | scrub.part partition | scrub.chip
+    really clean SPI-NAND erasing bad blocks (UNSAFE)
+
+SATURN# 
+tftpboot - boot image via network using TFTP protocol
+
+Usage:
+tftpboot [loadAddress] [[hostIPaddr:]bootfilename]
+SPI-NAND: 20971520 bytes @ 0x6300000 Erased: OK
+spi_nand - SPI NAND flash sub-system
+
+Usage:
+spi_nand probe [[bus:]cs] [hz] [mode]   - init flash device on given SPI bus
+                                  and chip select
+spi_nand read addr offset len   - read `len' bytes starting at
+                                  `offset' to memory at `addr', skipping bad blocks.
+spi_nand write addr offset len  - write `len' bytes from memory
+                                  at `addr' to flash at `offset', skipping bad blocks.
+spi_nand erase[.spread] offset [+]len           - erase `len' bytes from `offset'
+                                  `+len' round up `len' to block size
+                                  With '.spread', erase enough for given file size, otherwise,
+                                  'size' includes skipped bad blocks.
+spi_nand update addr offset len - erase and write `len' bytes from memory
+                                  at `addr' to flash at `offset'
+spi_nand bad - show bad blocks
+spi_nand markbad offset - mark block include `offset' as bad block
+spi_nand scrub [-y] offset len | scrub.part partition | scrub.chip
+    really clean SPI-NAND erasing bad blocks (UNSAFE)
+
+SATURN# print
+active_part=0
+active_port=4
+auto_scan_active_port=0
+b=bootm ${kernel_addr_r} - ${fdt_addr_r}
+basicargs=console=ttyS0,115200
+baudrate=115200
+bootcmd=run setparts process setbootargs setdtbargs b
+bootdelay=1
+eth1addr=00:13:25:00:00:02
+eth2addr=00:13:25:00:00:03
+eth3addr=00:13:25:00:00:04
+ethact=Saturn-ASIC
+ethaddr=00:13:25:00:00:01
+fdt_addr_r=0x85000000
+flash_id=ca_spinand_flash
+gatewayip=192.168.1.1
+img_active=1
+img_commit=1
+img_crc0=FFFFFFFF
+img_crc1=FFFFFFFF
+img_executed=0
+img_info0=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_info1=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_version0=00.00.00.00.00
+img_version1=00.00.00.00.00
+initrd_addr_r=0x02000000
+ipaddr=192.168.1.2
+kernel_addr_r=0x85100000
+more_args=ubi.mtd=rootfs0 root=/dev/mtdblock9 rootfstype=squashfs
+mtdids=nand0=MX35LF1GE4AB
+netmask=255.255.255.0
+process=if test "${active_part}" = "1"; then run process1; else run process0; fi
+process0=spi_nand read ${kernel_addr_r} 0x600000 0x600000; spi_nand read ${fdt_addr_r} 0x500000 0x20000
+process1=spi_nand read ${kernel_addr_r} 0x3500000 0x600000; spi_nand read ${fdt_addr_r} 0x3400000 0x20000
+rootfs_addr_r=0x86000000
+sb_flag=39
+serverip=tftpboot 0x85000000 uImage-saturn_sfu.dtb
+setbootargs=setenv bootargs ${basicargs} ${more_args} ${ramargs} ${mtdparts};
+setdtbargs=fdt addr ${fdt_addr_r} 0x4000;fdt set /chosen bootargs "$bootargs";
+setpartlayout=setenv partitions ${flash_id}:4M@0x0(ssb),1M(uboot-env),1M(dtb${active_part}),6M(kernel${active_part}),40M(rootfs${active_part}),1M(dtb${standby_part}),6M(kernel${standby_part}),40M(rootfs${standby_part}),20M(userdata)
+setparts=ca_img_select;run setpartlayout;setenv mtdparts mtdparts=${partitions};
+standby_part=1
+stderr=serial
+stdin=serial
+stdout=serial
+
+Environment size: 1800/131068 bytes
+SATURN# 
+active_part=0
+active_port=4
+auto_scan_active_port=0
+b=bootm ${kernel_addr_r} - ${fdt_addr_r}
+basicargs=console=ttyS0,115200
+baudrate=115200
+bootcmd=run setparts process setbootargs setdtbargs b
+bootdelay=1
+eth1addr=00:13:25:00:00:02
+eth2addr=00:13:25:00:00:03
+eth3addr=00:13:25:00:00:04
+ethact=Saturn-ASIC
+ethaddr=00:13:25:00:00:01
+fdt_addr_r=0x85000000
+flash_id=ca_spinand_flash
+gatewayip=192.168.1.1
+img_active=1
+img_commit=1
+img_crc0=FFFFFFFF
+img_crc1=FFFFFFFF
+img_executed=0
+img_info0=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_info1=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_version0=00.00.00.00.00
+img_version1=00.00.00.00.00
+initrd_addr_r=0x02000000
+ipaddr=192.168.1.2
+kernel_addr_r=0x85100000
+more_args=ubi.mtd=rootfs0 root=/dev/mtdblock9 rootfstype=squashfs
+mtdids=nand0=MX35LF1GE4AB
+netmask=255.255.255.0
+process=if test "${active_part}" = "1"; then run process1; else run process0; fi
+process0=spi_nand read ${kernel_addr_r} 0x600000 0x600000; spi_nand read ${fdt_addr_r} 0x500000 0x20000
+process1=spi_nand read ${kernel_addr_r} 0x3500000 0x600000; spi_nand read ${fdt_addr_r} 0x3400000 0x20000
+rootfs_addr_r=0x86000000
+sb_flag=39
+serverip=tftpboot 0x85000000 uImage-saturn_sfu.dtb
+setbootargs=setenv bootargs ${basicargs} ${more_args} ${ramargs} ${mtdparts};
+setdtbargs=fdt addr ${fdt_addr_r} 0x4000;fdt set /chosen bootargs "$bootargs";
+setpartlayout=setenv partitions ${flash_id}:4M@0x0(ssb),1M(uboot-env),1M(dtb${active_part}),6M(kernel${active_part}),40M(rootfs${active_part}),1M(dtb${standby_part}),6M(kernel${standby_part}),40M(rootfs${standby_part}),20M(userdata)
+setparts=ca_img_select;run setpartlayout;setenv mtdparts mtdparts=${partitions};
+standby_part=1
+stderr=serial
+stdin=serial
+stdout=serial
+
+Environment size: 1800/131068 bytes
+SATURN# <INTERRUPT>
+SATURN# 
+SATURN# tftpboot 0x85100000 uImage;
+PHY ID 0x001CC916 100Mbps full duplex
+*** ERROR: `serverip' not set
+SATURN# print
+active_part=0
+active_port=4
+auto_scan_active_port=0
+b=bootm ${kernel_addr_r} - ${fdt_addr_r}
+basicargs=console=ttyS0,115200
+baudrate=115200
+bootcmd=run setparts process setbootargs setdtbargs b
+bootdelay=1
+eth1addr=00:13:25:00:00:02
+eth2addr=00:13:25:00:00:03
+eth3addr=00:13:25:00:00:04
+ethact=Saturn-ASIC
+ethaddr=00:13:25:00:00:01
+fdt_addr_r=0x85000000
+flash_id=ca_spinand_flash
+gatewayip=192.168.1.1
+img_active=1
+img_commit=1
+img_crc0=FFFFFFFF
+img_crc1=FFFFFFFF
+img_executed=0
+img_info0=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_info1=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_version0=00.00.00.00.00
+img_version1=00.00.00.00.00
+initrd_addr_r=0x02000000
+ipaddr=192.168.1.2
+kernel_addr_r=0x85100000
+more_args=ubi.mtd=rootfs0 root=/dev/mtdblock9 rootfstype=squashfs
+mtdids=nand0=MX35LF1GE4AB
+netmask=255.255.255.0
+process=if test "${active_part}" = "1"; then run process1; else run process0; fi
+process0=spi_nand read ${kernel_addr_r} 0x600000 0x600000; spi_nand read ${fdt_addr_r} 0x500000 0x20000
+process1=spi_nand read ${kernel_addr_r} 0x3500000 0x600000; spi_nand read ${fdt_addr_r} 0x3400000 0x20000
+rootfs_addr_r=0x86000000
+sb_flag=39
+serverip=tftpboot 0x85000000 uImage-saturn_sfu.dtb
+setbootargs=setenv bootargs ${basicargs} ${more_args} ${ramargs} ${mtdparts};
+setdtbargs=fdt addr ${fdt_addr_r} 0x4000;fdt set /chosen bootargs "$bootargs";
+setpartlayout=setenv partitions ${flash_id}:4M@0x0(ssb),1M(uboot-env),1M(dtb${active_part}),6M(kernel${active_part}),40M(rootfs${active_part}),1M(dtb${standby_part}),6M(kernel${standby_part}),40M(rootfs${standby_part}),20M(userdata)
+setparts=ca_img_select;run setpartlayout;setenv mtdparts mtdparts=${partitions};
+standby_part=1
+stderr=serial
+stdin=serial
+stdout=serial
+
+Environment size: 1800/131068 bytes
+SATURN# setenv serverip 192.168.1.128
+SATURN# saveenv
+Saving Environment to SPI Flash...
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+Erasing SPI flash...Writing to SPI flash...done
+SATURN# print
+active_part=0
+active_port=4
+auto_scan_active_port=0
+b=bootm ${kernel_addr_r} - ${fdt_addr_r}
+basicargs=console=ttyS0,115200
+baudrate=115200
+bootcmd=run setparts process setbootargs setdtbargs b
+bootdelay=1
+eth1addr=00:13:25:00:00:02
+eth2addr=00:13:25:00:00:03
+eth3addr=00:13:25:00:00:04
+ethact=Saturn-ASIC
+ethaddr=00:13:25:00:00:01
+fdt_addr_r=0x85000000
+flash_id=ca_spinand_flash
+gatewayip=192.168.1.1
+img_active=1
+img_commit=1
+img_crc0=FFFFFFFF
+img_crc1=FFFFFFFF
+img_executed=0
+img_info0=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_info1=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_version0=00.00.00.00.00
+img_version1=00.00.00.00.00
+initrd_addr_r=0x02000000
+ipaddr=192.168.1.2
+kernel_addr_r=0x85100000
+more_args=ubi.mtd=rootfs0 root=/dev/mtdblock9 rootfstype=squashfs
+mtdids=nand0=MX35LF1GE4AB
+netmask=255.255.255.0
+process=if test "${active_part}" = "1"; then run process1; else run process0; fi
+process0=spi_nand read ${kernel_addr_r} 0x600000 0x600000; spi_nand read ${fdt_addr_r} 0x500000 0x20000
+process1=spi_nand read ${kernel_addr_r} 0x3500000 0x600000; spi_nand read ${fdt_addr_r} 0x3400000 0x20000
+rootfs_addr_r=0x86000000
+sb_flag=39
+serverip=192.168.1.128
+setbootargs=setenv bootargs ${basicargs} ${more_args} ${ramargs} ${mtdparts};
+setdtbargs=fdt addr ${fdt_addr_r} 0x4000;fdt set /chosen bootargs "$bootargs";
+setpartlayout=setenv partitions ${flash_id}:4M@0x0(ssb),1M(uboot-env),1M(dtb${active_part}),6M(kernel${active_part}),40M(rootfs${active_part}),1M(dtb${standby_part}),6M(kernel${standby_part}),40M(rootfs${standby_part}),20M(userdata)
+setparts=ca_img_select;run setpartlayout;setenv mtdparts mtdparts=${partitions};
+standby_part=1
+stderr=serial
+stdin=serial
+stdout=serial
+
+Environment size: 1772/131068 bytes
+SATURN# mtdids=nand0=W25N01GVZEIR
+SATURN# print
+active_part=0
+active_port=4
+auto_scan_active_port=0
+b=bootm ${kernel_addr_r} - ${fdt_addr_r}
+basicargs=console=ttyS0,115200
+baudrate=115200
+bootcmd=run setparts process setbootargs setdtbargs b
+bootdelay=1
+eth1addr=00:13:25:00:00:02
+eth2addr=00:13:25:00:00:03
+eth3addr=00:13:25:00:00:04
+ethact=Saturn-ASIC
+ethaddr=00:13:25:00:00:01
+fdt_addr_r=0x85000000
+flash_id=ca_spinand_flash
+gatewayip=192.168.1.1
+img_active=1
+img_commit=1
+img_crc0=FFFFFFFF
+img_crc1=FFFFFFFF
+img_executed=0
+img_info0=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_info1=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_version0=00.00.00.00.00
+img_version1=00.00.00.00.00
+initrd_addr_r=0x02000000
+ipaddr=192.168.1.2
+kernel_addr_r=0x85100000
+more_args=ubi.mtd=rootfs0 root=/dev/mtdblock9 rootfstype=squashfs
+mtdids=nand0=MX35LF1GE4AB
+netmask=255.255.255.0
+process=if test "${active_part}" = "1"; then run process1; else run process0; fi
+process0=spi_nand read ${kernel_addr_r} 0x600000 0x600000; spi_nand read ${fdt_addr_r} 0x500000 0x20000
+process1=spi_nand read ${kernel_addr_r} 0x3500000 0x600000; spi_nand read ${fdt_addr_r} 0x3400000 0x20000
+rootfs_addr_r=0x86000000
+sb_flag=39
+serverip=192.168.1.128
+setbootargs=setenv bootargs ${basicargs} ${more_args} ${ramargs} ${mtdparts};
+setdtbargs=fdt addr ${fdt_addr_r} 0x4000;fdt set /chosen bootargs "$bootargs";
+setpartlayout=setenv partitions ${flash_id}:4M@0x0(ssb),1M(uboot-env),1M(dtb${active_part}),6M(kernel${active_part}),40M(rootfs${active_part}),1M(dtb${standby_part}),6M(kernel${standby_part}),40M(rootfs${standby_part}),20M(userdata)
+setparts=ca_img_select;run setpartlayout;setenv mtdparts mtdparts=${partitions};
+standby_part=1
+stderr=serial
+stdin=serial
+stdout=serial
+
+Environment size: 1772/131068 bytes
+SATURN# setenv mtdids nand0=W25N01GVZEIR
+SATURN# print
+active_part=0
+active_port=4
+auto_scan_active_port=0
+b=bootm ${kernel_addr_r} - ${fdt_addr_r}
+basicargs=console=ttyS0,115200
+baudrate=115200
+bootcmd=run setparts process setbootargs setdtbargs b
+bootdelay=1
+eth1addr=00:13:25:00:00:02
+eth2addr=00:13:25:00:00:03
+eth3addr=00:13:25:00:00:04
+ethact=Saturn-ASIC
+ethaddr=00:13:25:00:00:01
+fdt_addr_r=0x85000000
+flash_id=ca_spinand_flash
+gatewayip=192.168.1.1
+img_active=1
+img_commit=1
+img_crc0=FFFFFFFF
+img_crc1=FFFFFFFF
+img_executed=0
+img_info0=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_info1=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_version0=00.00.00.00.00
+img_version1=00.00.00.00.00
+initrd_addr_r=0x02000000
+ipaddr=192.168.1.2
+kernel_addr_r=0x85100000
+more_args=ubi.mtd=rootfs0 root=/dev/mtdblock9 rootfstype=squashfs
+mtdids=nand0=W25N01GVZEIR
+netmask=255.255.255.0
+process=if test "${active_part}" = "1"; then run process1; else run process0; fi
+process0=spi_nand read ${kernel_addr_r} 0x600000 0x600000; spi_nand read ${fdt_addr_r} 0x500000 0x20000
+process1=spi_nand read ${kernel_addr_r} 0x3500000 0x600000; spi_nand read ${fdt_addr_r} 0x3400000 0x20000
+rootfs_addr_r=0x86000000
+sb_flag=39
+serverip=192.168.1.128
+setbootargs=setenv bootargs ${basicargs} ${more_args} ${ramargs} ${mtdparts};
+setdtbargs=fdt addr ${fdt_addr_r} 0x4000;fdt set /chosen bootargs "$bootargs";
+setpartlayout=setenv partitions ${flash_id}:4M@0x0(ssb),1M(uboot-env),1M(dtb${active_part}),6M(kernel${active_part}),40M(rootfs${active_part}),1M(dtb${standby_part}),6M(kernel${standby_part}),40M(rootfs${standby_part}),20M(userdata)
+setparts=ca_img_select;run setpartlayout;setenv mtdparts mtdparts=${partitions};
+standby_part=1
+stderr=serial
+stdin=serial
+stdout=serial
+
+Environment size: 1772/131068 bytes
+SATURN# saveenv
+Saving Environment to SPI Flash...
+Erasing SPI flash...Writing to SPI flash...done
+SATURN# 
+SATURN# 
+SATURN# print
+active_part=0
+active_port=4
+auto_scan_active_port=0
+b=bootm ${kernel_addr_r} - ${fdt_addr_r}
+basicargs=console=ttyS0,115200
+baudrate=115200
+bootcmd=run setparts process setbootargs setdtbargs b
+bootdelay=1
+eth1addr=00:13:25:00:00:02
+eth2addr=00:13:25:00:00:03
+eth3addr=00:13:25:00:00:04
+ethact=Saturn-ASIC
+ethaddr=00:13:25:00:00:01
+fdt_addr_r=0x85000000
+flash_id=ca_spinand_flash
+gatewayip=192.168.1.1
+img_active=1
+img_commit=1
+img_crc0=FFFFFFFF
+img_crc1=FFFFFFFF
+img_executed=0
+img_info0=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_info1=xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xx
+img_version0=00.00.00.00.00
+img_version1=00.00.00.00.00
+initrd_addr_r=0x02000000
+ipaddr=192.168.1.2
+kernel_addr_r=0x85100000
+more_args=ubi.mtd=rootfs0 root=/dev/mtdblock9 rootfstype=squashfs
+mtdids=nand0=W25N01GVZEIR
+netmask=255.255.255.0
+process=if test "${active_part}" = "1"; then run process1; else run process0; fi
+process0=spi_nand read ${kernel_addr_r} 0x600000 0x600000; spi_nand read ${fdt_addr_r} 0x500000 0x20000
+process1=spi_nand read ${kernel_addr_r} 0x3500000 0x600000; spi_nand read ${fdt_addr_r} 0x3400000 0x20000
+rootfs_addr_r=0x86000000
+sb_flag=39
+serverip=192.168.1.128
+setbootargs=setenv bootargs ${basicargs} ${more_args} ${ramargs} ${mtdparts};
+setdtbargs=fdt addr ${fdt_addr_r} 0x4000;fdt set /chosen bootargs "$bootargs";
+setpartlayout=setenv partitions ${flash_id}:4M@0x0(ssb),1M(uboot-env),1M(dtb${active_part}),6M(kernel${active_part}),40M(rootfs${active_part}),1M(dtb${standby_part}),6M(kernel${standby_part}),40M(rootfs${standby_part}),20M(userdata)
+setparts=ca_img_select;run setpartlayout;setenv mtdparts mtdparts=${partitions};
+standby_part=1
+stderr=serial
+stdin=serial
+stdout=serial
+
+Environment size: 1772/131068 bytes
+SATURN# ping 192.168.1.128
+PHY ID 0x001CC916 100Mbps full duplex
+Using Saturn-ASIC device
+host 192.168.1.128 is alive
+SATURN# tftpboot 0x85100000 uImage;     
+PHY ID 0x001CC916 100Mbps full duplex
+Using Saturn-ASIC device
+TFTP from server 192.168.1.128; our IP address is 192.168.1.2
+Filename 'uImage'.
+Load address: 0x85100000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         ##################
+         1.5 MiB/s
+done
+Bytes transferred = 5031236 (4cc544 hex)
+SATURN# spi_nand erase 0x600000 0x600000; spi_nand write 0x85100000 0x600000 0x500000;
+SPI-NAND: 6291456 bytes @ 0x600000 Erased: OK
+SPI-NAND: 5242880 bytes @ 0x600000 Written: OK
+SATURN# tftpboot 0x86000000 major-image-saturn-sfu-eng.rootfs.squashfs.ubi;
+PHY ID 0x001CC916 100Mbps full duplex
+Using Saturn-ASIC device
+TFTP from server 192.168.1.128; our IP address is 192.168.1.2
+Filename 'major-image-saturn-sfu-eng.rootfs.squashfs.ubi'.
+Load address: 0x86000000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################
+         2.7 MiB/s
+done
+Bytes transferred = 14548992 (de0000 hex)
+SATURN# spi_nand erase 0xC00000 0x2800000; spi_nand write 0x86000000 0xC00000 ${filesize};
+SPI-NAND: 41943040 bytes @ 0xc00000 Erased: OK
+SPI-NAND: 14548992 bytes @ 0xc00000 Written: OK
+SATURN# tftpboot 0x87000000 major-image-saturn-sfu-eng_user.ubi;
+PHY ID 0x001CC916 100Mbps full duplex
+Using Saturn-ASIC device
+TFTP from server 192.168.1.128; our IP address is 192.168.1.2
+Filename 'major-image-saturn-sfu-eng_user.ubi'.
+Load address: 0x87000000
+Loading: #################################################################
+         #################################################################
+         ####
+         2.4 MiB/s
+done
+Bytes transferred = 1966080 (1e0000 hex)
+SATURN# spi_nand erase 0x6300000 0x1400000; spi_nand write 0x87000000 0x6300000 ${filesize};
+SPI-NAND: 20971520 bytes @ 0x6300000 Erased: OK
+SPI-NAND: 1966080 bytes @ 0x6300000 Written: OK
+SATURN# reset
+NOTICE:  BL1: GLOBAL_STRAP 0x888a
+NOTICE:  BL1: Fabric Clock Speed 250 MHz
+NOTICE:  BL1: OTP Clock Speed 62 MHz
+NOTICE:  BL1: CPU Clock Speed 500 MHz
+NOTICE:  BL1: I/O Clock 100 MHz
+NOTICE:  BL1: PER Clock 125 MHz
+NOTICE:  Secure Boot Firmware - Cortina Access Inc.
+NOTICE:  BL1: v1.3(release):957a6b2
+NOTICE:  BL1: Built : 16:43:43, Apr 17 2018
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  Platform initialized
+NOTICE:  ROTPK undeployed
+NOTICE:  BL1: Booting BL2
+NOTICE:  Chip Sub-Revision C
+NOTICE:  Saturn Soc
+NOTICE:  Change IO clock
+NOTICE:  DIAGNOSTIC_TASK ON
+NOTICE:  DDR3 800MHz
+NOTICE:  PAD_BUS_0=0x5dd80000
+NOTICE:  PAD_CTRL_PROG=0xc000000
+NOTICE:  rzq_480code:0xc
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800b06ca  ==> NOTICE:  TTCN[TTFN]=0x6[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x6[0x1]
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800183ca  ==> NOTICE:  TTCN[TTFN]=0x3[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x3[0x0]
+NOTICE:  WriteLeveling PI of DRAM_CK moved 0 tick
+NOTICE:  ddr_write_leveling: 0
+NOTICE:  ddr_write_leveling: 2002
+NOTICE:  Detected cycle delay tap number: 20
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=2: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_wr_data_training: min_reg_pi_dq[0]: 4; max_reg_pi_dq[0]: 14
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=3: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=4: going left 14 ticks; going right 14 ticks
+NOTICE:  rising_dqs_in_dly[0]: 1~31=16
+NOTICE:  rising_dqs_in_dly[1]: 1~31=16
+NOTICE:  rising_dqs_in_dly[2]: 1~31=16
+NOTICE:  rising_dqs_in_dly[3]: 0~31=15
+NOTICE:  falling_dqs_in_dly[0]:0~31=15
+NOTICE:  falling_dqs_in_dly[1]:0~31=15
+NOTICE:  falling_dqs_in_dly[2]:0~31=15
+NOTICE:  falling_dqs_in_dly[3]:0~31=15
+NOTICE:  rising_dqs_in_dly[4]: 1~31=16
+NOTICE:  rising_dqs_in_dly[5]: 1~31=16
+NOTICE:  rising_dqs_in_dly[6]: 1~31=16
+NOTICE:  rising_dqs_in_dly[7]: 0~31=15
+NOTICE:  falling_dqs_in_dly[4]:0~31=15
+NOTICE:  falling_dqs_in_dly[5]:0~31=15
+NOTICE:  falling_dqs_in_dly[6]:0~31=15
+NOTICE:  falling_dqs_in_dly[7]:0~31=15
+NOTICE:  rising_dqs_in_dly[8]: 1~31=16
+NOTICE:  rising_dqs_in_dly[9]: 1~31=16
+NOTICE:  rising_dqs_in_dly[10]: 1~31=16
+NOTICE:  rising_dqs_in_dly[11]: 0~31=15
+NOTICE:  falling_dqs_in_dly[8]:0~31=15
+NOTICE:  falling_dqs_in_dly[9]:0~31=15
+NOTICE:  falling_dqs_in_dly[10]:0~31=15
+NOTICE:  falling_dqs_in_dly[11]:0~31=15
+NOTICE:  rising_dqs_in_dly[12]: 1~31=16
+NOTICE:  rising_dqs_in_dly[13]: 1~31=16
+NOTICE:  rising_dqs_in_dly[14]: 1~31=16
+NOTICE:  rising_dqs_in_dly[15]: 0~31=15
+NOTICE:  falling_dqs_in_dly[12]:0~31=15
+NOTICE:  falling_dqs_in_dly[13]:0~31=15
+NOTICE:  falling_dqs_in_dly[14]:0~31=15
+NOTICE:  falling_dqs_in_dly[15]:0~31=15
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=5: going left 14 ticks; going right 14 ticks
+NOTICE:  DDR Size: 256MB
+NOTICE:  Start DDR scan ...
+NOTICE:  DDR scan done
+NOTICE:  DDR Init done...
+NOTICE:  Recover io_clk...
+NOTICE:  Reduce Power for SFU
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  BL2: v1.3(release):778c835
+NOTICE:  BL2: Built : 13:38:24, Mar  7 2019
+NOTICE:  ROTPK undeployed
+
+
+U-Boot 2015.04 (Jun 20 2019 - 14:57:07)Saturn-ASIC
+
+DRAM:  256 MiB
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ca77xx_eth_initialize: auto_scan_active_port=0
+ca77xx_eth_initialize: active_port=4
+ca77xx_eth_initialize: active_port=4, ge_port_phy_addr=5
+ca77xx_eth_initialize: vendor_id=0x1c
+ca77xx_eth_initialize: chip_id=0xc916
+ca77xx_eth_initialize: phy_id=0x1cc916
+ca77xx_eth_initialize: phy_id & PHY_ID_MASK=0x1cc910
+ca77xx_eth_initialize: PHY_ID_RTL8214=0x1cc940
+ca77xx_eth_initialize: do initial patch for PHY_ID_RTL8211
+Saturn-ASIC
+Hit any key to stop autoboot:  0 
+Image Selecting...
+SPI-NAND: 6291456 bytes @ 0x600000 Read: OK
+SPI-NAND: 131072 bytes @ 0x500000 Read: OK
+libfdt fdt_check_header(): FDT_ERR_BADMAGIC
+No FDT memory address configured. Please configure
+the FDT address via "fdt addr <address>" command.
+Aborting!
+SATURN# tftpboot 0x85000000 uImage-saturn_sfu.dtb;
+PHY ID 0x001CC916 100Mbps full duplex
+Using Saturn-ASIC device
+TFTP from server 192.168.1.128; our IP address is 192.168.1.2
+Filename 'uImage-saturn_sfu.dtb'.
+Load address: 0x85000000
+Loading: #
+         72.3 KiB/s
+done
+Bytes transferred = 11263 (2bff hex)
+SATURN# spi_nand erase 0x500000 0x100000; spi_nand write 0x85000000 0x500000 0x20000;
+SPI-NAND: 1048576 bytes @ 0x500000 Erased: OK
+SPI-NAND: 131072 bytes @ 0x500000 Written: OK
+SATURN# reset
+NOTICE:  BL1: GLOBAL_STRAP 0x888a
+NOTICE:  BL1: Fabric Clock Speed 250 MHz
+NOTICE:  BL1: OTP Clock Speed 62 MHz
+NOTICE:  BL1: CPU Clock Speed 500 MHz
+NOTICE:  BL1: I/O Clock 100 MHz
+NOTICE:  BL1: PER Clock 125 MHz
+NOTICE:  Secure Boot Firmware - Cortina Access Inc.
+NOTICE:  BL1: v1.3(release):957a6b2
+NOTICE:  BL1: Built : 16:43:43, Apr 17 2018
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  Platform initialized
+NOTICE:  ROTPK undeployed
+NOTICE:  BL1: Booting BL2
+NOTICE:  Chip Sub-Revision C
+NOTICE:  Saturn Soc
+NOTICE:  Change IO clock
+NOTICE:  DIAGNOSTIC_TASK ON
+NOTICE:  DDR3 800MHz
+NOTICE:  PAD_BUS_0=0x5dd80000
+NOTICE:  PAD_CTRL_PROG=0xc000000
+NOTICE:  rzq_480code:0xb
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800b06b9  ==> NOTICE:  TTCN[TTFN]=0x6[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x6[0x1]
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800183b9  ==> NOTICE:  TTCN[TTFN]=0x3[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x3[0x0]
+NOTICE:  WriteLeveling PI of DRAM_CK moved 0 tick
+NOTICE:  ddr_write_leveling: 0
+NOTICE:  ddr_write_leveling: 2002
+NOTICE:  Detected cycle delay tap number: 20
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=2: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_wr_data_training: min_reg_pi_dq[0]: 4; max_reg_pi_dq[0]: 14
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=3: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=4: going left 14 ticks; going right 14 ticks
+NOTICE:  rising_dqs_in_dly[0]: 1~31=16
+NOTICE:  rising_dqs_in_dly[1]: 1~31=16
+NOTICE:  rising_dqs_in_dly[2]: 1~31=16
+NOTICE:  rising_dqs_in_dly[3]: 0~31=15
+NOTICE:  falling_dqs_in_dly[0]:0~31=15
+NOTICE:  falling_dqs_in_dly[1]:0~31=15
+NOTICE:  falling_dqs_in_dly[2]:0~31=15
+NOTICE:  falling_dqs_in_dly[3]:0~31=15
+NOTICE:  rising_dqs_in_dly[4]: 1~31=16
+NOTICE:  rising_dqs_in_dly[5]: 1~31=16
+NOTICE:  rising_dqs_in_dly[6]: 1~31=16
+NOTICE:  rising_dqs_in_dly[7]: 0~31=15
+NOTICE:  falling_dqs_in_dly[4]:0~31=15
+NOTICE:  falling_dqs_in_dly[5]:0~31=15
+NOTICE:  falling_dqs_in_dly[6]:0~31=15
+NOTICE:  falling_dqs_in_dly[7]:0~31=15
+NOTICE:  rising_dqs_in_dly[8]: 1~31=16
+NOTICE:  rising_dqs_in_dly[9]: 1~31=16
+NOTICE:  rising_dqs_in_dly[10]: 1~31=16
+NOTICE:  rising_dqs_in_dly[11]: 0~31=15
+NOTICE:  falling_dqs_in_dly[8]:0~31=15
+NOTICE:  falling_dqs_in_dly[9]:0~31=15
+NOTICE:  falling_dqs_in_dly[10]:0~31=15
+NOTICE:  falling_dqs_in_dly[11]:0~31=15
+NOTICE:  rising_dqs_in_dly[12]: 1~31=16
+NOTICE:  rising_dqs_in_dly[13]: 1~31=16
+NOTICE:  rising_dqs_in_dly[14]: 1~31=16
+NOTICE:  rising_dqs_in_dly[15]: 0~31=15
+NOTICE:  falling_dqs_in_dly[12]:0~31=15
+NOTICE:  falling_dqs_in_dly[13]:0~31=15
+NOTICE:  falling_dqs_in_dly[14]:0~31=15
+NOTICE:  falling_dqs_in_dly[15]:0~31=15
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=5: going left 14 ticks; going right 14 ticks
+NOTICE:  DDR Size: 256MB
+NOTICE:  Start DDR scan ...
+NOTICE:  DDR scan done
+NOTICE:  DDR Init done...
+NOTICE:  Recover io_clk...
+NOTICE:  Reduce Power for SFU
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  BL2: v1.3(release):778c835
+NOTICE:  BL2: Built : 13:38:24, Mar  7 2019
+NOTICE:  ROTPK undeployed
+
+
+U-Boot 2015.04 (Jun 20 2019 - 14:57:07)Saturn-ASIC
+
+DRAM:  256 MiB
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ca77xx_eth_initialize: auto_scan_active_port=0
+ca77xx_eth_initialize: active_port=4
+ca77xx_eth_initialize: active_port=4, ge_port_phy_addr=5
+ca77xx_eth_initialize: vendor_id=0x1c
+ca77xx_eth_initialize: chip_id=0xc916
+ca77xx_eth_initialize: phy_id=0x1cc916
+ca77xx_eth_initialize: phy_id & PHY_ID_MASK=0x1cc910
+ca77xx_eth_initialize: PHY_ID_RTL8214=0x1cc940
+ca77xx_eth_initialize: do initial patch for PHY_ID_RTL8211
+Saturn-ASIC
+Hit any key to stop autoboot:  0 
+Image Selecting...
+SPI-NAND: 6291456 bytes @ 0x600000 Read: OK
+SPI-NAND: 131072 bytes @ 0x500000 Read: OK
+## Booting kernel from Legacy Image at 85100000 ...
+   Image Name:   Linux-4.4.140
+   Created:      2019-06-20   7:04:43 UTC
+   Image Type:   MIPS Linux Kernel Image (uncompressed)
+   Data Size:    5031172 Bytes = 4.8 MiB
+   Load Address: 80010000
+   Entry Point:  8039fed0
+   Verifying Checksum ... OK
+## Flattened Device Tree blob at 85000000
+   Booting using the fdt blob at 0x85000000
+   Loading Kernel Image ... OK
+[    0.000000] Linux version 4.4.140 (pchen@sh-c-21.cortina-access.com) (gcc version 5.3.0 (GCC) ) #1 Thu Jun 20 15:04:41 CST 2019
+[    0.000000] MIPS: machine is Sheipa Platform
+[    0.000000] bootconsole [early0] enabled
+[    0.000000] CPU0 revision is: 0000dc02 (Taroko)
+[    0.000000] MIPS: machine is Cortina Access Saturn SFU
+[    0.000000] Determined physical RAM map:
+[    0.000000]  memory: 10000000 @ 00000000 (usable)
+[    0.000000] Initrd not found or empty - disabling initrd
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000000000000-0x000000000fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000000000-0x000000000fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000000000-0x000000000fffffff]
+[    0.000000] icache: 64kB/32B, dcache: 32kB/32B, scache: 0kB/0B
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 65024
+[    0.000000] Kernel command line: console=ttyS0,115200 ubi.mtd=rootfs0 root=/dev/mtdblock9 rootfstype=squashfs mtdparts=ca_spinand_flash:4M@0x0(ssb),1M(uboot-env),1M(dtb0),6M(kernel0),40M(rootfs0),1M(dtb1),6M(kernel1),40M(rootfs1),20M(userdata)
+[    0.000000] PID hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.000000] Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.000000] Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+[    0.000000] Memory: 213364K/262144K available (3669K kernel code, 152K rwdata, 924K rodata, 172K init, 162K bss, 48780K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] NR_IRQS:128
+[    0.000000] /wol_ictl@bc1000e0: unable to request mem region
+[    0.000000] clocksource: MIPS: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 3822520893 ns
+[    0.000010] sched_clock: 32 bits at 500MHz, resolution 2ns, wraps every 4294967295ns
+[    0.007775] Calibrating delay loop... 498.89 BogoMIPS (lpj=2494464)
+[    0.070300] pid_max: default: 32768 minimum: 301
+[    0.075013] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.081517] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.090678] devtmpfs: initialized
+[    0.098262] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.107991] futex hash table entries: 256 (order: -1, 3072 bytes)
+[    0.114203] pinctrl core: initialized pinctrl subsystem
+[    0.120000] NET: Registered protocol family 16
+[    0.144143] Advanced Linux Sound Architecture Driver Initialized.
+[    0.151011] clocksource: Switched to clocksource MIPS
+[    0.157939] NET: Registered protocol family 2
+[    0.162956] TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.169795] TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.176181] TCP: Hash tables configured (established 2048 bind 2048)
+[    0.182610] UDP hash table entries: 256 (order: 0, 4096 bytes)
+[    0.188295] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+[    0.194782] NET: Registered protocol family 1
+[    0.206884] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.212633] jffs2: version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+[    0.224796] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+[    0.232124] io scheduler noop registered
+[    0.235958] io scheduler deadline registered
+[    0.240378] io scheduler cfq registered (default)
+[    0.245764] ca77xx-gpio b2224280.gpio-controller: resource - [mem 0xb2224280-0xb222430f flags 0x200] mapped at 0xb2224280
+[    0.256612] ca77xx-gpio b2224280.gpio-controller: id 0
+[    0.261905] ca77xx-gpio b2224280.gpio-controller: Setting up IRQs for GPIO bank 0
+[    0.269357] ca77xx-gpio b2224280.gpio-controller: Setting up IRQs for GPIO bank 1
+[    0.276914] ca77xx-gpio b2224280.gpio-controller: Setting up IRQs for GPIO bank 2
+[    0.284420] ca77xx-gpio b2224280.gpio-controller: Setting up IRQs for GPIO bank 3
+[    0.292091] ca_soc bc100000.soc: Vendor ID: 0x8f3
+[    0.296639] ca_soc bc100000.soc: Chip ID: 0xa17c
+[    0.301285] ca_soc bc100000.soc: Chip Rev: 67
+[    0.305586] ca_soc bc100000.soc: PON Rev: C
+[    0.309757] ca_soc bc100000.soc: CPLL: 2000.00 MHZ
+[    0.314545] ca_soc bc100000.soc: CPU Clock: 500.00 MHZ
+[    0.319661] ca_soc bc100000.soc: Core Clock: 142.85 MHZ
+[    0.324884] ca_soc bc100000.soc: EAXI Clock: 200.00 MHZ
+[    0.330087] ca_soc bc100000.soc: I/O Clock: 100.00 MHZ
+[    0.335221] ca_soc bc100000.soc: Eth Ref 2 Clock: 250.00 MHZ
+[    0.341300] ca77xx-reset bc100028.reset-controller: resource - [mem 0xbc100028-0xbc10002b flags 0x200] mapped at 0xbc100028
+[    0.352368] ca77xx-reset bc100048.reset-controller: resource - [mem 0xbc100048-0xbc10004b flags 0x200] mapped at 0xbc100048
+[    0.419931] b2224148.uart: ttyS0 at I/O 0x0 (irq = 18, base_baud = 7812500) is a Cortina UART0
+[    0.428473] console [ttyS0] enabled
+[    0.428473] console [ttyS0] enabled
+[    0.435356] bootconsole [early0] disabled
+[    0.435356] bootconsole [early0] disabled
+[    0.443757] b2224178.uart: ttyS1 at I/O 0x0 (irq = 19, base_baud = 7812500) is a Cortina UART1
+[    0.452958] IPC: host cpu is PE0 , thisCPU=0x1 
+[    0.457387] IPC: list physical start from: 0x2810000
+[    0.462325] IPC: list virtual start from: 0xa2810000
+[    0.467234] IPC: list size: 0x4800
+[    0.470720] IPC: Debug:...Clearing memory.... from 0xa2811800
+[    0.476400] IPC: version is 100
+[    0.479507] IPC: irq = 23
+[    0.482148] CA_IPC:register succesfull:session_id[8] session 8fc8bc40 msg_count 3 
+[    0.482148] 
+[    0.491351] ca_pelog_probe
+[    0.493933] pelog0: shm physical address : 0x2800000
+[    0.498846] pelog0: shm virtual address : 0xa2800000
+[    0.503826] pelog0: shm size: 0x1000
+[    0.507372] pelog1: shm physical address : 0x2801000
+[    0.512325] pelog1: shm virtual address : 0xa2801000
+[    0.517264] pelog1: shm size: 0x1000
+[    0.521549] ca_set_mux: group:98 reg_off:0 bit_off:18
+[    0.526481] ca_spi_nand b2223000.spi-nand: Cortina-Access SPI-NAND Flash driver
+[    0.533814] SPI-NAND io-mode:a00
+[    0.537966] SPI-NAND flash mfr-name: Winbond, mdr_id: 0xef, dev_id: 0xaa
+[    0.547526] spi_nand_base: SPI-NAND: W25N01GV is found.
+[    0.556015] Bad block table not found for chip 0
+[    0.563815] Bad block table not found for chip 0
+[    0.568267] Scanning device for bad blocks
+[    0.659664] ECC error! page:61952
+[    0.662853] spi_nand_base: internal ECC error reading page 0xf200
+[    0.675456] Bad block table written to 0x000007fe0000, version 0x01
+[    0.683149] Bad block table written to 0x000007fc0000, version 0x01
+[    0.689310] 9 cmdlinepart partitions found on MTD device ca_spinand_flash
+[    0.696047] Creating 9 MTD partitions on "ca_spinand_flash":
+[    0.701691] 0x000000000000-0x000000400000 : "ssb"
+[    0.707640] 0x000000400000-0x000000500000 : "uboot-env"
+[    0.713995] 0x000000500000-0x000000600000 : "dtb0"
+[    0.719772] 0x000000600000-0x000000c00000 : "kernel0"
+[    0.725861] 0x000000c00000-0x000003400000 : "rootfs0"
+[    0.732080] 0x000003400000-0x000003500000 : "dtb1"
+[    0.737836] 0x000003500000-0x000003b00000 : "kernel1"
+[    0.744007] 0x000003b00000-0x000006300000 : "rootfs1"
+[    0.750128] 0x000006300000-0x000007700000 : "userdata"
+[    0.756688] spi-ca77xx b2224098.spi: resource - [mem 0xb2224098-0xb22240d7 flags 0x200] mapped at 0xb2224098
+[    0.766476] spi-ca77xx b2224098.spi: irq 22
+[    0.771388] i2c /dev entries driver
+[    0.774954] ca77xx-i2c b2224120.i2c: resource - [mem 0xb2224120-0xb2224147 flags 0x200] mapped at 0xb2224120
+[    0.784693] ca77xx-i2c b2224120.i2c: invalid timeout on /i2c@b2224120
+[    0.791068] ca77xx-i2c b2224120.i2c: invalid retries on /i2c@b2224120
+[    0.797513] ca77xx-i2c b2224120.i2c: irq 35
+[    0.857285] cortina_thermal bc10017c.thermal: SoC Temperature=-23
+[    0.864079] Synopsys Designware Multimedia Card Interface Driver
+[    0.870406] ca_set_mux: group:6 reg_off:8 bit_off:6
+[    0.875174] ca_set_mux: group:7 reg_off:8 bit_off:7
+[    0.879991] ca_set_mux: group:84 reg_off:0 bit_off:4
+[    0.885014] leds-ca77xx bc100114.led-controller: resource - [mem 0xbc100114-0xbc100157 flags 0x200] mapped at 0xbc100114
+[    0.898456] spi_linux_wrapper_init()
+[    0.902001] SLIC module being probed
+[    0.905440] slic_spi_probe: slic_spi[ 0 ] = 8fdbc200
+[    0.910429] slic_spi spi32766.0: reset-gpio 3 is active low
+[    0.916026] spi_linux_wrapper_init(133): completedaipc: register chrdev(252,0)
+[    0.923379] aipc: create device successed
+[    0.927492] aipc: create dsp console device failed
+[    0.932166] aipc: init done
+[    0.935119] aipc_module_mem_init: mem_resource for voip ipc=[mem 0xb2224000-0xb222401f]
+[    0.942993] aipc_module_mem_init: ca_voip_ipc_per_int_base=b2224000
+[    0.949256] aipc_module_mem_init: ca_voip_ipc_phy_base=0x02700000
+[    0.955340] aipc_module_mem_init: ca_voip_ipc_mem_base=0xc0100000
+[    0.961388] aipc: start aipc irq init
+[    0.965054] aipc_cpu_irq_ca_init: irq = 24
+[    0.969145] aipc: Request IRQ for IPC OK
+[    0.974189] NET: Registered protocol family 10
+[    0.979808] NET: Registered protocol family 17
+[    0.984185] 8021q: 802.1Q VLAN Support v1.8
+[    0.991111] ubi0: attaching mtd4
+[    1.354015] ubi0: scanning is finished
+[    1.378594] ubi0: attached mtd4 (name "rootfs0", size 40 MiB)
+[    1.384235] ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[    1.391059] ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[    1.397827] ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+[    1.404783] ubi0: good PEBs: 320, bad PEBs: 0, corrupted PEBs: 0
+[    1.410772] ubi0: user volume: 1, internal volumes: 1, max. volumes count: 128
+[    1.417992] ubi0: max/mean erase counter: 0/0, WL threshold: 4096, image sequence number: 49590058
+[    1.426938] ubi0: available PEBs: 187, total reserved PEBs: 133, PEBs reserved for bad PEB handling: 20
+[    1.436526] ubi0: background thread "ubi_bgt0d" started, PID 47
+[    1.443893] ALSA device list:
+[    1.446704]   No soundcards found.
+[    1.450136] 
+[    1.450136] 
+[    1.450136] 
+[    1.450136] [voip_snd_zarlink_init_le9632] TS_base 2
+[    1.450136] 
+[    1.450136] 
+[    1.462537] VoIP control bind 2 (2) instances successfully.
+[    1.467995] index dsp_cpuid dsp_cch host_cch
+[    1.472258] ----- --------- ------- --------
+[    1.476505]    0        0         0       0   
+[    1.480328]    1        0         1       1   
+[    1.484189] VoIP RX netfilter hook init done!
+[    1.488493] VoIP RX netfilter hook for IPv6 init done!
+[    1.493644] =============RTK VOIP SUITE=============
+[    1.498571] SDK VoIP Version: VoIP-1.6-DSP-R5523-Luna-R24-Integrate_RTL_CA 
+[    1.505532] Board CFG Model :  
+[    1.508648] INITIAL VOIP MANAGER PROGRAM
+[    7.811283] VFS: Mounted root (squashfs filesystem) readonly on device 31:9.
+[    7.827170] devtmpfs: mounted
+[    7.830638] Freeing unused kernel memory: 172K
+INIT: version 2.88 booting
+[    9.775102] ubi1: attaching mtd8
+[    9.924292] ubi1: scanning is finished
+[    9.977457] gluebi (pid 62): gluebi_resized: got update notification for unknown UBI device 1 volume 0
+[    9.986632] ubi1: volume 0 ("userdata") re-sized from 13 to 136 LEBs
+[    9.993575] ubi1: attached mtd8 (name "userdata", size 20 MiB)
+[    9.999258] ubi1: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[   10.006166] ubi1: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[   10.012907] ubi1: VID header offset: 2048 (aligned 2048), data offset: 4096
+[   10.019845] ubi1: good PEBs: 160, bad PEBs: 0, corrupted PEBs: 0
+[   10.025848] ubi1: user volume: 1, internal volumes: 1, max. volumes count: 128
+[   10.033063] ubi1: max/mean erase counter: 1/0, WL threshold: 4096, image sequence number: 1492222450
+[   10.042182] ubi1: available PEBs: 0, total reserved PEBs: 160, PEBs reserved for bad PEB handling: 20
+[   10.051598] ubi1: background thread "ubi_bgt1d" started, PID 63
+UBI device number 1, total 160 LEBs (20316160 bytes, 19.4 MiB), available 0 LEBs (0 bytes), LEB size 126976 bytes (124.0 KiB)
+[   10.172572] UBIFS (ubi1:0): background thread "ubifs_bgt1_0" started, PID 72
+[   10.304476] UBIFS (ubi1:0): start fixing up free space
+[   10.333582] UBIFS (ubi1:0): free space fixup complete
+[   10.398245] UBIFS (ubi1:0): UBIFS: mounted UBI device 1, volume 0, name "userdata"
+[   10.405716] UBIFS (ubi1:0): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[   10.415582] UBIFS (ubi1:0): FS size: 15998976 bytes (15 MiB, 126 LEBs), journal size 2920448 bytes (2 MiB, 23 LEBs)
+[   10.426000] UBIFS (ubi1:0): reserved for root: 0 bytes (0 KiB)
+[   10.431830] UBIFS (ubi1:0): media format: w4/r0 (latest is w4/r0), UUID AB0D8898-0D69-4478-BA91-520439F0F2D2, small LPT model
+overlayfs over rootfs successfully
+Starting udev
+[   11.296549] udevd[93]: starting version 3.1.5
+[   11.370884] random: udevd: uninitialized urandom read (16 bytes read, 18 bits of entropy available)
+[   11.380323] random: udevd: uninitialized urandom read (16 bytes read, 18 bits of entropy available)
+[   11.389506] random: udevd: uninitialized urandom read (16 bytes read, 18 bits of entropy available)
+[   12.303857] ca_plat_kernel: loading out-of-tree module taints kernel.
+[   12.359940] ca-log: init calog-ioctl-dev OK (max_level 9, default_level 4)
+[   12.393666] ubi1 error: ubi_open_volume: cannot open device 1, volume 0, error -16
+[   12.427004] ubi1 error: ubi_open_volume: cannot open device 1, volume 0, error -16
+[   12.441175] ca-pal: init ca_pal_ioctl OK
+[   12.472974] ca-peri:hw_timer irq 21 install 
+[   12.478618] libscfg: module license 'Proprietary' taints kernel.
+[   12.484566] Disabling lock debugging due to kernel taint
+[   12.519302] SCFG initialize start.
+[   12.640557] SCFG initialize done.
+[   14.956245] ca_ne:ca_ni_init_module_probe:2363: Cortina Network Interface Driver 0.0.1
+[   14.964054] Enter <ca77xx_pon_probe, 979>
+[   14.968115] ca-pon: proc files init OK.
+[   14.971944] ca-pon: load PON_MAC_MODE: EPON-BI10G
+[   14.976612] ca-pon: load PON_VOQ_MODE: 0
+[   14.980524] ca-pon: Device Tree load start
+[   14.984675] ca_pmx_request_gpio: offset:1 reg_off:8 bit_off:1
+[   14.990414] ca-pon: found 1 interrupts in Device Tree
+[   14.995427] ca-pon: interrupt 0 index is 10
+[   14.999632] ca-pon: Device Tree load OK
+[   15.003470] End <ca77xx_pon_probe, 1002>
+[   15.007479] ca_ne_reg_init: mem_resource for NI registers=[mem 0xd0000000-0xd0009fff]
+[   15.015289] ca_ne_reg_init: ca_ne_reg_base=0xd0000000
+[   15.020320] ca_ne_reg_init: mem_resource for GLOBAL NETWORK ENGINE INTRRUPT registers=[mem 0x4410009c-0x441000ab]
+[   15.030574] ca_ne_reg_init: ca_ne_glb_ne_intr_reg_base=0x4410009c
+[   15.036661] ca_ne_reg_init: mem_resource for MDIO registers=[mem 0x522240d8-0x5222411f]
+[   15.044648] ca_ne_reg_init: ca_per_mdio_reg_base=0x522240d8
+[   15.050203] ca_ne_reg_init: resource for XRAM=[mem 0xf4500000-0xf4501fff]
+[   15.057004] ca_ne_reg_init: ca_xram_reg_base=0xc09b0000
+[   15.062207] ca_ne_reg_init: mem_resource for DMA LSO registers=[mem 0xd000a000-0xd000a8ff]
+[   15.070440] ca_ne_reg_init: ca_dma_lso_reg_base=0xd000a000
+[   15.075931] ca_ne_reg_init: resource for SRAM=[mem 0x40000000-0x4003ffff]
+[   15.082705] ca_ne_reg_init: ca_ne_sram_phy_base=0x40000000 end 0x4003ffff size 0x00040000
+[   15.090857] ca_ne_reg_init: ca_ne_sram_base=0xb8000000
+[   15.095999] ca_ne_reg_init: resource for DDR=[mem 0x03c48000-0x05c47fff]
+[   15.102683] ca_ne_reg_init: ca_ne_ddr_coherent_base=0x03c48000
+[   15.108500] ca_ne_reg_init: mem_resource for ASIC GPHY registers=[mem 0xd000b000-0xd000bfff]
+[   15.116930] ca_ne_reg_init: ca_ne_phy_reg_base=0xd000b000
+[   15.122323] ca_ne_reg_init: mem_resource for XFI registers=[mem 0xd000c000-0xd000e123]
+[   15.130213] ca_ne_reg_init: ca_ne_xfi_reg_base=0xd000c000
+[   15.140667] ca_ni_global_reset: dma_reset is deasserted!!!
+[   15.147016] ca_ni_global_reset: Do external RESET for RTL8367SB HSGMII mode....
+[   15.454455] ca_load_init: ca_ni_num_intf=4
+[   15.458397] =================ca_ni_init_config================
+[   15.464238] ca_load_init: ca_ne_sram_base=b8000000, ca_ne_ddr_noncache_base=  (null)
+[   15.471956] ca_load_init: ca_ne_sram_phy_base=0x40000000, ca_ne_ddr_noncache_phy_base=0x0, ca_ne_ddr_coherent_phy_base=0x3c48000
+[   15.483510] ca_load_init: ca_ne_mac_addr0=00:13:25:00:00:01, ca_ne_mac_addr1=00:13:25:00:00:02
+[   15.492106] ==================================================
+[   15.497923] ca_load_init: ca_ni_use_build_skb=1
+[   15.502450] ca_load_init: ca_ni_napi_budget=16
+[   15.506869] ca_load_init: ca_ni_tx_timer_enable=0
+[   15.511571] ca_load_init: ca_ni_use_qm_eq_refill_int=0
+[   15.516688] ca_load_init: ca_ni_cpu64_pool0_eq_id=0
+[   15.521563] ca_load_init: ca_ni_cpu64_pool1_eq_id=1
+[   15.526417] ca_load_init: ca_ni_cpu64_use_fbm=0
+[   15.530935] ca_load_init: ca_ni_cpu64_pool0_fbm_pool_id=6
+[   15.536344] ca_load_init: ca_ni_cpu64_pool1_fbm_pool_id=7
+[   15.541721] ca_load_init: ca_ni_cpu64_pool0_buf_count=768
+[   15.547095] ca_load_init: ca_ni_cpu64_pool1_buf_count=768
+[   15.552492] ca_load_init: ca_ni_use_qm_eq_refill_tasklet=0
+[   15.557955] ca_load_init: ca_ni_oam_mode=1
+[   15.562093] aal_l3qm_create_sram_map: total required SRAM size 0x0
+[   15.568205] aal_l3qm_dump_sram_map: Dump SRAM map...
+[   15.573176] aal_l3qm_create_ddr_map: total size of DDR coherent consumed=0x1f57180
+[   15.580717] aal_l3qm_dump_ddr_map: Dump DDR map...
+[   15.585502] [ DDR coherent ]
+[   15.588363] CPU pool0 buffer start addr = 0x83c48000
+[   15.593323] CPU pool0 buffer physical addr = 0x3c48000
+[   15.598440] CPU pool0 buffer count = 768
+[   15.602358] CPU pool0 buffer size = 2048
+[   15.606260] CPU pool0 consumed size = 1572992
+[   15.610603] CPU pool1 buffer start addr = 0x83dc8080
+[   15.615563] CPU pool1 buffer physical addr = 0x3dc8080
+[   15.620681] CPU pool1 buffer count = 768
+[   15.624599] CPU pool1 buffer size = 2048
+[   15.628500] CPU pool1 consumed size = 1572992
+[   15.632860] CPU RX FIFO buffer start addr = 0x83f48100
+[   15.637970] CPU RX FIFO buffer physical addr = 0x3f48100
+[   15.643278] CPU RX FIFO count = 6144
+[   15.646831] CPU RX FIFO size = 4
+[   15.650047] CPU RX FIFO consumed size = 24576
+[   15.654399] DEEPQ pool0 buffer start addr = 0x83f4e100
+[   15.659517] DEEPQ pool0 buffer physical addr = 0x3f4e100
+[   15.664825] DEEPQ pool0 buffer count = 6144
+[   15.668986] DEEPQ pool0 buffer size = 2048
+[   15.673077] DEEPQ pool0 consumed size = 12582912
+[   15.677675] DEEPQ pool1 buffer start addr = 0x84b4e100
+[   15.682808] DEEPQ pool1 buffer physical addr = 0x4b4e100
+[   15.688100] DEEPQ pool1 buffer count = 6144
+[   15.692278] DEEPQ pool1 buffer size = 2048
+[   15.696354] DEEPQ pool1 consumed size = 12582912
+[   15.700961] ca_ni_alloc_cpu_rx_fifo: aal_l3qm_get_cpu_rx_fifo_size()=24576
+[   15.707931] ca_ni_alloc_cpu_rx_fifo: cpu_rx_fifo_virt_addr=af0c0000, cpu_rx_fifo_phy_addr=0f0c0000
+[   15.719213] L2_QM : EQ-0(0), EQ-1(4K) - system uses 4K * 64bytes buffer configuration.
+[   15.726999] L2_QM : port private buffer number is 29
+[   15.731971] L2_TM : enable ES for port 00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 15
+[   15.740842] L2_TE : initialize WRED profile & selection table ... done.
+[   15.747452] L3_TE : initialize WRED profile & selection table ... done.
+[   15.754111] L2_TM_CB : initialize VoQ based buffer profile & selection table ... done.
+[   15.761931] done.
+[   15.763810] 
+[   15.763810] 
+[   15.763810] end of aal_l2_tm_cb_init
+[   15.763810] 
+[   15.772075] === device_id 0 ===
+[   15.775053] === L3FE_STG0_CTRL : 0x000c787c ===
+[   15.779570] lpb_idx_mode=0
+[   15.782293] mac_fltr_fail_pkt_mru_chk_en=0
+[   15.786347] mru_chk_fail_pkt_l2_lkup_dis=1
+[   15.790430] other_mac_pkt_keep_lspid_en=1
+[   15.794438] wan_lspid=0x07
+[   15.797120] use_lspid_ovwr_o_lspid=0
+[   15.800682] spcl_pkt_keep_old=1
+[   15.803819] wan_lspid_1=0x07
+[   15.806678] msk_my_mac_match_en_for_lspid_upd=1
+[   15.811203] keep_lspid_unchange=1
+[   15.814498] === L3FE_STG0_LDPID_MAP : 0x03985907 ===
+[   15.819449] rule_0=0x07, lpb_idx_0=0
+[   15.823020] rule_1=0x19, lpb_idx_1=1
+[   15.826573] rule_2=0x18, lpb_idx_2=2
+[   15.830134] default, lpb_idx_3=3
+[   15.833368] === L3FE_STG0_LPB_TBL_0 : 0x18100190 ===
+[   15.838302] lspid=0x18, default_ldpid=0x19
+[   15.842395] special_en=1, special_sel=0
+[   15.846211] mac_da_match_en=0, mac_da_match_mask=0, t1_ctrl=0, t5_ctrl=15
+[   15.852996] === L3FE_STG0_LPB_TBL_1 : 0x19180180 ===
+[   15.857937] lspid=0x19, default_ldpid=0x18
+[   15.862030] special_en=1, special_sel=1
+[   15.865845] mac_da_match_en=0, mac_da_match_mask=0, t1_ctrl=1, t5_ctrl=15
+[   15.872631] === L3FE_STG0_LPB_TBL_2 : 0x18100190 ===
+[   15.877571] lspid=0x18, default_ldpid=0x19
+[   15.881665] special_en=1, special_sel=0
+[   15.885480] mac_da_match_en=0, mac_da_match_mask=0, t1_ctrl=0, t5_ctrl=15
+[   15.892265] === L3FE_STG0_LPB_TBL_3 : 0x1a1bfd90 ===
+[   15.897207] stg0_lpb_tbl_hi.wrd=0x1a1bfd90
+[   15.901299] lspid=0x1a, default_ldpid=0x19
+[   15.905374] special_en=1, special_sel=1
+[   15.909198] mac_da_match_en=0, mac_da_match_mask=255, t1_ctrl=0, t5_ctrl=15
+[   15.916571] aal_l3_cls_tbl_init: L3 CLS WAN DEF FIB initialtion success
+[   15.923087] aal_l3_cls_tbl_init: L3 CLS LAN DEF FIB initialtion success
+[   15.929825] aal_ni_reset: reset NI done!
+[   15.933618] aal_ni_init_tx_dma_lso: i = 0, vp_control.wrd=0xff
+[   15.939407] aal_ni_init_tx_dma_lso: i = 1, vp_control.wrd=0xff
+[   15.945249] aal_ni_init_ni: ======= NI_HV_GLB_INTERNAL_PORT_ID_CFG=0xef ==============
+[   15.953165] port 5 PHY addr 0 connect to XG-PHY.
+[   15.957826] port 6 PHY addr 0 connect to XG-PHY.
+[   15.962530] ca-ne: init MDIO OK.
+[   15.965824] ca-ne: load CA_CFG_ID_GE_PORT_BIT_MAP: 0x18
+[   15.971046] ca-ne: load CA_CFG_ID_XGE_PORT_BIT_MAP: 0x60.
+[   15.976421] ca-ne: Valid Ethernet ports bitmap : 0x78
+[   15.981560] ca-ne: ethernet port 3 interface type:  GMII
+[   15.986845] ca-ne: ethernet port 4 interface type:  RGMII-GE
+[   15.992502] ca-ne: ethernet port 5 interface type:  SXGMII
+[   15.997966] ca-ne: ethernet port 6 interface type:  SXGMII
+[   16.003446] ca-ne: load Ethernet port SCFG OK
+[   16.007794] ca-ne: disalbe all ethernet ports OK
+[   16.012401] ca-ne: auto detect Ethernet PHY start ...
+[   16.018452] ca-ne: read Ethernet PHY 1 IDs(0x1c 0xc900): phy_oui 0x732, phy_model 0x10 .
+[   16.026392] ca-ne: detect Eth PHY RTL8211 at PHY addr 1
+[   16.031721] ca-ne: attch PHY addr 1 to port 3 driver
+[   16.036700] ca-ne: read Ethernet PHY 5 IDs(0x1c 0xc916): phy_oui 0x732, phy_model 0x11 .
+[   16.044640] ca-ne: detect Eth PHY RTL8211 at PHY addr 5
+[   16.050142] ca-ne: attch PHY addr 5 to port 4 driver
+[   16.055928] ca-ne: detect Ethernet PHY done, find 2 PHYs
+[   16.065467] ca-ne: init intergrated PHY start
+[   16.069763] ca-ne: intergrated phy 1 reg 31 = 0xbc6
+[   16.075727] ca-ne: intergrated phy 1 reg 16 = 0x0
+[   16.081376] ca-ne: intergrated phy 1 reg 18 = 0x0
+[   16.087016] ca-ne: intergrated phy 1 reg 22 = 0x0
+[   16.092665] ca-ne: intergrated phy 1 reg 31 = 0xa42
+[   16.098479] ca-ne: intergrated phy 1 reg 31 = 0xa40
+[   16.104302] ca-ne: intergrated phy 1 reg 0 = 0x1140
+[   16.209980] ca-ne: init intergrated PHY OK
+[   16.214020] ca-ne: load XFI ports scfg on chip (verndor-id: 0x8f3, version : 0x43 (C)...
+[   16.222093] ca-ne: load scfg 540 OK, bitmap=0x3
+[   16.226690] ca-ne: load 493 OK, XFI 0 is connected to SXGMII(8)
+[   16.232691] ca-ne: load 493 OK, XFI 1 is connected to SXGMII(8)
+[   16.238679] ca-ne: load 492 OK, XFI 0 is connected to phy_addr(0)
+[   16.244856] ca-ne: load 492 OK, XFI 1 is connected to phy_addr(0)
+[   16.376103] ca-ne: init XFI 0 OK, speed 3
+[   16.503033] ca-ne: init XFI 1 OK, speed 3
+[   16.508910] ca-ne: aal_ni_reset_intf init ...  OK NI_HV_GLB_INTF_RST_CONFIG = 0x0
+[   16.517022] <__aal_fdb_sw_lrn_tbl_create, 1626>
+[   16.521514] <__aal_fdb_static_mac_create, 1750>
+[   16.528209] FDB init OK
+[   16.534064] ca-ne: init QoS OK
+[   16.537640] init SFU SATURN L2FE,L3FE done.
+[   16.541737] ca-ne: init special packet OK
+[   16.545670] ca_mirror_init mirror_vlan:2018
+[   16.549915] ca_ni_init_l3qm: =====================call aal_l3qm_check_init_done()================
+[   16.558794] aal_l3qm_check_init_done: ===========================Enter========================
+[   16.567389] aal_saturn_l3qm_check_init_done: ==========================Enter=======================
+[   16.576424] aal_saturn_l3qm_check_init_done: init_done.wrd=0xe5ffffff
+[   16.582864] aal_l3qm_init_empty_buffer_CPU: l3qm_eq_profile_cpu_use_fbm=0, l3qm_eq_profile_cpu_pool0_fbm_pool_id=6, l3qm_eq_profile_cpu_pool1_fbm_pool_id=7
+[   16.596759] aal_l3qm_init_empty_buffer_CPU: i=0, reg_off=0xd00071ac, cfg2_eq.wrd=0x5e0d
+[   16.604748] aal_l3qm_init_empty_buffer_CPU: l3qm_eq_profile_cpu_use_fbm=0, l3qm_eq_profile_cpu_pool0_fbm_pool_id=6, l3qm_eq_profile_cpu_pool1_fbm_pool_id=7
+[   16.618647] aal_l3qm_init_empty_buffer_CPU: i=1, reg_off=0xd00071c0, cfg2_eq.wrd=0x5e0d
+[   16.626640] aal_l3qm_init_empty_buffer_CPU: l3qm_eq_profile_cpu_pool0_eq_id=0, cfg4_eq.bf.axi_top_bit=0
+[   16.636390] ca-pon: init PON_RX_LOS_POLARITY_INVERT as 0.
+[   16.641746] ca-pon: init PON Tx laser polarity as 1
+[   16.646588] ca-pon: init PON SerDes (mode: XGEPON_SYM, reversion C)
+[   16.769054] serdes:cells != row*column
+[   16.772698] serdes:section cells parse failed
+[   16.777012] parse serdes failed
+[   18.491182] INFO: PON SERDES Rx clock status = 0x5c01.
+[   18.496160] aal_psds_out_of_reset: Failed to do psds_sync
+[   18.637379] ca-pon: init PON SerDes OK
+[   18.940565] EPON-MAC: being initialized ... done.
+[   18.945637] ca-puc: configure VoQ mapping table - llid_num_per_chip(16), queue_num_per_llid(8)
+[   18.954113] ca-puc: mpcp report mode(0) - 2QS8P
+[   18.958653] ca-puc: initialization was done.
+[   18.963041] ca-pon: init PDC OK
+[   18.966020] ca-mpcp: being initialized ... 
+[   18.970204] ca-mpcp: llid mode - S-LLID
+[   18.974069] ca-mpcp: ONU-MAC(00:13:25:00:00:01)
+[   18.978547] ca-mpcp: initialization was done.
+[   18.982906] ca-epon: interrup is being initialized ... done.
+[   18.988928] ca-pon: IRQ 10 setup successfully.
+[   18.993353] ca-pon: init OK.
+[   18.996197] ca-ne: start restore Ethernet ports configuration from SCFG
+[   19.002805] ca-ne: ca_eth_ports_restore: Enable port 3 OK
+[   19.008163] ca-ne: ca_eth_ports_restore: Enable port 4 OK
+[   19.013580] ca-ne: ca_eth_ports_restore: Enable port 5 OK
+[   19.018936] ca-ne: ca_eth_ports_restore: Enable port 6 OK
+[   19.024506] ca_ni_init_module_probe: ca_init() is done successfully!
+[   19.030706] ca_ni_init_module_probe: call phy_cal_load()......
+[   19.036589] phy_cal_load: param dev=8fc75310 cell=8f5def80
+[   19.061026] phy_cal_load: buf=8f5de640, len=4, sizeof(phy_k_data)=32
+[   19.067225] phy_cal_load: read phy_param buf=8f5de640 len=4
+[   19.072797] phy_cal_load: !!!error: phy_param.sw_patch=0, phy_param.gphy_cal_cmplt=0
+[   19.089312] ca_ni_dump_intfs: ===================== interface 0 ===================
+[   19.096837] cpu_port=0
+[   19.099156] port_id[0]=7
+[   19.101686] MAC ADDR=00:13:25:00:00:01
+[   19.105414] duplex=0x1, flowctrl=0x2, irq=25, rx_ldpid=16, tx_ldpid=7
+[   19.111850] ca_ni_dump_intfs: ===================== interface 1 ===================
+[   19.119484] cpu_port=1
+[   19.121840] port_id[0]=3
+[   19.124351] port_id[1]=4
+[   19.126871] MAC ADDR=00:13:25:00:00:02
+[   19.130609] duplex=0x1, flowctrl=0x2, irq=26, rx_ldpid=17, tx_ldpid=25
+[   19.137131] ca_ni_dump_intfs: ===================== interface 2 ===================
+[   19.144775] cpu_port=2
+[   19.147113] MAC ADDR=00:13:25:00:00:03
+[   19.150852] duplex=0x1, flowctrl=0x2, irq=27, rx_ldpid=18, tx_ldpid=25
+[   19.157374] ca_ni_dump_intfs: ===================== interface 3 ===================
+[   19.165018] cpu_port=3
+[   19.167356] MAC ADDR=00:13:25:00:00:04
+[   19.171103] duplex=0x1, flowctrl=0x2, irq=28, rx_ldpid=19, tx_ldpid=25
+[   19.180952] ca_ni_init_module_probe: ======= after CPU pool bid count=768 =======
+[   19.188359] ca_ni_init_module_probe: ni_info_data.refill_req_8=33, ni_info_data.refill_req_9=34
+[   19.196979] ca_ni_get_chip_revision: data.chip_revision=67
+[   19.202445] ca_ni_dma_lso_init_startup_config: ca_ni_chip_revision=67
+[   19.208872] ca_ni_dma_lso_init_startup_config: aal_scfg_read(CFG_ID_DMA_LSO_ACE_TEST), dma_lso_ace_test=0
+[   19.218437] ca_ni_dma_lso_init_startup_config: aal_scfg_read(CFG_ID_NE_CA_TX_BY_START_XMIT), ca_tx_by_start_xmit=1
+[   19.228773] ca_ni_dma_lso_init_startup_config: aal_scfg_read(CFG_ID_PON_VOQ_MODE), puc_voq_mode=0
+[   19.239216] ca_ni_netlink_rx_init: read from starup config, netlink_rx_ack=0
+[   19.249743] ca_l2fp_init for cpu 0x13 ~ 0x15 done!
+[   19.254603] ca_ni_init_module: platform_driver_register() return ret=0
+[   19.498128] sdk ioctl init success
+[   19.671933] aal_ni_eth_port_config_set: port_id=4, phy_intfs[port_id]=2, speed=1, port_static_cfg.wrd=0x2000203
+[   19.681939] INFO: Device 0 Ethernet Port 4 Link UP 100Mbps/FULL
+[   20.804146] kioctl init success
+[   21.011458] RTK:rtl83xx_hw_init:680: Initialize rtk_switch_init() fail, ret = -1
+[   21.018707] RTK:rtl83xx_hw_init:793: Initialization fail
+[   21.024025] RTK:rtl83xx_module_init:2070: Switch hardware init error: ffffffff
+Populating dev cache
+[   23.437988] random: dd: uninitialized urandom read (512 bytes read, 36 bits of entropy available)
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Thu Jun 20 07:07:58 UTC 2019
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+INIT: Entering runlevel: 5
+Configuring network interfaces... [   23.788732] ca_ni_open: cep->port_cfg.irq=25
+[   23.852438] ca_ni_open: cep->port_cfg.irq=26
+done.
+[   24.381130] random: dbus-uuidgen: uninitialized urandom read (12 bytes read, 38 bits of entropy available)
+[   24.390801] random: dbus-uuidgen: uninitialized urandom read (8 bytes read, 38 bits of entropy available)
+Starting system message bus: [   24.611631] random: dbus-daemon: uninitialized urandom read (12 bytes read, 39 bits of entropy available)
+[   24.699357] random: dbus-daemon: uninitialized urandom read (12 bytes read, 39 bits of entropy available)
+dbus.
+Starting OpenBSD Secure Shell server: sshd
+  generating ssh RSA key...
+[   26.002281] random: ssh-keygen: uninitialized urandom read (32 bytes read, 41 bits of entropy available)
+  generating ssh ECDSA key...
+[   27.588010] random: ssh-keygen: uninitialized urandom read (32 bytes read, 44 bits of entropy available)
+  generating ssh DSA key...
+  generating ssh ED25519 key...
+done.
+Starting watchdog: [  OK  ]
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Starting syslogd/klogd: done
+Start ca-app ... done.
+ca-event: init OK (max_event_num 20)
+app dev mode:0, scfg mode:[10G-EPON]
+Log file:/overlay/ca_log.txt init
+Log file:/overlay/user_log.txt init
+ca-log: init usr log OK (module_num 21, max_log_num 1024, save_log_timer 3 seconds)
+<ca_app_basic_init, 114>g_dev_mode:2
+ca-app: init basic OK
+
+Poky (Yocto Project Reference Distro) 2.1.1 saturn-sfu-eng /dev/ttyS0
+
+saturn-sfu-eng login: install gpio cli
+install led cli
+install stp cli
+[   39.366934] ca_pmx_request_gpio: offset:0 reg_off:8 bit_off:0
+ca-app: init cli OK
+[   39.375151] ca_pmx_request_gpio: offset:9 reg_off:8 bit_off:9
+[   39.389239] ca_pmx_request_gpio: offset:d reg_off:8 bit_off:d
+[   39.397700] ca_pmx_request_gpio: offset:e reg_off:8 bit_off:e
+ca-app: init gpio OK
+LED_RX_PWR_LEVEL_L_30
+ca-app: init led OK
+ca-app: create thread: gpio OK
+ca-app: thread gpio start success 
+ca-app: init opm OK
+ca-app: create thread: opm OK
+ca-app: thread opm start success 
+init IGMP module start 
+init IGMP module end
+ca_rx_register: old SIGINT, sigint_act.sa_handler=(nil), signal_ret=0
+ca_rx_register: new SIGINT, sigint_act.sa_handler=(nil), signal_ret=0
+ca_rx_register: old SIGTERM, sigint_act.sa_handler=(nil), signal_ret=0
+ca_rx_register: new SIGTERM, sigterm_act.sa_handler=(nil), signal_ret=0
+Netlink sent 48 bytes
+Got CFG_ID_NE_CA_RX_REGISTER_USE_MQ vlaue=0
+Got CFG_ID_NE_NETLINK_RX_ACK vlaue=0
+
+ ret=0 MC version 2.29, port_num=0x5 in ca_mc_init 1683
+ca-app: init igmp OK
+enter ca gpio entry
+ca-app: init ptp_master OK
+OAM ext mode is DPOE
+OAM UNI 0 -> user_port_id: 0x00000000, ca_port_id: 0x00030003
+OAM UNI 1 -> user_port_id: 0x00000001, ca_port_id: 0x00030004
+OAM UNI 2 -> user_port_id: 0x00000002, ca_port_id: 0x00030005
+OAM UNI 3 -> user_port_id: 0x00000003, ca_port_id: 0x00030006
+CA_CFG_ID_EN_REGISTER_AFTER_BOOT = 1
+CA_CFG_ID_PON_LLID_MODE = 0
+enable mpcp registration for llid_idx 0
+OAM init done 
+ca-app: init oam OK
+ca-app: create thread: igmp OK
+ca-app: create thread: ptp_master OK
+ca-app: create thread: oam OK
+ca-app: thread igmp start success 
+ca-app: thread ptp_master start success 
+ca-app: thread oam start success 
+ca-app: init restoration OK
+ca-app: init done
+Successfully initialized wpa_supplicant
+eth0: Associated with 01:80:c2:00:00:03
+WMM AC: Missing IEs
+
+Poky (Yocto Project Reference Distro) 2.1.1 saturn-sfu-eng /dev/ttyS0
+
+saturn-sfu-eng login: root
+root@saturn-sfu-eng:~# 
+root@saturn-sfu-eng:~# uname -a
+Linux saturn-sfu-eng 4.4.140 #1 Thu Jun 20 15:04:41 CST 2019 mips GNU/Linux
+root@saturn-sfu-eng:~# [   78.991066] random: nonblocking pool is initialized
+
+root@saturn-sfu-eng:~# 
+root@saturn-sfu-eng:~# 
+root@saturn-sfu-eng:~# reboot
+
+INIT: Sending processes the TERM signaleng (ttyS0) (Thu Jun 20 07:09:0
+root@saturn-sfu-eng:~# Stopping OpenBSD Secure Shell server: sshdstopped /usr/sbin/sshd (pid 553)
+.
+Stopping system message bus: dbus.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Stopping syslogd/klogd: stopped syslogd (pid 571)
+stopped klogd (pid 573)
+done
+Deconfiguring network interfaces... done.
+Stopping watchdog: [  OK  ]
+Sending all processes the TERM signal...
+ca_process_controlC[   94.560958] ca_ni_netlink_rx: ca_rx is killed!!!
+_handle: signum=15
+eth0: CTRL-EVENT-DISCONNECTED bssid=01:80:c2:00:00:03 reason=3 locally_generated=1
+eth0: CTRL-EVENT-TERMINATING 
+ca_process_controlC_handle: signum=15, sent 48 bytes
+ca_process_controlC_handle: SIGTERM, sigterm_act.sa_handler=(nil)
+[   94.601044] INFO: Device 0 Ethernet Port 4 Link DOWN
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+Rebooting... [  101.761761] reboot: Restarting system
+NOTICE:  BL1: GLOBAL_STRAP 0x888a
+NOTICE:  BL1: Fabric Clock Speed 250 MHz
+NOTICE:  BL1: OTP Clock Speed 62 MHz
+NOTICE:  BL1: CPU Clock Speed 500 MHz
+NOTICE:  BL1: I/O Clock 100 MHz
+NOTICE:  BL1: PER Clock 125 MHz
+NOTICE:  Secure Boot Firmware - Cortina Access Inc.
+NOTICE:  BL1: v1.3(release):957a6b2
+NOTICE:  BL1: Built : 16:43:43, Apr 17 2018
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  Platform initialized
+NOTICE:  ROTPK undeployed
+NOTICE:  BL1: Booting BL2
+NOTICE:  Chip Sub-Revision C
+NOTICE:  Saturn Soc
+NOTICE:  Change IO clock
+NOTICE:  DIAGNOSTIC_TASK ON
+NOTICE:  DDR3 800MHz
+NOTICE:  PAD_BUS_0=0x5dd80000
+NOTICE:  PAD_CTRL_PROG=0xc000000
+NOTICE:  rzq_480code:0xd
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800396db  ==> NOTICE:  TTCN[TTFN]=0x6[0x1]; {CPMSB,TTCP}[TTFP]=0x0,0x7[0x0]
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800993ca  ==> NOTICE:  TTCN[TTFN]=0x3[0x1]; {CPMSB,TTCP}[TTFP]=0x0,0x3[0x1]
+NOTICE:  WriteLeveling PI of DRAM_CK moved 0 tick
+NOTICE:  ddr_write_leveling: 0
+NOTICE:  ddr_write_leveling: 2002
+NOTICE:  Detected cycle delay tap number: 21
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=2: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_wr_data_training: min_reg_pi_dq[0]: 4; max_reg_pi_dq[0]: 14
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=3: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=4: going left 14 ticks; going right 14 ticks
+NOTICE:  rising_dqs_in_dly[0]: 1~31=16
+NOTICE:  rising_dqs_in_dly[1]: 0~31=15
+NOTICE:  rising_dqs_in_dly[2]: 1~31=16
+NOTICE:  rising_dqs_in_dly[3]: 0~31=15
+NOTICE:  falling_dqs_in_dly[0]:0~31=15
+NOTICE:  falling_dqs_in_dly[1]:0~31=15
+NOTICE:  falling_dqs_in_dly[2]:0~31=15
+NOTICE:  falling_dqs_in_dly[3]:0~31=15
+NOTICE:  rising_dqs_in_dly[4]: 1~31=16
+NOTICE:  rising_dqs_in_dly[5]: 0~31=15
+NOTICE:  rising_dqs_in_dly[6]: 1~31=16
+NOTICE:  rising_dqs_in_dly[7]: 0~31=15
+NOTICE:  falling_dqs_in_dly[4]:0~31=15
+NOTICE:  falling_dqs_in_dly[5]:0~31=15
+NOTICE:  falling_dqs_in_dly[6]:0~31=15
+NOTICE:  falling_dqs_in_dly[7]:0~31=15
+NOTICE:  rising_dqs_in_dly[8]: 1~31=16
+NOTICE:  rising_dqs_in_dly[9]: 0~31=15
+NOTICE:  rising_dqs_in_dly[10]: 1~31=16
+NOTICE:  rising_dqs_in_dly[11]: 0~31=15
+NOTICE:  falling_dqs_in_dly[8]:0~31=15
+NOTICE:  falling_dqs_in_dly[9]:0~31=15
+NOTICE:  falling_dqs_in_dly[10]:0~31=15
+NOTICE:  falling_dqs_in_dly[11]:0~31=15
+NOTICE:  rising_dqs_in_dly[12]: 1~31=16
+NOTICE:  rising_dqs_in_dly[13]: 0~31=15
+NOTICE:  rising_dqs_in_dly[14]: 1~31=16
+NOTICE:  rising_dqs_in_dly[15]: 0~31=15
+NOTICE:  falling_dqs_in_dly[12]:0~31=15
+NOTICE:  falling_dqs_in_dly[13]:0~31=15
+NOTICE:  falling_dqs_in_dly[14]:0~31=15
+NOTICE:  falling_dqs_in_dly[15]:0~31=15
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=5: going left 14 ticks; going right 14 ticks
+NOTICE:  DDR Size: 256MB
+NOTICE:  Start DDR scan ...
+NOTICE:  DDR scan done
+NOTICE:  DDR Init done...
+NOTICE:  Recover io_clk...
+NOTICE:  Reduce Power for SFU
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  BL2: v1.3(release):778c835
+NOTICE:  BL2: Built : 13:38:24, Mar  7 2019
+NOTICE:  ROTPK undeployed
+
+
+U-Boot 2015.04 (Jun 20 2019 - 14:57:07)Saturn-ASIC
+
+DRAM:  256 MiB
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ca77xx_eth_initialize: auto_scan_active_port=0
+ca77xx_eth_initialize: active_port=4
+ca77xx_eth_initialize: active_port=4, ge_port_phy_addr=5
+ca77xx_eth_initialize: vendor_id=0x1c
+ca77xx_eth_initialize: chip_id=0xc916
+ca77xx_eth_initialize: phy_id=0x1cc916
+ca77xx_eth_initialize: phy_id & PHY_ID_MASK=0x1cc910
+ca77xx_eth_initialize: PHY_ID_RTL8214=0x1cc940
+ca77xx_eth_initialize: do initial patch for PHY_ID_RTL8211
+Saturn-ASIC
+Hit any key to stop autoboot:  0 
+SATURN# 
+SATURN# 
+SATURN# 
+SATURN# 
+SATURN# cls
+Unknown command 'cls' - try 'help'
+SATURN# clear
+Unknown command 'clear' - try 'help'
+SATURN# ls
+Unknown command 'ls' - try 'help'
+SATURN# reset
+NOTICE:  BL1: GLOBAL_STRAP 0x888a
+NOTICE:  BL1: Fabric Clock Speed 250 MHz
+NOTICE:  BL1: OTP Clock Speed 62 MHz
+NOTICE:  BL1: CPU Clock Speed 500 MHz
+NOTICE:  BL1: I/O Clock 100 MHz
+NOTICE:  BL1: PER Clock 125 MHz
+NOTICE:  Secure Boot Firmware - Cortina Access Inc.
+NOTICE:  BL1: v1.3(release):957a6b2
+NOTICE:  BL1: Built : 16:43:43, Apr 17 2018
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  Platform initialized
+NOTICE:  ROTPK undeployed
+NOTICE:  BL1: Booting BL2
+NOTICE:  Chip Sub-Revision C
+NOTICE:  Saturn Soc
+NOTICE:  Change IO clock
+NOTICE:  DIAGNOSTIC_TASK ON
+NOTICE:  DDR3 800MHz
+NOTICE:  PAD_BUS_0=0x5dd80000
+NOTICE:  PAD_CTRL_PROG=0xc000000
+NOTICE:  rzq_480code:0xb
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800b06b9  ==> NOTICE:  TTCN[TTFN]=0x6[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x6[0x1]
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800183b9  ==> NOTICE:  TTCN[TTFN]=0x3[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x3[0x0]
+NOTICE:  WriteLeveling PI of DRAM_CK moved 0 tick
+NOTICE:  ddr_write_leveling: 0
+NOTICE:  ddr_write_leveling: 2002
+NOTICE:  Detected cycle delay tap number: 21
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=2: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_wr_data_training: min_reg_pi_dq[0]: 4; max_reg_pi_dq[0]: 14
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=3: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=4: going left 14 ticks; going right 14 ticks
+NOTICE:  rising_dqs_in_dly[0]: 1~31=16
+NOTICE:  rising_dqs_in_dly[1]: 0~31=15
+NOTICE:  rising_dqs_in_dly[2]: 1~31=16
+NOTICE:  rising_dqs_in_dly[3]: 0~31=15
+NOTICE:  falling_dqs_in_dly[0]:0~31=15
+NOTICE:  falling_dqs_in_dly[1]:0~31=15
+NOTICE:  falling_dqs_in_dly[2]:0~31=15
+NOTICE:  falling_dqs_in_dly[3]:0~31=15
+NOTICE:  rising_dqs_in_dly[4]: 1~31=16
+NOTICE:  rising_dqs_in_dly[5]: 0~31=15
+NOTICE:  rising_dqs_in_dly[6]: 1~31=16
+NOTICE:  rising_dqs_in_dly[7]: 0~31=15
+NOTICE:  falling_dqs_in_dly[4]:0~31=15
+NOTICE:  falling_dqs_in_dly[5]:0~31=15
+NOTICE:  falling_dqs_in_dly[6]:0~31=15
+NOTICE:  falling_dqs_in_dly[7]:0~31=15
+NOTICE:  rising_dqs_in_dly[8]: 1~31=16
+NOTICE:  rising_dqs_in_dly[9]: 0~31=15
+NOTICE:  rising_dqs_in_dly[10]: 1~31=16
+NOTICE:  rising_dqs_in_dly[11]: 0~31=15
+NOTICE:  falling_dqs_in_dly[8]:0~31=15
+NOTICE:  falling_dqs_in_dly[9]:0~31=15
+NOTICE:  falling_dqs_in_dly[10]:0~31=15
+NOTICE:  falling_dqs_in_dly[11]:0~31=15
+NOTICE:  rising_dqs_in_dly[12]: 1~31=16
+NOTICE:  rising_dqs_in_dly[13]: 0~31=15
+NOTICE:  rising_dqs_in_dly[14]: 1~31=16
+NOTICE:  rising_dqs_in_dly[15]: 0~31=15
+NOTICE:  falling_dqs_in_dly[12]:0~31=15
+NOTICE:  falling_dqs_in_dly[13]:0~31=15
+NOTICE:  falling_dqs_in_dly[14]:0~31=15
+NOTICE:  falling_dqs_in_dly[15]:0~31=15
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=5: going left 14 ticks; going right 14 ticks
+NOTICE:  DDR Size: 256MB
+NOTICE:  Start DDR scan ...
+NOTICE:  DDR scan done
+NOTICE:  DDR Init done...
+NOTICE:  Recover io_clk...
+NOTICE:  Reduce Power for SFU
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  BL2: v1.3(release):778c835
+NOTICE:  BL2: Built : 13:38:24, Mar  7 2019
+NOTICE:  ROTPK undeployed
+
+
+U-Boot 2015.04 (Jun 20 2019 - 14:57:07)Saturn-ASIC
+
+DRAM:  256 MiB
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ca77xx_eth_initialize: auto_scan_active_port=0
+ca77xx_eth_initialize: active_port=4
+ca77xx_eth_initialize: active_port=4, ge_port_phy_addr=5
+ca77xx_eth_initialize: vendor_id=0x1c
+ca77xx_eth_initialize: chip_id=0xc916
+ca77xx_eth_initialize: phy_id=0x1cc916
+ca77xx_eth_initialize: phy_id & PHY_ID_MASK=0x1cc910
+ca77xx_eth_initialize: PHY_ID_RTL8214=0x1cc940
+ca77xx_eth_initialize: do initial patch for PHY_ID_RTL8211
+Saturn-ASIC
+Hit any key to stop autoboot:  0 
+Image Selecting...
+SPI-NAND: 6291456 bytes @ 0x600000 Read: OK
+SPI-NAND: 131072 bytes @ 0x500000 Read: OK
+## Booting kernel from Legacy Image at 85100000 ...
+   Image Name:   Linux-4.4.140
+   Created:      2019-06-20   7:04:43 UTC
+   Image Type:   MIPS Linux Kernel Image (uncompressed)
+   Data Size:    5031172 Bytes = 4.8 MiB
+   Load Address: 80010000
+   Entry Point:  8039fed0
+   Verifying Checksum ... OK
+## Flattened Device Tree blob at 85000000
+   Booting using the fdt blob at 0x85000000
+   Loading Kernel Image ... OK
+[    0.000000] Linux version 4.4.140 (pchen@sh-c-21.cortina-access.com) (gcc version 5.3.0 (GCC) ) #1 Thu Jun 20 15:04:41 CST 2019
+[    0.000000] MIPS: machine is Sheipa Platform
+[    0.000000] bootconsole [early0] enabled
+[    0.000000] CPU0 revision is: 0000dc02 (Taroko)
+[    0.000000] MIPS: machine is Cortina Access Saturn SFU
+[    0.000000] Determined physical RAM map:
+[    0.000000]  memory: 10000000 @ 00000000 (usable)
+[    0.000000] Initrd not found or empty - disabling initrd
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000000000000-0x000000000fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000000000-0x000000000fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000000000-0x000000000fffffff]
+[    0.000000] icache: 64kB/32B, dcache: 32kB/32B, scache: 0kB/0B
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 65024
+[    0.000000] Kernel command line: console=ttyS0,115200 ubi.mtd=rootfs0 root=/dev/mtdblock9 rootfstype=squashfs mtdparts=ca_spinand_flash:4M@0x0(ssb),1M(uboot-env),1M(dtb0),6M(kernel0),40M(rootfs0),1M(dtb1),6M(kernel1),40M(rootfs1),20M(userdata)
+[    0.000000] PID hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.000000] Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.000000] Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+[    0.000000] Memory: 213364K/262144K available (3669K kernel code, 152K rwdata, 924K rodata, 172K init, 162K bss, 48780K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] NR_IRQS:128
+[    0.000000] /wol_ictl@bc1000e0: unable to request mem region
+[    0.000000] clocksource: MIPS: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 3822520893 ns
+[    0.000010] sched_clock: 32 bits at 500MHz, resolution 2ns, wraps every 4294967295ns
+[    0.007774] Calibrating delay loop... 498.89 BogoMIPS (lpj=2494464)
+[    0.070300] pid_max: default: 32768 minimum: 301
+[    0.075013] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.081516] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.090681] devtmpfs: initialized
+[    0.098265] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.107993] futex hash table entries: 256 (order: -1, 3072 bytes)
+[    0.114206] pinctrl core: initialized pinctrl subsystem
+[    0.120005] NET: Registered protocol family 16
+[    0.144147] Advanced Linux Sound Architecture Driver Initialized.
+[    0.151015] clocksource: Switched to clocksource MIPS
+[    0.157938] NET: Registered protocol family 2
+[    0.162955] TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.169794] TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.176179] TCP: Hash tables configured (established 2048 bind 2048)
+[    0.182609] UDP hash table entries: 256 (order: 0, 4096 bytes)
+[    0.188294] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+[    0.194782] NET: Registered protocol family 1
+[    0.206881] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.212631] jffs2: version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+[    0.224792] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+[    0.232120] io scheduler noop registered
+[    0.235954] io scheduler deadline registered
+[    0.240374] io scheduler cfq registered (default)
+[    0.245760] ca77xx-gpio b2224280.gpio-controller: resource - [mem 0xb2224280-0xb222430f flags 0x200] mapped at 0xb2224280
+[    0.256607] ca77xx-gpio b2224280.gpio-controller: id 0
+[    0.261901] ca77xx-gpio b2224280.gpio-controller: Setting up IRQs for GPIO bank 0
+[    0.269353] ca77xx-gpio b2224280.gpio-controller: Setting up IRQs for GPIO bank 1
+[    0.276910] ca77xx-gpio b2224280.gpio-controller: Setting up IRQs for GPIO bank 2
+[    0.284415] ca77xx-gpio b2224280.gpio-controller: Setting up IRQs for GPIO bank 3
+[    0.292085] ca_soc bc100000.soc: Vendor ID: 0x8f3
+[    0.296634] ca_soc bc100000.soc: Chip ID: 0xa17c
+[    0.301280] ca_soc bc100000.soc: Chip Rev: 67
+[    0.305580] ca_soc bc100000.soc: PON Rev: C
+[    0.309752] ca_soc bc100000.soc: CPLL: 2000.00 MHZ
+[    0.314540] ca_soc bc100000.soc: CPU Clock: 500.00 MHZ
+[    0.319656] ca_soc bc100000.soc: Core Clock: 142.85 MHZ
+[    0.324878] ca_soc bc100000.soc: EAXI Clock: 200.00 MHZ
+[    0.330081] ca_soc bc100000.soc: I/O Clock: 100.00 MHZ
+[    0.335216] ca_soc bc100000.soc: Eth Ref 2 Clock: 250.00 MHZ
+[    0.341299] ca77xx-reset bc100028.reset-controller: resource - [mem 0xbc100028-0xbc10002b flags 0x200] mapped at 0xbc100028
+[    0.352369] ca77xx-reset bc100048.reset-controller: resource - [mem 0xbc100048-0xbc10004b flags 0x200] mapped at 0xbc100048
+[    0.419922] b2224148.uart: ttyS0 at I/O 0x0 (irq = 18, base_baud = 7812500) is a Cortina UART0
+[    0.428463] console [ttyS0] enabled
+[    0.428463] console [ttyS0] enabled
+[    0.435346] bootconsole [early0] disabled
+[    0.435346] bootconsole [early0] disabled
+[    0.443746] b2224178.uart: ttyS1 at I/O 0x0 (irq = 19, base_baud = 7812500) is a Cortina UART1
+[    0.452946] IPC: host cpu is PE0 , thisCPU=0x1 
+[    0.457375] IPC: list physical start from: 0x2810000
+[    0.462313] IPC: list virtual start from: 0xa2810000
+[    0.467222] IPC: list size: 0x4800
+[    0.470708] IPC: Debug:...Clearing memory.... from 0xa2811800
+[    0.476387] IPC: version is 100
+[    0.479495] IPC: irq = 23
+[    0.482136] CA_IPC:register succesfull:session_id[8] session 8fc8bc40 msg_count 3 
+[    0.482136] 
+[    0.491338] ca_pelog_probe
+[    0.493920] pelog0: shm physical address : 0x2800000
+[    0.498834] pelog0: shm virtual address : 0xa2800000
+[    0.503813] pelog0: shm size: 0x1000
+[    0.507359] pelog1: shm physical address : 0x2801000
+[    0.512312] pelog1: shm virtual address : 0xa2801000
+[    0.517251] pelog1: shm size: 0x1000
+[    0.521539] ca_set_mux: group:98 reg_off:0 bit_off:18
+[    0.526472] ca_spi_nand b2223000.spi-nand: Cortina-Access SPI-NAND Flash driver
+[    0.533803] SPI-NAND io-mode:a00
+[    0.537957] SPI-NAND flash mfr-name: Winbond, mdr_id: 0xef, dev_id: 0xaa
+[    0.547516] spi_nand_base: SPI-NAND: W25N01GV is found.
+[    0.553514] Bad block table found at page 65472, version 0x01
+[    0.559930] Bad block table found at page 65408, version 0x01
+[    0.566445] 9 cmdlinepart partitions found on MTD device ca_spinand_flash
+[    0.573088] Creating 9 MTD partitions on "ca_spinand_flash":
+[    0.578725] 0x000000000000-0x000000400000 : "ssb"
+[    0.584687] 0x000000400000-0x000000500000 : "uboot-env"
+[    0.590954] 0x000000500000-0x000000600000 : "dtb0"
+[    0.596818] 0x000000600000-0x000000c00000 : "kernel0"
+[    0.602909] 0x000000c00000-0x000003400000 : "rootfs0"
+[    0.609041] 0x000003400000-0x000003500000 : "dtb1"
+[    0.614886] 0x000003500000-0x000003b00000 : "kernel1"
+[    0.620969] 0x000003b00000-0x000006300000 : "rootfs1"
+[    0.627175] 0x000006300000-0x000007700000 : "userdata"
+[    0.633735] spi-ca77xx b2224098.spi: resource - [mem 0xb2224098-0xb22240d7 flags 0x200] mapped at 0xb2224098
+[    0.643523] spi-ca77xx b2224098.spi: irq 22
+[    0.648386] i2c /dev entries driver
+[    0.652022] ca77xx-i2c b2224120.i2c: resource - [mem 0xb2224120-0xb2224147 flags 0x200] mapped at 0xb2224120
+[    0.661753] ca77xx-i2c b2224120.i2c: invalid timeout on /i2c@b2224120
+[    0.668126] ca77xx-i2c b2224120.i2c: invalid retries on /i2c@b2224120
+[    0.674597] ca77xx-i2c b2224120.i2c: irq 35
+[    0.734390] cortina_thermal bc10017c.thermal: SoC Temperature= 42
+[    0.741191] Synopsys Designware Multimedia Card Interface Driver
+[    0.747522] ca_set_mux: group:6 reg_off:8 bit_off:6
+[    0.752277] ca_set_mux: group:7 reg_off:8 bit_off:7
+[    0.757107] ca_set_mux: group:84 reg_off:0 bit_off:4
+[    0.762131] leds-ca77xx bc100114.led-controller: resource - [mem 0xbc100114-0xbc100157 flags 0x200] mapped at 0xbc100114
+[    0.775574] spi_linux_wrapper_init()
+[    0.779059] SLIC module being probed
+[    0.782611] slic_spi_probe: slic_spi[ 0 ] = 8fdbc200
+[    0.787547] slic_spi spi32766.0: reset-gpio 3 is active low
+[    0.793134] spi_linux_wrapper_init(133): completedaipc: register chrdev(252,0)
+[    0.800474] aipc: create device successed
+[    0.804627] aipc: create dsp console device failed
+[    0.809258] aipc: init done
+[    0.812288] aipc_module_mem_init: mem_resource for voip ipc=[mem 0xb2224000-0xb222401f]
+[    0.820135] aipc_module_mem_init: ca_voip_ipc_per_int_base=b2224000
+[    0.826454] aipc_module_mem_init: ca_voip_ipc_phy_base=0x02700000
+[    0.832508] aipc_module_mem_init: ca_voip_ipc_mem_base=0xc0100000
+[    0.838548] aipc: start aipc irq init
+[    0.842235] aipc_cpu_irq_ca_init: irq = 24
+[    0.846316] aipc: Request IRQ for IPC OK
+[    0.851395] NET: Registered protocol family 10
+[    0.857019] NET: Registered protocol family 17
+[    0.861395] 8021q: 802.1Q VLAN Support v1.8
+[    0.868261] ubi0: attaching mtd4
+[    1.403399] ubi0: scanning is finished
+[    1.427936] ubi0: attached mtd4 (name "rootfs0", size 40 MiB)
+[    1.433578] ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[    1.440393] ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[    1.447177] ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+[    1.454126] ubi0: good PEBs: 320, bad PEBs: 0, corrupted PEBs: 0
+[    1.460113] ubi0: user volume: 1, internal volumes: 1, max. volumes count: 128
+[    1.467333] ubi0: max/mean erase counter: 1/0, WL threshold: 4096, image sequence number: 49590058
+[    1.476282] ubi0: available PEBs: 187, total reserved PEBs: 133, PEBs reserved for bad PEB handling: 20
+[    1.485870] ubi0: background thread "ubi_bgt0d" started, PID 47
+[    1.493225] ALSA device list:
+[    1.496036]   No soundcards found.
+[    1.499468] 
+[    1.499468] 
+[    1.499468] 
+[    1.499468] [voip_snd_zarlink_init_le9632] TS_base 2
+[    1.499468] 
+[    1.499468] 
+[    1.511870] VoIP control bind 2 (2) instances successfully.
+[    1.517326] index dsp_cpuid dsp_cch host_cch
+[    1.521590] ----- --------- ------- --------
+[    1.525838]    0        0         0       0   
+[    1.529659]    1        0         1       1   
+[    1.533521] VoIP RX netfilter hook init done!
+[    1.537825] VoIP RX netfilter hook for IPv6 init done!
+[    1.542976] =============RTK VOIP SUITE=============
+[    1.547904] SDK VoIP Version: VoIP-1.6-DSP-R5523-Luna-R24-Integrate_RTL_CA 
+[    1.554864] Board CFG Model :  
+[    1.557979] INITIAL VOIP MANAGER PROGRAM
+[    7.508229] VFS: Mounted root (squashfs filesystem) readonly on device 31:9.
+[    7.524188] devtmpfs: mounted
+[    7.527657] Freeing unused kernel memory: 172K
+INIT: version 2.88 booting
+[    9.471849] ubi1: attaching mtd8
+[    9.741117] ubi1: scanning is finished
+[    9.765400] ubi1: attached mtd8 (name "userdata", size 20 MiB)
+[    9.771138] ubi1: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[    9.777945] ubi1: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[    9.784730] ubi1: VID header offset: 2048 (aligned 2048), data offset: 4096
+[    9.791681] ubi1: good PEBs: 160, bad PEBs: 0, corrupted PEBs: 0
+[    9.797666] ubi1: user volume: 1, internal volumes: 1, max. volumes count: 128
+[    9.804889] ubi1: max/mean erase counter: 2/1, WL threshold: 4096, image sequence number: 1492222450
+[    9.814010] ubi1: available PEBs: 0, total reserved PEBs: 160, PEBs reserved for bad PEB handling: 20
+[    9.823424] ubi1: background thread "ubi_bgt1d" started, PID 63
+UBI device number 1, total 160 LEBs (20316160 bytes, 19.4 MiB), available 0 LEBs (0 bytes), LEB size 126976 bytes (124.0 KiB)
+[    9.890376] UBIFS (ubi1:0): background thread "ubifs_bgt1_0" started, PID 72
+[   10.000357] UBIFS (ubi1:0): recovery needed
+[   10.217850] UBIFS (ubi1:0): recovery completed
+[   10.222281] UBIFS (ubi1:0): UBIFS: mounted UBI device 1, volume 0, name "userdata"
+[   10.229704] UBIFS (ubi1:0): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[   10.239633] UBIFS (ubi1:0): FS size: 15998976 bytes (15 MiB, 126 LEBs), journal size 2920448 bytes (2 MiB, 23 LEBs)
+[   10.250041] UBIFS (ubi1:0): reserved for root: 0 bytes (0 KiB)
+[   10.255870] UBIFS (ubi1:0): media format: w4/r0 (latest is w4/r0), UUID AB0D8898-0D69-4478-BA91-520439F0F2D2, small LPT model
+overlayfs over rootfs successfully
+Starting udev
+udev: Not using udev cache because of changes detected in the following files:
+udev:     /proc/version /proc/cmdline /proc/devices
+udev:     lib/udev/rules.d/* etc/udev/rules.d/*
+udev: The udev cache will be regenerated. To identify the detected changes,
+udev: compare the cached sysconf at   /etc/udev/cache.data
+udev: against the current sysconf at  /dev/shm/udev.cache
+[   11.022552] udevd[99]: starting version 3.1.5
+[   11.099286] random: udevd: uninitialized urandom read (16 bytes read, 17 bits of entropy available)
+[   11.108728] random: udevd: uninitialized urandom read (16 bytes read, 17 bits of entropy available)
+[   11.117913] random: udevd: uninitialized urandom read (16 bytes read, 17 bits of entropy available)
+[   12.026852] ca_plat_kernel: loading out-of-tree module taints kernel.
+[   12.067561] ca-log: init calog-ioctl-dev OK (max_level 9, default_level 4)
+[   12.128462] ca-pal: init ca_pal_ioctl OK
+[   12.132845] ubi1 error: ubi_open_volume: cannot open device 1, volume 0, error -16
+[   12.146231] ubi1 error: ubi_open_volume: cannot open device 1, volume 0, error -16
+[   12.187766] ca-peri:hw_timer irq 21 install 
+[   12.193504] libscfg: module license 'Proprietary' taints kernel.
+[   12.199362] Disabling lock debugging due to kernel taint
+[   12.259461] SCFG initialize start.
+[   12.399544] SCFG initialize done.
+[   14.680868] ca_ne:ca_ni_init_module_probe:2363: Cortina Network Interface Driver 0.0.1
+[   14.688688] Enter <ca77xx_pon_probe, 979>
+[   14.692749] ca-pon: proc files init OK.
+[   14.696553] ca-pon: load PON_MAC_MODE: EPON-BI10G
+[   14.701251] ca-pon: load PON_VOQ_MODE: 0
+[   14.705147] ca-pon: Device Tree load start
+[   14.709287] ca_pmx_request_gpio: offset:1 reg_off:8 bit_off:1
+[   14.715056] ca-pon: found 1 interrupts in Device Tree
+[   14.720023] ca-pon: interrupt 0 index is 10
+[   14.724280] ca-pon: Device Tree load OK
+[   14.728081] End <ca77xx_pon_probe, 1002>
+[   14.732112] ca_ne_reg_init: mem_resource for NI registers=[mem 0xd0000000-0xd0009fff]
+[   14.739897] ca_ne_reg_init: ca_ne_reg_base=0xd0000000
+[   14.744959] ca_ne_reg_init: mem_resource for GLOBAL NETWORK ENGINE INTRRUPT registers=[mem 0x4410009c-0x441000ab]
+[   14.755198] ca_ne_reg_init: ca_ne_glb_ne_intr_reg_base=0x4410009c
+[   14.761285] ca_ne_reg_init: mem_resource for MDIO registers=[mem 0x522240d8-0x5222411f]
+[   14.769260] ca_ne_reg_init: ca_per_mdio_reg_base=0x522240d8
+[   14.774839] ca_ne_reg_init: resource for XRAM=[mem 0xf4500000-0xf4501fff]
+[   14.781630] ca_ne_reg_init: ca_xram_reg_base=0xc09b0000
+[   14.786819] ca_ne_reg_init: mem_resource for DMA LSO registers=[mem 0xd000a000-0xd000a8ff]
+[   14.795077] ca_ne_reg_init: ca_dma_lso_reg_base=0xd000a000
+[   14.800545] ca_ne_reg_init: resource for SRAM=[mem 0x40000000-0x4003ffff]
+[   14.807329] ca_ne_reg_init: ca_ne_sram_phy_base=0x40000000 end 0x4003ffff size 0x00040000
+[   14.815490] ca_ne_reg_init: ca_ne_sram_base=0xb8000000
+[   14.820613] ca_ne_reg_init: resource for DDR=[mem 0x03c48000-0x05c47fff]
+[   14.827305] ca_ne_reg_init: ca_ne_ddr_coherent_base=0x03c48000
+[   14.833133] ca_ne_reg_init: mem_resource for ASIC GPHY registers=[mem 0xd000b000-0xd000bfff]
+[   14.841554] ca_ne_reg_init: ca_ne_phy_reg_base=0xd000b000
+[   14.846938] ca_ne_reg_init: mem_resource for XFI registers=[mem 0xd000c000-0xd000e123]
+[   14.854847] ca_ne_reg_init: ca_ne_xfi_reg_base=0xd000c000
+[   14.865292] ca_ni_global_reset: dma_reset is deasserted!!!
+[   14.871640] ca_ni_global_reset: Do external RESET for RTL8367SB HSGMII mode....
+[   15.179080] ca_load_init: ca_ni_num_intf=4
+[   15.183046] =================ca_ni_init_config================
+[   15.188840] ca_load_init: ca_ne_sram_base=b8000000, ca_ne_ddr_noncache_base=  (null)
+[   15.196583] ca_load_init: ca_ne_sram_phy_base=0x40000000, ca_ne_ddr_noncache_phy_base=0x0, ca_ne_ddr_coherent_phy_base=0x3c48000
+[   15.208136] ca_load_init: ca_ne_mac_addr0=00:13:25:00:00:01, ca_ne_mac_addr1=00:13:25:00:00:02
+[   15.216733] ==================================================
+[   15.222556] ca_load_init: ca_ni_use_build_skb=1
+[   15.227065] ca_load_init: ca_ni_napi_budget=16
+[   15.231505] ca_load_init: ca_ni_tx_timer_enable=0
+[   15.236187] ca_load_init: ca_ni_use_qm_eq_refill_int=0
+[   15.241323] ca_load_init: ca_ni_cpu64_pool0_eq_id=0
+[   15.246178] ca_load_init: ca_ni_cpu64_pool1_eq_id=1
+[   15.251053] ca_load_init: ca_ni_cpu64_use_fbm=0
+[   15.255561] ca_load_init: ca_ni_cpu64_pool0_fbm_pool_id=6
+[   15.260947] ca_load_init: ca_ni_cpu64_pool1_fbm_pool_id=7
+[   15.266346] ca_load_init: ca_ni_cpu64_pool0_buf_count=768
+[   15.271730] ca_load_init: ca_ni_cpu64_pool1_buf_count=768
+[   15.277107] ca_load_init: ca_ni_use_qm_eq_refill_tasklet=0
+[   15.282590] ca_load_init: ca_ni_oam_mode=1
+[   15.286708] aal_l3qm_create_sram_map: total required SRAM size 0x0
+[   15.292842] aal_l3qm_dump_sram_map: Dump SRAM map...
+[   15.297790] aal_l3qm_create_ddr_map: total size of DDR coherent consumed=0x1f57180
+[   15.305363] aal_l3qm_dump_ddr_map: Dump DDR map...
+[   15.310118] [ DDR coherent ]
+[   15.312999] CPU pool0 buffer start addr = 0x83c48000
+[   15.317939] CPU pool0 buffer physical addr = 0x3c48000
+[   15.323074] CPU pool0 buffer count = 768
+[   15.326974] CPU pool0 buffer size = 2048
+[   15.330885] CPU pool0 consumed size = 1572992
+[   15.335238] CPU pool1 buffer start addr = 0x83dc8080
+[   15.340181] CPU pool1 buffer physical addr = 0x3dc8080
+[   15.345316] CPU pool1 buffer count = 768
+[   15.349216] CPU pool1 buffer size = 2048
+[   15.353135] CPU pool1 consumed size = 1572992
+[   15.357470] CPU RX FIFO buffer start addr = 0x83f48100
+[   15.362605] CPU RX FIFO buffer physical addr = 0x3f48100
+[   15.367895] CPU RX FIFO count = 6144
+[   15.371473] CPU RX FIFO size = 4
+[   15.374672] CPU RX FIFO consumed size = 24576
+[   15.379016] DEEPQ pool0 buffer start addr = 0x83f4e100
+[   15.384152] DEEPQ pool0 buffer physical addr = 0x3f4e100
+[   15.389442] DEEPQ pool0 buffer count = 6144
+[   15.393620] DEEPQ pool0 buffer size = 2048
+[   15.397696] DEEPQ pool0 consumed size = 12582912
+[   15.402309] DEEPQ pool1 buffer start addr = 0x84b4e100
+[   15.407425] DEEPQ pool1 buffer physical addr = 0x4b4e100
+[   15.412735] DEEPQ pool1 buffer count = 6144
+[   15.416895] DEEPQ pool1 buffer size = 2048
+[   15.420979] DEEPQ pool1 consumed size = 12582912
+[   15.425595] ca_ni_alloc_cpu_rx_fifo: aal_l3qm_get_cpu_rx_fifo_size()=24576
+[   15.432554] ca_ni_alloc_cpu_rx_fifo: cpu_rx_fifo_virt_addr=ae998000, cpu_rx_fifo_phy_addr=0e998000
+[   15.443839] L2_QM : EQ-0(0), EQ-1(4K) - system uses 4K * 64bytes buffer configuration.
+[   15.451624] L2_QM : port private buffer number is 29
+[   15.456582] L2_TM : enable ES for port 00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 15
+[   15.465480] L2_TE : initialize WRED profile & selection table ... done.
+[   15.472076] L3_TE : initialize WRED profile & selection table ... done.
+[   15.478733] L2_TM_CB : initialize VoQ based buffer profile & selection table ... done.
+[   15.486555] done.
+[   15.488432] 
+[   15.488432] 
+[   15.488432] end of aal_l2_tm_cb_init
+[   15.488432] 
+[   15.496695] === device_id 0 ===
+[   15.499675] === L3FE_STG0_CTRL : 0x000c787c ===
+[   15.504217] lpb_idx_mode=0
+[   15.506884] mac_fltr_fail_pkt_mru_chk_en=0
+[   15.510968] mru_chk_fail_pkt_l2_lkup_dis=1
+[   15.515062] other_mac_pkt_keep_lspid_en=1
+[   15.519047] wan_lspid=0x07
+[   15.521749] use_lspid_ovwr_o_lspid=0
+[   15.525303] spcl_pkt_keep_old=1
+[   15.528430] wan_lspid_1=0x07
+[   15.531306] msk_my_mac_match_en_for_lspid_upd=1
+[   15.535815] keep_lspid_unchange=1
+[   15.539119] === L3FE_STG0_LDPID_MAP : 0x03985907 ===
+[   15.544080] rule_0=0x07, lpb_idx_0=0
+[   15.547632] rule_1=0x19, lpb_idx_1=1
+[   15.551202] rule_2=0x18, lpb_idx_2=2
+[   15.554755] default, lpb_idx_3=3
+[   15.557971] === L3FE_STG0_LPB_TBL_0 : 0x18100190 ===
+[   15.562933] lspid=0x18, default_ldpid=0x19
+[   15.567006] special_en=1, special_sel=0
+[   15.570831] mac_da_match_en=0, mac_da_match_mask=0, t1_ctrl=0, t5_ctrl=15
+[   15.577615] === L3FE_STG0_LPB_TBL_1 : 0x19180180 ===
+[   15.582568] lspid=0x19, default_ldpid=0x18
+[   15.586641] special_en=1, special_sel=1
+[   15.590465] mac_da_match_en=0, mac_da_match_mask=0, t1_ctrl=1, t5_ctrl=15
+[   15.597250] === L3FE_STG0_LPB_TBL_2 : 0x18100190 ===
+[   15.602202] lspid=0x18, default_ldpid=0x19
+[   15.606276] special_en=1, special_sel=0
+[   15.610100] mac_da_match_en=0, mac_da_match_mask=0, t1_ctrl=0, t5_ctrl=15
+[   15.616885] === L3FE_STG0_LPB_TBL_3 : 0x1a1bfd90 ===
+[   15.621836] stg0_lpb_tbl_hi.wrd=0x1a1bfd90
+[   15.625910] lspid=0x1a, default_ldpid=0x19
+[   15.629994] special_en=1, special_sel=1
+[   15.633834] mac_da_match_en=0, mac_da_match_mask=255, t1_ctrl=0, t5_ctrl=15
+[   15.641200] aal_l3_cls_tbl_init: L3 CLS WAN DEF FIB initialtion success
+[   15.647673] aal_l3_cls_tbl_init: L3 CLS LAN DEF FIB initialtion success
+[   15.654484] aal_ni_reset: reset NI done!
+[   15.658247] aal_ni_init_tx_dma_lso: i = 0, vp_control.wrd=0xff
+[   15.664091] aal_ni_init_tx_dma_lso: i = 1, vp_control.wrd=0xff
+[   15.669895] aal_ni_init_ni: ======= NI_HV_GLB_INTERNAL_PORT_ID_CFG=0xef ==============
+[   15.677820] port 5 PHY addr 0 connect to XG-PHY.
+[   15.682495] port 6 PHY addr 0 connect to XG-PHY.
+[   15.687174] ca-ne: init MDIO OK.
+[   15.690481] ca-ne: load CA_CFG_ID_GE_PORT_BIT_MAP: 0x18
+[   15.695703] ca-ne: load CA_CFG_ID_XGE_PORT_BIT_MAP: 0x60.
+[   15.701087] ca-ne: Valid Ethernet ports bitmap : 0x78
+[   15.706208] ca-ne: ethernet port 3 interface type:  GMII
+[   15.711513] ca-ne: ethernet port 4 interface type:  RGMII-GE
+[   15.717150] ca-ne: ethernet port 5 interface type:  SXGMII
+[   15.722632] ca-ne: ethernet port 6 interface type:  SXGMII
+[   15.728095] ca-ne: load Ethernet port SCFG OK
+[   15.732460] ca-ne: disalbe all ethernet ports OK
+[   15.737044] ca-ne: auto detect Ethernet PHY start ...
+[   15.743122] ca-ne: read Ethernet PHY 1 IDs(0x1c 0xc900): phy_oui 0x732, phy_model 0x10 .
+[   15.751060] ca-ne: detect Eth PHY RTL8211 at PHY addr 1
+[   15.756380] ca-ne: attch PHY addr 1 to port 3 driver
+[   15.761381] ca-ne: read Ethernet PHY 5 IDs(0x1c 0xc916): phy_oui 0x732, phy_model 0x11 .
+[   15.769310] ca-ne: detect Eth PHY RTL8211 at PHY addr 5
+[   15.774836] ca-ne: attch PHY addr 5 to port 4 driver
+[   15.780608] ca-ne: detect Ethernet PHY done, find 2 PHYs
+[   15.790145] ca-ne: init intergrated PHY start
+[   15.794454] ca-ne: intergrated phy 1 reg 31 = 0xbc6
+[   15.800391] ca-ne: intergrated phy 1 reg 16 = 0x0
+[   15.806039] ca-ne: intergrated phy 1 reg 18 = 0x0
+[   15.811688] ca-ne: intergrated phy 1 reg 22 = 0x0
+[   15.817328] ca-ne: intergrated phy 1 reg 31 = 0xa42
+[   15.823150] ca-ne: intergrated phy 1 reg 31 = 0xa40
+[   15.828964] ca-ne: intergrated phy 1 reg 0 = 0x1140
+[   15.934644] ca-ne: init intergrated PHY OK
+[   15.938671] ca-ne: load XFI ports scfg on chip (verndor-id: 0x8f3, version : 0x43 (C)...
+[   15.946755] ca-ne: load scfg 540 OK, bitmap=0x3
+[   15.951361] ca-ne: load 493 OK, XFI 0 is connected to SXGMII(8)
+[   15.957345] ca-ne: load 493 OK, XFI 1 is connected to SXGMII(8)
+[   15.963349] ca-ne: load 492 OK, XFI 0 is connected to phy_addr(0)
+[   15.969506] ca-ne: load 492 OK, XFI 1 is connected to phy_addr(0)
+[   16.100763] ca-ne: init XFI 0 OK, speed 3
+[   16.227683] ca-ne: init XFI 1 OK, speed 3
+[   16.233569] ca-ne: aal_ni_reset_intf init ...  OK NI_HV_GLB_INTF_RST_CONFIG = 0x0
+[   16.241682] <__aal_fdb_sw_lrn_tbl_create, 1626>
+[   16.246146] <__aal_fdb_static_mac_create, 1750>
+[   16.252894] FDB init OK
+[   16.258700] ca-ne: init QoS OK
+[   16.262345] init SFU SATURN L2FE,L3FE done.
+[   16.266397] ca-ne: init special packet OK
+[   16.270377] ca_mirror_init mirror_vlan:2018
+[   16.274652] ca_ni_init_l3qm: =====================call aal_l3qm_check_init_done()================
+[   16.283493] aal_l3qm_check_init_done: ===========================Enter========================
+[   16.292094] aal_saturn_l3qm_check_init_done: ==========================Enter=======================
+[   16.301129] aal_saturn_l3qm_check_init_done: init_done.wrd=0xe5ffffff
+[   16.307559] aal_l3qm_init_empty_buffer_CPU: l3qm_eq_profile_cpu_use_fbm=0, l3qm_eq_profile_cpu_pool0_fbm_pool_id=6, l3qm_eq_profile_cpu_pool1_fbm_pool_id=7
+[   16.321467] aal_l3qm_init_empty_buffer_CPU: i=0, reg_off=0xd00071ac, cfg2_eq.wrd=0x5e0d
+[   16.329446] aal_l3qm_init_empty_buffer_CPU: l3qm_eq_profile_cpu_use_fbm=0, l3qm_eq_profile_cpu_pool0_fbm_pool_id=6, l3qm_eq_profile_cpu_pool1_fbm_pool_id=7
+[   16.343357] aal_l3qm_init_empty_buffer_CPU: i=1, reg_off=0xd00071c0, cfg2_eq.wrd=0x5e0d
+[   16.351347] aal_l3qm_init_empty_buffer_CPU: l3qm_eq_profile_cpu_pool0_eq_id=0, cfg4_eq.bf.axi_top_bit=0
+[   16.361089] ca-pon: init PON_RX_LOS_POLARITY_INVERT as 0.
+[   16.366420] ca-pon: init PON Tx laser polarity as 1
+[   16.371308] ca-pon: init PON SerDes (mode: XGEPON_SYM, reversion C)
+[   16.493802] serdes:cells != row*column
+[   16.497403] serdes:section cells parse failed
+[   16.501796] parse serdes failed
+[   18.215897] INFO: PON SERDES Rx clock status = 0x5c01.
+[   18.220876] aal_psds_out_of_reset: Failed to do psds_sync
+[   18.362095] ca-pon: init PON SerDes OK
+[   18.665265] EPON-MAC: being initialized ... done.
+[   18.670335] ca-puc: configure VoQ mapping table - llid_num_per_chip(16), queue_num_per_llid(8)
+[   18.678812] ca-puc: mpcp report mode(0) - 2QS8P
+[   18.683361] ca-puc: initialization was done.
+[   18.687728] ca-pon: init PDC OK
+[   18.690705] ca-mpcp: being initialized ... 
+[   18.694902] ca-mpcp: llid mode - S-LLID
+[   18.698739] ca-mpcp: ONU-MAC(00:13:25:00:00:01)
+[   18.703251] ca-mpcp: initialization was done.
+[   18.707576] ca-epon: interrup is being initialized ... done.
+[   18.713606] ca-pon: IRQ 10 setup successfully.
+[   18.717982] ca-pon: init OK.
+[   18.720879] ca-ne: start restore Ethernet ports configuration from SCFG
+[   18.727523] ca-ne: ca_eth_ports_restore: Enable port 3 OK
+[   18.732861] ca-ne: ca_eth_ports_restore: Enable port 4 OK
+[   18.738234] ca-ne: ca_eth_ports_restore: Enable port 5 OK
+[   18.743627] ca-ne: ca_eth_ports_restore: Enable port 6 OK
+[   18.749180] ca_ni_init_module_probe: ca_init() is done successfully!
+[   18.755413] ca_ni_init_module_probe: call phy_cal_load()......
+[   18.761244] phy_cal_load: param dev=8fc75310 cell=8f557220
+[   18.781028] phy_cal_load: buf=8f5571c0, len=4, sizeof(phy_k_data)=32
+[   18.787225] phy_cal_load: read phy_param buf=8f5571c0 len=4
+[   18.792800] phy_cal_load: !!!error: phy_param.sw_patch=0, phy_param.gphy_cal_cmplt=0
+[   18.809320] ca_ni_dump_intfs: ===================== interface 0 ===================
+[   18.816843] cpu_port=0
+[   18.819163] port_id[0]=7
+[   18.821694] MAC ADDR=00:13:25:00:00:01
+[   18.825422] duplex=0x1, flowctrl=0x2, irq=25, rx_ldpid=16, tx_ldpid=7
+[   18.831864] ca_ni_dump_intfs: ===================== interface 1 ===================
+[   18.839491] cpu_port=1
+[   18.841848] port_id[0]=3
+[   18.844358] port_id[1]=4
+[   18.846877] MAC ADDR=00:13:25:00:00:02
+[   18.850615] duplex=0x1, flowctrl=0x2, irq=26, rx_ldpid=17, tx_ldpid=25
+[   18.857138] ca_ni_dump_intfs: ===================== interface 2 ===================
+[   18.864781] cpu_port=2
+[   18.867120] MAC ADDR=00:13:25:00:00:03
+[   18.870858] duplex=0x1, flowctrl=0x2, irq=27, rx_ldpid=18, tx_ldpid=25
+[   18.877381] ca_ni_dump_intfs: ===================== interface 3 ===================
+[   18.885024] cpu_port=3
+[   18.887363] MAC ADDR=00:13:25:00:00:04
+[   18.891111] duplex=0x1, flowctrl=0x2, irq=28, rx_ldpid=19, tx_ldpid=25
+[   18.900864] ca_ni_init_module_probe: ======= after CPU pool bid count=768 =======
+[   18.908270] ca_ni_init_module_probe: ni_info_data.refill_req_8=33, ni_info_data.refill_req_9=34
+[   18.916891] ca_ni_get_chip_revision: data.chip_revision=67
+[   18.922355] ca_ni_dma_lso_init_startup_config: ca_ni_chip_revision=67
+[   18.928783] ca_ni_dma_lso_init_startup_config: aal_scfg_read(CFG_ID_DMA_LSO_ACE_TEST), dma_lso_ace_test=0
+[   18.938346] ca_ni_dma_lso_init_startup_config: aal_scfg_read(CFG_ID_NE_CA_TX_BY_START_XMIT), ca_tx_by_start_xmit=1
+[   18.948684] ca_ni_dma_lso_init_startup_config: aal_scfg_read(CFG_ID_PON_VOQ_MODE), puc_voq_mode=0
+[   18.959124] ca_ni_netlink_rx_init: read from starup config, netlink_rx_ack=0
+[   18.969658] ca_l2fp_init for cpu 0x13 ~ 0x15 done!
+[   18.974517] ca_ni_init_module: platform_driver_register() return ret=0
+[   19.084613] aal_ni_eth_port_config_set: port_id=4, phy_intfs[port_id]=2, speed=1, port_static_cfg.wrd=0x2000203
+[   19.094615] INFO: Device 0 Ethernet Port 4 Link UP 100Mbps/FULL
+[   19.238074] sdk ioctl init success
+[   20.528998] kioctl init success
+[   20.736405] RTK:rtl83xx_hw_init:680: Initialize rtk_switch_init() fail, ret = -1
+[   20.743724] RTK:rtl83xx_hw_init:793: Initialization fail
+[   20.748953] RTK:rtl83xx_module_init:2070: Switch hardware init error: ffffffff
+Populating dev cache
+[   21.894831] random: dd: uninitialized urandom read (512 bytes read, 34 bits of entropy available)
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Thu Jun 20 07:09:14 UTC 2019
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+INIT: Entering runlevel: 5
+Configuring network interfaces... [   22.247386] ca_ni_open: cep->port_cfg.irq=25
+[   22.311440] ca_ni_open: cep->port_cfg.irq=26
+done.
+Starting system message bus: [   23.048822] random: dbus-daemon: uninitialized urandom read (12 bytes read, 36 bits of entropy available)
+[   23.136997] random: dbus-daemon: uninitialized urandom read (12 bytes read, 37 bits of entropy available)
+dbus.
+Starting OpenBSD Secure Shell server: sshd
+[   24.243504] random: sshd: uninitialized urandom read (32 bytes read, 38 bits of entropy available)
+done.
+Starting watchdog: [  OK  ]
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Starting syslogd/klogd: done
+Start ca-app ... done.
+ca-event: init OK (max_event_num 20)
+app dev mode:0, scfg mode:[10G-EPON]
+ca-log: init usr log OK (module_num 21, max_log_num 1024, save_log_timer 3 seconds)
+<ca_app_basic_init, 114>g_dev_mode:2
+ca-app: init basic OK
+
+Poky (Yocto Project Reference Distro) 2.1.1 saturn-sfu-eng /dev/ttyS0
+
+saturn-sfu-eng login: install gpio cli
+install led cli
+install stp cli
+[   27.099025] ca_pmx_request_gpio: offset:0 reg_off:8 bit_off:0
+ca-app: init cli OK
+[   27.107068] ca_pmx_request_gpio: offset:9 reg_off:8 bit_off:9
+[   27.121784] ca_pmx_request_gpio: offset:d reg_off:8 bit_off:d
+[   27.130076] ca_pmx_request_gpio: offset:e reg_off:8 bit_off:e
+ca-app: init gpio OK
+LED_RX_PWR_LEVEL_L_30
+ca-app: init led OK
+ca-app: create thread: gpio OK
+ca-app: thread gpio start success 
+ca-app: init opm OK
+ca-app: create thread: opm OK
+ca-app: thread opm start success 
+init IGMP module start 
+init IGMP module end
+ca_rx_register: old SIGINT, sigint_act.sa_handler=(nil), signal_ret=0
+ca_rx_register: new SIGINT, sigint_act.sa_handler=(nil), signal_ret=0
+ca_rx_register: old SIGTERM, sigint_act.sa_handler=(nil), signal_ret=0
+ca_rx_register: new SIGTERM, sigterm_act.sa_handler=(nil), signal_ret=0
+Netlink sent 48 bytes
+Got CFG_ID_NE_CA_RX_REGISTER_USE_MQ vlaue=0
+Got CFG_ID_NE_NETLINK_RX_ACK vlaue=0
+
+ ret=0 MC version 2.29, port_num=0x5 in ca_mc_init 1683
+ca-app: init igmp OK
+ca-app: init ptp_master OK
+enter ca gpio entry
+OAM ext mode is DPOE
+OAM UNI 0 -> user_port_id: 0x00000000, ca_port_id: 0x00030003
+OAM UNI 1 -> user_port_id: 0x00000001, ca_port_id: 0x00030004
+OAM UNI 2 -> user_port_id: 0x00000002, ca_port_id: 0x00030005
+OAM UNI 3 -> user_port_id: 0x00000003, ca_port_id: 0x00030006
+CA_CFG_ID_EN_REGISTER_AFTER_BOOT = 1
+CA_CFG_ID_PON_LLID_MODE = 0
+enable mpcp registration for llid_idx 0
+OAM init done 
+ca-app: init oam OK
+ca-app: create thread: igmp OK
+ca-app: create thread: ptp_master OK
+ca-app: create thread: oam OK
+ca-app: thread igmp start success 
+ca-app: thread ptp_master start success 
+ca-app: thread oam start success 
+ca-app: init restoration OK
+ca-app: init done
+[   28.719054] random: wpa_supplicant: uninitialized urandom read (32 bytes read, 48 bits of entropy available)
+[   28.745554] random: wpa_supplicant: uninitialized urandom read (32 bytes read, 48 bits of entropy available)
+[   28.755403] random: wpa_supplicant: uninitialized urandom read (8 bytes read, 48 bits of entropy available)
+Successfully initialized wpa_supplicant
+eth0: Associated with 01:80:c2:00:00:03
+WMM AC: Missing IEs
+[   79.621073] random: nonblocking pool is initialized
+eth0: CTRL-EVENT-EAP-FAILURE EAP authentication failed
+
+Poky (Yocto Project Reference Distro) 2.1.1 saturn-sfu-eng /dev/ttyS0
+
+saturn-sfu-eng login: 
+Poky (Yocto Project Reference Distro) 2.1.1 saturn-sfu-eng /dev/ttyS0
+
+saturn-sfu-eng login: root
+root@saturn-sfu-eng:~# 
+root@saturn-sfu-eng:~# ls /
+bin      boot     config   dev      etc      home     image    lib      media    mnt      overlay  proc     rom      run      sbin     sys      taroko   tmp      usr      var
+root@saturn-sfu-eng:~# 
+root@saturn-sfu-eng:~# 
+root@saturn-sfu-eng:~# 
+root@saturn-sfu-eng:~# 
+root@saturn-sfu-eng:~# clear
+root@saturn-sfu-eng:~# ls
+root@saturn-sfu-eng:~# 
+root@saturn-sfu-eng:~# 
+root@saturn-sfu-eng:~# clear
+root@saturn-sfu-eng:~# ls
+root@saturn-sfu-eng:~# NOTICE:  BL1: GLOBAL_STRAP 0x888a
+NOTICE:  BL1: Fabric Clock Speed 250 MHz
+NOTICE:  BL1: OTP Clock Speed 62 MHz
+NOTICE:  BL1: CPU Clock Speed 500 MHz
+NOTICE:  BL1: I/O Clock 100 MHz
+NOTICE:  BL1: PER Clock 125 MHz
+NOTICE:  Secure Boot Firmware - Cortina Access Inc.
+NOTICE:  BL1: v1.3(release):957a6b2
+NOTICE:  BL1: Built : 16:43:43, Apr 17 2018
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  Platform initialized
+NOTICE:  ROTPK undeployed
+NOTICE:  BL1: Booting BL2
+NOTICE:  Chip Sub-Revision C
+NOTICE:  Saturn Soc
+NOTICE:  Change IO clock
+NOTICE:  DIAGNOSTIC_TASK ON
+NOTICE:  DDR3 800MHz
+NOTICE:  PAD_BUS_0=0x5dd80000
+NOTICE:  PAD_CTRL_PROG=0xc000000
+NOTICE:  rzq_480code:0xc
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800b06ca  ==> NOTICE:  TTCN[TTFN]=0x6[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x6[0x1]
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800183ca  ==> NOTICE:  TTCN[TTFN]=0x3[0x0]; {CPMSB,TTCP}[TTFP]=0x0,0x3[0x0]
+NOTICE:  WriteLeveling PI of DRAM_CK moved 0 tick
+NOTICE:  ddr_write_leveling: 0
+NOTICE:  ddr_write_leveling: 2002
+NOTICE:  Detected cycle delay tap number: 20
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=2: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_wr_data_training: min_reg_pi_dq[0]: 4; max_reg_pi_dq[0]: 14
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=3: going left 14 ticks; going right 14 ticks
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 3
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=4: going left 14 ticks; going right 14 ticks
+NOTICE:  rising_dqs_in_dly[0]: 1~31=16
+NOTICE:  rising_dqs_in_dly[1]: 1~31=16
+NOTICE:  rising_dqs_in_dly[2]: 1~31=16
+NOTICE:  rising_dqs_in_dly[3]: 0~31=15
+NOTICE:  falling_dqs_in_dly[0]:0~31=15
+NOTICE:  falling_dqs_in_dly[1]:0~31=15
+NOTICE:  falling_dqs_in_dly[2]:0~31=15
+NOTICE:  falling_dqs_in_dly[3]:0~31=15
+NOTICE:  rising_dqs_in_dly[4]: 1~31=16
+NOTICE:  rising_dqs_in_dly[5]: 1~31=16
+NOTICE:  rising_dqs_in_dly[6]: 1~31=16
+NOTICE:  rising_dqs_in_dly[7]: 0~31=15
+NOTICE:  falling_dqs_in_dly[4]:0~31=15
+NOTICE:  falling_dqs_in_dly[5]:0~31=15
+NOTICE:  falling_dqs_in_dly[6]:0~31=15
+NOTICE:  falling_dqs_in_dly[7]:0~31=15
+NOTICE:  rising_dqs_in_dly[8]: 1~31=16
+NOTICE:  rising_dqs_in_dly[9]: 1~31=16
+NOTICE:  rising_dqs_in_dly[10]: 1~31=16
+NOTICE:  rising_dqs_in_dly[11]: 0~31=15
+NOTICE:  falling_dqs_in_dly[8]:0~31=15
+NOTICE:  falling_dqs_in_dly[9]:0~31=15
+NOTICE:  falling_dqs_in_dly[10]:0~31=15
+NOTICE:  falling_dqs_in_dly[11]:0~31=15
+NOTICE:  rising_dqs_in_dly[12]: 1~31=16
+NOTICE:  rising_dqs_in_dly[13]: 1~31=16
+NOTICE:  rising_dqs_in_dly[14]: 1~31=16
+NOTICE:  rising_dqs_in_dly[15]: 0~31=15
+NOTICE:  falling_dqs_in_dly[12]:0~31=15
+NOTICE:  falling_dqs_in_dly[13]:0~31=15
+NOTICE:  falling_dqs_in_dly[14]:0~31=15
+NOTICE:  falling_dqs_in_dly[15]:0~31=15
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=5: going left 14 ticks; going right 14 ticks
+NOTICE:  DDR Size: 256MB
+NOTICE:  Start DDR scan ...
+NOTICE:  DDR scan done
+NOTICE:  DDR Init done...
+NOTICE:  Recover io_clk...
+NOTICE:  Reduce Power for SFU
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0xaaef00
+NOTICE:  SERIAL_NAND: chip_id Unknown (use 2Gb) 
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+ERROR:   SERIAL_NAND: flash_get_nand_block_info(848): OTP Status :0x18 != 0x10 ?
+NOTICE:  BL2: v1.3(release):778c835
+NOTICE:  BL2: Built : 13:38:24, Mar  7 2019
+NOTICE:  ROTPK undeployed
+
+
+U-Boot 2015.04 (Jun 20 2019 - 14:57:07)Saturn-ASIC
+
+DRAM:  256 MiB
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+SPI-NAND: W25M01GV is found.
+W25M01GV
+spinand_oob_size:0x40
+spinand_page_size:0x800
+spinand_blk_size:0x20000
+spinand_size:0x8000000
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ca77xx_eth_initialize: auto_scan_active_port=0
+ca77xx_eth_initialize: active_port=4

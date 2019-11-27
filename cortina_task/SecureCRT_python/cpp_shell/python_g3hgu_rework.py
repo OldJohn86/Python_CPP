@@ -41,22 +41,22 @@ def main():
 
 	# Upgrade gpt
 	if crt.Screen.WaitForStrings("G3#") == 1:
-		crt.Screen.Send("tftpboot 0x84100000 asic_nand_bch16_4k_224.img;")
-		crt.Screen.Send("nand erase 0x0 0x400000; nand write 0x84100000 0x0 0x300000;\r\n")
+		crt.Screen.Send("tftpboot 0x04100000 asic_nand_bch16_4k_224.img;")
+		crt.Screen.Send("nand erase 0x0 0x400000; nand write 0x04100000 0x0 0x300000;\r\n")
 	else:
 		crt.Dialog.MessageBox("Upgrade gpt Timed out!")
 
 	#Upgrade uboot-env
 	# if crt.Screen.WaitForStrings("written: OK") == 1:
-		# crt.Screen.Send("tftpboot 0x84000000 g3-uboot-env.bin;")
-		# crt.Screen.Send("nand erase 0x400000 0x100000; nand write 0x84000000 0x400000 0x20000;\r\n")
+		# crt.Screen.Send("tftpboot 0x04000000 g3-uboot-env.bin;")
+		# crt.Screen.Send("nand erase 0x400000 0x100000; nand write 0x04000000 0x400000 0x20000;\r\n")
 	# else:
 		# crt.Dialog.MessageBox("Upgrade uboot-env Timed out!")
 
 	#Upgrade kernel
 	# if crt.Screen.WaitForStrings("written: OK") == 1:
-		# crt.Screen.Send("tftpboot 0x85000000 g3-rootfs.mubi;")
-		# crt.Screen.Send("nand erase 0x500000 0xD000000; nand write 0x85000000 0x500000 0x${filesize};\r\n")
+		# crt.Screen.Send("tftpboot 0x05000000 g3-rootfs.mubi;")
+		# crt.Screen.Send("nand erase 0x500000 0xD000000; nand write 0x05000000 0x500000 0x${filesize};\r\n")
 	# else:
 		# crt.Dialog.MessageBox("Upgrade kernel Timed out!")
 

@@ -31,7 +31,7 @@ def main():
 		# crt.Dialog.MessageBox("Waiting <Hit any key> Timed out!")
 
 	# Setenv
-	crt.Screen.Send("setenv active_port 3;\r\n")
+	# crt.Screen.Send("setenv active_port 3;\r\n")
 	crt.Screen.Send("setenv serverip 192.168.1.128;\r\n")
 	crt.Screen.Send("setenv ipaddr 192.168.1.3;\r\n")
 		
@@ -51,7 +51,7 @@ def main():
 
 	# Upgrade dtb
 	if crt.Screen.WaitForStrings("SATURN#") == 1:
-		crt.Screen.Send("tftpboot 0x85000000 uImage-saturn_sfu_c20.dtb;")
+		crt.Screen.Send("tftpboot 0x85000000 saturn_sfu.dtb;")
 		crt.Screen.Send("spi_nand erase 0x500000 0x100000; spi_nand write 0x85000000 0x500000 0x20000;\r\n")
 	else:
 		crt.Dialog.MessageBox("Upgrade dtb Timed out!")

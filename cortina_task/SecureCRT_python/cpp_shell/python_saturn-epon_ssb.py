@@ -39,8 +39,8 @@ crt.Screen.IgnoreCase = True
 
 def main():
 	# For Saturn upgrade
-	crt.Screen.Send("\r\nreset\r\n")
 	crt.Screen.Send("\r\nreboot\r\n")
+	crt.Screen.Send("\r\nreset\r\n")
 	
 	if crt.Screen.WaitForStrings("Hit any key to stop autoboot:") == 1:
 		crt.Screen.Send("\r\n")
@@ -48,52 +48,54 @@ def main():
 		crt.Dialog.MessageBox("Waiting <Hit any key> Timed out!")
 
 	# Setenv
-	#crt.Screen.Send("setenv serverip 192.168.1.128;\r\n")
-	#crt.Screen.Send("setenv ipaddr 192.168.1.2;\r\n")
-
+	crt.Screen.Send("setenv serverip 192.168.1.129;\r\n")
+	crt.Screen.Send("setenv ipaddr 192.168.1.3;\r\n")
+	crt.Screen.Send("setenv active_port 4;\r\n")
+	
 	# Upgrade gpt
-	# if crt.Screen.WaitForStrings("SATURN#") == 1:
-		# crt.Screen.Send("tftpboot 0x84100000 saturn_sfu_eng_epon-gpt.img;")
-		# crt.Screen.Send("spi_nand erase 0x0 0x400000; spi_nand write 0x84100000 0x0 0x300000;\r\n")
-	# else:
-		# crt.Dialog.MessageBox("Upgrade gpt Timed out!")
+	if crt.Screen.WaitForStrings("SATURN#") == 1:
+		crt.Screen.Send("tftpboot 0x84100000 22_gpt-snand-data-20190215;")
+		crt.Screen.Send("spi_nand erase 0x0 0x400000; spi_nand write 0x84100000 0x0 0x300000;\r\n")
+	else:
+		crt.Dialog.MessageBox("Upgrade gpt Timed out!")
 
-	# Upgrade uboot-env
+	#Upgrade uboot-env
 	# if crt.Screen.WaitForStrings("Written: OK") == 1:
-		# crt.Screen.Send("tftpboot 0x84000000 saturn_sfu_eng_epon-uboot-env.bin;")
+		# crt.Screen.Send("tftpboot 0x84000000 uboot-env.bin;")
 		# crt.Screen.Send("spi_nand erase 0x400000 0x100000; spi_nand write 0x84000000 0x400000 0x20000;\r\n")
 	# else:
 		# crt.Dialog.MessageBox("Upgrade uboot-env Timed out!")
 
 	# Upgrade kernel
-	if crt.Screen.WaitForStrings("SATURN#") == 1:
-		crt.Screen.Send("tftpboot 0x85000000 uImage-saturn_sfu.dtb;")
-		crt.Screen.Send("spi_nand erase 0x500000 0x100000; spi_nand write 0x85000000 0x500000 0x20000;\r\n")
-	else:
-		crt.Dialog.MessageBox("Upgrade dtb Timed out!")
+	# if crt.Screen.WaitForStrings("Written: OK") == 1:
+		# crt.Screen.Send("tftpboot 0x85000000 uImage-saturn_sfu.dtb;")
+		# crt.Screen.Send("spi_nand erase 0x500000 0x100000; spi_nand write 0x85000000 0x500000 0x20000;\r\n")
+	# else:
+		# crt.Dialog.MessageBox("Upgrade dtb Timed out!")
+
 	# Upgrade kernel
-	if crt.Screen.WaitForStrings("Written: OK") == 1:
-		crt.Screen.Send("tftpboot 0x85100000 uImage;")
-		crt.Screen.Send("spi_nand erase 0x600000 0x600000; spi_nand write 0x85100000 0x600000 0x500000;\r\n")
-	else:
-		crt.Dialog.MessageBox("Upgrade kernel Timed out!")
+	# if crt.Screen.WaitForStrings("Written: OK") == 1:
+		# crt.Screen.Send("tftpboot 0x85100000 uImage;")
+		# crt.Screen.Send("spi_nand erase 0x600000 0x600000; spi_nand write 0x85100000 0x600000 0x500000;\r\n")
+	# else:
+		# crt.Dialog.MessageBox("Upgrade kernel Timed out!")
 
 	# Upgrade rootfs
-	if crt.Screen.WaitForStrings("Written: OK") == 1:
-		crt.Screen.Send("tftpboot 0x86000000 major-image-saturn-sfu-eng.rootfs.squashfs.ubi;")
-		crt.Screen.Send("spi_nand erase 0xC00000 0x2800000; spi_nand write 0x86000000 0xC00000 ${filesize};\r\n")
-	else:
-		crt.Dialog.MessageBox("Upgrade rootfs Timed out!")
+	# if crt.Screen.WaitForStrings("Written: OK") == 1:
+		# crt.Screen.Send("tftpboot 0x86000000 major-image-saturn-sfu-eng.rootfs.squashfs.ubi;")
+		# crt.Screen.Send("spi_nand erase 0xC00000 0x2800000; spi_nand write 0x86000000 0xC00000 ${filesize};\r\n")
+	# else:
+		# crt.Dialog.MessageBox("Upgrade rootfs Timed out!")
 
 	# Upgrade user.ubi
-	if crt.Screen.WaitForStrings("Written: OK") == 1:
-		crt.Screen.Send("tftpboot 0x87000000 major-image-saturn-sfu-eng_user.ubi;")
-		crt.Screen.Send("spi_nand erase 0x6300000 0x1400000; spi_nand write 0x87000000 0x6300000 ${filesize};\r\n")
-	else:
-		crt.Dialog.MessageBox("Upgrade user.ubi Timed out!")
+	# if crt.Screen.WaitForStrings("Written: OK") == 1:
+		# crt.Screen.Send("tftpboot 0x87000000 major-image-saturn-sfu-eng_user.ubi;")
+		# crt.Screen.Send("spi_nand erase 0x6300000 0x1400000; spi_nand write 0x87000000 0x6300000 ${filesize};\r\n")
+	# else:
+		# crt.Dialog.MessageBox("Upgrade user.ubi Timed out!")
 
 	# Reset target when upgraded success this time
-	if crt.Screen.WaitForStrings("Written: OK", 180) == 1:
+	if crt.Screen.WaitForStrings("Written: OK") == 1:
 		crt.Screen.Send("reset\r\n")
 	else:
 		crt.Dialog.MessageBox("Total Upgrade Images Timed out!")

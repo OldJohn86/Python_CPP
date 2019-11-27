@@ -74,43 +74,43 @@ def main():
 
 	# Upgrade dtb
 	if crt.Screen.WaitForStrings("Written: OK") == 1:
-		crt.Screen.Send("tftpboot 0x85000000 saturn-sfu.dtb;")
+		crt.Screen.Send("tftpboot 0x85000000 saturn_sfu.dtb;")
 		crt.Screen.Send("spi_nand erase 0x500000 0x100000; spi_nand write 0x85000000 0x500000 0x20000;\r\n")
 	else:
 		crt.Dialog.MessageBox("Upgrade dtb Timed out!")
 
 	# Upgrade rootfs
 	if crt.Screen.WaitForStrings("Written: OK") == 1:
-		crt.Screen.Send("tftpboot 0x86000000 rootfs.cpio.xz;")
-		crt.Screen.Send("spi_nand erase 0xC00000 0x5000000; spi_nand write 0x86000000 0xC00000 0x1600000;\r\n")
+		crt.Screen.Send("tftpboot 0x86000000 major-image-saturn-sfu-eng-kt.rootfs.squashfs.ubi;")
+		crt.Screen.Send("spi_nand erase 0xC00000 0x2800000; spi_nand write 0x86000000 0xC00000 ${filesize};\r\n")
 	else:
 		crt.Dialog.MessageBox("Upgrade rootfs Timed out!")
 
 	# Upgrade user.ubi
-	if crt.Screen.WaitForStrings("Written: OK") == 1:
-		crt.Screen.Send("tftpboot 0x87000000 saturn_sfu_eng_epon-user.ubi;")
-		crt.Screen.Send("spi_nand erase 0x6300000 0x1400000; spi_nand write 0x87000000 0x6300000 ${filesize};\r\n")
-	else:
-		crt.Dialog.MessageBox("Upgrade user.ubi Timed out!")
+	# if crt.Screen.WaitForStrings("Written: OK") == 1:
+		# crt.Screen.Send("tftpboot 0x87000000 major-image-saturn-sfu-eng-kt_user.ubi;")
+		# crt.Screen.Send("spi_nand erase 0x6300000 0x1400000; spi_nand write 0x87000000 0x6300000 ${filesize};\r\n")
+	# else:
+		# crt.Dialog.MessageBox("Upgrade user.ubi Timed out!")
 
 	# Reset target when upgraded success this time
-	if crt.Screen.WaitForStrings("Written: OK", 180) == 1:
+	if crt.Screen.WaitForStrings("Written: OK") == 1:
 		crt.Screen.Send("reset\r\n")
 	else:
 		crt.Dialog.MessageBox("Total Upgrade Images Timed out!")
 
-	if crt.Screen.WaitForStrings("saturn-sfu-eng login:") == 1:
-		crt.Screen.Send("\r\nroot\r\n")
-	else:
-		crt.Dialog.MessageBox("ROOT Login Timed out!")
+	# if crt.Screen.WaitForStrings("saturn-sfu-eng login:") == 1:
+		# crt.Screen.Send("\r\nroot\r\n")
+	# else:
+		# crt.Dialog.MessageBox("ROOT Login Timed out!")
 
-	if crt.Screen.WaitForStrings("root@saturn-sfu-eng:~#") == 1:
-		crt.Screen.Send("r\n")
-		if crt.Screen.WaitForStrings("ca-app: init done") == 1:
-			crt.Screen.Send("uname -a\r\n")
-		else:
-			crt.Dialog.MessageBox("ca-app: init done Timed out!")
-	else:
-		crt.Dialog.MessageBox("Get 'uname -a' Timed out!")
+	# if crt.Screen.WaitForStrings("root@saturn-sfu-eng:~#") == 1:
+		# crt.Screen.Send("r\n")
+		# if crt.Screen.WaitForStrings("ca-app: init done") == 1:
+			# crt.Screen.Send("uname -a\r\n")
+		# else:
+			# crt.Dialog.MessageBox("ca-app: init done Timed out!")
+	# else:
+		# crt.Dialog.MessageBox("Get 'uname -a' Timed out!")
 
 main()
