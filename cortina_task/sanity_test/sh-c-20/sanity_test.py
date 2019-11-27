@@ -218,7 +218,6 @@ def download_img(obj, current_path, config, target, child=''):
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
     local_path_abs = os.path.join(current_path, local_path)
-#    print(local_path_abs)
     if not os.path.exists(local_path_abs):
         os.makedirs(local_path_abs)
     glb_local_path = local_path_abs
@@ -228,24 +227,17 @@ def download_img(obj, current_path, config, target, child=''):
         local_backup_path_abs = os.path.join(local_path_abs, target)
         img_rev_info = target + '-eng.major-image.' + y_m_d + '-rev.txt'
         log_file = y_m_d +'-'+ target + '-sanitytest-log.txt'; #_1
-#        print(img_rev_info)
-#        if target == 'g3hgu' and child != '':
-#            target_path = path_info.get(target + '_' + child + '_path', None)
-#            local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
-#            log_file = y_m_d +'-' + target + '-' + child + '-sanitytest-log.txt';
-#        else:
-#            print("Target <%s> child[%s] is invalid!!" % target, child)
     elif target == 'saturn-sfu':
         local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
         img_rev_info = target + '-eng_'+ child +'.major-image.' + y_m_d + '-rev.txt'
-#        print(img_rev_info)
         log_file = y_m_d +'-'+ child + '-sanitytest-log.txt'; #_1
         target_path = path_info.get(child + '_path', None)
     else:
         print("Target[%s] is invalid!!" % target)
 #    print(local_backup_path_abs)
     remote_path = path_info.get('remote_path', None)
-    remote_path_abs = remote_path + target+'/'+ y_m +'/'+ y_m_d + target_path
+    remote_path_abs = remote_path + target +'/'+ y_m +'/'+ y_m_d + target_path
+#    print(remote_path_abs)
     return_items = getattr(obj, "connect")(remote_path_abs)
 #    print(return_items)
     if log_file in return_items:
@@ -617,103 +609,73 @@ def capture_log(current_path, config, target, child=''):
     with open(log_file_path, 'w') as f:
         f.write(log)
 
+#target_item = ['g3', 'g3hgu', 'saturn-sfu' ,'venus']
+#child_item = ['epon', 'gpon']
+result_list = []
+img_ok = {'g3':False, 'g3hgu':False, 'saturn-sfu_epon':False, 'saturn-sfu_gpon':False, 'venus':False}
+log_ok = {'g3':False, 'g3hgu':False, 'saturn-sfu_epon':False, 'saturn-sfu_gpon':False, 'venus':False}
 def main():
     current_path = sys.argv[0].rstrip('/sanity_test.py')
-    # print(current_path)
+#    print(current_path)
     config = os.path.join(current_path, 'config/dailybuild_server_config.ini')
-    # print(config)
+#    print(config)
     ssh_info = read_ini(config, 'ssh')
     host = ssh_info.get('host', None)
-    port = int(ssh_info.get('port', None)) # 端口是int类型
+    port = int(ssh_info.get('port', None))
     username = ssh_info.get('username', None)
     password = ssh_info.get('password', None)
+    target = ssh_info.get('target', None)
+    print(target.split(' '))
+    child = ssh_info.get('child', None)
+    print(child.split(' '))
     obj = SftpTool(username, password, port, host)
 
-    #send_mail(config, 'g3')
-    #send_mail(config, 'saturn-sfu', 'epon')
-    #send_mail(config, 'saturn-sfu', 'gpon')
-
     while True:
-        # G3 sanity test process
-        g3_img_ok = download_img(obj, current_path, config, 'g3')
-        time.sleep(2)
-        print("g3 img download is %s" % g3_img_ok)
-        if g3_img_ok == True:
-            capture_log(current_path, config, 'g3')
-            time.sleep(2)
-            upload_log(obj, current_path, config, 'g3')
-            time.sleep(2)
-            g3_log_ok = log_no_errors('g3')
-            time.sleep(2)
-            if g3_log_ok == False:
-                print("ERROR: g3 log file has checked errors & send emails!")
-                send_email(config, 'g3')
-            else:
-                print("g3 log file not checked errors")
-
-        # Epon sanity test process
-        epon_img_ok = download_img(obj, current_path, config, 'saturn-sfu', 'epon')
-        time.sleep(2)
-        print("saturn-sfu_epon img download is %s" % epon_img_ok)
-        if epon_img_ok == True:
-            capture_log(current_path, config, 'saturn-sfu', 'epon')
-            time.sleep(2)
-            upload_log(obj, current_path, config, 'saturn-sfu', 'epon')
-            time.sleep(2)
-            epon_log_ok = log_no_errors('saturn-sfu', 'epon')
-            time.sleep(2)
-            if epon_log_ok == False:
-                print("ERROR: saturn-sfu epon log file has checked errors & send emails!")
-                send_email(config, 'saturn-sfu', 'epon')
-            else:
-                print("saturn-sfu epon log file not checked errors")
-
-        # Gpon sanity test process
-        gpon_img_ok = download_img(obj, current_path, config, 'saturn-sfu', 'gpon')
-        time.sleep(2)
-        print("saturn-sfu_gpon img download is %s" % epon_img_ok)
-        if gpon_img_ok == True:
-            capture_log(current_path, config, 'saturn-sfu', 'gpon')
-            time.sleep(2)
-            upload_log(obj, current_path, config, 'saturn-sfu', 'gpon')
-            time.sleep(2)
-            gpon_log_ok = log_no_errors('saturn-sfu', 'gpon')
-            time.sleep(2)
-            if gpon_log_ok == False:
-                print("ERROR: saturn-sfu gpon log file has checked errors & send emails!")
-                send_email(config, 'saturn-sfu', 'gpon')
-            else:
-                print("saturn-sfu gpon log file not checked errors")
-
-        # G3HGU sanity test process
-        g3hgu_img_ok = download_img(obj, current_path, config, 'g3hgu')
-        time.sleep(2)
-        print("g3hgu img download is %s" % g3hgu_img_ok)
-        if g3hgu_img_ok == True:
-            capture_log(current_path, config, 'g3hgu')
-            time.sleep(2)
-            upload_log(obj, current_path, config, 'g3hgu')
-            time.sleep(2)
-            g3hgu_log_ok = log_no_errors('g3hgu')
-            time.sleep(2)
-            if g3hgu_log_ok == False:
-                print("ERROR: g3hgu log file has checked errors & send emails!")
-                send_email(config, 'g3hgu')
-            else:
-                print("g3hgu log file not checked errors")
-
-        # Venus sanity test process
-        venus_img_ok = download_img(obj, current_path, config, 'venus')
-        time.sleep(2)
-        print("venus img download is %s" % venus_img_ok)
-
-        # Sleep 1 hour
-        if g3_img_ok != True and epon_img_ok != True and gpon_img_ok != True and g3hgu_img_ok != True:
-            # print("g3/epon/gpon/g3hgu sanity test process sleep 1 hour")
-            time.sleep(60*60)
+        for target in target.split(' '):
+            if target == 'saturn-sfu': #saturn-sfu
+                for child in child.split(' '):
+                    img_ok[target +'_'+ child] = download_img(obj, current_path, config, target, child)
+                    print("STATUS: %s_%s img download is %s" % (target, child, img_ok[target +'_'+ child]))
+#                    print(target +'_'+ child, img_ok[target + '_' + child])
+                    time.sleep(2)
+                    if img_ok[target +'_'+ child] == True:
+                        capture_log(current_path, config, target, child)
+                        time.sleep(2)
+                        upload_log(obj, current_path, config, target, child)
+                        time.sleep(2)
+                        log_ok[target] = log_no_errors(target, child)
+                        time.sleep(2)
+                        if log_ok[target +'_'+ child] == False:
+                            print("ERROR: %s_%s log file has checked errors & send emails!" % (target, child))
+                            send_email(config, target, child)
+                        else:
+                            print("OKAY: %s_%s log file not checked errors" % (target, child))
+            else: #g3/g3hgu/venus
+                img_ok[target] = download_img(obj, current_path, config, target)
+                print("STATUS: %s img download is %s" % (target, img_ok[target]))
+#                print(target, img_ok[target])
+                time.sleep(2)
+                if img_ok[target] == True:
+                    capture_log(current_path, config, target)
+                    time.sleep(2)
+                    upload_log(obj, current_path, config, target)
+                    time.sleep(2)
+                    log_ok[target] = log_no_errors(target)
+                    time.sleep(2)
+                    if log_ok[target] == False:
+                        print("ERROR: %s log file has checked errors & send emails!" % target)
+                        send_email(config, target)
+                    else:
+                        print("OKAY: %s log file not checked errors" % target)
+        for value in img_ok.values():
+            result_list.append(value)
+        print(result_list)
+        if True in result_list:
+            print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 10 minutes")
+            time.sleep(10*60)
         else:
-            # print("g3/epon/gpon/g3hgu sanity test process sleep 0.5 hour")
-            time.sleep(30*60)
+            print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 1 hour")
+            time.sleep(60*60)
 
 if __name__ == "__main__":
     main()
