@@ -212,69 +212,46 @@ class SftpTool(object):
 def download_img(obj, current_path, config, target, child=''):
     global glb_img_rev_file
     global glb_local_path
-    # Get Timestamp First
     y_m_d = date.today().strftime('%Y-%m-%d')
     y_m = date.today().strftime('%Y-%m')
 
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
     local_path_abs = os.path.join(current_path, local_path)
-    # print(local_path_abs)
+#    print(local_path_abs)
     if not os.path.exists(local_path_abs):
         os.makedirs(local_path_abs)
     glb_local_path = local_path_abs
 
-    if target == 'g3':
-        target_path = path_info.get('g3_path', None)
+    if target == 'g3' or target == 'g3hgu' or target == 'venus':
+        target_path = path_info.get(target + '_path', None)
         local_backup_path_abs = os.path.join(local_path_abs, target)
         img_rev_info = target + '-eng.major-image.' + y_m_d + '-rev.txt'
-        # print(img_rev_info)
-    elif target == 'g3hgu':
-        if child == '':
-            local_backup_path_abs = os.path.join(local_path_abs, target)
-            target_path = path_info.get('g3hgu_path', None)
-            img_rev_info = target + '-eng.major-image.' + y_m_d + '-rev.txt'
-        elif child == 'epon':
-            local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
-            target_path = path_info.get('g3hgu_epon_path', None)
-        elif child == 'gpon':
-            local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
-            target_path = path_info.get('g3hgu_gpon_path', None)
-        else:
-            print("Target <%s> child[%s] is invalid!!" % target, child)
+        log_file = y_m_d +'-'+ target + '-sanitytest-log.txt'; #_1
+#        print(img_rev_info)
+#        if target == 'g3hgu' and child != '':
+#            target_path = path_info.get(target + '_' + child + '_path', None)
+#            local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
+#            log_file = y_m_d +'-' + target + '-' + child + '-sanitytest-log.txt';
+#        else:
+#            print("Target <%s> child[%s] is invalid!!" % target, child)
     elif target == 'saturn-sfu':
         local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
         img_rev_info = target + '-eng_'+ child +'.major-image.' + y_m_d + '-rev.txt'
-        # print(img_rev_info)
-        if child == 'epon':
-            target_path = path_info.get('epon_path', None)
-        elif child == 'gpon':
-             target_path = path_info.get('gpon_path', None)
-        else:
-            print("Target <%s> child[%s] is invalid!!" % target, child)
+#        print(img_rev_info)
+        log_file = y_m_d +'-'+ child + '-sanitytest-log.txt'; #_1
+        target_path = path_info.get(child + '_path', None)
     else:
         print("Target[%s] is invalid!!" % target)
-    # print(local_backup_path_abs)
+#    print(local_backup_path_abs)
     remote_path = path_info.get('remote_path', None)
     remote_path_abs = remote_path + target+'/'+ y_m +'/'+ y_m_d + target_path
     return_items = getattr(obj, "connect")(remote_path_abs)
-    # print(return_items)
-    if target == 'g3':
-        log_file = y_m_d +'-'+ target + '-sanitytest-log.txt'; #_1
-    elif target == 'g3hgu':
-        if child == '':
-            log_file = y_m_d +'-'+ target + '-sanitytest-log.txt'; #_1
-        elif child == 'epon' or child == 'gpon':
-            log_file = y_m_d +'-'+ child + '-sanitytest-log.txt';
-        else:
-            print("Target <%s> child[%s] is invalid!!" % target, child)
-    elif target == 'saturn-sfu':
-        log_file = y_m_d +'-'+ child + '-sanitytest-log.txt'; #_1
+#    print(return_items)
     if log_file in return_items:
         print("%s HAD put on the server already!!!" % log_file)
         getattr(obj, "close")()
         return False
-    # Download doing
     old_file_list = os.listdir(local_path_abs)
     for item in old_file_list:
         if not os.path.isdir(local_path_abs + item):
@@ -294,30 +271,30 @@ def download_img(obj, current_path, config, target, child=''):
                     ret = False
                     break
                 remote_file = remote_path_abs + item
-                # print(remote_file)
+#                print(remote_file)
                 local_backup_file = os.path.join(local_backup_path_abs, item)
-                if target == 'g3' or target == 'g3hgu':
+                if target == 'g3' or target == 'g3hgu' or target == 'venus':
                     if item == 'uboot-env.bin':
                         local_file = os.path.join(local_path_abs, target +'-'+ item)
                     else:
                         local_file = os.path.join(local_path_abs, item)
                 else:
                     local_file = os.path.join(local_path_abs, item)
-                #if target != 'g3hgu':
-                    # print(local_file)
+#                if target != 'g3hgu':
+#                    print(local_file)
                 getattr(obj, "input")(local_file, remote_file)
                 getattr(obj, "get")()
                 time.sleep(1)
-                # print(local_backup_file + '\r\n')
+#                print(local_backup_file + '\r\n')
                 getattr(obj, "input")(local_backup_file, remote_file)
                 getattr(obj, "get")()
                 time.sleep(1)
     local_img_rev_info = os.path.join(local_path_abs, img_rev_info)
-    # print(local_img_rev_info)
+#    print(local_img_rev_info)
     remote_img_rev_info = remote_path_abs + img_rev_info
-    # print(remote_img_rev_info)
+#    print(remote_img_rev_info)
     if img_rev_info in return_items:
-        # print("%s WAS Found on server!!!" % img_rev_info)
+#        print("%s WAS Found on server!!!" % img_rev_info)
         getattr(obj, "input")(local_img_rev_info, remote_img_rev_info)
         getattr(obj, "get")()
         glb_img_rev_file = local_img_rev_info
@@ -724,6 +701,11 @@ def main():
                 send_email(config, 'g3hgu')
             else:
                 print("g3hgu log file not checked errors")
+
+        # Venus sanity test process
+        venus_img_ok = download_img(obj, current_path, config, 'venus')
+        time.sleep(2)
+        print("venus img download is %s" % venus_img_ok)
 
         # Sleep 1 hour
         if g3_img_ok != True and epon_img_ok != True and gpon_img_ok != True and g3hgu_img_ok != True:
