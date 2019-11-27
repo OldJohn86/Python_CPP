@@ -7,12 +7,10 @@ Date: 2018-01-01
 import os
 import sys
 import time
-#import datetime
 import paramiko
 import telnetlib
 import getpass
 import smtplib
-
 from datetime import date
 from configparser import ConfigParser
 from email import encoders
@@ -75,7 +73,6 @@ def send_email(config, target, child=''):
 #    print(glb_img_rev_file)
     y_m_d = date.today().strftime('%Y-%m-%d')
     y_m = date.today().strftime('%Y-%m')
-
     mail_info = read_ini(config, 'mail')
     mail_user = str(mail_info.get('user', None))
     mail_postfix = str(mail_info.get('postfix', None))
@@ -127,7 +124,6 @@ def send_email(config, target, child=''):
 #        print(img_rev_lines)
     text_msg += '\r\n\r\n [Image Rev Info]: \r\n' + img_rev_lines
     msg.attach(MIMEText(text_msg, 'plain', 'utf-8'))
-
     att1 = MIMEText(open(glb_log_file, 'rb').read(), 'base64', 'utf-8')
     att1["Content-Type"] = 'application/octet-stream'
     att1["Content-Disposition"] = 'attachment; filename="sanity-test-log.txt"'
@@ -157,6 +153,8 @@ def log_no_errors(target, child=''):
             no_error_tag = 'root@g3hgu-eng:~# '
         elif target == 'saturn-sfu':
             no_error_tag = 'root@saturn-sfu-eng:~# '
+        elif target == 'venus':
+            no_error_tag = 'root@venus-eng:~# '
         else:
             print("Target %s is vaild" % target)
         if no_error_tag in last_lines:
@@ -301,21 +299,21 @@ def upload_log(obj, current_path, config, target, child=''):
 #    print(local_path_abs)
     if not os.path.exists(local_path_abs):
         print("ERROR: local_path[%s] NOT exists!!" % local_path_abs)
-    if target == 'g3':
+    if target == 'g3' or target == 'g3hgu' or target == 'venus':
         log_file = target + '-sanitytest-log.txt';
-        target_path = path_info.get('g3_path', None)
-    elif target == 'g3hgu':
-        if child == '':
-            log_file = target + '-sanitytest-log.txt';
-            target_path = path_info.get('g3hgu_path', None)
-        elif child == 'epon':
-            log_file = target + '-' + child + '-sanitytest-log.txt';
-            target_path = path_info.get('g3hgu_epon_path', None)
-        elif child == 'gpon':
-            log_file = target + '-' + child + '-sanitytest-log.txt';
-            target_path = path_info.get('g3hgu_gpon_path', None)
-        else:
-            print("ERROR: Input g3hgu child[%s] is invalid!!" % child)
+        target_path = path_info.get(target + '_path', None)
+#        if target == 'g3hgu':
+#            if child == '':
+#                log_file = target + '-sanitytest-log.txt';
+#                target_path = path_info.get('g3hgu_path', None)
+#            elif child == 'epon':
+#                log_file = target + '-' + child + '-sanitytest-log.txt';
+#                target_path = path_info.get('g3hgu_epon_path', None)
+#            elif child == 'gpon':
+#                log_file = target + '-' + child + '-sanitytest-log.txt';
+#                target_path = path_info.get('g3hgu_gpon_path', None)
+#            else:
+#                print("ERROR: Input g3hgu child[%s] is invalid!!" % child)
     elif target == 'saturn-sfu':
         log_file = child + '-sanitytest-log.txt';
         if child == 'epon':
@@ -357,19 +355,26 @@ def do_telnet(config, target):
     tftpboot_info = read_ini(config, 'tftpboot')
     saveenv_set = tftpboot_info.get('saveenv_set', None).encode('ascii')
     reset_set = tftpboot_info.get('reset_set', None).encode('ascii')
-    if target == "g3":
-        port = int(telnet_info.get('g3_port', None))
-        activeport_set = tftpboot_info.get('g3_activeport_set', None).encode('ascii')
-        ipaddr_set = tftpboot_info.get('g3_ipaddr_set', None).encode('ascii')
-        serverip_set = tftpboot_info.get('g3_serverip_set', None).encode('ascii')
-        tftpboot_gpt = tftpboot_info.get('g3_tftpboot_gpt', None).encode('ascii')
-        upgrade_gpt = tftpboot_info.get('g3_upgrade_gpt', None).encode('ascii')
-        tftpboot_ubootenv = tftpboot_info.get('g3_tftpboot_ubootenv', None).encode('ascii')
-        upgrade_ubootenv = tftpboot_info.get('g3_upgrade_ubootenv', None).encode('ascii')
-        tftpboot_image = tftpboot_info.get('g3_tftpboot_image', None).encode('ascii')
-        upgrade_image = tftpboot_info.get('g3_upgrade_image', None).encode('ascii')
-        uboot_tag = b"G3# "
-        cmdline_tag = b"root@g3-eng:~# "
+    if target == 'g3' or target == 'g3hgu' or target == 'venus':
+        port = int(telnet_info.get(target + '_port', None))
+        activeport_set = tftpboot_info.get(target + '_activeport_set', None).encode('ascii')
+        ipaddr_set = tftpboot_info.get(target + '_ipaddr_set', None).encode('ascii')
+        serverip_set = tftpboot_info.get(target + '_serverip_set', None).encode('ascii')
+        tftpboot_gpt = tftpboot_info.get(target + '_tftpboot_gpt', None).encode('ascii')
+        upgrade_gpt = tftpboot_info.get(target + '_upgrade_gpt', None).encode('ascii')
+        tftpboot_ubootenv = tftpboot_info.get(target + '_tftpboot_ubootenv', None).encode('ascii')
+        upgrade_ubootenv = tftpboot_info.get(target + '_upgrade_ubootenv', None).encode('ascii')
+        tftpboot_image = tftpboot_info.get(target + '_tftpboot_image', None).encode('ascii')
+        upgrade_image = tftpboot_info.get(target + '_upgrade_image', None).encode('ascii')
+        if target == 'g3':
+            uboot_tag = b"G3# "
+            cmdline_tag = b"root@g3-eng:~# "
+        elif target == 'g3hgu':
+            uboot_tag = b"G3# "
+            cmdline_tag = b"root@g3hgu-eng:~# "
+        elif target == 'venus':
+            uboot_tag = b"VENUS# "
+            cmdline_tag = b"root@venus-eng:~# "
         written_ok = b"written: OK"
         tftp_done = b"done"
         cmd_list = [tftpboot_gpt,
@@ -379,29 +384,7 @@ def do_telnet(config, target):
                     tftpboot_image,
                     upgrade_image,
                     ]
-    elif target == "g3hgu":
-        port = int(telnet_info.get('g3hgu_port', None))
-        activeport_set = tftpboot_info.get('g3hgu_activeport_set', None).encode('ascii')
-        ipaddr_set = tftpboot_info.get('g3hgu_ipaddr_set', None).encode('ascii')
-        serverip_set = tftpboot_info.get('g3hgu_serverip_set', None).encode('ascii')
-        tftpboot_gpt = tftpboot_info.get('g3hgu_tftpboot_gpt', None).encode('ascii')
-        upgrade_gpt = tftpboot_info.get('g3hgu_upgrade_gpt', None).encode('ascii')
-        tftpboot_ubootenv = tftpboot_info.get('g3hgu_tftpboot_ubootenv', None).encode('ascii')
-        upgrade_ubootenv = tftpboot_info.get('g3hgu_upgrade_ubootenv', None).encode('ascii')
-        tftpboot_image = tftpboot_info.get('g3hgu_tftpboot_image', None).encode('ascii')
-        upgrade_image = tftpboot_info.get('g3hgu_upgrade_image', None).encode('ascii')
-        uboot_tag = b"G3# "
-        cmdline_tag = b"root@g3hgu-eng:~# "
-        written_ok = b"written: OK"
-        tftp_done = b"done"
-        cmd_list = [tftpboot_gpt,
-                    upgrade_gpt,
-                    tftpboot_ubootenv,
-                    upgrade_ubootenv,
-                    tftpboot_image,
-                    upgrade_image,
-                    ]
-    elif target == "saturn-sfu":
+    elif target == 'saturn-sfu':
         port = int(telnet_info.get('saturn_port', None))
         activeport_set = tftpboot_info.get('saturn_activeport_set', None).encode('ascii')
         ipaddr_set = tftpboot_info.get('saturn_ipaddr_set', None).encode('ascii')
@@ -650,7 +633,7 @@ def main():
                         print("OKAY: %s log file not checked errors" % target)
         for value in img_ok.values():
             result_list.append(value)
-        print(result_list)
+#        print(result_list)
         if True in result_list:
             print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 10 minutes")
             time.sleep(10*60)
