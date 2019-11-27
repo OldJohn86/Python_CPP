@@ -640,7 +640,7 @@ def capture_log(current_path, config, target, child=''):
     with open(log_file_path, 'w') as f:
         f.write(log)
 
-if __name__ == "__main__":
+def main():
     current_path = sys.argv[0].rstrip('/sanity_test.py')
     # print(current_path)
     config = os.path.join(current_path, 'config/dailybuild_server_config.ini')
@@ -732,3 +732,6 @@ if __name__ == "__main__":
         else:
             # print("g3/epon/gpon/g3hgu sanity test process sleep 0.5 hour")
             time.sleep(30*60)
+
+if __name__ == "__main__":
+    main()
