@@ -606,7 +606,7 @@ def main():
                         time.sleep(2)
                         upload_log(obj, current_path, config, target, child)
                         time.sleep(2)
-                        log_ok[target] = log_no_errors(target, child)
+                        log_ok[child] = log_no_errors(target, child)
                         time.sleep(2)
                         if log_ok[child] == False:
                             print("ERROR: %s_%s log file has checked errors & send emails!" % (target, child))
