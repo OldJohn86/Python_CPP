@@ -575,9 +575,8 @@ def capture_log(current_path, config, target, child=''):
     with open(log_file_path, 'w') as f:
         f.write(log)
 
-result_list = []
-img_ok = {'g3':False, 'g3hgu':False, 'saturn-sfu_epon':False, 'saturn-sfu_gpon':False, 'venus':False}
-log_ok = {'g3':False, 'g3hgu':False, 'saturn-sfu_epon':False, 'saturn-sfu_gpon':False, 'venus':False}
+img_ok = {'g3':False, 'g3hgu':False, 'epon':False, 'gpon':False, 'venus':False}
+log_ok = {'g3':False, 'g3hgu':False, 'epon':False, 'gpon':False, 'venus':False}
 def main():
     current_path = sys.argv[0].rstrip('/sanity_test.py')
 #    print(current_path)
@@ -588,28 +587,28 @@ def main():
     port = int(ssh_info.get('port', None))
     username = ssh_info.get('username', None)
     password = ssh_info.get('password', None)
-    target = ssh_info.get('target', None)
-#    print(target.split(' '))
-    child = ssh_info.get('child', None)
-#    print(child.split(' '))
+    target_list = ssh_info.get('target', None)
+#    print(target_list.split(' '))
+    child_list = ssh_info.get('child', None)
+#    print(child_list.split(' '))
     obj = SftpTool(username, password, port, host)
 
     while True:
-        for target in target.split(' '):
+        for target in target_list.split(' '):
             if target == 'saturn-sfu': #saturn-sfu
-                for child in child.split(' '):
-                    img_ok[target +'_'+ child] = download_img(obj, current_path, config, target, child)
-                    print("STATUS: %s_%s img download is %s" % (target, child, img_ok[target +'_'+ child]))
+                for child in child_list.split(' '):
+                    img_ok[child] = download_img(obj, current_path, config, target, child)
+                    print("STATUS: %s_%s img download is %s" % (target, child, img_ok[child]))
 #                    print(target +'_'+ child, img_ok[target + '_' + child])
                     time.sleep(2)
-                    if img_ok[target +'_'+ child] == True:
+                    if img_ok[child] == True:
                         capture_log(current_path, config, target, child)
                         time.sleep(2)
                         upload_log(obj, current_path, config, target, child)
                         time.sleep(2)
                         log_ok[target] = log_no_errors(target, child)
                         time.sleep(2)
-                        if log_ok[target +'_'+ child] == False:
+                        if log_ok[child] == False:
                             print("ERROR: %s_%s log file has checked errors & send emails!" % (target, child))
                             send_email(config, target, child)
                         else:
@@ -631,15 +630,16 @@ def main():
                         send_email(config, target)
                     else:
                         print("OKAY: %s log file not checked errors" % target)
-        for value in img_ok.values():
-            result_list.append(value)
-#        print(result_list)
-        if True in result_list:
-            print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 10 minutes")
-            time.sleep(10*60)
-        else:
-            print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 1 hour")
-            time.sleep(60*60)
+            result_list = []
+            for value in img_ok.values():
+                result_list.append(value)
+            print(result_list)
+            if True in result_list:
+                print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 10 minutes")
+                time.sleep(10*60)
+            else:
+                print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 1 hour")
+                time.sleep(60*600)
 
 if __name__ == "__main__":
     main()
