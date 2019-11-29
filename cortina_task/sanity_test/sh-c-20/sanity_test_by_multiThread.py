@@ -433,8 +433,8 @@ def do_telnet(config, target):
     with open(glb_cmd_file, 'w') as f:
         f.write('\r\n'.join(run_cmds))
     serverip = serverip_set.split()[2]
-    print(serverip)
-    print(host, port)
+#    print(serverip)
+#    print(host, port)
     tn = telnetlib.Telnet(host, port, timeout=50)
     tn.write(b"\r\n")
     time.sleep(1)
@@ -590,9 +590,9 @@ def run_testThread(obj, path, config, target, child=''):
             print("STATUS: %s img download is %s" % (child, img_ok[child]))
             time.sleep(2)
             if img_ok[child] == True:
-                capture_log(current_path, config, target, child)
+                capture_log(path, config, target, child)
                 time.sleep(2)
-                upload_log(obj, current_path, config, target, child)
+                upload_log(obj, path, config, target, child)
                 time.sleep(2)
                 log_no_errors(target, child)
                 time.sleep(2)
@@ -606,9 +606,9 @@ def run_testThread(obj, path, config, target, child=''):
             print("STATUS: %s img download is %s" % (target, img_ok[target]))
             time.sleep(2)
             if img_ok[target] == True:
-                capture_log(current_path, config, target)
+                capture_log(path, config, target)
                 time.sleep(2)
-                upload_log(obj, current_path, config, target)
+                upload_log(obj, path, config, target)
                 time.sleep(2)
                 log_no_errors(target)
                 time.sleep(2)
@@ -638,7 +638,6 @@ def main():
     child_list = ssh_info.get('child', None)
 #    print(child.split(' '))
     obj = SftpTool(username, password, port, host)
-
 #    print('thread %s is running...' % threading.current_thread().name)
     while True:
         for target in target_list.split(' '):
@@ -647,11 +646,18 @@ def main():
                     t = threading.Thread(target=run_testThread, args=(obj, current_path, config, target, child), name=child+'_TestThread')
                     t.start()
                     t.join()
+                    if True in img_ok.values():
+                        time.sleep(1*60)
+                    else:
+                        time.sleep(60*60)
             else:
                 t = threading.Thread(target=run_testThread, args=(obj, current_path, config, target), name=target+'_TestThread')
                 t.start()
                 t.join()
-        time.sleep(30*60)
+                if True in img_ok.values():
+                    time.sleep(1*60)
+                else:
+                    time.sleep(60*60)
 #    print('thread %s ended.' % threading.current_thread().name)
 
 lock = threading.Lock()
