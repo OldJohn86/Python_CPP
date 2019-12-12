@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html dir="ltr" class="client-js" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><title>T32 trace howto - Cortina Systems Wiki</title>
+<meta name="generator" content="MediaWiki 1.22.6">
+<link rel="stylesheet" href="T32%20trace%20howto%20-%20Cortina%20Systems%20Wiki_files/cortina.css">
+<link rel="shortcut icon" href="http://sv-wiki-01/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://sv-wiki-01/wiki/opensearch_desc.php" title="Cortina Systems Wiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://sv-wiki-01/wiki/api.php?action=rsd">
+<link rel="alternate" type="application/atom+xml" title="Cortina Systems Wiki Atom feed" href="http://sv-wiki-01/wiki/index.php?title=Special:RecentChanges&amp;feed=atom">
+<link rel="stylesheet" href="T32%20trace%20howto%20-%20Cortina%20Systems%20Wiki_files/load.css">
+<!--[if IE 6]><link rel="stylesheet" href="/wiki/skins/monobook/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/wiki/skins/monobook/IE70Fixes.css?303" media="screen" /><![endif]--><style>
+.mw-collapsible-toggle{float:right} li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:4250852ed2349a0d4d0fc6509a3e7d4c */
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px -1px 0 0} html > body .suggestions{margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special .special-label{color:gray;text-align:left}.suggestions-special .special-query{color:black;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:white}.autoellipsis-matched,.highlight{font-weight:bold}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:9780324491b653a3780e2d029bdc140c */
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:.6em 3.6em .6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dcd9d9;text-shadow:0 0.0625em 0 rgba(255,255,255,0.5);border-radius:5px;-webkit-box-shadow:0 2px 5px 0 #ccc;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook .postedit{top:6em !important}.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABblBMVEUAAAD///////9PfTf///80aRdTgjn///9Feij///////////9Rfzf///////////9PfjZRgDh1o1xOfTb///////+bwYqLtnj///////9PfTa82K////9WhT6YxIL///9QgDdTgzr////////j7uDl7eLq8efi693k7OH///////9UhjuBr2rp9uRUhjr///9YljVKgir///9WiTlYjT3////9/v57vFlbkT5PjC9dlD/5/fhuq09stUTs9uhxuElctCpfnT1huDFloEZloUZmpENmvDZpvDxpvTxqvjxrvT5rvT9rwTxsqktswD5uwkBvuUdxw0NztFBztU9ztVBzwkp0tlJ1xkd2t1R3uVR4w1F4xk54x014yE15uVZ5v1R5xVB6v1R7yFJ8wVh9xVl9yFR9yVd9ylN+xVh+yFd/x1l/yFeAylmEx1+Ny2uY0Hqe04Wj1Ymv3Ze33qLD47TJ5L3O6cPU7Mrq9eb2+/Q4j37OAAAAQHRSTlMAAQIEBAUFBQwPFB4fJCUoKiosQEhJS01RUlZZXmdydXaChYuSlJSWmJmoq6uur8LExcvM19fg5ejt8fX2+Pr7SljgewAAAKpJREFUGBkFwQNCAwAAAMDLtl3LtrG4rWXbtvX77gAgZ6grFwC0bhwNVgKgdPZx8b0dgLi+s7Wn0VoAqpfOI9+BNADZI7fLrz2pSEwGHZuH+78lSK8ZLkLezF3ooyUG3VPXq2USei9WngeyoG195yBYWDF3E/2pAhl1e9Gr8bGT+bfOFCC2fnvh4X7rcqIAQNNu+HT6sxkAjceTL/2ZAIhv+PorBwBJxfkA//dFHSCBy/UTAAAAAElFTkSuQmCC);background-image:url(http://sv-wiki-01/wiki/resources/mediawiki.action/images/green-checkmark.png?2014-04-24T21:25:00Z)!ie;background-position:left}.postedit-close{position:absolute;padding:0 .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:black;text-shadow:0 0.0625em 0 white;text-decoration:none;opacity:0.2;filter:alpha(opacity=20)}.postedit-close:hover{color:black;text-decoration:none;opacity:0.4;filter:alpha(opacity=40)}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:7f54a550ae14160313958ddb2288bcd7 */</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{text-decoration:none;color:black}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:white}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:52b1797f70c7e4094dfa4191101944e8 */</style><meta name="ResourceLoaderDynamicStyles" content="">
+<style>a:lang(ar),a:lang(ckb),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:2902c472ef4c41bfeaf25eb08706bd57 */</style>
+
+<script src="T32%20trace%20howto%20-%20Cortina%20Systems%20Wiki_files/load_002.php"></script><script src="T32%20trace%20howto%20-%20Cortina%20Systems%20Wiki_files/load_004.php"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"T32_trace_howto","wgTitle":"T32 trace howto","wgCurRevisionId":100336,"wgRevisionId":100336,"wgArticleId":9274,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"T32_trace_howto","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgRestrictionRead":[],"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"monobook","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"vector-simplesearch":1,"watchcreations":0,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0
+,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"useeditwarning":1,"prefershttps":1,"language":"en","variant-gan":"gan","variant-iu":"iu","variant-kk":"kk","variant-ku":"ku","variant-shi":"shi","variant-sr":"sr","variant-tg":"tg","variant-uz":"uz","variant-zh":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"variant":"en"});},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});},{},{});
+/* cache key: wikiSQL:resourceloader:filter:minify-js:7:68471340157e99d9e2eb390b7623161a */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script><script src="T32%20trace%20howto%20-%20Cortina%20Systems%20Wiki_files/load_003.php"></script>
+<script async="" src="T32%20trace%20howto%20-%20Cortina%20Systems%20Wiki_files/load.php"></script></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-T32_trace_howto skin-monobook action-view">
+<div id="globalWrapper">
+<div id="column-content"><div id="content" class="mw-body-primary" role="main">
+	<a id="top"></a>
+	<div id="siteNotice"><div id="localNotice" dir="ltr" lang="en"><p>-
+</p>
+<div class="page-warning">
+<p><font size="4" color="red"><b>Login Required for Editting!</b></font>
+</p><p>We are enforcing the rule that every user has to log in before 
+he/she can make any modification to this wiki.  Your Cortina login 
+should work fine here.  There is no real need to create a new account.  
+If you do not want to log in, an anonymous user can only view some 
+specific contents of this wiki.
+</p>
+</div>
+</div></div>
+	<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">T32 trace howto</span></h1>
+	<div id="bodyContent" class="mw-body">
+		<div id="siteSub">From Cortina Systems Wiki</div>
+		<div id="contentSub"></div>
+		<div id="jump-to-nav" class="mw-jump">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>
+
+		<!-- start content -->
+<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="#" class="internal" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#FPGA_Images"><span class="tocnumber">1</span> <span class="toctext">FPGA Images</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Build_U-Boot"><span class="tocnumber">2</span> <span class="toctext">Build U-Boot</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Build_Kernel"><span class="tocnumber">3</span> <span class="toctext">Build Kernel</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Trace32"><span class="tocnumber">4</span> <span class="toctext">Trace32</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#CA53_SP_cmm"><span class="tocnumber">4.1</span> <span class="toctext">CA53 SP cmm</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#CA53_MP2_cmm"><span class="tocnumber">4.2</span> <span class="toctext">CA53 MP2 cmm</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#CA53_MP4_cmm"><span class="tocnumber">4.3</span> <span class="toctext">CA53 MP4 cmm</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#JTAG_Passowrd_cmm"><span class="tocnumber">4.4</span> <span class="toctext">JTAG Passowrd cmm</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#JTAG_OSC_cmm"><span class="tocnumber">4.5</span> <span class="toctext">JTAG OSC cmm</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="#Load_Linux_kernel_image_and_trace_into"><span class="tocnumber">5</span> <span class="toctext">Load Linux kernel image and trace into</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#Debug_Linux_kernel_module"><span class="tocnumber">6</span> <span class="toctext">Debug Linux kernel module</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="#Debug_Linux_kernel_module_2"><span class="tocnumber">7</span> <span class="toctext">Debug Linux kernel module</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="#load_module.cmm"><span class="tocnumber">8</span> <span class="toctext">load_module.cmm</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="FPGA_Images">FPGA Images</span></h1>
+<pre>FPGA #A:[<a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/images/d/dc/Fa-xnlx-ddr.bit">Fa-xnlx-ddr.bit</a>]
+FPGA #B:[<a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/images/0/00/Ca53mp4.bit">Ca53mp4.bit</a>]
+</pre>
+<h1><span class="mw-headline" id="Build_U-Boot">Build U-Boot</span></h1>
+<ol>
+<li> Use G3 Openwrt build. U-boot will put at build_dir/target-aarch64-openwrt-linux-gnu/linux-g3_fpga/u-boot-2015.04/
+</li>
+<li> Or build u-boot stand alone:
+</li>
+</ol>
+<pre>&gt; git clone  gitolite@cs-local-gitmirror:sw/platforms/cs-unified/bootloaders/u-boot
+&gt; git checkout g3-v2015.04-master
+&gt; cd g3-v2015.04-master 
+&gt; make V=1 CROSS_COMPILE=aarch64-openwrt-linux- cortina_presidio-fpga_defconfig
+&gt; make V=1 CROSS_COMPILE=aarch64-openwrt-linux-
+</pre>
+<p>u-boot.bin and u-boot will generated at top directory of u-boot fold.
+</p>
+<h1><span class="mw-headline" id="Build_Kernel">Build Kernel</span></h1>
+<p>Follow G3 Openwrt build procedure to generate kernel image.<a rel="nofollow" class="external autonumber" href="http://sv-wiki-01/wiki/index.php/G3_Build_Environment">[1]</a>
+Change directory to Linux folder and build device tree if .dtb is not generated.
+</p>
+<pre>make ARCH=arm64 CROSS_COMPILE=aarch64-openwrt-linux- dtbs</pre>
+<p>ca7774-fpgaboard.dtb is located at 
+build_dir/target-aarch64-openwrt-linux-gnu/linux-g3_fpga/linux-3.18/arch/arm64/boot/dts/cortina/ca7774-fpgaboard.dtb
+</p>
+<h1><span class="mw-headline" id="Trace32">Trace32</span></h1>
+<p>3 cmm script for Single-Processor/MP2/MP4<br>
+</p>
+<h3><span class="mw-headline" id="CA53_SP_cmm">CA53 SP cmm</span></h3>
+<pre>; --------------------------------------------------------------------------------------------------
+; @Title: Startup script for the G3 FPGA board
+; @Description: This script configures the base addresses for debug and attaches to the core
+; @Copyright: (C) 2015 Cortina Access
+; --------------------------------------------------------------------------------------------------
+; $Id: $
+;
+; NOTE: Interrupts are disabled with SYStem.Option IMASKASM and IMASKHLL per default
+;
+
+; G3 FPGA Configuration:
+; * 4x Cortex-A53
+
+//--------------------------------------------------------------------------------------------------
+// Configuration
+
+SYStem.RESet
+SYStem.CPU CORTEXA53
+
+SYStem.Option EnReset off
+
+;SYStem.CONFIG CORENUMBER 4.
+SYStem.CONFIG CORENUMBER 1.
+
+ &nbsp;;CORE.ASSIGN 1. 2. 3. 4.
+  CORE.ASSIGN 1.
+
+//
+// Cortex-A53 | debug      | CTI        | PMU        | trace
+// -----------+------------+------------+------------+------------
+//   core 0   | 0x80410000 | 0x80420000 | 0x80430000 | 0x80440000
+//   core 1   | 0x80510000 | 0x80520000 | 0x80530000 | 0x80540000
+//   core 2   | 0x80610000 | 0x80620000 | 0x80630000 | 0x80640000
+//   core 3   | 0x80710000 | 0x80720000 | 0x80730000 | 0x80740000
+//
+// Cortex-A53 ROM-Table: 0x80400000
+//
+
+// Access port numbers are
+SYStem.CONFIG APBACCESSPORT 1.
+SYStem.CONFIG DEBUGACCESSPORT 0.   &nbsp;; set to 0 to work
+SYStem.CONFIG AXIACCESSPORT 0.
+SYStem.CONFIG MEMORYACCESSPORT 0.
+
+// Pre/Post settings
+;SYStem.CONFIG DAPIRPRE 4.
+;SYStem.CONFIG DAPDRPRE 1.
+;SYStem.CONFIG DAPIRPOST 0.
+;SYStem.CONFIG DAPDRPOST 0.
+
+// Assignment:  MP4
+;SYStem.CONFIG COREDEBUG BASE DAP:0x80410000 DAP:0x80510000 DAP:0x80610000 DAP:0x80710000
+;SYStem.CONFIG CTI BASE DAP:0x80420000 DAP:0x80520000 DAP:0x80620000 DAP:0x80720000
+;SYStem.CONFIG BMC BASE DAP:0x80430000 DAP:0x80530000 DAP:0x80630000 DAP:0x80730000
+;SYStem.CONFIG ETM BASE DAP:0x80440000 DAP:0x80540000 DAP:0x80640000 DAP:0x80740000
+
+// Assignment:  SP
+SYStem.CONFIG COREDEBUG BASE DAP:0x80410000
+SYStem.CONFIG CTI BASE DAP:0x80420000
+SYStem.CONFIG BMC BASE DAP:0x80430000
+SYStem.CONFIG ETM BASE DAP:0x80440000
+
+//--------------------------------------------------------------------------------------------------
+// Attach
+
+  // Finally attach to the target
+;  SYStem.Mode Attach
+   system.up
+;if run()
+;Break
+
+;ENDDO
+
+; Enable DDR_SCH FPGA mode
+data.set 0xf4328864&nbsp;%l 0x01f74010&nbsp;;
+
+;load images
+;d.load.binary  P:\Work\G3_Master\G3-160414-SD\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\u-boot-2015.04\u-boot.bin 0x4000000 /verify
+;d.load.binary  P:\Work\G3_Master\G3-160414-SD\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\u-boot-2015.04\u-boot.bin 0xfffc0000 /verify
+;d.load.elf P:\Work\G3_Master\G3-160414-SD\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\u-boot-2015.04\u-boot.sym /nocode /strippart "/space/" /path "P:\"
+d.load.binary  P:\Work\G3_Master\G3-160224\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\ca-u-boot\u-boot.bin 0x4000000 /verify
+d.load.elf P:\Work\G3_Master\G3-160224\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\ca-u-boot\u-boot.sym /nocode /strippart "/space/" /path "p:\" 
+R.S PC 0x4000000
+;R.S PC 0xfffc0000
+
+&amp;uart_base=0xf4329148
+;data.set &amp;uart_base     &nbsp;%l 0x01B200e3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=50MHz
+data.set 0xf4329148     &nbsp;%l 0x0000D9e3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=25MHz
+data.set 0xf432914c&nbsp;%l 0x588	; FC
+data.set 0xf4329150&nbsp;%l 0x6c		; Sample rate
+data.set 0xf4329158&nbsp;%l 0x4F		; print 'O'
+data.set 0xf4329158&nbsp;%l 0x4B		; print 'K'
+data.set 0xf4329158&nbsp;%l 0x21		; print '!'
+data.set 0xf4329158&nbsp;%l 0x0D		;
+data.set 0xf4329158&nbsp;%l 0x0A		;
+</pre>
+<h3><span class="mw-headline" id="CA53_MP2_cmm">CA53 MP2 cmm</span></h3>
+<pre>; --------------------------------------------------------------------------------------------------
+; @Title: Startup script for the G3 FPGA board
+; @Description: This script configures the base addresses for debug and attaches to the core
+; @Copyright: (C) 2015 Cortina Access
+; --------------------------------------------------------------------------------------------------
+; $Id: $
+;
+; NOTE: Interrupts are disabled with SYStem.Option IMASKASM and IMASKHLL per default
+;
+
+; G3 FPGA Configuration:
+; * 4x Cortex-A53
+
+//--------------------------------------------------------------------------------------------------
+// Configuration
+
+SYStem.RESet
+SYStem.CPU CORTEXA53
+
+SYStem.Option EnReset off
+
+;SYStem.CONFIG CORENUMBER 4.
+SYStem.CONFIG CORENUMBER 2.
+
+ &nbsp;;CORE.ASSIGN 1. 2. 3. 4.
+  CORE.ASSIGN 1. 2.
+
+//
+// Cortex-A53 | debug      | CTI        | PMU        | trace
+// -----------+------------+------------+------------+------------
+//   core 0   | 0x80410000 | 0x80420000 | 0x80430000 | 0x80440000   
+//   core 1   | 0x80510000 | 0x80520000 | 0x80530000 | 0x80540000
+//   core 2   | 0x80610000 | 0x80620000 | 0x80630000 | 0x80640000   
+//   core 3   | 0x80710000 | 0x80720000 | 0x80730000 | 0x80740000   
+//
+// Cortex-A53 ROM-Table: 0x80400000
+//
+
+// Access port numbers are
+SYStem.CONFIG APBACCESSPORT 1.
+SYStem.CONFIG DEBUGACCESSPORT 0.   &nbsp;; set to 0 to work
+SYStem.CONFIG AXIACCESSPORT 0.
+SYStem.CONFIG MEMORYACCESSPORT 0.
+
+// Pre/Post settings
+;SYStem.CONFIG DAPIRPRE 4.
+;SYStem.CONFIG DAPDRPRE 1.
+;SYStem.CONFIG DAPIRPOST 0.
+;SYStem.CONFIG DAPDRPOST 0.
+
+// Assignment:  MP4
+;SYStem.CONFIG COREDEBUG BASE DAP:0x80410000 DAP:0x80510000 DAP:0x80610000 DAP:0x80710000
+;SYStem.CONFIG CTI BASE DAP:0x80420000 DAP:0x80520000 DAP:0x80620000 DAP:0x80720000
+;SYStem.CONFIG BMC BASE DAP:0x80430000 DAP:0x80530000 DAP:0x80630000 DAP:0x80730000
+;SYStem.CONFIG ETM BASE DAP:0x80440000 DAP:0x80540000 DAP:0x80640000 DAP:0x80740000
+
+// Assignment:  MP2
+SYStem.CONFIG COREDEBUG BASE DAP:0x80410000 DAP:0x80510000
+SYStem.CONFIG CTI BASE DAP:0x80420000 DAP:0x80520000
+SYStem.CONFIG BMC BASE DAP:0x80430000 DAP:0x80530000
+SYStem.CONFIG ETM BASE DAP:0x80440000 DAP:0x80540000
+
+//--------------------------------------------------------------------------------------------------
+// Attach
+
+  // Finally attach to the target
+;  SYStem.Mode Attach
+   system.up 
+;if run()
+;Break
+ 
+;ENDDO
+
+; Enable DDR_SCH FPGA mode
+data.set 0xf4328864&nbsp;%l 0x01f74010&nbsp;;
+
+;load images
+;d.load.binary d:\home\jliu\G3_FPGA\openwrt-fpga-zImage-NAND-ecc-256-USB-host-LCD888-noPCIe-SSP 0x0 /verify
+;d.load.elf  p:\space\Work\G3\g3-u-boot\u-boot /path "p:\" 
+;d.load.binary  p:\space\Work\G3\g3-u-boot\u-boot.bin-ldp 0x3000000
+d.load.binary  p:\space\Work\G3\g3-u-boot\u-boot.bin 0x4000000
+d.load.elf  p:\space\Work\G3\g3-u-boot\u-boot /nocode /strippart "/space/" /path "p:\"
+;d.load.elf  p:\space\Work\G3\u-boot /nocode
+R.S PC 0x4000000
+
+; Load kernel image
+;d.load.binary P:\Work\G3_Master\G3-FPGA-150629\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\linux-3.18\arch\arm64\boot\Image 0x80000
+;data.load.elf P:\Work\G3_Master\G3-FPGA-150629\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\linux-3.18\vmlinux /nocode /strippart "/space/Work/G3_Master/G3-FPGA-150629/build_dir/target-aarch64-openwrt-linux-gnu/linux-g3_fpga/" /path "p:\"
+;d.load.binary P:\Work\G3_Master\G3-FPGA-150629\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\linux-3.18\arch\arm64\boot\dts\cortina\ca7774-fpgaboard.dtb 0x1000000
+;R.S X0 0x1000000
+;R.S PC 0x80000
+
+
+&amp;uart_base=0xf4570114
+data.set 0xf4329148     &nbsp;%l 0x0000D9e3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=25MHz
+data.set 0xf432914c&nbsp;%l 0x588	; FC
+data.set 0xf4329150&nbsp;%l 0x6c		; Sample rate
+data.set 0xf4329158&nbsp;%l 0x4F		; print 'O'
+data.set 0xf4329158&nbsp;%l 0x4B		; print 'K'
+data.set 0xf4329158&nbsp;%l 0x21		; print '!'
+data.set 0xf4329158&nbsp;%l 0x0D		;
+data.set 0xf4329158&nbsp;%l 0x0A		;
+
+</pre>
+<h3><span class="mw-headline" id="CA53_MP4_cmm">CA53 MP4 cmm</span></h3>
+<pre>; --------------------------------------------------------------------------------------------------
+; @Title: Startup script for the G3 FPGA board
+; @Description: This script configures the base addresses for debug and attaches to the core
+; @Copyright: (C) 2015 Cortina Access
+; --------------------------------------------------------------------------------------------------
+; $Id: $
+;
+; NOTE: Interrupts are disabled with SYStem.Option IMASKASM and IMASKHLL per default
+;
+
+; G3 FPGA Configuration:
+; * 4x Cortex-A53
+
+//--------------------------------------------------------------------------------------------------
+// Configuration
+
+SYStem.RESet
+SYStem.CPU CORTEXA53
+
+SYStem.Option EnReset off
+
+SYStem.CONFIG CORENUMBER 4.
+;SYStem.CONFIG CORENUMBER 2.
+
+  CORE.ASSIGN 1. 2. 3. 4.
+ &nbsp;;CORE.ASSIGN 1. 2.
+
+//
+// Cortex-A53 | debug      | CTI        | PMU        | trace
+// -----------+------------+------------+------------+------------
+//   core 0   | 0x80410000 | 0x80420000 | 0x80430000 | 0x80440000   
+//   core 1   | 0x80510000 | 0x80520000 | 0x80530000 | 0x80540000
+//   core 2   | 0x80610000 | 0x80620000 | 0x80630000 | 0x80640000   
+//   core 3   | 0x80710000 | 0x80720000 | 0x80730000 | 0x80740000   
+//
+// Cortex-A53 ROM-Table: 0x80400000
+//
+
+// Access port numbers are
+SYStem.CONFIG APBACCESSPORT 1.
+SYStem.CONFIG DEBUGACCESSPORT 0.         &nbsp;;set to 0 to work
+SYStem.CONFIG AXIACCESSPORT 0.
+SYStem.CONFIG MEMORYACCESSPORT 0.
+
+// Pre/Post settings
+;SYStem.CONFIG DAPIRPRE 4.
+;SYStem.CONFIG DAPDRPRE 1.
+;SYStem.CONFIG DAPIRPOST 0.
+;SYStem.CONFIG DAPDRPOST 0.
+
+// Assignment:  MP4
+SYStem.CONFIG COREDEBUG BASE DAP:0x80410000 DAP:0x80510000 DAP:0x80610000 DAP:0x80710000
+SYStem.CONFIG CTI BASE DAP:0x80420000 DAP:0x80520000 DAP:0x80620000 DAP:0x80720000
+SYStem.CONFIG BMC BASE DAP:0x80430000 DAP:0x80530000 DAP:0x80630000 DAP:0x80730000
+SYStem.CONFIG ETM BASE DAP:0x80440000 DAP:0x80540000 DAP:0x80640000 DAP:0x80740000
+
+// Assignment:  MP2
+;SYStem.CONFIG COREDEBUG BASE DAP:0x80410000 DAP:0x80510000
+;SYStem.CONFIG CTI BASE DAP:0x80420000 DAP:0x80520000
+;SYStem.CONFIG BMC BASE DAP:0x80430000 DAP:0x80530000
+;SYStem.CONFIG ETM BASE DAP:0x80440000 DAP:0x80540000
+
+//--------------------------------------------------------------------------------------------------
+// Attach
+
+  // Finally attach to the target
+ &nbsp;;SYStem.Mode Attach
+  SYStem.Up
+    
+; if run()
+; Break
+
+; Enable DDR_SCH FPGA mode
+data.set 0xf4328864&nbsp;%l 0x01f74010&nbsp;;
+
+;load images
+;d.load.binary d:\home\jliu\G3_FPGA\openwrt-fpga-zImage-NAND-ecc-256-USB-host-LCD888-noPCIe-SSP 0x0 /verify
+;d.load.elf  p:\space\Work\G3\g3-u-boot\u-boot /path "p:\" 
+;d.load.binary  p:\space\Work\G3\g3-u-boot\u-boot.bin-ldp 0x3000000
+d.load.binary  p:\space\Work\G3\g3-u-boot\u-boot.bin 0x4000000
+d.load.elf  p:\space\Work\G3\g3-u-boot\u-boot.symbol /nocode /strippart "space/" /path "p:\"
+;d.load.elf  p:\space\Work\G3\u-boot /nocode
+R.S PC 0x4000000
+
+; Load kernel image
+;d.load.binary P:\Work\G3_Master\G3-FPGA-150629\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\linux-3.18\arch\arm64\boot\Image 0x80000
+;data.load.elf P:\Work\G3_Master\G3-FPGA-150629\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\linux-3.18\vmlinux /nocode /strippart "/space/Work/G3_Master/G3-FPGA-150629/build_dir/target-aarch64-openwrt-linux-gnu/linux-g3_fpga/" /path "p:\"
+;d.load.binary P:\Work\G3_Master\G3-FPGA-150629\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\linux-3.18\arch\arm64\boot\dts\cortina\ca7774-fpgaboard.dtb 0x1000000
+;R.S X0 0x1000000
+;R.S PC 0x80000
+
+&amp;uart_base=0xf4570114
+data.set 0xf4329148&nbsp;%l 0x0000D9e3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=25MHz
+data.set 0xf432914c&nbsp;%l 0x588	; FC
+data.set 0xf4329150&nbsp;%l 0x6c		; Sample rate
+data.set 0xf4329158&nbsp;%l 0x4F		; print 'O'
+data.set 0xf4329158&nbsp;%l 0x4B		; print 'K'
+data.set 0xf4329158&nbsp;%l 0x21		; print '!'
+data.set 0xf4329158&nbsp;%l 0x0D		;
+data.set 0xf4329158&nbsp;%l 0x0A		;
+
+ 
+ENDDO
+</pre>
+<h3><span class="mw-headline" id="JTAG_Passowrd_cmm">JTAG Passowrd cmm</span></h3>
+<p>If JTAG password is enabled, you should run this cmm to assign JTAG passowrd before other cmm file.
+</p>
+<pre>;TRST_N is asynchronous, but still asserts clocks
+JTAG.PIN NTRST	0
+JTAG.PIN TCK 	0
+JTAG.PIN TCK 	1
+JTAG.PIN TCK 	0
+JTAG.PIN NTRST 	1
+JTAG.PIN TCK 	0
+JTAG.PIN TCK 	1
+JTAG.PIN TCK 	0
+
+;enter IR
+JTAG.SHIFTTMS 0 0 0 0 1 1 0 0
+
+;shift IR
+JTAG.SHIFTREG 0 1 1 0
+
+;enter DR
+JTAG.SHIFTTMS 1 1 0 0
+
+;shift DR, ID0, ID1
+JTAG.SHIFTREG&nbsp;%l 0x0f85abcd 0x6537e22b  &nbsp;; Default password
+;JTAG.SHIFTREG&nbsp;%l 0x03020100 0x07060504
+
+;shift TMS 0 to complete
+JTAG.SHIFTTMS 1 1 0
+
+</pre>
+<h3><span class="mw-headline" id="JTAG_OSC_cmm">JTAG OSC cmm</span></h3>
+<p>This cmm set OSC2/OSC3 bit on through JTAG interface.
+</p>
+<pre>;TRST_N is asynchronous, but still asserts clocks
+JTAG.PIN NTRST	0
+JTAG.PIN TCK 	0
+JTAG.PIN TCK 	1
+JTAG.PIN TCK 	0
+JTAG.PIN NTRST 	1
+JTAG.PIN TCK 	0
+JTAG.PIN TCK 	1
+JTAG.PIN TCK 	0
+
+;enter IR
+JTAG.SHIFTTMS 0 0 0 0 1 1 0 0
+
+;shift IR (lsb first)
+JTAG.SHIFTREG 1 0 1 0
+
+;enter DR
+JTAG.SHIFTTMS 1 1 0 0
+
+;shift DR, ID0, ID1
+;JTAG.SHIFTREG&nbsp;%l 0x0f85abcd 0x6537e22b 
+JTAG.SHIFTREG&nbsp;%Byte 0xf
+
+;shift TMS 0 to complete
+JTAG.SHIFTTMS 1 1 0
+
+</pre>
+<p>After FPGA bit file be download and board reset. Run this 
+script(SP/MP2/MP4) from T32 tool. This script configure JTAG interface 
+and hook debugger to target CPU(A53 MP2) and load u-boot binary to DDR 
+offset 0x4000000.
+The "d.load.elf  p:\space\Work\G3\g3-u-boot\u-boot /nocode /path "p:\"" 
+specify the symbol path. p:\ is disk name on Windows system. On disk p:,
+ the absolute path of symbol must be exist. Generally, you can create 
+soft link which link to top of your path(e.g: ln -s /space).
+</p>
+<h1><span class="mw-headline" id="Load_Linux_kernel_image_and_trace_into">Load Linux kernel image and trace into</span></h1>
+<p>After Uboot is running up, stop the processor on T32 and load kernel image with these command:
+</p>
+<pre>d.load.binary P:\Work\G3_Master\G3-FPGA-150629\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\linux-3.18\arch\arm64\boot\Image 0x80000
+d.load.binary P:\Work\G3_Master\G3-FPGA-150629\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\linux-3.18\arch\arm64\boot\dts\cortina\ca7774-fpgaboard.dtb 0x1000000
+data.load.elf P:\Work\G3_Master\G3-FPGA-150629\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\linux-3.18\vmlinux /nocode /strippart "/space/Work/G3_Master/G3-FPGA-150629/build_dir/target-aarch64-openwrt-linux-gnu/linux-g3_fpga/" /path "p:\"
+Break.set NSX:0x80228
+</pre>
+<p>My working directory is <font color="red">"/Work/G3_Master/G3-FPGA-150629/build_dir/target-aarch64-openwrt-linux-gnu/linux-g3_fpga/linux-3.18/"</font>.
+ But the path is somehow too long for T32. So I strip some prefix path 
+and create a soft link(linux-3.18) at p:\. So that T32 will search 
+source code base on P:\linux-3.18. If you install T32 on Linux machine, 
+it should be OK. Because there is no disk name on Linux OS, only 
+absolute path is needed.
+</p><p><a href="http://sv-wiki-01/wiki/index.php/File:Soft_link.png" class="image"><img alt="Soft link.png" src="T32%20trace%20howto%20-%20Cortina%20Systems%20Wiki_files/Soft_link.png" width="1477" height="926"></a>
+</p><p>First three commands load kernel image to address 0x80000 and FDT
+ image to 0x1000000. And also load kernel symbol. The last command set 
+one break point right before switching to virtual space. Then continue 
+the processor to run U-boot. And use command <font color="blue">"booti 0x80000 - 0x1000000"</font>
+ to boot kernel. Uboot boot AARCH64 with command "booti" and it copy FDT
+ content to another 8 byte align address before jump into kernel.
+Trace32 will stop at address 0x80228 which we set in T32. "br x27" will 
+branch to address in register x27 which is the first instruction in 
+virtual space. Just use function key <font color="blue">F2 or step into</font>,
+ you will see the running space migrate from physical space to virtual 
+space. And the next instruction will be located at start.S:<font color="blue">__mmap_switched</font>:
+</p><p><a href="http://sv-wiki-01/wiki/index.php/File:Mmap_switch.png" class="image"><img alt="Mmap switch.png" src="T32%20trace%20howto%20-%20Cortina%20Systems%20Wiki_files/Mmap_switch.png" width="1459" height="929"></a>
+</p><p>From now on, you can trace Linux kernel step by step. And dump memory or watch variable/structure inside Linux kernel.
+</p>
+<h1><span class="mw-headline" id="Debug_Linux_kernel_module">Debug Linux kernel module</span></h1>
+<pre># Build kernel image and module image for debugging
+# cd ./openwrt/
+# make kernel_menuconfig
+  Kernel hacking  ---&gt;  Compile-time checks and compiler options  ---&gt; 
+  [*] Compile the kernel with debug info                                                               
+      [ ]   Reduce debugging information
+  unselect Reduce debugging information
+# make -j 1 V=99  
+# make 
+
+# Debugging with T32
+&lt;&lt;T32&gt;&gt;
+  # run u-boot.cmn    /* to load the u-boot binary */
+  # go
+&lt;&lt;FPGA&gt;&gt;
+  # Press [Enter] stop at u-boot command line
+&lt;&lt;T32&gt;&gt;
+  # run kernel.cmn   /* to load linux kernel binary and symbols */
+  # go
+&lt;&lt;FPGA&gt;&gt;
+  # booti 0x80000 - 0x1000000 /* at u-boot command line input */
+&lt;&lt;T32&gt;&gt;
+  # break at the break point at by kernel.cmn
+  # go 
+&lt;&lt;FPGA&gt;&gt; 
+  # cd /lib/modules/3.18.12         /* after enter into kernel command line */
+  # insmod ca-osal-kernel.ko
+  # insmod libphy.ko
+&lt;&lt;T32&gt;&gt;
+  # stop
+  # set break point at "driver_attach"
+  # go
+&lt;&lt;FPGA&gt;&gt;
+  # insmod g3ne.ko
+&lt;&lt;T32&gt;&gt;       
+  # run load_module.cmn
+  At this point, all of the symbols of g3ne.ko can be seen
+  # set break point at ca_ni_init_module_probe
+  # go and will break at ca_ni_init_module_probe
+</pre>
+<h1><span class="mw-headline" id="Debug_Linux_kernel_module_2">Debug Linux kernel module</span></h1>
+<pre>; Load kernel image
+
+;T32 command line
+d.load.binary W:\linux-3.18\arch\arm64\boot\Image 0x80000
+d.load.binary W:\linux-3.18\arch\arm64\boot\dts\cortina\ca7774-fpgaboard.dtb 0x1000000
+data.load.elf W:\linux-3.18\vmlinux /nocode /strippart "/space/g3-201508141400-trunk-3.18/openwrt/build_dir/target-aarch64-openwrt-linux-gnu/linux-g3_fpga" /path "W:\"
+;break NSX:0x80228 
+
+; u-boot command line
+;booti 0x80000 - 0x1000000
+
+  SYStem.Option MMUSPACES ON    &nbsp;; enable space ids to virtual addresses
+; Declare the MMU format to the debugger
+ ; - table format is "LINUX"
+ ; - table base address is at label "swapper_pg_dir"
+ ; - kernel address translation
+ ; Map the virtual kernel symbols to physical addresses to give 
+ ; the debugger access to it before CPU MMU is initialized
+
+ ;PRINT "initializing debugger MMU..."
+ MMU.FORMAT LINUXSWAP3 swapper_pg_dir 0xFFFFFFC000000000--0xFFFFFFDF00000000 0x0
+ 
+ ; prepare debugger translation 
+ TRANSLATION.COMMON 0xFFFFFFBF00000000--0ffffffffffffffff           &nbsp;; common area for kernel and processes
+ TRANSLATION.TableWalk ON  &nbsp;; debugger uses a table walk to decode virtual addresses
+ TRANSlation.ON            &nbsp;; switch on debugger(!) address translation 
+
+; Initialize Linux Awareness
+
+ ; Note that the Linux awareness needs the kernel symbols to work
+ 
+ PRINT "initializing multitask support..."
+ TASK.CONFIG ~~/demo/arm64/kernel/linux/linux-3.x/linux3      &nbsp;; loads Linux awareness (linux.t32)
+ MENU.ReProgram ~~/demo/arm64/kernel/linux/linux-3.x/linux              &nbsp;; loads Linux menu (linux.men)
+
+ ENDDO
+</pre>
+<h1><span class="mw-headline" id="load_module.cmm">load_module.cmm</span></h1>
+<pre>Data.LOAD.Elf "W:\ca-network-engine-1.0.0\g3ne.ko" S:0:0 /NoCODE /NoClear /name g3ne /reloctype 3  /strippart "/space/g3-201508141400-trunk-3.18/openwrt/build_dir/target-aarch64-openwrt-linux-gnu/linux-g3_fpga" /path "W:\"
+</pre>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.055 seconds
+Real time usage: 0.080 seconds
+Preprocessor visited node count: 147/1000000
+Preprocessor generated node count: 284/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+</div><div class="printfooter">
+Retrieved from "<a href="http://sv-wiki-01/wiki/index.php?title=T32_trace_howto&amp;oldid=100336">http://sv-wiki-01/wiki/index.php?title=T32_trace_howto&amp;oldid=100336</a>"</div>
+		<div id="catlinks" class="catlinks catlinks-allhidden"></div>		<!-- end content -->
+				<div class="visualClear"></div>
+	</div>
+</div></div>
+<div id="column-one">
+	<h2>Navigation menu</h2>
+	<div id="p-cactions" class="portlet" role="navigation">
+		<h3>Views</h3>
+		<div class="pBody">
+			<ul>
+				<li id="ca-nstab-main" class="selected"><a href="http://sv-wiki-01/wiki/index.php/T32_trace_howto" title="View the content page [alt-shift-c]" accesskey="c">Page</a></li>
+				<li id="ca-talk" class="new"><a href="http://sv-wiki-01/wiki/index.php?title=Talk:T32_trace_howto&amp;action=edit&amp;redlink=1" title="Discussion about the content page [alt-shift-t]" accesskey="t">Discussion</a></li>
+				<li id="ca-viewsource"><a href="http://sv-wiki-01/wiki/index.php?title=T32_trace_howto&amp;action=edit" title="This page is protected.
+You can view its source [alt-shift-e]" accesskey="e">View source</a></li>
+				<li id="ca-history"><a href="http://sv-wiki-01/wiki/index.php?title=T32_trace_howto&amp;action=history" rel="archives" title="Past revisions of this page [alt-shift-h]" accesskey="h">History</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal" role="navigation">
+		<h3>Personal tools</h3>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="http://sv-wiki-01/wiki/index.php?title=Special:UserLogin&amp;returnto=T32+trace+howto" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo" role="banner">
+<a href="http://sv-wiki-01/wiki/index.php/Main_Page" style="background-image: url(/wiki/cortina/images/logo.png);" title="Visit the main page"></a>
+	</div>
+	<div class="generated-sidebar portlet" id="p-navigation" role="navigation">
+		<h3>Navigation</h3>
+		<div class="pBody">
+			<ul>
+				<li id="n-Top-Page"><a href="http://sv-wiki-01/wiki/index.php/Main_Page">Top Page</a></li>
+				<li id="n-Software-Home-Page"><a href="http://sv-wiki-01/wiki/index.php/DH_%26_ACC_Software_Home_Page">Software Home Page</a></li>
+				<li id="n-DHBU-Software-Wiki"><a href="http://sv-wiki-01/wiki/index.php/Digital_Home_Software_Home_Page">DHBU Software Wiki</a></li>
+				<li id="n-Lynx-Software"><a href="http://sv-wiki-01/wiki/index.php/Lynx_Software_Home_Page">Lynx Software</a></li>
+				<li id="n-DHBU-Hardware-Wiki"><a href="http://sv-wiki-01/wiki/index.php/Digital_Home_Hardware_Home_Page">DHBU Hardware Wiki</a></li>
+				<li id="n-portal"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+				<li id="n-currentevents"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Current_events" title="Find background information on current events">Current events</a></li>
+				<li id="n-recentchanges"><a href="http://sv-wiki-01/wiki/index.php/Special:RecentChanges" title="A list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li>
+				<li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" rel="nofollow" title="The place to find out">Help</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="generated-sidebar portlet" id="p-categorytree-portlet" role="navigation">
+		<h3>Categories</h3>
+		<div class="pBody">
+<div class="CategoryTreeTag" data-ct-mode="0" data-ct-options="{&quot;mode&quot;:0,&quot;hideprefix&quot;:20,&quot;showcount&quot;:false,&quot;namespaces&quot;:false}"><div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Admin" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Admin">Admin</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Documentation" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Documentation">Documentation</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeEmptyBullet">► </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Helpdesk_Service">Helpdesk Service</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Prodeng" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Prodeng">Prodeng</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeEmptyBullet">► </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:QA_Eng">QA Eng</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		</div>
+				</div>
+	</div>
+	<div id="p-search" class="portlet" role="search">
+		<h3><label for="searchInput">Search</label></h3>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php" id="searchform">
+				<input type="hidden" name="title" value="Special:Search">
+				<input type="search" name="search" placeholder="Search" title="Search Cortina Systems Wiki [alt-shift-f]" accesskey="f" id="searchInput" autocomplete="off">
+				<input type="submit" name="go" value="Go" title="Go to a page with this exact name if exists" id="searchGoButton" class="searchButton">&nbsp;
+				<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton">
+			</form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb" role="navigation">
+		<h3>Tools</h3>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="http://sv-wiki-01/wiki/index.php/Special:WhatLinksHere/T32_trace_howto" title="A list of all wiki pages that link here [alt-shift-j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="http://sv-wiki-01/wiki/index.php/Special:RecentChangesLinked/T32_trace_howto" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li>
+				<li id="t-specialpages"><a href="http://sv-wiki-01/wiki/index.php/Special:SpecialPages" title="A list of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="http://sv-wiki-01/wiki/index.php?title=T32_trace_howto&amp;printable=yes" rel="alternate" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li>
+				<li id="t-permalink"><a href="http://sv-wiki-01/wiki/index.php?title=T32_trace_howto&amp;oldid=100336" title="Permanent link to this revision of the page">Permanent link</a></li>
+				<li id="t-info"><a href="http://sv-wiki-01/wiki/index.php?title=T32_trace_howto&amp;action=info">Page information</a></li>
+			</ul>
+		</div>
+	</div>
+</div><!-- end of the left (by default at least) column -->
+<div class="visualClear"></div>
+<div id="footer" role="contentinfo">
+	<div id="f-poweredbyico">
+		<a href="http://www.mediawiki.org/"><img src="T32%20trace%20howto%20-%20Cortina%20Systems%20Wiki_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31"></a>
+	</div>
+	<ul id="f-list">
+		<li id="lastmod"> This page was last modified on 15 August 2016, at 10:06.</li>
+		<li id="viewcount">This page has been accessed 280 times.</li>
+		<li id="privacy"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Privacy_policy" title="Cortina Systems Wiki:Privacy policy">Privacy policy</a></li>
+		<li id="about"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:About" title="Cortina Systems Wiki:About">About Cortina Systems Wiki</a></li>
+		<li id="disclaimer"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:General_disclaimer" title="Cortina Systems Wiki:General disclaimer">Disclaimers</a></li>
+	</ul>
+</div>
+</div>
+<script>/*<![CDATA[*/window.jQuery && jQuery.ready();/*]]>*/</script><script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+mw.loader.load(["ext.categoryTree","mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"],null,true);
+}</script>
+<script>if(window.mw){
+mw.loader.state({"site":"ready"});
+}</script>
+<!-- Served in 0.309 secs. --><div style="display: none; font-size: 11.4667px;" class="suggestions"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>

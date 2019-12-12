@@ -1,0 +1,248 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0063)http://192.168.60.39/reg -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><HTML><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> <TITLE>VENUS 
+v14.0</TITLE> 
+<STYLE type="text/css">
+body {
+	margin:0;
+	padding:0;
+}
+</STYLE>
+ <!-- Individual YUI CSS files --> <LINK href="VENUS%20v14_0_files/reset-fonts.css" 
+rel="stylesheet" type="text/css"> <LINK href="VENUS%20v14_0_files/skin.css" rel="stylesheet" 
+type="text/css"> <!-- Individual YUI JS files --> 
+<SCRIPT src="VENUS%20v14_0_files/utilities.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="VENUS%20v14_0_files/container-min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="VENUS%20v14_0_files/menu-min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="VENUS%20v14_0_files/button-min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="VENUS%20v14_0_files/resize-min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="VENUS%20v14_0_files/selector-beta-min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="VENUS%20v14_0_files/layout-min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="VENUS%20v14_0_files/treeview-min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT>
+  // This context is used to remember state, and is passed to most
+  // if not all ajax calls to the server.  The server will most, if not
+  // all of the time, return a JSON struct that looks just like this.
+  //
+  var context = {
+    baseurl:  "http://192.168.60.39/",
+    database: "/home/jason/reg/venus_asic.db",
+    server:   "localhost",
+    protocol: "rpc",
+    port:     "1",
+    remvec:   "",
+    customer: "cortina",
+    ld_library_path: "",
+    id1: 0,
+    id2: 0,
+    id3: 0,
+    t1: '',
+    t2: '',
+    t3: '',
+    lastr_id: 0,
+    lastr_name: '',
+    error: 0,
+    dyn: 0,
+    nocache: 0 // Set to date.time to prevent ie from caching
+  };
+  // This array is used to remember the most recent register
+  // accesses for quick nav from the 'recents' menu
+  //
+  var recents_array = new Array();
+</SCRIPT>
+ <!-- jQuery --> 
+<SCRIPT src="VENUS%20v14_0_files/jquery-1.2.6.min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="VENUS%20v14_0_files/jquery.autocomplete.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="VENUS%20v14_0_files/jquery.treeview.js" type="text/javascript"></SCRIPT>
+ 
+<STYLE type="text/css" media="all">@import "/static/jquery.autocomplete.css";</STYLE>
+ 
+<STYLE type="text/css" media="all">@import "/static/treeview/jquery.treeview.css";</STYLE>
+ 
+<STYLE type="text/css" media="all">@import "/static/fancy_forms/form.css";</STYLE>
+ 
+<STYLE type="text/css" media="all">@import "/static/fancy_forms/form.import.css";</STYLE>
+ 
+<STYLE type="text/css" media="all">@import "/static/style.css";</STYLE>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.19400"></HEAD> 
+<BODY class=" yui-skin-sam">
+<SCRIPT src="VENUS%20v14_0_files/wz_tooltip.js" type="text/javascript"></SCRIPT>
+   
+<SCRIPT src="VENUS%20v14_0_files/tip_balloon.js" type="text/javascript"></SCRIPT>
+     
+<DIV id="nav">
+<DIV id="top">
+<DIV class="clear-block" 
+id="search"><INPUT class="autocomplete search-field" id="searchbox" type="text" size="30">
+	 <BUTTON class="submit" id="search-button" 
+onclick="do_search();">search</BUTTON>	 <A 
+href="javascript:advanced_search();">advanced...</A>       </DIV>
+<DIV id="menu"><A href="javascript:mainMenu.show();">Menu</A>       </DIV></DIV>
+<DIV id="bottom"><SPAN>&nbsp;</SPAN>     </DIV></DIV>
+<DIV id="registers">    left   </DIV>
+<DIV id="maps">    right   </DIV>
+<DIV id="register">    center   </DIV>
+<DIV id="dyn_panel">    r/w   </DIV>
+<DIV id="dialogs">
+<DIV id="dbDialog">
+<DIV class="hd">Load new database...</DIV>
+<DIV class="bd">
+<FORM onsubmit="db_dialog_submit(); return false;"><LABEL for="database">Full 
+Path:</LABEL>         
+<INPUT name="database" id="database" type="text" size="60">     
+</FORM></DIV></DIV>
+<DIV id="custDialog">
+<DIV class="hd">Change Customer...</DIV>
+<DIV class="bd">
+<FORM><LABEL for="customer">Customer:</LABEL>	 <SELECT name="customer" id="customer"><OPTION 
+  value="cortina">cortina	   </OPTION>	  	    	     <OPTION value="CTC">CTC	     
+  </OPTION>	  	    	     <OPTION value="NTT">NTT	     </OPTION>	  	    	    	    
+   <OPTION value="epon">epon	     </OPTION>	  	    	     <OPTION 
+  value="extr">extr	     </OPTION>	  	    	     <OPTION value="g3">g3	     
+  </OPTION>	  	    	     <OPTION value="gpon">gpon	     </OPTION>	  	    	     
+  <OPTION value="xgpn">xgpn	     </OPTION>	  	   <OPTION value="others">any 
+  customer</OPTION>	 </SELECT>     </FORM></DIV></DIV>
+<DIV id="registerswait">
+<DIV class="hd">Please wait...</DIV>
+<DIV class="bd"><IMG src="VENUS%20v14_0_files/loading.gif">   </DIV></DIV>
+<DIV id="mapswait">
+<DIV class="hd">Please wait...</DIV>
+<DIV class="bd"><IMG src="VENUS%20v14_0_files/loading.gif">   </DIV></DIV>
+<DIV id="registerwait">
+<DIV class="hd">Please wait...</DIV>
+<DIV class="bd"><IMG src="VENUS%20v14_0_files/loading.gif">   </DIV></DIV>
+<DIV id="advSearch">
+<DIV class="hd">Advanced Search</DIV>
+<DIV class="bd">
+<FORM><LABEL class="label" for="regex">Search for:</LABEL>      <INPUT name="regex" class="search-field" id="regex" type="text"> 
+     
+<FIELDSET><LEGEND>In:</LEGEND>        <LABEL class="labelCheckbox" 
+for="cb_0"><INPUT name="fields" class="inputCheckbox" id="cb_0" type="checkbox" 
+checked="checked" value="register,defines"> register names</LABEL><LABEL class="labelCheckbox" 
+for="cb_1"><INPUT name="fields" class="inputCheckbox" id="cb_1" type="checkbox" 
+checked="checked" value="register,customers"> register customers</LABEL><LABEL 
+class="labelCheckbox" for="cb_2"><INPUT name="fields" class="inputCheckbox" id="cb_2" 
+type="checkbox" value="register,comments"> register comments</LABEL><LABEL 
+class="labelCheckbox" for="cb_3"><INPUT name="fields" class="inputCheckbox" id="cb_3" 
+type="checkbox" value="register,attributes"> register attributes</LABEL><LABEL 
+class="labelCheckbox" for="cb_4"><INPUT name="fields" class="inputCheckbox" id="cb_4" 
+type="checkbox" value="bitfield,names"> bitfield names</LABEL><LABEL class="labelCheckbox" 
+for="cb_5"><INPUT name="fields" class="inputCheckbox" id="cb_5" type="checkbox" 
+value="bitfield,customers"> bitfield customers</LABEL><LABEL class="labelCheckbox" 
+for="cb_6"><INPUT name="fields" class="inputCheckbox" id="cb_6" type="checkbox" 
+value="bitfield,types"> bitfield types</LABEL><LABEL class="labelCheckbox" for="cb_7"><INPUT 
+name="fields" class="inputCheckbox" id="cb_7" type="checkbox" value="bitfield,comments"> 
+bitfield comments</LABEL><LABEL class="labelCheckbox" for="cb_8"><INPUT name="fields" 
+class="inputCheckbox" id="cb_8" type="checkbox" value="bitfield,attributes"> 
+bitfield attributes</LABEL><LABEL class="labelCheckbox" for="cb_9"><INPUT name="fields" 
+class="inputCheckbox" id="cb_9" type="checkbox" value="bitfield,encodings"> 
+bitfield encodings</LABEL><LABEL class="labelCheckbox" for="cb_10"><INPUT name="fields" 
+class="inputCheckbox" id="cb_10" type="checkbox" value="bitfield,tables"> 
+bitfield tables</LABEL></FIELDSET></FORM></DIV></DIV>
+<DIV id="scanDialog">
+<DIV class="hd">Server Connect</DIV>
+<DIV class="bd">
+<FORM class="ff">
+<FIELDSET>
+<DIV class="notes">
+<H4>Instructions</H4>
+<P>Enter a <B>Server Name</B> and a <B>Service Port</B> and click <B>SCAN!</B> 
+to connect     to a server and scan for available asics/fpgas to view.</P>
+<P><B>Protocol:</B> "rpc" to connect to driver servers, "spy" to connect to RTL 
+models.  "xrpc" to connect  to the new "lab4" environment.  You     may need to 
+specify a custom <B>LD_LIBRARY_PATH</B> to connect to some (rpc) driver servers. 
+  </P>
+<P><B>Database:</B> Specify a reg database, if other than "reg.db".</P>
+<P class="last"><B>Or:</B> Click on <B>SHOW ALL</B> to get a list of known 
+asic/fpga register     viewers that you can choose from to browse.</P></DIV>
+<DIV class="required"><LABEL for="server">Server Name:</LABEL><INPUT name="server" id="server" type="text" value="localhost"> 
+      </DIV>
+<DIV class="required"><LABEL for="port">Server 
+Port:</LABEL><INPUT name="port" id="port" type="text" value="1">       </DIV>
+<DIV class="required"><LABEL for="protocol">Protocol:</LABEL><SELECT name="protocol" 
+id="protocol"><OPTION value="rpc">RPC</OPTION>	     <OPTION 
+  value="spy">SPY</OPTION>	     <OPTION value="xrpc">XRPC</OPTION>	   </SELECT>    
+   </DIV>
+<DIV class="required"><LABEL for="ldpath">LD_LIBRARY_PATH:</LABEL><INPUT name="ldpath" id="ldpath" type="text"> 
+      </DIV>
+<DIV class="required"><LABEL 
+for="dbname">Database:</LABEL><INPUT name="dbname" id="dbname" type="text" value="reg.db"> 
+      </DIV></FIELDSET></FORM></DIV></DIV>
+<DIV id="interruptDialog">
+<DIV class="hd">ISR Results</DIV>
+<DIV class="bd">
+<DIV id="isr-results-container"></DIV></DIV></DIV>
+<DIV id="moduleDialog">
+<DIV class="hd">Module Function Results</DIV>
+<DIV class="bd">
+<DIV id="mod-results-container"></DIV></DIV></DIV>
+<DIV id="bulkDialog">
+<DIV class="hd">Bulk Read Results</DIV>
+<DIV class="bd">
+<DIV id="bulk-results-container"></DIV></DIV></DIV></DIV>
+<SCRIPT src="VENUS%20v14_0_files/reg_layout.js" type="text/javascript"></SCRIPT>
+   
+<SCRIPT type="text/javascript">
+    (function() {
+  YAHOO.util.Event.onDOMReady(function() {
+
+  reg_initialize();
+
+  $(".autocomplete").autocomplete(
+    "http://192.168.60.39/search/lookup_register",
+    { delay:10,
+      minChars:2,
+      matchSubset:1,
+      matchContains:1,
+      cacheLength:10,
+      extraParams: context
+    });
+
+  $(".autocomplete").keypress(function(e) {
+    if ( e.which == 13 ) {
+      // return 
+      do_search();
+    }
+  });
+  
+})
+})();
+
+function do_search() {
+  var q = $("#searchbox").val();
+  context.t1 = q;
+  $.getJSON( "http://192.168.60.39/search/fast_search",
+             context,
+	     function(data) {
+	       if ( is_error( data ) ) {
+                 reg_process_error( data );
+               }
+	       else {
+	         if ( data.id2 != 0 ) {
+		   reg_load_register( data.id2 );
+		   reg_load_registers( data.id2 );
+		 }
+		 else {
+		   $("#register").html(data.t1);
+		 }
+	       }
+	     }
+  );
+}
+
+  </SCRIPT>
+ </BODY></HTML>

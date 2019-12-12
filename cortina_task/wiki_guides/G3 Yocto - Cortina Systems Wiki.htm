@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html dir="ltr" class="client-js" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><title>G3 Yocto - Cortina Systems Wiki</title>
+<meta name="generator" content="MediaWiki 1.22.6">
+<link rel="stylesheet" href="G3%20Yocto%20-%20Cortina%20Systems%20Wiki_files/cortina.css">
+<link rel="shortcut icon" href="http://sv-wiki-01/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://sv-wiki-01/wiki/opensearch_desc.php" title="Cortina Systems Wiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://sv-wiki-01/wiki/api.php?action=rsd">
+<link rel="alternate" type="application/atom+xml" title="Cortina Systems Wiki Atom feed" href="http://sv-wiki-01/wiki/index.php?title=Special:RecentChanges&amp;feed=atom">
+<link rel="stylesheet" href="G3%20Yocto%20-%20Cortina%20Systems%20Wiki_files/load.css">
+<!--[if IE 6]><link rel="stylesheet" href="/wiki/skins/monobook/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/wiki/skins/monobook/IE70Fixes.css?303" media="screen" /><![endif]--><style>
+.mw-collapsible-toggle{float:right} li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:4250852ed2349a0d4d0fc6509a3e7d4c */
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px -1px 0 0} html > body .suggestions{margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special .special-label{color:gray;text-align:left}.suggestions-special .special-query{color:black;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:white}.autoellipsis-matched,.highlight{font-weight:bold}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:9780324491b653a3780e2d029bdc140c */
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:.6em 3.6em .6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dcd9d9;text-shadow:0 0.0625em 0 rgba(255,255,255,0.5);border-radius:5px;-webkit-box-shadow:0 2px 5px 0 #ccc;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook .postedit{top:6em !important}.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABblBMVEUAAAD///////9PfTf///80aRdTgjn///9Feij///////////9Rfzf///////////9PfjZRgDh1o1xOfTb///////+bwYqLtnj///////9PfTa82K////9WhT6YxIL///9QgDdTgzr////////j7uDl7eLq8efi693k7OH///////9UhjuBr2rp9uRUhjr///9YljVKgir///9WiTlYjT3////9/v57vFlbkT5PjC9dlD/5/fhuq09stUTs9uhxuElctCpfnT1huDFloEZloUZmpENmvDZpvDxpvTxqvjxrvT5rvT9rwTxsqktswD5uwkBvuUdxw0NztFBztU9ztVBzwkp0tlJ1xkd2t1R3uVR4w1F4xk54x014yE15uVZ5v1R5xVB6v1R7yFJ8wVh9xVl9yFR9yVd9ylN+xVh+yFd/x1l/yFeAylmEx1+Ny2uY0Hqe04Wj1Ymv3Ze33qLD47TJ5L3O6cPU7Mrq9eb2+/Q4j37OAAAAQHRSTlMAAQIEBAUFBQwPFB4fJCUoKiosQEhJS01RUlZZXmdydXaChYuSlJSWmJmoq6uur8LExcvM19fg5ejt8fX2+Pr7SljgewAAAKpJREFUGBkFwQNCAwAAAMDLtl3LtrG4rWXbtvX77gAgZ6grFwC0bhwNVgKgdPZx8b0dgLi+s7Wn0VoAqpfOI9+BNADZI7fLrz2pSEwGHZuH+78lSK8ZLkLezF3ooyUG3VPXq2USei9WngeyoG195yBYWDF3E/2pAhl1e9Gr8bGT+bfOFCC2fnvh4X7rcqIAQNNu+HT6sxkAjceTL/2ZAIhv+PorBwBJxfkA//dFHSCBy/UTAAAAAElFTkSuQmCC);background-image:url(http://sv-wiki-01/wiki/resources/mediawiki.action/images/green-checkmark.png?2014-04-24T21:25:00Z)!ie;background-position:left}.postedit-close{position:absolute;padding:0 .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:black;text-shadow:0 0.0625em 0 white;text-decoration:none;opacity:0.2;filter:alpha(opacity=20)}.postedit-close:hover{color:black;text-decoration:none;opacity:0.4;filter:alpha(opacity=40)}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:7f54a550ae14160313958ddb2288bcd7 */</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{text-decoration:none;color:black}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:white}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:52b1797f70c7e4094dfa4191101944e8 */</style><meta name="ResourceLoaderDynamicStyles" content="">
+<style>a:lang(ar),a:lang(ckb),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:2902c472ef4c41bfeaf25eb08706bd57 */</style>
+
+<script src="G3%20Yocto%20-%20Cortina%20Systems%20Wiki_files/load_002.php"></script><script src="G3%20Yocto%20-%20Cortina%20Systems%20Wiki_files/load_004.php"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"G3_Yocto","wgTitle":"G3 Yocto","wgCurRevisionId":107788,"wgRevisionId":107788,"wgArticleId":9467,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"G3_Yocto","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgRestrictionRead":[],"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"monobook","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"vector-simplesearch":1,"watchcreations":0,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0
+,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"useeditwarning":1,"prefershttps":1,"language":"en","variant-gan":"gan","variant-iu":"iu","variant-kk":"kk","variant-ku":"ku","variant-shi":"shi","variant-sr":"sr","variant-tg":"tg","variant-uz":"uz","variant-zh":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"variant":"en"});},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});},{},{});
+/* cache key: wikiSQL:resourceloader:filter:minify-js:7:68471340157e99d9e2eb390b7623161a */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script><script src="G3%20Yocto%20-%20Cortina%20Systems%20Wiki_files/load_003.php"></script>
+<script async="" src="G3%20Yocto%20-%20Cortina%20Systems%20Wiki_files/load.php"></script></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-G3_Yocto skin-monobook action-view">
+<div id="globalWrapper">
+<div id="column-content"><div id="content" class="mw-body-primary" role="main">
+	<a id="top"></a>
+	<div id="siteNotice"><div id="localNotice" dir="ltr" lang="en"><p>-
+</p>
+<div class="page-warning">
+<p><font size="4" color="red"><b>Login Required for Editting!</b></font>
+</p><p>We are enforcing the rule that every user has to log in before 
+he/she can make any modification to this wiki.  Your Cortina login 
+should work fine here.  There is no real need to create a new account.  
+If you do not want to log in, an anonymous user can only view some 
+specific contents of this wiki.
+</p>
+</div>
+</div></div>
+	<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">G3 Yocto</span></h1>
+	<div id="bodyContent" class="mw-body">
+		<div id="siteSub">From Cortina Systems Wiki</div>
+		<div id="contentSub"></div>
+		<div id="jump-to-nav" class="mw-jump">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>
+
+		<!-- start content -->
+<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="#" class="internal" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#System_Environment_Prerequisite"><span class="tocnumber">2</span> <span class="toctext">System Environment Prerequisite</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#How_to_build"><span class="tocnumber">3</span> <span class="toctext">How to build</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Tips"><span class="tocnumber">4</span> <span class="toctext">Tips</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Current_Status"><span class="tocnumber">5</span> <span class="toctext">Current Status</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#How_to_load_on_FPGA_board"><span class="tocnumber">6</span> <span class="toctext">How to load on FPGA board</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#How_to_boot_on_rootfs_nand_flash_of_fpga_board"><span class="tocnumber">7</span> <span class="toctext">How to boot on rootfs nand flash of fpga board</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#How_to_boot_on_rootfs_nand_flash_of_ENG_board"><span class="tocnumber">8</span> <span class="toctext">How to boot on rootfs nand flash of ENG board</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="#Latest_Upgrade_Procedure"><span class="tocnumber">8.1</span> <span class="toctext">Latest Upgrade Procedure</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#Upgrade_Procedure_before_2017.2F11.2F29"><span class="tocnumber">8.2</span> <span class="toctext">Upgrade Procedure before 2017/11/29</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="#How_to_boot_completely_from_SD_card_on_ENG_board_without_using_NAND"><span class="tocnumber">9</span> <span class="toctext">How to boot completely from SD card on ENG board without using NAND</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="#TODO"><span class="tocnumber">10</span> <span class="toctext">TODO</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Introduction">Introduction</span></h1>
+<p>This note tells developers how to build g3 images by Yocto. Yocto is a
+ build environment like OpenWRT. It is more powerful and flexible. On 
+the other hand, it implies yocto is more complicated and complex. 
+Developers is hard to master and understand the details of Yocto. 
+Anyway, we are going to build tells you how to build g3 step by step. 
+The Yocto environment for g3 is ongoing continously . The build 
+instruction may be changed very often.
+</p>
+<h1><span class="mw-headline" id="System_Environment_Prerequisite">System Environment Prerequisite</span></h1>
+<p>It needs some packages in your Debian/Ubuntu machine. If your machine is not Debina/Ubuntu, reference <a rel="nofollow" class="external text" href="http://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html">Yocto Quick Start</a> , please. By the way, the free space is 20 GB for each build at least. Please check your free space.
+</p>
+<pre>$ sudo apt-get install gawk wget git-core diffstat unzip texinfo 
+gcc-multilib build-essential chrpath socat libsdl1.2-dev xterm libssl-dev swig</pre>
+<p>We use Yocto 2.1 now( 2017/11/31). Inside Cortina-Access, we have 
+test build Yocto in CentOS 7, Ubuntu 12.04, Ubuntu 14.04, Ubuntu 16.04 
+and Debian 8.  All of them could build images successfully and run on 
+board successfully. We would suggest you install either one of 
+distribution, it could avoid unnecessary issues.
+</p>
+<h1><span class="mw-headline" id="How_to_build">How to build</span></h1>
+<p>Suppose you have access permission on Cortina Access git servers. If not, please contact with the <a rel="nofollow" class="external text" href="http://sv-wiki-01.cortina.local/wiki/index.php/G2_GIT_Project#How_to_start_working_on_G2_GIT_kernel_development">administrators</a>.
+ All the codes are kept on git servers. The krogoth branch of poky 
+repository inside Cortina Access is frozen at 
+12eb72ee3b02f826a156ff4e396c770f2b93571e. In the last step, you can use 
+basic-image or major-image. If major-image, it includes several 
+open-source packages, like radvd, iproute2, and etc. The final image is 
+much larger, please programming it into flash instead of ramdisk.  
+</p><p>Yocto 2.1
+</p>
+<pre>$ git clone -b ca-krogoth-master gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/yocto
+$ cd yocto
+$ git clone -b ca-krogoth-master gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/openembedded/meta-openembedded
+$ git clone -b ca-krogoth-master gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-oe-yocto-cortina  
+$ git clone -b ca-krogoth-master gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-ca-bsp
+</pre>
+<p>Yocto 3.0
+</p>
+<pre>$ git clone -b ca-zeus-master gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/yocto
+$ cd yocto
+$ git clone -b ca-zeus-master gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/openembedded/meta-openembedded
+$ git clone -b ca-zeus-master gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/openembedded/meta-virtualization
+$ git clone -b ca-zeus-master gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-oe-yocto-cortina
+$ git clone -b ca-zeus-master gitolite@cs-local-gitmirror:sw/platforms/cs-unified/distro/meta-ca-bsp
+</pre>
+<p>You can use oe-init-build-env to configure your build environment. 
+<br>For G3 FPGA board: 
+</p>
+<pre>$ export TEMPLATECONF=meta-ca-bsp/conf/g3-fpga/&nbsp;;
+$ source  oe-init-build-env;
+</pre>
+<p>For G3 ASIC board: 
+</p>
+<pre>$ export TEMPLATECONF=meta-ca-bsp/conf/g3-eng/&nbsp;; 
+$ source  oe-init-build-env&nbsp;;
+</pre>
+<p>For G3 HGU ASIC board:
+</p>
+<pre>$ export TEMPLATECONF=meta-ca-bsp/conf/g3hgu-eng/&nbsp;; 
+$ source  oe-init-build-env&nbsp;;
+</pre>
+<p>NOTE:  the default output dir is <b>build</b>, you can change your output directory if you want, the command list in below: 
+</p>
+<pre>$ source  oe-init-build-env YOUR_DIR;
+</pre>
+<p>You can build major-image or basic-image. 
+</p><p>Major:
+</p>
+<pre>$  bitbake major-image
+</pre>
+<p>Alternatively you can build Basic image which include lesser package:
+</p>
+<pre>$  bitbake basic-image
+</pre>
+<h1><span class="mw-headline" id="Tips">Tips</span></h1>
+<p>List supported package
+</p>
+<pre>$ bitbake -s
+</pre>
+<p>Force kernel build. kernel source will be fetched and store at build/tmp/work-shared/g3-eng/kernel-source/
+</p>
+<pre>$ bitbake -f -c compile linux-ca
+</pre>
+<p>kernel menuconfig
+</p>
+<pre>$ bitbake -c menuconfig linux-ca
+</pre>
+<h1><span class="mw-headline" id="Current_Status">Current Status</span></h1>
+<p>Yocot for G3 builds outpus u-boot, kernel, and rootfs. These are 
+verified on FPGA board. Some known issues. They will be fixed soon.
+</p><p>- annoying error messages. 
+- load kernel modules by hand 
+-
+</p>
+<h1><span class="mw-headline" id="How_to_load_on_FPGA_board">How to load on FPGA board</span></h1>
+<p>First of all, where do the output images reside? There reside in 
+$(Yocto)/build/tmp/deploy/images/g3. The images' name are similar. For 
+example, there are 3 u-boot related images. One is u-boot.bin, and the 
+others are u-boot-g3.bin, and u-boot-g3-v2015.04-r0.bin. Actually, they 
+are the same. They are soft-linked to u-boot-g3-v2015.04-r0.bin. Choose 
+the shortest name. Based on this conclusion, the images we want are 
+u-boot.bin, Image-g3.bin, and basic-image-g3.cpio.xz.
+</p>
+<pre>yocto.g3$ ls build/tmp/deploy/images/g3/
+basic-image-g3-20160219100008.rootfs.cpio.xz
+basic-image-g3-20160219100008.rootfs.manifest
+basic-image-g3.cpio.xz
+basic-image-g3.manifest
+Image
+Image--4.1+git0+aeebee1d03-r0.1-ca7774-fpgaboard-20160219100008.dtb
+Image--4.1+git0+aeebee1d03-r0.1-g3-20160219100008.bin
+Image-ca7774-fpgaboard.dtb
+Image-g3.bin
+modules--4.1+git0+aeebee1d03-r0.1-g3-20160219100008.tgz
+modules-g3.tgz
+README_-_DO_NOT_DELETE_FILES_IN_THIS_DIRECTORY.txt
+u-boot.bin
+u-boot-g3.bin
+u-boot-g3-v2015.04-r0.bin</pre>
+<p><br>
+About FPGA board brings up.  There are some differences beteewn OpenWRT 
+and Yocto. In OpenWRT, the final image combines kernel and rootfs. It 
+has only one image. But in Yocto, the rootfs image and kernel are 
+separated into two images. After u-boot ready and network is configured 
+done, Please set following boot arguments. 
+</p>
+<pre>U-BOOT # setenv bootargs earlycon=serial,0xf4329148 console=ttyS0,115200 initrd=0x6000000,40M root=/dev/ram0 mem=256M
+U-BOOT # tftpboot 0x80000 Image
+U-BOOT # tftpboot 0x1000000 Image-ca7774-fpgaboard.dtb
+U-BOOT # tftpboot 0x6000000 basic-image-g3-fpga.cpio.xz
+U-BOOT # booti 0x80000 - 0x1000000
+</pre>
+<p><br>
+</p>
+<h1><span class="mw-headline" id="How_to_boot_on_rootfs_nand_flash_of_fpga_board">How to boot on rootfs nand flash of fpga board</span></h1>
+<p>From now on(2016/10/14), it supports to boot and mount rootfs from 
+nand flash. The support NAND flash is  MX30LF1G18AC-TI. If there is such
+ NAND flash on FPGA board, you can try it. 
+</p>
+<pre>yocto.g3$ cd build/tmp/deploy/images/g3/g3-fpga
+yocto.g3$ ls {basic-image-g3-fpga.ubi,Image,Image-ca7774-fpgaboard.dtb,u-boot.bin,uboot-env.bin}
+basic-image-g3-fpga.ubi  Image-ca7774-fpgaboard.dtb  uboot-env.bin
+Image                    u-boot.bin
+</pre>
+<p>Those images are necessary. First of all, run u-boot. This U-boot has
+ NAND driver support. After network setting configured, you can download
+ images and program them into nand flash one by one. Be careful on the 
+rootfs image programming, the programming length, 0x980000, is not 
+constant value. It depends on the image size. You can check the U-Boot 
+download bytes. Next time U-boot runs, it loads u-boot environment 
+variables, kernel, device tree from NAND flash automatically. It also 
+tells kernel to mount rootfs on NAND flash. 
+</p>
+<pre>U-BOOT # tftpboot 0x05000000 uboot-env.bin
+U-BOOT # nand erase 0x400000  0x100000
+U-BOOT # nand write 0x05000000 0x400000 0x20000
+U-BOOT # tftpboot 0x05000000 Image-ca7774-fpgaboard.dtb
+U-BOOT # nand erase 0x500000  0x100000
+U-BOOT # nand write 0x05000000 0x500000 0x20000
+U-BOOT # tftpboot 0x05000000 Image
+U-BOOT # nand erase 0x700000 0xa00000
+U-BOOT # nand write 0x05000000 0x700000 0x800000
+U-BOOT # tftpboot 0x05000000 basic-image-g3-fpga.ubi (or major-image-g3-fpga.ubi. Depends on your choice.)
+U-BOOT # ... Bytes transferred = 9961472 (0x980000 hex)
+U-BOOT # nand erase 0x1b00000 0x5a00000
+U-BOOT # nand write 0x05000000  0x1b00000 $filesize
+</pre>
+<h1><span class="mw-headline" id="How_to_boot_on_rootfs_nand_flash_of_ENG_board">How to boot on rootfs nand flash of ENG board</span></h1>
+<p>From now on(2016/10/14), it supports to boot and mount rootfs from 
+nand flash. The support NAND flash is  Macronix MT29F8G08ABABA,. If 
+there is such NAND flash on ENG board, you can try it. 
+</p>
+<pre>yocto.g3$ cd build/tmp/deploy/images/g3/g3-eng
+yocto.g3$ ls {basic-image-g3-eng.ubi,Image,Image-ca7774-engboard.dtb,u-boot.bin,uboot-env.bin}
+basic-image-g3-eng-20170224022353.rootfs.ubi  Image-ca7774-engboard.dtb  uboot-env.bin
+Image                    u-boot.bin
+</pre>
+<p>Those images are necessary. First of all, run u-boot. This U-boot has
+ NAND driver support. After network setting configured, you can download
+ images and program them into nand flash one by one. Be careful on the 
+rootfs image programming, the programming length, 0x980000, is not 
+constant value. It depends on the image size. You can check the U-Boot 
+download bytes. Next time U-boot runs, it loads u-boot environment 
+variables, kernel, device tree from NAND flash automatically. It also 
+tells kernel to mount rootfs on NAND flash.The filename, 
+major-image-g3-eng-gpt-nandinfo.img, depends on the build configuration.
+ It may change. For example, basic-image-g3-eng-gpt-nandinfo.img. 
+Howwever, find the file with gpt-nandinfo.img.
+</p>
+<h2><span class="mw-headline" id="Latest_Upgrade_Procedure">Latest Upgrade Procedure</span></h2>
+<pre>U-BOOT # tftpboot 0x05000000 gpt-nandinfo.img
+U-BOOT # nand erase 0x0 0x400000
+U-BOOT # nand write 0x05000000 0x0 0x300000
+U-BOOT # tftpboot 0x05000000 uboot-env.bin
+U-BOOT # nand erase 0x400000  0x100000
+U-BOOT # nand write 0x05000000 0x400000 0x20000
+U-BOOT # tftpboot 0x05000000 rootfs.mubi 
+U-BOOT # ... Bytes transferred = 86245376 (5240000 hex)
+U-BOOT # nand erase 0x500000 0xD000000
+U-BOOT # nand write 0x05000000 0x500000 $filesize 
+</pre>
+<h2><span class="mw-headline" id="Upgrade_Procedure_before_2017.2F11.2F29">Upgrade Procedure before 2017/11/29</span></h2>
+<pre>U-BOOT # tftpboot 0x05000000 gpt-nandinfo.img ( filename is depends on the build configure)
+U-BOOT # nand erase 0x0 0x400000
+U-BOOT # nand write 0x05000000 0x0 0x300000
+U-BOOT # tftpboot 0x05000000 uboot-env.bin
+U-BOOT # nand erase 0x400000  0x100000
+U-BOOT # nand write 0x05000000 0x400000 0x20000
+U-BOOT # tftpboot 0x05000000 ca7774-engboard.dtb
+U-BOOT # nand erase 0x500000  0x100000
+U-BOOT # nand write 0x05000000 0x500000 0x20000
+U-BOOT # tftpboot 0x05000000 Image
+U-BOOT # nand erase 0x700000 0xa00000
+U-BOOT # nand write 0x05000000 0x700000 0x900000
+U-BOOT # tftpboot 0x05000000 rootfs.ubi (or major-image-g3-eng.ubi, basic-image-g3-eng.ubi. Depends on your choice.)
+U-BOOT # ... Bytes transferred = 72876032 (4800000 hex)
+U-BOOT # nand erase 0x1b00000 0x20000000
+U-BOOT # nand write 0x05000000 0x1b00000 $filesize (For example: 0x4800000)
+</pre>
+<p><br>
+</p>
+<h1><span class="mw-headline" id="How_to_boot_completely_from_SD_card_on_ENG_board_without_using_NAND">How to boot completely from SD card on ENG board without using NAND</span></h1>
+<p>Change the Yocto local.conf file to build for SD card use instead of NAND.
+Edit your build/conf/local.conf machine type from g3-eng to g3-eng-emmc
+</p>
+<pre># This sets the default machine to be qemux86 if no other machine is selected:
+#MACHINE&nbsp;??= "g3-fpga"
+#MACHINE&nbsp;??= "g3-eng"
+MACHINE&nbsp;??= "g3-eng-emmc"
+</pre>
+<p>Resource your environment and rebuild:
+</p>
+<pre>$ source oe-init-build-env
+$ bitbake major-image
+</pre>
+<p>After build is complete, cd into the image directory to locate the new GPT image and roots image.
+</p>
+<pre>$ cd build/tmp/deploy/images/g3-eng-emmc
+$ ls -l 
+</pre>
+<p>The GPT image is called "major-image-g3-eng-emmc-gpt.img"
+The EXT4 ROOTFS image is called "major-image-g3-eng-emmc.ext4 "
+</p><p>We will now need to write the EXT4 ROOTFS image into the GPT 
+image which currently only contains FIP1, FIP2 and the U-BOOT 
+environment partition data.
+The ROOTFS partition is allocated by is empty.  So we take a look at the
+ GPT structure to find out where the ROOTFS partition begins.
+Values are displayed in 512 byte sectors. 
+</p>
+<pre>$ gdisk major-image-g3-eng-emmc-gpt.img
+Command (? for help): p
+Number  Start (sector)    End (sector)  Size       Code  Name
+  1            2048            4047   1000.0 KiB  FFFF  fip0
+  2            4096            6095   1000.0 KiB  FFFF  fip1
+  3            8192           10239   1024.0 KiB  8300  uboot-env
+  4           12288          524287   250.0 MiB   8300  rootfs
+Command (? for help): q
+</pre>
+<p>So we can see here that rootfs starts at 6MB into the image (12288, 512 byte sectors).
+Copy the major-image-g3-eng-emmc-gpt.img to gpt.img  to keep original.
+</p>
+<pre>$ cp major-image-g3-eng-emmc-gpt.img gpt.img
+</pre>
+<p>Write the roots into the image starting at the correct place (6144, 1KB sectors == 12288, 512byte sectors)
+</p>
+<pre>dd if=major-image-g3-eng-emmc.ext4 of=gpt.img bs=1K seek=6144 conv=notrunc
+</pre>
+<p>This will update gpt.image which includes the ROOTFS into Partition# 4 specified location of the GPT. 
+</p><p>Write this image to an SD card using dd.   For example, lets say our SD card is mounted at /dev/mysddisk3
+</p><p>dd if=gpt.img of=/dev/mysddisk3
+</p><p>Insert SD card into G3 Eng Board.   Set Jumpers to the following image:
+<a href="http://sv-wiki-01/wiki/index.php/File:SD_boot_jumpers.jpg" class="image"><img alt="SD boot jumpers.jpg" src="G3%20Yocto%20-%20Cortina%20Systems%20Wiki_files/SD_boot_jumpers.jpg" width="720" height="1280"></a>
+</p><p><br>
+Halt U-Boot and add the following scripts and change boot parameters as follows:
+</p>
+<pre>G3# setenv sdload_kernel ext4load mmc 0:4 \$kernel_addr_r /boot/Image
+G3# setenv sdload_dtb ext4load mmc 0:4 \$fdt_addr_r /boot/ca7774-engboard.dtb
+G3# setenv sdload "run sdload_dtb; run sdload_kernel"
+G3# setenv boot_from_ram booti \$kernel_addr_r - \$fdt_addr_r
+G3# setenv bootcmd "run sdload; run boot_from_ram"
+G3# setenv bootargs “earlycon=serial,0xf4329148 console=ttyS0,115200 root=/dev/mmcblk0p4 rootwait rootfstype=ext4 rw”
+G3# saveenv
+</pre>
+<p>Finally, boot it:
+</p>
+<pre>G3# boot
+</pre>
+<h1><span class="mw-headline" id="TODO">TODO</span></h1>
+<p>Yocto for G3 is not mature. Developers prepare everything by 
+themselves. You have to clone several repositories, modify bblayers.conf
+ by hand. It does not support external toolchain. So, developers have to
+ build toolchain from scratch in each fresh build.
+</p><p><del>* Upgrade to Yocto 2.1 to support Linux kernel 4.4</del> Done
+</p>
+<ul>
+<li> Easy to clone repositories for different project
+</li>
+<li> Easy to switch to different branches for different products
+</li>
+<li> External toolchain support
+</li>
+<li> Setup a internal mirror server.
+</li>
+<li> ...
+</li>
+</ul>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.054 seconds
+Real time usage: 0.057 seconds
+Preprocessor visited node count: 217/1000000
+Preprocessor generated node count: 432/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+</div><div class="printfooter">
+Retrieved from "<a href="http://sv-wiki-01/wiki/index.php?title=G3_Yocto&amp;oldid=107788">http://sv-wiki-01/wiki/index.php?title=G3_Yocto&amp;oldid=107788</a>"</div>
+		<div id="catlinks" class="catlinks catlinks-allhidden"></div>		<!-- end content -->
+				<div class="visualClear"></div>
+	</div>
+</div></div>
+<div id="column-one">
+	<h2>Navigation menu</h2>
+	<div id="p-cactions" class="portlet" role="navigation">
+		<h3>Views</h3>
+		<div class="pBody">
+			<ul>
+				<li id="ca-nstab-main" class="selected"><a href="http://sv-wiki-01/wiki/index.php/G3_Yocto" title="View the content page [alt-shift-c]" accesskey="c">Page</a></li>
+				<li id="ca-talk" class="new"><a href="http://sv-wiki-01/wiki/index.php?title=Talk:G3_Yocto&amp;action=edit&amp;redlink=1" title="Discussion about the content page [alt-shift-t]" accesskey="t">Discussion</a></li>
+				<li id="ca-viewsource"><a href="http://sv-wiki-01/wiki/index.php?title=G3_Yocto&amp;action=edit" title="This page is protected.
+You can view its source [alt-shift-e]" accesskey="e">View source</a></li>
+				<li id="ca-history"><a href="http://sv-wiki-01/wiki/index.php?title=G3_Yocto&amp;action=history" rel="archives" title="Past revisions of this page [alt-shift-h]" accesskey="h">History</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal" role="navigation">
+		<h3>Personal tools</h3>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="http://sv-wiki-01/wiki/index.php?title=Special:UserLogin&amp;returnto=G3+Yocto" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo" role="banner">
+<a href="http://sv-wiki-01/wiki/index.php/Main_Page" style="background-image: url(/wiki/cortina/images/logo.png);" title="Visit the main page"></a>
+	</div>
+	<div class="generated-sidebar portlet" id="p-navigation" role="navigation">
+		<h3>Navigation</h3>
+		<div class="pBody">
+			<ul>
+				<li id="n-Top-Page"><a href="http://sv-wiki-01/wiki/index.php/Main_Page">Top Page</a></li>
+				<li id="n-Software-Home-Page"><a href="http://sv-wiki-01/wiki/index.php/DH_%26_ACC_Software_Home_Page">Software Home Page</a></li>
+				<li id="n-DHBU-Software-Wiki"><a href="http://sv-wiki-01/wiki/index.php/Digital_Home_Software_Home_Page">DHBU Software Wiki</a></li>
+				<li id="n-Lynx-Software"><a href="http://sv-wiki-01/wiki/index.php/Lynx_Software_Home_Page">Lynx Software</a></li>
+				<li id="n-DHBU-Hardware-Wiki"><a href="http://sv-wiki-01/wiki/index.php/Digital_Home_Hardware_Home_Page">DHBU Hardware Wiki</a></li>
+				<li id="n-portal"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+				<li id="n-currentevents"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Current_events" title="Find background information on current events">Current events</a></li>
+				<li id="n-recentchanges"><a href="http://sv-wiki-01/wiki/index.php/Special:RecentChanges" title="A list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li>
+				<li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" rel="nofollow" title="The place to find out">Help</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="generated-sidebar portlet" id="p-categorytree-portlet" role="navigation">
+		<h3>Categories</h3>
+		<div class="pBody">
+<div class="CategoryTreeTag" data-ct-mode="0" data-ct-options="{&quot;mode&quot;:0,&quot;hideprefix&quot;:20,&quot;showcount&quot;:false,&quot;namespaces&quot;:false}"><div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Admin" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Admin">Admin</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Documentation" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Documentation">Documentation</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeEmptyBullet">► </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Helpdesk_Service">Helpdesk Service</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Prodeng" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Prodeng">Prodeng</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeEmptyBullet">► </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:QA_Eng">QA Eng</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		</div>
+				</div>
+	</div>
+	<div id="p-search" class="portlet" role="search">
+		<h3><label for="searchInput">Search</label></h3>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php" id="searchform">
+				<input type="hidden" name="title" value="Special:Search">
+				<input type="search" name="search" placeholder="Search" title="Search Cortina Systems Wiki [alt-shift-f]" accesskey="f" id="searchInput" autocomplete="off">
+				<input type="submit" name="go" value="Go" title="Go to a page with this exact name if exists" id="searchGoButton" class="searchButton">&nbsp;
+				<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton">
+			</form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb" role="navigation">
+		<h3>Tools</h3>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="http://sv-wiki-01/wiki/index.php/Special:WhatLinksHere/G3_Yocto" title="A list of all wiki pages that link here [alt-shift-j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="http://sv-wiki-01/wiki/index.php/Special:RecentChangesLinked/G3_Yocto" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li>
+				<li id="t-specialpages"><a href="http://sv-wiki-01/wiki/index.php/Special:SpecialPages" title="A list of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="http://sv-wiki-01/wiki/index.php?title=G3_Yocto&amp;printable=yes" rel="alternate" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li>
+				<li id="t-permalink"><a href="http://sv-wiki-01/wiki/index.php?title=G3_Yocto&amp;oldid=107788" title="Permanent link to this revision of the page">Permanent link</a></li>
+				<li id="t-info"><a href="http://sv-wiki-01/wiki/index.php?title=G3_Yocto&amp;action=info">Page information</a></li>
+			</ul>
+		</div>
+	</div>
+</div><!-- end of the left (by default at least) column -->
+<div class="visualClear"></div>
+<div id="footer" role="contentinfo">
+	<div id="f-poweredbyico">
+		<a href="http://www.mediawiki.org/"><img src="G3%20Yocto%20-%20Cortina%20Systems%20Wiki_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31"></a>
+	</div>
+	<ul id="f-list">
+		<li id="lastmod"> This page was last modified on 4 December 2019, at 02:48.</li>
+		<li id="viewcount">This page has been accessed 1,280 times.</li>
+		<li id="privacy"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Privacy_policy" title="Cortina Systems Wiki:Privacy policy">Privacy policy</a></li>
+		<li id="about"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:About" title="Cortina Systems Wiki:About">About Cortina Systems Wiki</a></li>
+		<li id="disclaimer"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:General_disclaimer" title="Cortina Systems Wiki:General disclaimer">Disclaimers</a></li>
+	</ul>
+</div>
+</div>
+<script>/*<![CDATA[*/window.jQuery && jQuery.ready();/*]]>*/</script><script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+mw.loader.load(["ext.categoryTree","mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"],null,true);
+}</script>
+<script>if(window.mw){
+mw.loader.state({"site":"ready"});
+}</script>
+<!-- Served in 0.291 secs. --><div style="display: none; font-size: 11.4667px;" class="suggestions"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>

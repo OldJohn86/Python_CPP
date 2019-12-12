@@ -1,0 +1,18 @@
+.ac_results {
+	padding: 0px; border: 1px solid windowframe; border-image: none; overflow: hidden; background-color: window;
+}
+.ac_results ul {
+	list-style: none; margin: 0px; padding: 0px; width: 100%;
+}
+.ac_results iframe {
+	left: 0px; top: 0px; width: 3000px; height: 3000px; display: block; position: absolute; z-index: -1;
+}
+.ac_results li {
+	font: 400 12px/normal Segoe UI; margin: 0px; padding: 2px 5px; width: 100%; overflow: hidden; font: menu; display: block; cursor: pointer;
+}
+.ac_loading {
+	background: url("/static/images/indicator.gif") no-repeat right window;
+}
+.ac_over {
+	color: highlighttext; background-color: highlight;
+}

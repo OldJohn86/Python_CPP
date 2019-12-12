@@ -1,0 +1,285 @@
+#dialogs {
+	visibility: hidden;
+}
+html {
+	color: rgb(73, 73, 73);
+}
+a {
+	color: rgb(55, 95, 194);
+}
+a:visited {
+	border-width: 0px;
+}
+.yui-layout-unit {
+	background-color: rgb(204, 204, 204);
+}
+.yui-skin-sam .yui-resize .yui-resize-handle {
+	background-color: rgb(204, 204, 204);
+}
+.yui-skin-sam .yui-layout .yui-layout-unit div.yui-layout-bd {
+	background-color: rgb(255, 255, 255);
+}
+.yui-skin-sam .yui-panel .bd {
+	background-color: rgb(218, 233, 255);
+}
+.yui-skin-sam .yui-panel .ft {
+	background-color: rgb(218, 233, 255);
+}
+#pdfPrompt {
+	border: 1px solid rgb(73, 73, 73); border-image: none; background-color: rgb(218, 233, 255);
+}
+#pdfReview {
+	border: 1px solid rgb(73, 73, 73); border-image: none; background-color: rgb(218, 233, 255);
+}
+div.ff_wrapper {
+	border: 1px solid rgb(73, 73, 73); border-image: none; background-color: rgb(218, 233, 255);
+}
+.yui-skin-sam .yui-panel .hd {
+	background: url("/static/yui/build/assets/skins/sam/sprite.png") repeat-x 0pt -1300px;
+}
+.yui-skin-sam .yui-layout .yui-layout-hd {
+	background: url("/static/yui/build/assets/skins/sam/sprite.png") repeat-x 0pt -1300px;
+}
+.yui-skin-sam .yui-layout .yui-layout-unit div.yui-layout-hd h2 {
+	color: rgb(0, 0, 0);
+}
+button.submit {
+	background: url("/static/yui/build/assets/skins/sam/sprite.png") repeat-x 0pt -1400px; border: 1px solid black; border-image: none; color: white; font-size: 90%; font-weight: bold;
+}
+button.submit:hover {
+	cursor: pointer;
+}
+button.submit:active {
+	background: url("/static/yui/build/assets/skins/sam/sprite.png") repeat-x 0pt 0px; color: rgb(73, 73, 73);
+}
+.clear-block::after {
+	height: 0px; clear: both; display: block; visibility: hidden; content: ".";
+}
+.clear-block {
+	display: inline-block;
+}
+* html .clear-block {
+	height: 1%;
+}
+.clear-block {
+	display: block;
+}
+#registers {
+	margin-left: 5px;
+}
+.reg a {
+	text-decoration: none;
+}
+.reg:hover {
+	font-weight: bold;
+}
+.reg a:visited {
+	
+}
+#registers .selected a {
+	margin-left: 15px;
+}
+#registers .selected {
+	background: url("/static/yui/build/assets/skins/sam/sprite.png") no-repeat 0px -696px;
+}
+#registers .private a {
+	color: red;
+}
+#search-results .private a {
+	color: red;
+}
+.red {
+	color: red;
+}
+#nav {
+	background: url("/static/yui/build/assets/skins/sam/sprite.png") repeat-x 0pt -1300px;
+}
+#nav #top {
+	
+}
+#nav #top #menu {
+	
+}
+#mainmenu {
+	width: 200px;
+}
+#nav #top #menu a {
+	color: rgb(73, 73, 73); font-size: 133%; margin-left: 0.5em;
+}
+#nav #top #search {
+	float: right;
+}
+#nav #bottom {
+	text-align: center; color: black; letter-spacing: 2px;
+}
+#nav #bottom {
+	
+}
+#maps {
+	margin-left: 5px;
+}
+#register {
+	padding: 0.5em;
+}
+#search-results-size {
+	font-size: 120%; font-style: italic; margin-bottom: 1em;
+}
+#search-results .search-results-reg {
+	margin-bottom: 0.5em;
+}
+#search-results .search-results-reg td.label {
+	padding-right: 0.2em; font-weight: bold;
+}
+#advSearch {
+	
+}
+#advSearch form fieldset {
+	padding: 0px 5px 5px; border: 1px solid rgb(102, 102, 102); border-image: none;
+}
+#advSearch form label.labelCheckbox {
+	padding: 4px 0px 0px 18px; text-indent: -18px; display: block;
+}
+.label {
+	font-weight: bold;
+}
+fieldset legend {
+	padding: 0px 3px 0px 9px; font-weight: bold;
+}
+.search-field {
+	border-style: ridge; background-color: rgb(255, 245, 135);
+}
+em {
+	font-style: italic;
+}
+#application-error {
+	background-position: 5px 5px; margin: 50px; padding: 3px 3px 3px 50px; border: 1px solid black; border-image: none; width: 500px; min-height: 80px; background-image: url("/static/images/error_large.gif"); background-repeat: no-repeat; background-color: pink;
+}
+#application-error #error-title {
+	font-size: 150%; font-weight: bold; margin-bottom: 0.5em;
+}
+#application-error #error-details {
+	font-size: 120%; margin-bottom: 0.5em;
+}
+.ihier {
+	font-size: 80%;
+}
+.inline-trouble {
+	padding: 3px; border: 1px solid red; border-image: none; background-color: pink;
+}
+.trouble {
+	padding: 3px; border: 1px solid red; border-image: none; font-size: 80%; margin-bottom: 10px; background-color: pink;
+}
+table.register-header {
+	border-collapse: collapse; empty-cells: show;
+}
+table.register-header tr {
+	
+}
+table.register-header tr td {
+	padding-right: 1em; padding-bottom: 0.3em;
+}
+#register pre {
+	font-family: new times roman, times, serif; font-size: inherit;
+}
+#register td {
+	text-align: left; vertical-align: top;
+}
+font.customer {
+	color: red;
+}
+table.register-bits {
+	border: 1px solid rgb(125, 152, 184); border-image: none; border-collapse: collapse; empty-cells: show;
+}
+table.register-bits tr {
+	
+}
+table.register-bits th {
+	border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;
+}
+table.register-bits tr td {
+	border-right-color: rgb(125, 152, 184); border-bottom-color: rgb(125, 152, 184); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;
+}
+table.register-bits th {
+	background: url("/static/yui/build/assets/skins/sam/sprite.png") repeat-x 0pt -1400px; color: white; font-weight: bold;
+}
+table.register-bits th.em {
+	border-bottom-color: rgb(0, 0, 0); border-bottom-width: 2px; border-bottom-style: solid;
+}
+table.register-bits tr td {
+	text-align: left; vertical-align: top;
+}
+table.register-bits th {
+	padding: 2px;
+}
+table.register-bits td {
+	padding: 2px;
+}
+table.register-bitfields {
+	margin-top: 5px;
+}
+table.register-bitfields tr.last td.last {
+	
+}
+table.register-bitfields table {
+	border: 1px solid rgb(125, 152, 184); border-image: none; border-collapse: collapse; empty-cells: show;
+}
+table.register-bitfields table tr td {
+	text-align: left; vertical-align: top;
+}
+table.register-bitfields table th {
+	background: url("/static/yui/build/assets/skins/sam/sprite.png") repeat-x 0pt -1400px; color: white; font-weight: bold; border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-right-width: 1px; border-bottom-width: 2px; border-right-style: solid; border-bottom-style: solid;
+}
+table.register-bitfields table td {
+	border-right-color: rgb(125, 152, 184); border-bottom-color: rgb(125, 152, 184); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;
+}
+#dyn_panel {
+	text-align: center; padding-top: 5px;
+}
+#dyn_panel_value {
+	border-style: ridge; background-color: rgb(255, 245, 135);
+}
+#dyn_panel_address {
+	width: 8em;
+}
+.dynamic:hover {
+	text-decoration: underline; cursor: pointer;
+}
+.hidden {
+	display: none;
+}
+#iview {
+	
+}
+#iview p {
+	margin-top: 8px;
+}
+#iview ul {
+	margin-left: 0.8em;
+}
+form.ff div.indirect-datafield {
+	width: 494px;
+}
+div.indirect-datafield-comment {
+	padding: 2px; border: 1px solid rgb(217, 217, 217); border-image: none; margin-left: 100px;
+}
+#isr-results-container {
+	padding: 3px; border: 1px solid rgb(217, 217, 217); border-image: none; height: 350px; overflow: auto; min-height: 350px; background-color: white;
+}
+#mod-results-container {
+	padding: 3px; border: 1px solid rgb(217, 217, 217); border-image: none; height: 350px; overflow: auto; min-height: 350px; background-color: white;
+}
+#bulk-results-container {
+	padding: 3px; border: 1px solid rgb(217, 217, 217); border-image: none; height: 350px; overflow: auto; min-height: 350px; background-color: white;
+}
+#bulk-results-container table td {
+	padding-right: 5px;
+}
+#isr-results-container p {
+	margin-top: 8px;
+}
+#isr-results-container ul {
+	margin-left: 0.8em;
+}
+.bfield-value {
+	color: blue; text-decoration: underline; cursor: pointer;
+}

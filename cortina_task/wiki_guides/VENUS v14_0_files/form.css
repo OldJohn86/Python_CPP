@@ -1,0 +1,150 @@
+form.ff * {
+	margin: 0px; padding: 0px;
+}
+form.ff {
+	margin: 0px; padding: 0px; width: 590px; font-size: 100%; min-width: 560px; max-width: 620px;
+}
+form.ff fieldset {
+	border-width: 1px 0px 0px; border-style: solid none none; border-color: rgb(0, 0, 0); margin: 0px; padding: 10px; clear: both; font-size: 100%;
+}
+form.ff fieldset legend {
+	margin: 0px; padding: 0px 5px; color: rgb(0, 0, 0); font-size: 150%; font-weight: normal;
+}
+.ff label {
+	font-size: 100%;
+}
+.ff label u {
+	font-style: normal; text-decoration: underline;
+}
+.ff input {
+	color: rgb(0, 0, 0); font-family: Tahoma, Arial, sans-serif; font-size: 100%;
+}
+select {
+	color: rgb(0, 0, 0); font-family: Tahoma, Arial, sans-serif; font-size: 100%;
+}
+textarea {
+	color: rgb(0, 0, 0); font-family: Tahoma, Arial, sans-serif; font-size: 100%;
+}
+.ff textarea {
+	overflow: auto;
+}
+form.ff div {
+	margin: 5px 0px 0px; padding: 1px 3px; width: 354px; clear: left; display: block;
+}
+form.ff fieldset div.notes {
+	margin: 0px 0px 10px 10px; padding: 5px; border: 1px solid rgb(102, 102, 102); border-image: none; width: 158px; height: auto; color: rgb(102, 102, 102); font-size: 88%; float: right; background-color: rgb(255, 255, 225);
+}
+form.ff fieldset div.notes h4 {
+	background-position: left top; border-width: 0px 0px 1px; border-style: solid; border-color: rgb(102, 102, 102); padding: 3px 0px 3px 27px; color: rgb(102, 102, 102); font-size: 110%; background-image: url("icon_info.gif"); background-repeat: no-repeat;
+}
+form.ff fieldset div.notes p {
+	margin: 0em 0em 1.2em; color: rgb(102, 102, 102);
+}
+form.ff fieldset div.notes p.last {
+	margin: 0em;
+}
+form.ff div fieldset {
+	margin: 0px 0px 0px 142px; padding: 0px 5px 5px; border: 1px solid rgb(102, 102, 102); width: 197px; clear: none;
+}
+form.ff div fieldset legend {
+	padding: 0px 3px 0px 9px; font-size: 100%;
+}
+form.ff div.required fieldset legend {
+	font-weight: bold;
+}
+form.ff div label {
+	margin: 0px 0px 5px; padding: 3px 5px; width: 130px; text-align: right; float: left; display: block;
+}
+form.ff div.optional label {
+	font-weight: normal;
+}
+label.optional {
+	font-weight: normal;
+}
+form.ff div.required label {
+	font-weight: bold;
+}
+label.required {
+	font-weight: bold;
+}
+form.ff div label.labelCheckbox {
+	margin: 0px 0px 5px 142px; padding: 0px; width: 200px; text-align: left; float: none; display: block;
+}
+form.ff div label.labelRadio {
+	margin: 0px 0px 5px 142px; padding: 0px; width: 200px; text-align: left; float: none; display: block;
+}
+form.ff div fieldset label.labelCheckbox {
+	margin: 0px 0px 5px; width: 170px;
+}
+form.ff div fieldset label.labelRadio {
+	margin: 0px 0px 5px; width: 170px;
+}
+form.ff div img {
+	border: 1px solid rgb(0, 0, 0); border-image: none;
+}
+.ff p.error {
+	background-position: 3px 3px; margin: auto 100px; padding: 3px 3px 5px 27px; border: 1px solid rgb(0, 0, 0); border-image: none; color: rgb(255, 255, 255); background-image: url("icon_error.gif"); background-repeat: no-repeat; background-color: rgb(255, 0, 0);
+}
+form.ff div.error {
+	background-position: left top; border: 1px solid rgb(255, 0, 0); border-image: none; color: rgb(102, 102, 102); background-image: url("required_bg.gif"); background-repeat: no-repeat; background-color: rgb(255, 255, 225);
+}
+form.ff div.error p.error {
+	background-position: left top; margin: 0px 0px 0px 118px; width: 200px; color: rgb(255, 0, 0); font-size: 88%; font-weight: bold; background-image: url("icon_error.gif"); background-color: transparent;
+}
+form.ff div input {
+	margin: 0px; padding: 1px 3px; width: 200px;
+}
+form.ff div select {
+	margin: 0px; padding: 1px 3px; width: 200px;
+}
+form.ff div textarea {
+	margin: 0px; padding: 1px 3px; width: 200px;
+}
+form.ff div input.inputFile {
+	width: 211px;
+}
+form.ff div select.selectOne {
+	padding: 1px 3px; width: 211px;
+}
+form.ff div select.selectMultiple {
+	padding: 1px 3px; width: 211px;
+}
+form.ff div input.inputCheckbox {
+	border-width: 0px; margin: 0px 0px 0px 140px; padding: 0px; width: 14px; height: 14px; display: inline; background-color: transparent;
+}
+form.ff div input.inputRadio {
+	border-width: 0px; margin: 0px 0px 0px 140px; padding: 0px; width: 14px; height: 14px; display: inline; background-color: transparent;
+}
+input.inputCheckbox {
+	border-width: 0px; margin: 0px 0px 0px 140px; padding: 0px; width: 14px; height: 14px; display: inline; background-color: transparent;
+}
+input.inputRadio {
+	border-width: 0px; margin: 0px 0px 0px 140px; padding: 0px; width: 14px; height: 14px; display: inline; background-color: transparent;
+}
+form.ff div.submit {
+	padding: 0px 0px 0px 140px; width: 214px;
+}
+form.ff div.submit div {
+	margin: 0px; padding: 0px; width: auto; text-align: left; float: left; display: inline;
+}
+form.ff div input.inputSubmit {
+	margin: 0px; padding: 0px 6px; width: auto; color: rgb(0, 0, 0); background-color: rgb(204, 204, 204);
+}
+form.ff div input.inputButton {
+	margin: 0px; padding: 0px 6px; width: auto; color: rgb(0, 0, 0); background-color: rgb(204, 204, 204);
+}
+input.inputSubmit {
+	margin: 0px; padding: 0px 6px; width: auto; color: rgb(0, 0, 0); background-color: rgb(204, 204, 204);
+}
+input.inputButton {
+	margin: 0px; padding: 0px 6px; width: auto; color: rgb(0, 0, 0); background-color: rgb(204, 204, 204);
+}
+form.ff div.submit div input.inputSubmit {
+	margin: 0px 0px 0px 5px; float: right;
+}
+form.ff div.submit div input.inputButton {
+	margin: 0px 0px 0px 5px; float: right;
+}
+form.ff div small {
+	margin: 0px 0px 5px 142px; padding: 1px 3px; font-size: 88%; display: block;
+}

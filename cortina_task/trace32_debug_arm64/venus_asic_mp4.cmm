@@ -1,0 +1,121 @@
+; --------------------------------------------------------------------------------------------------
+; @Title: Startup script for the Venus FPGA board
+; @Description: This script configures the base addresses for debug and attaches to the core
+; @Copyright: (C) 2018 Cortina Access
+; --------------------------------------------------------------------------------------------------
+; $Id: $
+;
+; NOTE: Interrupts are disabled with SYStem.Option IMASKASM and IMASKHLL per default
+;
+
+; Venus FPGA Configuration:
+; * 4x Cortex-A55
+
+//--------------------------------------------------------------------------------------------------
+// Configuration
+
+SYStem.RESet
+SYStem.CPU CORTEXA55
+
+SYStem.Option EnReset off
+
+SYStem.CONFIG CORENUMBER 4.
+;SYStem.CONFIG CORENUMBER 2.
+
+CORE.ASSIGN 1. 2. 3. 4.
+;CORE.ASSIGN 1. 2.
+
+//
+// Cortex-A55 | debug      | CTI        | PMU        | trace
+// -----------+------------+------------+------------+------------
+//   core 0   | 0x80410000 | 0x80420000 | 0x80430000 | 0x80440000   
+//   core 1   | 0x80510000 | 0x80520000 | 0x80530000 | 0x80540000
+//   core 2   | 0x80610000 | 0x80620000 | 0x80630000 | 0x80640000   
+//   core 3   | 0x80710000 | 0x80720000 | 0x80730000 | 0x80740000   
+//
+// Cortex-A55 ROM-Table: 0x80400000
+//
+
+// Access port numbers are
+SYStem.CONFIG APBACCESSPORT 1.
+SYStem.CONFIG DEBUGACCESSPORT 0.          ;set to 0 to work
+SYStem.CONFIG AXIACCESSPORT 0.
+SYStem.CONFIG MEMORYACCESSPORT 0.
+
+// Pre/Post settings
+;SYStem.CONFIG DAPIRPRE 4.
+;SYStem.CONFIG DAPDRPRE 1.
+;SYStem.CONFIG DAPIRPOST 0.
+;SYStem.CONFIG DAPDRPOST 0.
+
+// Assignment:  MP4
+SYStem.CONFIG COREDEBUG BASE DAP:0x80410000 DAP:0x80510000 DAP:0x80610000 DAP:0x80710000
+SYStem.CONFIG CTI BASE DAP:0x80420000 DAP:0x80520000 DAP:0x80620000 DAP:0x80720000
+SYStem.CONFIG BMC BASE DAP:0x80430000 DAP:0x80530000 DAP:0x80630000 DAP:0x80730000
+SYStem.CONFIG ETM BASE DAP:0x80440000 DAP:0x80540000 DAP:0x80640000 DAP:0x80740000
+
+// Assignment:  MP2
+;SYStem.CONFIG COREDEBUG BASE DAP:0x80410000 DAP:0x80510000
+;SYStem.CONFIG CTI BASE DAP:0x80420000 DAP:0x80520000
+;SYStem.CONFIG BMC BASE DAP:0x80430000 DAP:0x80530000
+;SYStem.CONFIG ETM BASE DAP:0x80440000 DAP:0x80540000
+
+//--------------------------------------------------------------------------------------------------
+// Attach
+
+// Finally attach to the target
+;SYStem.Mode Attach
+SYStem.Option.NOMA ReadWrite
+SYStem.Option.MemStatusCheck ON
+;SYStem.JtagClock 50kHz
+SYStem.Up
+    
+; if run()
+; Break
+
+; Enable DDR_SCH FPGA mode
+;data.set 0xf4328864 %l 0x01f74020 ;		;512MB
+;data.set 0xf4328c64 %l 0x01f74010 ;		; 256MB
+;data.set 0xf432400c %l 0x0000f600 
+
+; Enable CPU timer clock
+;data.set 0xf4321000 %l 0x00000001 ;
+
+
+;load BL2 images
+;d.load.elf  P:\Work\Venus\ATF\arm-trusted-firmware\build\venus\release\bl2\bl2.elf /strippart "/space/" /path "P:\"
+d.load.binary C:\Users\pengpeng.chen\Desktop\Jason_ASICchip\Venus_asic_bringup_img\bl2.bin 0x80004000 /verify
+R.S PC 0x80004000
+
+;load ATF images
+;d.load.binary Z:\Venus_build\arm-trusted-firmware\build\venus\release\bl1.bin 0xfffc0000 /verify
+;d.load.binary Z:\Venus_build\arm-trusted-firmware\build\venus\release\bl1.bin 0xfffc0000 /verify
+;R.S PC 0xfffc0000
+;d.load.binary Z:\Venus_build\arm-trusted-firmware\build\venus\release\fip.bin 0x8000000 /verify
+;d.load.elf  P:\Work\Venus\QEMU\arm-trusted-firmware\build\venus\release\bl1\bl1.elf /nocode /strippart "/space/Work/Venus/QEMU/arm-trusted-firmware/build/venus/release/bl1" /path "P:\"
+;R.S PC 0xfffc0000
+
+; U-Boot
+;d.load.binary  P:\Work\Venus\QEMU\u-boot\u-boot.bin 0x4000000 /verify
+;d.load.elf  P:\Work\Venus\QEMU\u-boot\u-boot.symbol /nocode
+;d.load.elf  P:\Work\Venus\QEMU\u-boot\u-boot /nocode
+;R.S PC 0x4000000
+
+; Load kernel image
+;d.load.binary P:\Work\G3_Master\G3-FPGA-150629\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\linux-3.18\arch\arm64\boot\Image 0x80000
+;data.load.elf P:\Work\G3_Master\G3-FPGA-150629\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\linux-3.18\vmlinux /nocode /strippart "/space/Work/G3_Master/G3-FPGA-150629/build_dir/target-aarch64-openwrt-linux-gnu/linux-g3_fpga/" /path "p:\"
+;d.load.binary P:\Work\G3_Master\G3-FPGA-150629\build_dir\target-aarch64-openwrt-linux-gnu\linux-g3_fpga\linux-3.18\arch\arm64\boot\dts\cortina\ca7774-fpgaboard.dtb 0x1000000
+;R.S X0 0x1000000
+;R.S PC 0x80000
+
+&uart_base=0xf4329148
+;data.set &uart_base      %l 0x01B200e3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=50MHz
+data.set 0xf4329188      %l 0x0000D9e3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=25MHz
+data.set 0xf432918c %l 0x588	; FC
+data.set 0xf4329190 %l 0x6c		; Sample rate
+data.set 0xf4329198 %l 0x4F		; print 'O'
+data.set 0xf4329198 %l 0x4B		; print 'K'
+data.set 0xf4329198 %l 0x21		; print '!'
+data.set 0xf4329198 %l 0x0D		;
+data.set 0xf4329198 %l 0x0A		;
+ENDDO

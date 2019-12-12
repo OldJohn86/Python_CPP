@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html dir="ltr" class="client-js" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><title>Saturn Secure Boot - Cortina Systems Wiki</title>
+<meta name="generator" content="MediaWiki 1.22.6">
+<link rel="stylesheet" href="Saturn%20Secure%20Boot%20-%20Cortina%20Systems%20Wiki_files/cortina.css">
+<link rel="shortcut icon" href="http://sv-wiki-01/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://sv-wiki-01/wiki/opensearch_desc.php" title="Cortina Systems Wiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://sv-wiki-01/wiki/api.php?action=rsd">
+<link rel="alternate" type="application/atom+xml" title="Cortina Systems Wiki Atom feed" href="http://sv-wiki-01/wiki/index.php?title=Special:RecentChanges&amp;feed=atom">
+<link rel="stylesheet" href="Saturn%20Secure%20Boot%20-%20Cortina%20Systems%20Wiki_files/load.css">
+<!--[if IE 6]><link rel="stylesheet" href="/wiki/skins/monobook/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/wiki/skins/monobook/IE70Fixes.css?303" media="screen" /><![endif]--><style>
+.mw-collapsible-toggle{float:right} li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:4250852ed2349a0d4d0fc6509a3e7d4c */
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px -1px 0 0} html > body .suggestions{margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special .special-label{color:gray;text-align:left}.suggestions-special .special-query{color:black;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:white}.autoellipsis-matched,.highlight{font-weight:bold}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:9780324491b653a3780e2d029bdc140c */
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:.6em 3.6em .6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dcd9d9;text-shadow:0 0.0625em 0 rgba(255,255,255,0.5);border-radius:5px;-webkit-box-shadow:0 2px 5px 0 #ccc;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook .postedit{top:6em !important}.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABblBMVEUAAAD///////9PfTf///80aRdTgjn///9Feij///////////9Rfzf///////////9PfjZRgDh1o1xOfTb///////+bwYqLtnj///////9PfTa82K////9WhT6YxIL///9QgDdTgzr////////j7uDl7eLq8efi693k7OH///////9UhjuBr2rp9uRUhjr///9YljVKgir///9WiTlYjT3////9/v57vFlbkT5PjC9dlD/5/fhuq09stUTs9uhxuElctCpfnT1huDFloEZloUZmpENmvDZpvDxpvTxqvjxrvT5rvT9rwTxsqktswD5uwkBvuUdxw0NztFBztU9ztVBzwkp0tlJ1xkd2t1R3uVR4w1F4xk54x014yE15uVZ5v1R5xVB6v1R7yFJ8wVh9xVl9yFR9yVd9ylN+xVh+yFd/x1l/yFeAylmEx1+Ny2uY0Hqe04Wj1Ymv3Ze33qLD47TJ5L3O6cPU7Mrq9eb2+/Q4j37OAAAAQHRSTlMAAQIEBAUFBQwPFB4fJCUoKiosQEhJS01RUlZZXmdydXaChYuSlJSWmJmoq6uur8LExcvM19fg5ejt8fX2+Pr7SljgewAAAKpJREFUGBkFwQNCAwAAAMDLtl3LtrG4rWXbtvX77gAgZ6grFwC0bhwNVgKgdPZx8b0dgLi+s7Wn0VoAqpfOI9+BNADZI7fLrz2pSEwGHZuH+78lSK8ZLkLezF3ooyUG3VPXq2USei9WngeyoG195yBYWDF3E/2pAhl1e9Gr8bGT+bfOFCC2fnvh4X7rcqIAQNNu+HT6sxkAjceTL/2ZAIhv+PorBwBJxfkA//dFHSCBy/UTAAAAAElFTkSuQmCC);background-image:url(http://sv-wiki-01/wiki/resources/mediawiki.action/images/green-checkmark.png?2014-04-24T21:25:00Z)!ie;background-position:left}.postedit-close{position:absolute;padding:0 .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:black;text-shadow:0 0.0625em 0 white;text-decoration:none;opacity:0.2;filter:alpha(opacity=20)}.postedit-close:hover{color:black;text-decoration:none;opacity:0.4;filter:alpha(opacity=40)}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:7f54a550ae14160313958ddb2288bcd7 */</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{text-decoration:none;color:black}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:white}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:52b1797f70c7e4094dfa4191101944e8 */</style><meta name="ResourceLoaderDynamicStyles" content="">
+<style>a:lang(ar),a:lang(ckb),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:2902c472ef4c41bfeaf25eb08706bd57 */</style>
+
+<script src="Saturn%20Secure%20Boot%20-%20Cortina%20Systems%20Wiki_files/load_002.php"></script><script src="Saturn%20Secure%20Boot%20-%20Cortina%20Systems%20Wiki_files/load_004.php"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Saturn_Secure_Boot","wgTitle":"Saturn Secure Boot","wgCurRevisionId":103764,"wgRevisionId":103764,"wgArticleId":9727,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Saturn_Secure_Boot","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgRestrictionRead":[],"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"monobook","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"vector-simplesearch":1,"watchcreations":0,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0
+,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"useeditwarning":1,"prefershttps":1,"language":"en","variant-gan":"gan","variant-iu":"iu","variant-kk":"kk","variant-ku":"ku","variant-shi":"shi","variant-sr":"sr","variant-tg":"tg","variant-uz":"uz","variant-zh":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"variant":"en"});},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});},{},{});
+/* cache key: wikiSQL:resourceloader:filter:minify-js:7:68471340157e99d9e2eb390b7623161a */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script><script src="Saturn%20Secure%20Boot%20-%20Cortina%20Systems%20Wiki_files/load_003.php"></script>
+<script async="" src="Saturn%20Secure%20Boot%20-%20Cortina%20Systems%20Wiki_files/load.php"></script></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Saturn_Secure_Boot skin-monobook action-view">
+<div id="globalWrapper">
+<div id="column-content"><div id="content" class="mw-body-primary" role="main">
+	<a id="top"></a>
+	<div id="siteNotice"><div id="localNotice" dir="ltr" lang="en"><p>-
+</p>
+<div class="page-warning">
+<p><font size="4" color="red"><b>Login Required for Editting!</b></font>
+</p><p>We are enforcing the rule that every user has to log in before 
+he/she can make any modification to this wiki.  Your Cortina login 
+should work fine here.  There is no real need to create a new account.  
+If you do not want to log in, an anonymous user can only view some 
+specific contents of this wiki.
+</p>
+</div>
+</div></div>
+	<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">Saturn Secure Boot</span></h1>
+	<div id="bodyContent" class="mw-body">
+		<div id="siteSub">From Cortina Systems Wiki</div>
+		<div id="contentSub"></div>
+		<div id="jump-to-nav" class="mw-jump">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>
+
+		<!-- start content -->
+<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="#" class="internal" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Saturn_Secure_Boot"><span class="tocnumber">1</span> <span class="toctext">Saturn Secure Boot</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Reference_Documents"><span class="tocnumber">2</span> <span class="toctext">Reference Documents</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Misc"><span class="tocnumber">3</span> <span class="toctext">Misc</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Saturn_Secure_Boot_design_spec"><span class="tocnumber">3.1</span> <span class="toctext">Saturn Secure Boot design spec</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Coding_Rules"><span class="tocnumber">3.2</span> <span class="toctext">Coding Rules</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Generate_the_ca82xx_registers.h"><span class="tocnumber">3.3</span> <span class="toctext">Generate the ca82xx_registers.h</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Generate_GPT_and_Dual_FIP_Images_for_Serial_NOR.2C_NAND_and_SD.2FeMMC"><span class="tocnumber">3.4</span> <span class="toctext">Generate GPT and Dual FIP Images for Serial NOR, NAND and SD/eMMC</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="#Realtek_Linux"><span class="tocnumber">4</span> <span class="toctext">Realtek Linux</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Realtek_U-Boot"><span class="tocnumber">5</span> <span class="toctext">Realtek U-Boot</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#Realtek_Yocto"><span class="tocnumber">6</span> <span class="toctext">Realtek Yocto</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#Realtek_QEMU"><span class="tocnumber">7</span> <span class="toctext">Realtek QEMU</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="#Saturn_HGU_Mode"><span class="tocnumber">8</span> <span class="toctext">Saturn HGU Mode</span></a>
+<ul>
+<li class="toclevel-2 tocsection-13"><a href="#Zephyr_RTOS"><span class="tocnumber">8.1</span> <span class="toctext">Zephyr RTOS</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-14"><a href="#Cortina_Saturn_ATU"><span class="tocnumber">9</span> <span class="toctext">Cortina Saturn ATU</span></a>
+<ul>
+<li class="toclevel-2 tocsection-15"><a href="#SSB_design_spec_and_ATF_Study_Notes"><span class="tocnumber">9.1</span> <span class="toctext">SSB design spec and ATF Study Notes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-16"><a href="#Build_Environment"><span class="tocnumber">10</span> <span class="toctext">Build Environment</span></a></li>
+<li class="toclevel-1 tocsection-17"><a href="#Trusted_Board_Boot_Build_.28TBB.29"><span class="tocnumber">11</span> <span class="toctext">Trusted Board Boot Build (TBB)</span></a>
+<ul>
+<li class="toclevel-2 tocsection-18"><a href="#For_FPGA_BUILD:"><span class="tocnumber">11.1</span> <span class="toctext">For FPGA BUILD:</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="#For_ASIC_BUILD:"><span class="tocnumber">11.2</span> <span class="toctext">For ASIC BUILD:</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="#How_to_generate_various_types_of_RSA_keys_and_SHA256_hash_of_public_key"><span class="tocnumber">11.3</span> <span class="toctext">How to generate various types of RSA keys and SHA256 hash of public key</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-21"><a href="#Saturn_QEMU"><span class="tocnumber">12</span> <span class="toctext">Saturn QEMU</span></a></li>
+<li class="toclevel-1 tocsection-22"><a href="#Board_Support"><span class="tocnumber">13</span> <span class="toctext">Board Support</span></a>
+<ul>
+<li class="toclevel-2 tocsection-23"><a href="#FPGA"><span class="tocnumber">13.1</span> <span class="toctext">FPGA</span></a></li>
+<li class="toclevel-2 tocsection-24"><a href="#Engineering_board_with_ASIC"><span class="tocnumber">13.2</span> <span class="toctext">Engineering board with ASIC</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-25"><a href="#ASIC_SIM_unit_test_effort"><span class="tocnumber">14</span> <span class="toctext">ASIC SIM unit test effort</span></a></li>
+<li class="toclevel-1 tocsection-26"><a href="#Status"><span class="tocnumber">15</span> <span class="toctext">Status</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Saturn_Secure_Boot">Saturn Secure Boot</span></h2>
+<p>Saturn Secure Boot (SSB) is based on ARM Trusted Firmware (ATF) that 
+was original developed for use with the G3 Application Processor (AP). 
+Unlike ATF, the MMU is not configured or used in this context. Instead, 
+Cortina developed Address Translation Unit (ATU) IP unique to Saturn 
+will be used to map
+high address decoders into the lower 512MB of physical address space. 
+This allows necessary Cortina IP to be access through MIPS KSEG0 
+(cached)/KSEG1(uncached)
+logic addressing which only is capable  of addressing the lower 512MB of
+ physical address space.  In addition, since Saturn does not support a 
+separate CPU context beyond MMU protection, 
+no secure world runtime is supported. Specifically, BL31 and BL32 are 
+not built or loaded by BL2.  The only kind of memories protection on 
+Saturn is via MMU. This will be the responsibility of the OS to setup  
+and not SSB. 
+</p>
+<pre>The following is summary of images produced from SSB:
+</pre>
+<ul>
+<li>BL1 -  started at the reset vector. Basic HW Init and then copies 
+BL2 into SRAM from non-volatile storage. Can authenticate BL2 using 
+X.509 certificates. 
+</li>
+<li>BL2 - This image sets up DRAM.  It loads BL33 images from 
+non-volatile storage into different memory locations.   It also 
+authenticate BL33 using X.509 certificates. 
+</li>
+<li>BL3-0 - not used
+</li>
+<li>BL3-1 - not used due to lack of equivalent secure world CPU mode support. 
+</li>
+<li>BL3-2 -  not used due to lack of equivelent secure world CPU mode support.
+</li>
+<li>BL3-3 - U-Boot
+</li>
+</ul>
+<h2><span class="mw-headline" id="Reference_Documents">Reference Documents</span></h2>
+<pre>Saturn Realtek RX5281 Datasheet <a href="http://sv-wiki-01/wiki/index.php/File:RXx281_2016_06.pdf" title="File:RXx281 2016 06.pdf">File:RXx281 2016 06.pdf</a>
+</pre>
+<pre>Saturn SW High-level Requirements and Definition <a href="http://sv-wiki-01/wiki/index.php/File:Saturn-SW-Reqs-and-definition-v0p0.docx" title="File:Saturn-SW-Reqs-and-definition-v0p0.docx">File:Saturn-SW-Reqs-and-definition-v0p0.docx</a>
+</pre>
+<pre>Saturn address maps and fabric spreadsheet <a rel="nofollow" class="external text" href="http://home/metadot/index.pl?id=72434&amp;isa=CMSDocument&amp;op=show">&lt;metadot link&gt;</a> <s><a href="http://sv-wiki-01/wiki/index.php/File:Saturn_addressing_and_fabric_spreadsheet-v2p0.xlsx" title="File:Saturn addressing and fabric spreadsheet-v2p0.xlsx">File:Saturn addressing and fabric spreadsheet-v2p0.xlsx</a></s>
+</pre>
+<pre>Saturn Interrupt Map <a href="http://sv-wiki-01/wiki/index.php/File:Saturn-interrupt-list-v0p8xlsx.xlsx" title="File:Saturn-interrupt-list-v0p8xlsx.xlsx">File:Saturn-interrupt-list-v0p8xlsx.xlsx</a>
+</pre>
+<pre>Saturn Secure Boot high level presentation <a href="http://sv-wiki-01/wiki/index.php/File:Saturn-rom-v1.pptx" title="File:Saturn-rom-v1.pptx">File:Saturn-rom-v1.pptx</a>
+</pre>
+<pre>Saturn Register <a rel="nofollow" class="external text" href="http://sv-reg-01.cortina-access.com/reg?db=/home/anemirov/saturn-2017-05-04.db">2017/05/04</a> DB file
+</pre>
+<pre>Dual Taroko core Luna V1.9 Release (u-boot and Linux 2.6.30) /space/luna/v1.9/luna_V1.9.0_R10197_20161004.tar.bz2 on SVLSWG2REG1 and <a href="http://sv-wiki-01/wiki/index.php/File:Luna_V1.9_release_notes.pdf" title="File:Luna V1.9 release notes.pdf">File:Luna V1.9 release notes.pdf</a>
+</pre>
+<pre><a href="http://sv-wiki-01/wiki/index.php/MIPS_boot_flow" title="MIPS boot flow">MIPS boot flow</a>
+</pre>
+<pre>GCC Register naming convention for MIPS: <a href="http://sv-wiki-01/wiki/index.php/File:Mips_gcc_register_naming.jpg" class="image"><img alt="Mips gcc register naming.jpg" src="Saturn%20Secure%20Boot%20-%20Cortina%20Systems%20Wiki_files/Mips_gcc_register_naming.jpg" width="902" height="686"></a>
+</pre>
+<h2><span class="mw-headline" id="Misc">Misc</span></h2>
+<h3><span class="mw-headline" id="Saturn_Secure_Boot_design_spec">Saturn Secure Boot design spec</span></h3>
+<p><a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/File:Saturn_Security_boot_design_spec.docx">&lt;Saturn_SSB_Design_Spec&gt;</a>
+</p>
+<h3><span class="mw-headline" id="Coding_Rules">Coding Rules</span></h3>
+<p><a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/Saturn_SSB_Code_Review_Procedure">&lt;Saturn_SSB_Code_Review_Procedure&gt;</a>
+</p>
+<h3><span class="mw-headline" id="Generate_the_ca82xx_registers.h">Generate the ca82xx_registers.h</span></h3>
+<ul>
+<li> checkout ca82xx-devel tools 
+</li>
+</ul>
+<pre>  git clone gitolite@cs-local-gitmirror:sw/platforms/cs-unified/host-tools/ca82xx-devel 
+</pre>
+<ul>
+<li> Get the latest reg.db from Hardware team. 
+</li>
+</ul>
+<ul>
+<li> Use the following command to generate ca82xx_registers.h
+</li>
+</ul>
+<pre>  cd regdb2header 
+  make HEADER=ca82xx_registers.h ASM=1
+</pre>
+<ul>
+<li> more information, go to <a rel="nofollow" class="external autonumber" href="http://sv-wiki-01/wiki/index.php/Saturn_Registers_Header_Generate">[1]</a>
+</li>
+</ul>
+<ul>
+<li> The latest <a rel="nofollow" class="external text" href="http://sv-reg-01/reg?db=/rsc/CA1025/register-sets/saturn/nov-18-2016/reg.db#">&lt;reg.db&gt;</a>
+</li>
+</ul>
+<h3><span class="mw-headline" id="Generate_GPT_and_Dual_FIP_Images_for_Serial_NOR.2C_NAND_and_SD.2FeMMC">Generate GPT and Dual FIP Images for Serial NOR, NAND and SD/eMMC</span></h3>
+<p>Follow these instructions for creation of a Cortina GPT image. [<a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/Create_Guid_partition_table">Create GUID Partition Table</a>]
+</p>
+<h2><span class="mw-headline" id="Realtek_Linux">Realtek Linux</span></h2>
+<p>How to get access to Realtek's Linux Kernel git repo as a remote reference. [<a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/Realtek_Linux_Git_Server">Instructions</a>]
+</p><p>Realtek Linux Document <a href="http://sv-wiki-01/wiki/index.php/File:Realtek_linux.pdf" title="File:Realtek linux.pdf">File:Realtek linux.pdf</a>
+</p>
+<h2><span class="mw-headline" id="Realtek_U-Boot">Realtek U-Boot</span></h2>
+<p>How to get access to Realtek's U-Boot git repo as a remote reference. [<a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/Realtek_U-Boot_Git_Server">Instructions</a>]
+</p>
+<h2><span class="mw-headline" id="Realtek_Yocto">Realtek Yocto</span></h2>
+<p>How to get access to Realtek's modification Yocto as remote reference and clone Realtek's Meta Layer git repos. [<a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/Realtek_Yocto_Git_Server">Instructions</a>]
+</p>
+<h2><span class="mw-headline" id="Realtek_QEMU">Realtek QEMU</span></h2>
+<p>How to build Realtek QEMU from Cortina git repo.
+</p>
+<pre>$ git clone gitolite@cs-local-gitmirror:sw/platforms/cs-unified/host-tools/emulators/qemu
+$ cd qemu
+$ git checkout cortina/saturn-2.7.y-realtek-master
+$ make -f Makefile.realtek
+</pre>
+<p>How to get access to Realtek's QEMU git repo as a remote reference. [<a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/Realtek_QEMU_Git_Server">Instructions</a>]
+</p>
+<h2><span class="mw-headline" id="Saturn_HGU_Mode">Saturn HGU Mode</span></h2>
+<h3><span class="mw-headline" id="Zephyr_RTOS">Zephyr RTOS</span></h3>
+<p>Saturn HGU <a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/Zephyr_RTOS">Zephyr RTOS Support</a>
+</p>
+<h2><span class="mw-headline" id="Cortina_Saturn_ATU">Cortina Saturn ATU</span></h2>
+<p>Many Cortina IP blocks decode regions are scattered throughout the 
+entire 4GB physical address range of the CPU. 
+However, in order to access physical address above 512MB an MMU must be 
+used in MIPS architecture. 
+Although, Saturn contains an MMU it add significant complexity and 
+overhead to the design to develop, and maintain  MMU mapping
+via the TLB.  Therefore, in the context of SSB the use of the MMU will 
+be avoided. Instead, the Cortina Saturn Design has
+developed an seperate Address Translation Unit (ATU) to remapped 
+physical addressing of Cortina Developed HW components to
+the lower 512MB of physical address space. The ATU will be programmed 
+with predefined mapping at power-on reset automatically by the Saturn 
+HW.
+</p><p>In order to access Cortina IP HW components below 512MB, a 
+"logical" CPU address alias must be used to specify either
+cached or uncached access to the physical address.  MIPS KSEG0 (cached 
+access) logical space starts at 0x8000_0000 and maps
+to physical address starting 0x0000_0000. MIPS KSEG1 (uncached access) 
+logical space starts at 0xA000_0000 and maps
+to the same physical address starting 0x0000_0000.   So when the MIPS 
+CPU is being used to access the lower 512MB of address space,
+the software must either OR in 0x8000_0000 or  0xA000_0000 to the 
+physical address to determine what kind of access to perform.
+If the physical address is pass to the CPU via software without OR'ing 
+to a KSEG0 or KSEG1 address first then a
+CPU exception will be thrown as this will attempt to access the MMU 
+which is likely has these addresses unmapped.
+Passing address like 0x0000_0000 to the CPU will throw as User Space TLB
+ exception because this is mapped to
+the KUSEG space (MMU controlled). Passing address above 512MB will also 
+cause a TLB exception as those address
+are MMU controlled for KSEG3. SSB should only use KSEG0 and KSEG1 
+addresses in software for CPU access. 
+</p><p>See section 8.1 of the Realtek RX5281 Datasheet to determine which CPU address map to logical controlled cached access 
+via KSEG0 and KSEG0, vs MMU controlled access via KUSEG and KSEG3. 
+</p><p>To determine the ATU mapping in software, a header file MACRO has been developed called ATU_XLAT(x).
+PRE ATU address will be provided by the Cortina HW team via a registers.h file, or may be looked up by SW
+engineers during development via the current reg.db file reference above. These address should then be 
+passed through the ATU_XLAT(x) macro. This will yield a physical address below 512MB. Making the address
+accessible via either KSEG0 or KSEG1.  Then this address should be passed through a PHYS_TO_KSEG0(x) or PHYS_TO_KSEG1(x)
+macro to obtain either a cached or uncached logic address.
+</p><p>The ATU_XLAT macro resides in the SSB code base and should be 
+included in the top level PLATFORM header file include/platform_def.h
+as #include &lt;ca827x_atu.h&gt;
+</p>
+<h3><span class="mw-headline" id="SSB_design_spec_and_ATF_Study_Notes">SSB design spec and ATF Study Notes</span></h3>
+<ol>
+<li><a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/SSB_Exception_Handle">&lt;Exception Handle&gt;</a>
+</li>
+</ol>
+<h2><span class="mw-headline" id="Build_Environment">Build Environment</span></h2>
+<p>The Saturn support source code is available via the Cortina git 
+mirrors and is build with the Realtek/LEXRA GCC bare metal toolchain for
+ Taroko family of cores based on MIPS I ISA. 
+</p><p>Realtek/LEXRA GCC bare meta toolchain is available via Cortina 
+NFS at the mount point 
+/auto/project2/sw/toolchains/rsdk-4.4.7-5281-EL-rtos-n2.1-m32ut-150702/bin.
+ Please make sure it is in your PATH to access the toolchain.   Type:
+</p>
+<pre> which mips-elf-gcc
+</pre>
+<p>confirm that 
+</p>
+<pre>/auto/project2/sw/toolchains/rsdk-4.4.7-5281-EL-rtos-n2.1-m32ut-150702/bin/mips-elf-gcc
+</pre>
+<p>is returned to make sure the binaries can be found by your development host.
+</p><p>In addition, the following other host tools are required. 
+</p>
+<pre>git build-essential uuid-dev iasl bc ncurses-dev device-tree-compiler libssl-dev
+</pre>
+<p>Once this is done you can clone the source code with:
+</p>
+<pre> git clone gitolite@cs-local-gitmirror:sw/platforms/cs-unified/hypervisors/arm-trusted-firmware
+</pre>
+<p><br>
+Next, cd into the working repository and switch to the Cortina development branch for the Saturn FPGA board
+</p>
+<pre> cd arm-trusted-firmware
+ git checkout cortina/master_v1.3.y
+ or
+ git checkout cortina/saturn_asic for asic bring up branch
+</pre>
+<h2><span class="mw-headline" id="Trusted_Board_Boot_Build_.28TBB.29">Trusted Board Boot Build (TBB)</span></h2>
+<p>Trusted Board Boot uses X.509 certificates to authenticate stages 
+before they are executed. This requires the some additional options in 
+the build, including the use and inclusion of ARM's mbedtls software 
+into the firmware image (formerly known as PolarSSL).  In addition, it 
+requires access to private key (Cortina development or customer).
+</p><p>Clone repo which contains Cortina development keys and other useful host tools for development and test.
+</p>
+<pre>cd ..
+git clone gitolite@cs-local-gitmirror:sw/platforms/cs-unified/host-tools/ca82xx-devel
+</pre>
+<p>Clone mbedtls repo and checkout branch mbedtls-2.2:
+</p>
+<pre>git clone gitolite@cs-local-gitmirror:sw/platforms/cs-unified/packages/oss/mbedtls
+cd mbedtls
+git checkout mbedtls-2.2
+cd ../arm-trusted-firmware
+</pre>
+<p>To build BL1 ELF image with full symbols for use with GDB and Saturn QEMU type:
+</p>
+<pre>CROSS_COMPILE=mips-elf- make -f Makefile.mips MBEDTLS_DIR=../mbedtls TRUSTED_BOARD_BOOT=1 \
+GENERATE_COT=1  \
+ARM_ROTPK_LOCATION=regs \
+ROT_KEY=../ca82xx-devel/ATF/TBB/development_keys/saturn_rotprivk_rsa.pem \
+V=1 PLAT=saturn_fpga JTAG_DEBUG=1 bl1
+</pre>
+<p><br>
+To build BL1, and mip image without BL33 (u-boot) simply type:
+</p>
+<pre>CROSS_COMPILE=mips-elf- make -f Makefile.mips MBEDTLS_DIR=../mbedtls TRUSTED_BOARD_BOOT=1 \
+GENERATE_COT=1  \
+ARM_ROTPK_LOCATION=regs \
+ROT_KEY=../ca82xx-devel/ATF/TBB/development_keys/saturn_rotprivk_rsa.pem \
+V=1 PLAT=saturn_fpga all fip
+</pre>
+<h4><span class="mw-headline" id="For_FPGA_BUILD:">For FPGA BUILD:</span></h4>
+<p>To  build everything with U-BOOT for BL33, then you must <b>first</b> build U-BOOT image. To do this follow the <a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/SATURN_U-BOOT">U-BOOT build instructions</a> and then type  the following to bundle it into the FIP image:
+</p>
+<pre>CROSS_COMPILE=mips-elf- make -f Makefile.mips MBEDTLS_DIR=../mbedtls TRUSTED_BOARD_BOOT=1 \
+GENERATE_COT=1 BL33=../u-boot/u-boot.bin \
+ARM_ROTPK_LOCATION=regs \
+ROT_KEY=../ca82xx-devel/ATF/TBB/development_keys/saturn_rotprivk_rsa.pem \
+V=1 PLAT=saturn_fpga all fip
+</pre>
+<h4><span class="mw-headline" id="For_ASIC_BUILD:">For ASIC BUILD:</span></h4>
+<p>same as above but add in flags for ASIC build
+</p>
+<pre>CROSS_COMPILE=mips-elf- make -f Makefile.mips MBEDTLS_DIR=../mbedtls TRUSTED_BOARD_BOOT=1 \
+GENERATE_COT=1 BL33=../u-boot/u-boot.bin TEST_ON_SATURN_ASIC_SIM=1   \
+CORTINA_SATURN_ASIC=1 ARM_ROTPK_LOCATION=regs ROT_KEY=../ca82xx-devel/ATF/TBB/development_keys/saturn_rotprivk_rsa.pem \
+V=1 PLAT=saturn_fpga CORTINA_SATURN_TESTCODE=1 all fip
+</pre>
+<h4><span class="mw-headline" id="How_to_generate_various_types_of_RSA_keys_and_SHA256_hash_of_public_key">How to generate various types of RSA keys and SHA256 hash of public key</span></h4>
+<p>Below describes the process that is used to generate private/public keys and ROTPK Hash data
+found in ca82xx-devel/ATF/TBB/development_keys. A script is provided in ca82xx-devel/ATF/TBB/generate_new_keys.sh
+which executes the following steps described below:
+</p><p>Generate RSA 2048 bit (PEM) private key (i.e. ROTPK):
+</p>
+<pre>openssl genrsa -out saturn_rotprivk_rsa.pem 2048
+</pre>
+<p>Generate RSA 2048 bit public key (DER) from private key (PEM):
+</p>
+<pre>openssl rsa -in saturn_rotprivk_rsa.pem -inform PEM -pubout -outform DER -out saturn_rotpk_rsa.der
+</pre>
+<p>SHA256 (binary) hash of public key (DER):
+</p>
+<pre>openssl rsa -pubin -inform DER -in saturn_rotpk_rsa.der -outform der | openssl dgst -sha256 -binary &gt; saturn_rotpk_rsa_sha256.bin
+</pre>
+<p>SHA256 (binary) hash of public key(DER) from private key(PEM): 
+</p>
+<pre>openssl rsa -in saturn_rotprivk_rsa.pem -pubout -outform DER | openssl dgst -sha256 -binary &gt; saturn_rotpk_rsa_sha256.bin
+</pre>
+<h2><span class="mw-headline" id="Saturn_QEMU">Saturn QEMU</span></h2>
+<p>A QEMU for Saturn may be built by following the instructions here:
+<a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/Saturn_Qemu">&lt;Saturn QEMU&gt;</a>
+</p><p>It is recommended that the QEMU working repository be placed at 
+the same level directory level as arm-trusted-firmware and ca82xx-devel 
+directories.
+</p><p>The relative tree structure should look like this:
+</p>
+<pre>arm-trusted-firmware/
+ca82xx-devel/
+qemu/
+</pre>
+<p>This will allow the use of host scripts found in the ca82xx-develop 
+repository to start up both QEMU and GDB with the right options to debug
+ SSB.
+</p><p><br>
+</p><p><br>
+For BL1 debug:
+After  a bl1.elf image has been built with debug symbols, per the build 
+instructions above, then follow the instructions below for debug of the 
+image:
+</p><p>Open up a new separate shell window, for the QEMU console output.  Execute the following commands to launch QEMU for Saturn:
+</p>
+<pre>$ cd ca82xx-devel/saturn-gdb-qemu-startup
+$ ./saturn-qemu-host-start.sh
+</pre>
+<p>To quit QEMU the key sequence is  Hold down the Control Key and hit "a", then release and hit "x".  i.e. Control-a  x
+</p><p><br>
+Open up another new separate shell window, for interaction with GDB. 
+Execute the following commands to launch GDB and attach to QEMU for 
+Saturn:
+</p>
+<pre>$ cd ca82xx-devel/saturn-gdb-qemu-startup
+$ ./saturn-gdb-client-start.sh
+</pre>
+<p>To exit GDB type "quit" at the prompt
+</p><p>Note: The original build shell window for ATF, which is a 
+separate shell window from GDB and QEMU, may be maintained to create a 
+full incremental build and test environment.
+</p>
+<h2><span class="mw-headline" id="Board_Support">Board Support</span></h2>
+<h3><span class="mw-headline" id="FPGA">FPGA</span></h3>
+<p>See pin strapping settings to determine board boot configuration here. TBD
+</p>
+<h3><span class="mw-headline" id="Engineering_board_with_ASIC">Engineering board with ASIC</span></h3>
+<h2><span class="mw-headline" id="ASIC_SIM_unit_test_effort">ASIC SIM unit test effort</span></h2>
+<p>SW Platform team will received delegated unit test tasks for ASIC SIM from HW team.
+See this link on notes for how to setup ASIC SIM environment and run it.  [<a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/Saturn_Secure_Boot_ASIC_SIM_SW_unit_test_effort">ASIC SIM Setup</a>]
+</p>
+<h2><span class="mw-headline" id="Status">Status</span></h2>
+<pre> Code complete
+</pre>
+<!-- 
+NewPP limit report
+CPU time usage: 0.069 seconds
+Real time usage: 0.072 seconds
+Preprocessor visited node count: 102/1000000
+Preprocessor generated node count: 108/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+</div><div class="printfooter">
+Retrieved from "<a href="http://sv-wiki-01/wiki/index.php?title=Saturn_Secure_Boot&amp;oldid=103764">http://sv-wiki-01/wiki/index.php?title=Saturn_Secure_Boot&amp;oldid=103764</a>"</div>
+		<div id="catlinks" class="catlinks catlinks-allhidden"></div>		<!-- end content -->
+				<div class="visualClear"></div>
+	</div>
+</div></div>
+<div id="column-one">
+	<h2>Navigation menu</h2>
+	<div id="p-cactions" class="portlet" role="navigation">
+		<h3>Views</h3>
+		<div class="pBody">
+			<ul>
+				<li id="ca-nstab-main" class="selected"><a href="http://sv-wiki-01/wiki/index.php/Saturn_Secure_Boot" title="View the content page [alt-shift-c]" accesskey="c">Page</a></li>
+				<li id="ca-talk" class="new"><a href="http://sv-wiki-01/wiki/index.php?title=Talk:Saturn_Secure_Boot&amp;action=edit&amp;redlink=1" title="Discussion about the content page [alt-shift-t]" accesskey="t">Discussion</a></li>
+				<li id="ca-viewsource"><a href="http://sv-wiki-01/wiki/index.php?title=Saturn_Secure_Boot&amp;action=edit" title="This page is protected.
+You can view its source [alt-shift-e]" accesskey="e">View source</a></li>
+				<li id="ca-history"><a href="http://sv-wiki-01/wiki/index.php?title=Saturn_Secure_Boot&amp;action=history" rel="archives" title="Past revisions of this page [alt-shift-h]" accesskey="h">History</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal" role="navigation">
+		<h3>Personal tools</h3>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="http://sv-wiki-01/wiki/index.php?title=Special:UserLogin&amp;returnto=Saturn+Secure+Boot" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo" role="banner">
+<a href="http://sv-wiki-01/wiki/index.php/Main_Page" style="background-image: url(/wiki/cortina/images/logo.png);" title="Visit the main page"></a>
+	</div>
+	<div class="generated-sidebar portlet" id="p-navigation" role="navigation">
+		<h3>Navigation</h3>
+		<div class="pBody">
+			<ul>
+				<li id="n-Top-Page"><a href="http://sv-wiki-01/wiki/index.php/Main_Page">Top Page</a></li>
+				<li id="n-Software-Home-Page"><a href="http://sv-wiki-01/wiki/index.php/DH_%26_ACC_Software_Home_Page">Software Home Page</a></li>
+				<li id="n-DHBU-Software-Wiki"><a href="http://sv-wiki-01/wiki/index.php/Digital_Home_Software_Home_Page">DHBU Software Wiki</a></li>
+				<li id="n-Lynx-Software"><a href="http://sv-wiki-01/wiki/index.php/Lynx_Software_Home_Page">Lynx Software</a></li>
+				<li id="n-DHBU-Hardware-Wiki"><a href="http://sv-wiki-01/wiki/index.php/Digital_Home_Hardware_Home_Page">DHBU Hardware Wiki</a></li>
+				<li id="n-portal"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+				<li id="n-currentevents"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Current_events" title="Find background information on current events">Current events</a></li>
+				<li id="n-recentchanges"><a href="http://sv-wiki-01/wiki/index.php/Special:RecentChanges" title="A list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li>
+				<li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" rel="nofollow" title="The place to find out">Help</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="generated-sidebar portlet" id="p-categorytree-portlet" role="navigation">
+		<h3>Categories</h3>
+		<div class="pBody">
+<div class="CategoryTreeTag" data-ct-mode="0" data-ct-options="{&quot;mode&quot;:0,&quot;hideprefix&quot;:20,&quot;showcount&quot;:false,&quot;namespaces&quot;:false}"><div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Admin" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Admin">Admin</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Documentation" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Documentation">Documentation</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeEmptyBullet">► </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Helpdesk_Service">Helpdesk Service</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Prodeng" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Prodeng">Prodeng</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeEmptyBullet">► </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:QA_Eng">QA Eng</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		</div>
+				</div>
+	</div>
+	<div id="p-search" class="portlet" role="search">
+		<h3><label for="searchInput">Search</label></h3>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php" id="searchform">
+				<input type="hidden" name="title" value="Special:Search">
+				<input type="search" name="search" placeholder="Search" title="Search Cortina Systems Wiki [alt-shift-f]" accesskey="f" id="searchInput" autocomplete="off">
+				<input type="submit" name="go" value="Go" title="Go to a page with this exact name if exists" id="searchGoButton" class="searchButton">&nbsp;
+				<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton">
+			</form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb" role="navigation">
+		<h3>Tools</h3>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="http://sv-wiki-01/wiki/index.php/Special:WhatLinksHere/Saturn_Secure_Boot" title="A list of all wiki pages that link here [alt-shift-j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="http://sv-wiki-01/wiki/index.php/Special:RecentChangesLinked/Saturn_Secure_Boot" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li>
+				<li id="t-specialpages"><a href="http://sv-wiki-01/wiki/index.php/Special:SpecialPages" title="A list of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="http://sv-wiki-01/wiki/index.php?title=Saturn_Secure_Boot&amp;printable=yes" rel="alternate" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li>
+				<li id="t-permalink"><a href="http://sv-wiki-01/wiki/index.php?title=Saturn_Secure_Boot&amp;oldid=103764" title="Permanent link to this revision of the page">Permanent link</a></li>
+				<li id="t-info"><a href="http://sv-wiki-01/wiki/index.php?title=Saturn_Secure_Boot&amp;action=info">Page information</a></li>
+			</ul>
+		</div>
+	</div>
+</div><!-- end of the left (by default at least) column -->
+<div class="visualClear"></div>
+<div id="footer" role="contentinfo">
+	<div id="f-poweredbyico">
+		<a href="http://www.mediawiki.org/"><img src="Saturn%20Secure%20Boot%20-%20Cortina%20Systems%20Wiki_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31"></a>
+	</div>
+	<ul id="f-list">
+		<li id="lastmod"> This page was last modified on 28 November 2017, at 01:06.</li>
+		<li id="viewcount">This page has been accessed 583 times.</li>
+		<li id="privacy"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Privacy_policy" title="Cortina Systems Wiki:Privacy policy">Privacy policy</a></li>
+		<li id="about"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:About" title="Cortina Systems Wiki:About">About Cortina Systems Wiki</a></li>
+		<li id="disclaimer"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:General_disclaimer" title="Cortina Systems Wiki:General disclaimer">Disclaimers</a></li>
+	</ul>
+</div>
+</div>
+<script>/*<![CDATA[*/window.jQuery && jQuery.ready();/*]]>*/</script><script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+mw.loader.load(["ext.categoryTree","mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"],null,true);
+}</script>
+<script>if(window.mw){
+mw.loader.state({"site":"ready"});
+}</script>
+<!-- Served in 0.315 secs. --><div style="display: none; font-size: 11.4667px;" class="suggestions"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>

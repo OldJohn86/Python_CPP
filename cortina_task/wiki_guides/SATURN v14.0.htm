@@ -1,0 +1,1007 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html class="yui-skin-sam"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>SATURN v14.0</title>
+<style type="text/css">
+body {
+	margin:0;
+	padding:0;
+}
+</style>
+
+<!-- Individual YUI CSS files -->
+<link rel="stylesheet" type="text/css" href="SATURN%20v14.0_files/reset-fonts.css">
+<link rel="stylesheet" type="text/css" href="SATURN%20v14.0_files/skin.css">
+<!-- Individual YUI JS files -->
+<script type="text/javascript" src="SATURN%20v14.0_files/utilities.js"></script>
+<script type="text/javascript" src="SATURN%20v14.0_files/container-min.js"></script>
+<script type="text/javascript" src="SATURN%20v14.0_files/menu-min.js"></script>
+<script type="text/javascript" src="SATURN%20v14.0_files/button-min.js"></script>
+<script type="text/javascript" src="SATURN%20v14.0_files/resize-min.js"></script>
+<script type="text/javascript" src="SATURN%20v14.0_files/selector-beta-min.js"></script>
+<script type="text/javascript" src="SATURN%20v14.0_files/layout-min.js"></script>
+<script type="text/javascript" src="SATURN%20v14.0_files/treeview-min.js"></script>
+
+<script>
+  // This context is used to remember state, and is passed to most
+  // if not all ajax calls to the server.  The server will most, if not
+  // all of the time, return a JSON struct that looks just like this.
+  //
+  var context = {
+    baseurl:  "http://192.168.44.88/",
+    database: "/reg/saturn/sfu/asic.db",
+    server:   "localhost",
+    protocol: "rpc",
+    port:     "1",
+    remvec:   "",
+    customer: "cortina",
+    ld_library_path: "",
+    id1: 0,
+    id2: 0,
+    id3: 0,
+    t1: '',
+    t2: '',
+    t3: '',
+    lastr_id: 0,
+    lastr_name: '',
+    error: 0,
+    dyn: 0,
+    nocache: 0 // Set to date.time to prevent ie from caching
+  };
+  // This array is used to remember the most recent register
+  // accesses for quick nav from the 'recents' menu
+  //
+  var recents_array = new Array();
+</script>
+
+<!-- jQuery -->
+<script src="SATURN%20v14.0_files/jquery-1.js" type="text/javascript"></script>
+<script src="SATURN%20v14.0_files/jquery.js" type="text/javascript"></script>
+<script src="SATURN%20v14.0_files/jquery_002.js" type="text/javascript"></script>
+
+<style type="text/css" media="all">@import "/static/jquery.autocomplete.css";</style>
+<style type="text/css" media="all">@import "/static/treeview/jquery.treeview.css";</style>
+<style type="text/css" media="all">@import "/static/fancy_forms/form.css";</style>
+<style type="text/css" media="all">@import "/static/fancy_forms/form.import.css";</style>
+<style type="text/css" media="all">@import "/static/style.css";</style>
+
+</head>
+
+<body class="yui-layout" id="yui-gen0"><iframe id="_yuiResizeMonitor" title="Text Resize Monitor" style="position: absolute; visibility: visible; width: 10em; height: 10em; top: -130px; left: -130px; border-width: 0px;"></iframe><div class="yui-panel-container yui-dialog yui-simple-dialog shadow" id="bulkDialog_c" style="left: 450px; top: 289px; z-index: 2;"><div id="bulkDialog" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 45em;">
+  <div class="hd" style="cursor: move;" id="bulkDialog_h">Bulk Read Results</div>
+  <div class="bd" style="height: 357.333px;">
+    <div id="bulk-results-container">
+    </div>
+  <form name="frm_bulkDialog"><input type="hidden" name="bulkDialog" value=""></form></div>
+<a class="container-close" href="#">Close</a><div class="ft"><span class="button-group"><span id="yui-gen26" class="yui-button yui-push-button default"><span class="first-child"><button type="button" id="yui-gen26-button">Close</button></span></span></span></div></div></div><div class="yui-panel-container yui-dialog yui-simple-dialog shadow" id="moduleDialog_c" style="left: 450px; top: 289px; z-index: 2;"><div id="moduleDialog" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 45em;">
+  <div class="hd" style="cursor: move;" id="moduleDialog_h">Module Function Results</div>
+  <div class="bd" style="height: 357.333px;">
+    <div id="mod-results-container">
+    </div>
+  <form name="frm_moduleDialog"><input type="hidden" name="moduleDialog" value=""></form></div>
+<a class="container-close" href="#">Close</a><div class="ft"><span class="button-group"><span id="yui-gen25" class="yui-button yui-push-button default"><span class="first-child"><button type="button" id="yui-gen25-button">Close</button></span></span></span></div></div></div><div class="yui-panel-container yui-dialog yui-simple-dialog shadow" id="interruptDialog_c" style="left: 450px; top: 289px; z-index: 2;"><div id="interruptDialog" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 45em;">
+  <div class="hd" style="cursor: move;" id="interruptDialog_h">ISR Results</div>
+  <div class="bd" style="height: 357.333px;">
+    <div id="isr-results-container">
+    </div>
+  <form name="frm_interruptDialog"><input type="hidden" name="interruptDialog" value=""></form></div>
+<a class="container-close" href="#">Close</a><div class="ft"><span class="button-group"><span id="yui-gen24" class="yui-button yui-push-button default"><span class="first-child"><button type="button" id="yui-gen24-button">Close</button></span></span></span></div></div></div><div class="yui-panel-container yui-dialog yui-simple-dialog shadow" id="dlg_c" style="visibility: hidden; left: 483px; top: 460px; z-index: 2;"><div id="dlg" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 40em;"><div class="hd" style="cursor: auto;">Warning!</div><div class="bd" style="height: 15.6667px;"><span class="yui-icon warnicon">&nbsp;</span>This is your last warning!<form name="frm_dlg"><input type="hidden" name="dlg" value=""><input type="hidden" name="dlg" value=""></form></div><a class="container-close" href="#">Close</a></div></div><div id="mainmenu" class="yui-module yui-overlay yuimenu" style="z-index: 2; position: absolute; visibility: hidden;"><div class="bd" style="height: 128px;"><ul class="first-of-type"><li class="yuimenuitem first-of-type" id="yui-gen11" groupindex="0" index="0"><a href="#" class="yuimenuitemlabel">New database...</a></li><li class="yuimenuitem" id="yui-gen12" groupindex="0" index="1"><a href="#" class="yuimenuitemlabel">PDF Book...</a></li><li class="yuimenuitem" id="yui-gen13" groupindex="0" index="2"><a href="#" class="yuimenuitemlabel">Connect...</a></li><li class="yuimenuitem" id="yui-gen14" groupindex="0" index="3"><a href="#" class="yuimenuitemlabel">Interrupts...</a></li><li class="yuimenuitem" id="yui-gen15" groupindex="0" index="4"><a href="#" class="yuimenuitemlabel">Change Customer...</a></li><li class="yuimenuitem yuimenuitem-disabled" id="yui-gen16" groupindex="0" index="5"><a href="#" class="yuimenuitemlabel yuimenuitemlabel-disabled"><hr></a></li><li class="yuimenuitem" id="yui-gen27" groupindex="0" index="6"><a href="#" class="yuimenuitemlabel">OTP_CTL</a></li></ul></div></div><span class="yui-resize-status"></span><span class="yui-resize-status"></span><div id="layout-doc" style="height: 984px; width: 1488px;" class="yui-layout-doc"><div id="yui-gen1" style="width: 200px; position: absolute; top: 40px; left: 1288px; height: 944px;" class="yui-resize yui-layout-unit yui-layout-unit-right yui-layout-scroll"><div class="yui-layout-wrap" id="yui-gen2" style="height: 934px; width: 190px; top: 5px; left: 5px;"><div class="yui-layout-hd" style="width: 188px;"><h2>Map Hierarchy</h2><div title="Click to collapse this pane." class="collapse"></div></div><div class="yui-layout-bd yui-layout-bd-noft" style="height: 909px; width: 188px; top: 24px;"><div id="maps"><div id="maptree"><div class="ygtvitem" id="ygtv0"><div class="ygtvchildren" id="ygtvc0"><div class="ygtvitem" id="ygtv1"><table class="ygtvdepth0" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td id="ygtvt1" class="ygtvlm"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel1" class=" ygtvcontent"><span id="ygtvlabelel1" class="ygtvlabel">SATURN</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc1" style=""><div class="ygtvitem" id="ygtv2"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt2" class="ygtvtn"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel2" class=" ygtvcontent"><a id="ygtvlabelel2" class="ygtvlabel" href="javascript:reg_map_select(1,'ROMOTP');" target="">ROMOTP</a></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc2" style="display:none;"></div></div><div class="ygtvitem" id="ygtv3"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt3" class="ygtvtp"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel3" class=" ygtvcontent"><span id="ygtvlabelel3" class="ygtvlabel">APB2</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc3" style="display:none;"></div></div><div class="ygtvitem" id="ygtv29"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt29" class="ygtvtp"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel29" class=" ygtvcontent"><span id="ygtvlabelel29" class="ygtvlabel">APB3</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc29" style="display:none;"></div></div><div class="ygtvitem" id="ygtv33"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt33" class="ygtvtp"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel33" class=" ygtvcontent"><span id="ygtvlabelel33" class="ygtvlabel">APB0</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc33" style="display:none;"></div></div><div class="ygtvitem" id="ygtv116"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt116" class="ygtvlp"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel116" class=" ygtvcontent"><span id="ygtvlabelel116" class="ygtvlabel">APB1</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc116" style="display:none;"></div></div></div></div></div></div></div>
+</div></div></div><div id="yui-gen3" class="yui-resize-handle yui-resize-handle-l"><div class="yui-layout-resize-knob"></div></div></div><div class="yui-resize-proxy" style="height: 0px; width: 200px;"><div class="yui-layout-handle-l"></div></div><div id="yui-gen4" style="width: 200px; position: absolute; top: 40px; height: 944px; left: 0px;" class="yui-resize yui-layout-unit yui-layout-unit-left yui-layout-scroll"><div class="yui-layout-wrap" id="yui-gen5" style="height: 934px; width: 190px; top: 5px; left: 5px;"><div class="yui-layout-hd" style="width: 188px;"><h2>Registers</h2><div title="Click to collapse this pane." class="collapse"></div></div><div class="yui-layout-bd yui-layout-bd-noft" style="height: 909px; width: 188px; top: 24px;"><div id="registers">
+  
+  
+  
+  <div id="reg1" class="reg selected">
+    <a href="javascript: reg_select(1);" title="OTP_CTL">OTP_CTL</a>
+  </div>
+
+  
+  
+  
+  <div id="reg2" class="reg">
+    <a href="javascript: reg_select(2);" title="OTP_STATUS">OTP_STATUS</a>
+  </div>
+
+  
+  
+  
+  <div id="reg3" class="reg">
+    <a href="javascript: reg_select(3);" title="OTP_PROT">OTP_PROT</a>
+  </div>
+
+  
+  
+  
+  <div id="reg4" class="reg">
+    <a href="javascript: reg_select(4);" title="OTP_PROTEN">OTP_PROTEN</a>
+  </div>
+
+</div></div></div><div id="yui-gen6" class="yui-resize-handle yui-resize-handle-r"><div class="yui-layout-resize-knob"></div></div></div><div class="yui-resize-proxy" style="height: 0px; width: 200px;"><div class="yui-layout-handle-r"></div></div><div id="yui-gen7" style="height: 40px; position: absolute; width: 1488px;" class="yui-layout-unit yui-layout-unit-top yui-layout-noscroll"><div class="yui-layout-wrap" id="yui-gen8" style="height: 40px; width: 1488px; top: 0px; left: 0px;"><div class="yui-layout-bd yui-layout-bd-nohd yui-layout-bd-noft" style="height: 38px; width: 1486px; top: 0px;"><div id="nav">
+    <div id="top">
+      <div id="search" class="clear-block">
+        <input type="text" id="searchbox" class="autocomplete search-field ac_input" size="30" autocomplete="off">
+	<button class="submit" id="search-button" onclick="do_search();">search</button>
+	<a href="javascript:advanced_search();">advanced...</a>
+      </div>
+      <div id="menu">
+        <a href="javascript:mainMenu.show();">Menu</a>
+      </div>
+    </div>
+    <div id="bottom">
+      <span>OTP_ROM registers</span>
+    </div>
+  </div></div></div></div><div id="yui-gen9" class="yui-layout-unit yui-layout-unit-center yui-layout-scroll" style="position: absolute; height: 944px; width: 1088px; top: 40px; left: 200px;"><div class="yui-layout-wrap" id="yui-gen10" style="height: 939px; width: 1088px; top: 5px; left: 0px;"><div class="yui-layout-bd yui-layout-bd-nohd yui-layout-bd-noft" style="height: 937px; width: 1086px; top: 0px;"><div id="register">
+
+
+
+<div class="register">
+  <div id="XR1"></div>
+  <table class="register-header">
+    <colgroup>
+      <col class="c1">
+      <col class="c2">
+    </colgroup>
+    <tbody><tr>
+      <td class="label" width="15%"><b>Register:</b></td>
+      <td width="85%"> Otp  Ctl Register</td>
+    </tr>
+    
+    <tr>
+      <td class="label" width="15%"><b>Name:</b></td>
+      <td width="85%">OTP_CTL</td>
+    </tr>
+    <tr>
+      <td class="label" width="15%"><b>Address(es):</b></td>
+      <td width="85%">
+        
+	  
+	    <span class="static">0x42000800</span>&nbsp;
+	  
+	
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="label" width="15%"><b>Description:</b></td>
+      
+      
+        
+        
+        <td width="85%"><pre>This register contains configuration data</pre>
+	</td>
+      
+    </tr>
+    <tr>
+      <td class="label" width="15%"><b>Default:</b></td>
+      <td width="85%">0x00001000</td>
+    </tr>
+    
+    
+  </tbody></table> 
+
+  <p></p>
+  
+  
+    
+    
+    
+    
+    
+    
+    
+     
+  
+  
+
+<table class="register-bits" width="650">
+<colgroup>
+  <col class="c1">
+  <col class="c2">
+  <col class="c3">
+  <col class="c4">
+  <col class="c5">
+  <col class="c6">
+  <col class="c7">
+  <col class="c8">
+</colgroup>
+<tbody><tr>
+  <th class="em" width="5%">Bit</th>
+  <th class="em" width="5%">Typ</th>
+  <th class="em" width="5%">Def</th>
+  <th class="em" width="35%">Bitfield</th>
+  <th class="em" width="5%">Bit</th>
+  <th class="em" width="5%">Typ</th>
+  <th class="em" width="5%">Def</th>
+  <th class="em" width="35%">Bitfield</th>
+</tr>
+
+  <tr>
+  
+    <th width="5%">31</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit31" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">15</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit15" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">30</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit30" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">14</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit14" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">29</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit29" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">13</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit13" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">28</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit28" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">SPACE[4]</td>
+    
+  
+    <th width="5%">12</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit12" class="value" width="5%">
+      <span class="static">1&nbsp;</span>
+    </td>
+    <td class="name" width="35%">RESETB</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">27</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit27" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">SPACE[3]</td>
+    
+  
+    <th width="5%">11</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit11" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">26</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit26" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">SPACE[2]</td>
+    
+  
+    <th width="5%">10</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit10" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">25</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit25" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">SPACE[1]</td>
+    
+  
+    <th width="5%">9</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit9" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">24</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit24" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">SPACE[0]</td>
+    
+  
+    <th width="5%">8</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit8" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">23</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit23" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">7</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit7" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">22</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit22" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">6</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit6" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">21</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit21" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">5</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit5" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">20</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit20" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">4</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit4" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">19</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit19" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">3</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit3" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">18</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit18" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">2</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit2" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">17</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit17" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">AXIPREVENT</td>
+    
+  
+    <th width="5%">1</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit1" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">16</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit16" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">PWR</td>
+    
+  
+    <th width="5%">0</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit0" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+</tbody></table>
+
+  <p></p>
+
+  <table class="register-bitfields" width="650">
+    <colgroup>
+      <col class="c1">
+      <col class="c2">
+    </colgroup>
+    
+      
+      
+      
+        
+        
+        
+      
+      
+      
+      
+      
+      <tbody><tr>
+        <td class="label " colspan="2">
+	<b>
+	  
+	    SPACE[4:0]
+	  
+	</b>
+        &nbsp;<span id="bfield1" class="bfield-value" onclick="app_cvt_toggle('bfield1')"></span>
+	&nbsp;<span id="dyn_enc_1"></span>
+	</td>
+      </tr>
+      
+        <tr>
+          <td width="10%">&nbsp;</td>
+          <td width="90%"><pre>Sets the OCP MaddrSpace[4:0] signal. Non-listed bit encodings are reserved and<br>should not<br>be used.</pre>
+	    
+	  </td>
+        </tr>  
+      
+      
+        
+	  <!-- bitfield encoding -->
+<tr>
+  <td width="10%">&nbsp;</td>
+  <td width="90%">
+    <table class="bitfield-encodings" tid="1" bid="1" width="100%">
+      <colgroup>
+        <col class="c1">
+        <col class="c2">
+        <col class="c3">
+      </colgroup>
+      <tbody><tr>
+        <th width="30%"><font>Value</font></th>
+        <th width="30%"><font>Symbol</font></th>
+        <th width="40%"><font>Description</font></th>
+      </tr>
+      
+        
+        <tr>
+	  
+	    <td>5'h0</td>
+	  
+	    <td>DEFAULT</td>
+	  
+	    <td>Default read/write mode</td>
+	  
+	  
+	</tr>
+      
+        
+        <tr>
+	  
+	    <td>5'h8</td>
+	  
+	    <td>TDECBIST</td>
+	  
+	    <td>BIST TESTDEC mode</td>
+	  
+	  
+	</tr>
+      
+        
+        <tr>
+	  
+	    <td>5'hA</td>
+	  
+	    <td>WRTSBIST</td>
+	  
+	    <td>BIST WRTEST mode</td>
+	  
+	  
+	</tr>
+      
+        
+        <tr>
+	  
+	    <td>5'hB</td>
+	  
+	    <td>LOCK</td>
+	  
+	    <td>Set Lock bit</td>
+	  
+	  
+	</tr>
+      
+        
+        <tr>
+	  
+	    <td>5'hD</td>
+	  
+	    <td>RGSTR</td>
+	  
+	    <td>Sub-register read/write</td>
+	  
+	  
+	</tr>
+      
+        
+        <tr>
+	  
+	    <td>5'hE</td>
+	  
+	    <td>BLNKBISR</td>
+	  
+	    <td>BISR Blank Check</td>
+	  
+	  
+	</tr>
+      
+    </tbody></table>
+  </td>
+</tr>
+
+	
+      
+      <tr class="last">
+        <td class="last">&nbsp;</td>
+      </tr>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      <tr>
+        <td class="label " colspan="2">
+	<b>
+	  
+	    AXIPREVENT
+	  
+	</b>
+        &nbsp;<span id="bfield2" class="bfield-value" onclick="app_cvt_toggle('bfield2')"></span>
+	&nbsp;<span id="dyn_enc_2"></span>
+	</td>
+      </tr>
+      
+        <tr>
+          <td width="10%">&nbsp;</td>
+          <td width="90%"><pre>When set to '1' the OTP arbiter will prevent AXI data read or write<br>transactions to the OTP macro.	An AXI read to the data array will<br>return all zeros. AXI read/writes to these registers will still<br>occur correctly.</pre>
+	    
+	  </td>
+        </tr>  
+      
+      
+      <tr class="last">
+        <td class="last">&nbsp;</td>
+      </tr>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      <tr>
+        <td class="label " colspan="2">
+	<b>
+	  
+	    PWR
+	  
+	</b>
+        &nbsp;<span id="bfield3" class="bfield-value" onclick="app_cvt_toggle('bfield3')"></span>
+	&nbsp;<span id="dyn_enc_3"></span>
+	</td>
+      </tr>
+      
+        <tr>
+          <td width="10%">&nbsp;</td>
+          <td width="90%"><pre>Setting PWR asserts the OTP array WAKEUP pin for at least 10us and then<br>asserts a RESETB pulse and finally sets CONNECT to 2'b11.</pre>
+	    
+	  </td>
+        </tr>  
+      
+      
+      <tr class="last">
+        <td class="last">&nbsp;</td>
+      </tr>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      <tr>
+        <td class="label " colspan="2">
+	<b>
+	  
+	    RESETB
+	  
+	</b>
+        &nbsp;<span id="bfield4" class="bfield-value" onclick="app_cvt_toggle('bfield4')"></span>
+	&nbsp;<span id="dyn_enc_4"></span>
+	</td>
+      </tr>
+      
+        <tr>
+          <td width="10%">&nbsp;</td>
+          <td width="90%"><pre>Soft reset signal for kilopass controller, ANDed with the main block reset_n<br>signal.  Note: If used, resetb should be set to '0' for at least32 LSAXI clock<br>cycles</pre>
+	    
+	  </td>
+        </tr>  
+      
+      
+      <tr class="last">
+        <td class="last">&nbsp;</td>
+      </tr>
+    
+    
+  </tbody></table>
+
+</div>
+</div></div></div></div></div><div id="WzTtDiV" style="visibility: hidden; position: absolute; overflow: hidden; padding: 0px; width: auto; left: 0px; top: 0px;"></div>
+  <script src="SATURN%20v14.0_files/wz_tooltip.js" type="text/javascript"></script>
+  <script src="SATURN%20v14.0_files/tip_balloon.js" type="text/javascript"></script>
+  
+  
+
+  
+
+  
+
+  
+
+  <div id="dyn_panel">
+    r/w
+  </div>
+
+  <div id="dialogs" style="display: block;">
+
+<div class="yui-panel-container yui-dialog shadow" id="dbDialog_c" style="z-index: 2; left: 481px; top: 459px;"><div id="dbDialog" class="yui-module yui-overlay yui-panel" style="visibility: inherit;">
+  <div class="hd" style="cursor: move;" id="dbDialog_h">Load new database...</div>
+  <div class="bd" style="height: 17.3333px;">
+    <form onsubmit="db_dialog_submit(); return false;">
+      <label for="database">Full Path:</label>
+        <input type="text" name="database" size="60" id="database">
+    </form>
+  </div>
+<a class="container-close" href="#">Close</a><div class="ft"><span class="button-group"><span id="yui-gen17" class="yui-button yui-push-button default"><span class="first-child"><button type="button" id="yui-gen17-button">Load</button></span></span></span></div></div></div>
+
+<div class="yui-panel-container yui-dialog shadow" id="custDialog_c" style="z-index: 2; left: 649px; top: 458px;"><div id="custDialog" class="yui-module yui-overlay yui-panel" style="visibility: inherit;">
+  <div class="hd" style="cursor: move;" id="custDialog_h">Change Customer...</div>
+  <div class="bd" style="height: 19.3333px;">
+    <form>
+      <label for="customer">Customer:</label>
+	<select name="customer" id="customer">
+	  <option value="cortina" selected="selected">cortina
+	  </option>
+	  
+	    
+	    <option value="CTC">CTC
+	    </option>
+	  
+	    
+	    <option value="NTT">NTT
+	    </option>
+	  
+	    
+	    
+	    <option value="epon">epon
+	    </option>
+	  
+	    
+	    <option value="extr">extr
+	    </option>
+	  
+	    
+	    <option value="g3">g3
+	    </option>
+	  
+	    
+	    <option value="gpon">gpon
+	    </option>
+	  
+	    
+	    <option value="xgpn">xgpn
+	    </option>
+	  
+	  <option value="others">any customer</option>
+	</select>
+    </form>
+  </div>
+<a class="container-close" href="#">Close</a><div class="ft"><span class="button-group"><span id="yui-gen18" class="yui-button yui-push-button default"><span class="first-child"><button type="button" id="yui-gen18-button">Load</button></span></span></span></div></div></div>
+
+<div class="yui-panel-container shadow" id="registerswait_c" style="z-index: 4; left: 623px; top: 457px; visibility: hidden;"><div id="registerswait" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 240px;">
+  <div class="hd" style="cursor: auto;">Please wait...</div>
+  <div class="bd" style="height: 21.6667px;">
+    <img src="SATURN%20v14.0_files/loading.gif">
+  </div>
+</div><div class="underlay"></div></div>
+
+<div class="yui-panel-container shadow" id="mapswait_c" style="z-index: 4; left: 623px; top: 457px; visibility: hidden;"><div id="mapswait" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 240px;">
+  <div class="hd" style="cursor: auto;">Please wait...</div>
+  <div class="bd" style="height: 21.6667px;">
+    <img src="SATURN%20v14.0_files/loading.gif">
+  </div>
+</div><div class="underlay"></div></div>
+
+<div class="yui-panel-container shadow" id="registerwait_c" style="z-index: 4; left: 623px; top: 457px; visibility: hidden;"><div id="registerwait" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 240px;">
+  <div class="hd" style="cursor: auto;">Please wait...</div>
+  <div class="bd" style="height: 21.6667px;">
+    <img src="SATURN%20v14.0_files/loading.gif">
+  </div>
+</div><div class="underlay"></div></div>
+
+<div class="yui-panel-container yui-dialog shadow" id="advSearch_c" style="z-index: 2; left: 613px; top: 330px;"><div id="advSearch" class="yui-module yui-overlay yui-panel" style="visibility: inherit;">
+ <div class="hd" style="cursor: move;" id="advSearch_h">Advanced Search</div>
+ <div class="bd" style="height: 276.333px;">
+   <form>
+     <label for="regex" class="label">Search for:</label>
+     <input type="text" name="regex" id="regex" class="search-field">
+     <fieldset>
+       <legend>In:</legend>
+       <label for="cb_0" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_0" class="inputCheckbox" checked="checked" value="register,defines"> register names</label>
+
+<label for="cb_1" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_1" class="inputCheckbox" checked="checked" value="register,customers"> register customers</label>
+<label for="cb_2" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_2" class="inputCheckbox" value="register,comments"> register comments</label>
+<label for="cb_3" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_3" class="inputCheckbox" value="register,attributes"> register attributes</label>
+<label for="cb_4" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_4" class="inputCheckbox" value="bitfield,names"> bitfield names</label>
+<label for="cb_5" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_5" class="inputCheckbox" value="bitfield,customers"> bitfield customers</label>
+<label for="cb_6" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_6" class="inputCheckbox" value="bitfield,types"> bitfield types</label>
+
+<label for="cb_7" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_7" class="inputCheckbox" value="bitfield,comments"> bitfield comments</label>
+<label for="cb_8" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_8" class="inputCheckbox" value="bitfield,attributes"> bitfield attributes</label>
+<label for="cb_9" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_9" class="inputCheckbox" value="bitfield,encodings"> bitfield encodings</label>
+<label for="cb_10" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_10" class="inputCheckbox" value="bitfield,tables"> bitfield tables</label>
+     </fieldset>
+   </form>
+ </div>
+<a class="container-close" href="#">Close</a><div class="ft"><span class="button-group"><span id="yui-gen19" class="yui-button yui-push-button default"><span class="first-child"><button type="button" id="yui-gen19-button">Search</button></span></span><span id="yui-gen20" class="yui-button yui-push-button"><span class="first-child"><button type="button" id="yui-gen20-button">Done</button></span></span></span></div></div></div>
+
+<div class="yui-panel-container yui-dialog shadow" id="scanDialog_c" style="z-index: 2; left: 438px; top: 279px;"><div id="scanDialog" class="yui-module yui-overlay yui-panel" style="visibility: inherit;">
+  <div class="hd" style="cursor: move;" id="scanDialog_h">Server Connect</div>
+  <div class="bd" style="height: 378.333px;">
+    <form class="ff">
+      <fieldset>
+<div class="notes">
+  <h4>Instructions</h4>
+  <p>Enter a <b>Server Name</b> and a <b>Service Port</b> and click <b>SCAN!</b> to connect
+     to a server and scan for available asics/fpgas to view.</p>
+  <p><b>Protocol:</b> "rpc" to connect to driver servers, "spy" to connect to RTL models.  "xrpc" to connect
+  to the new "lab4" environment.  You
+     may need to specify a custom <b>LD_LIBRARY_PATH</b> to connect to some (rpc) driver servers.
+  </p>
+  <p><b>Database:</b> Specify a reg database, if other than "reg.db".</p>
+  <p class="last"><b>Or:</b> Click on <b>SHOW ALL</b> to get a list of known asic/fpga register
+     viewers that you can choose from to browse.</p>
+</div>
+
+      <div class="required">
+        <label for="server">Server Name:</label>
+          <input type="text" name="server" id="server" value="localhost">
+      </div>
+      <div class="required">
+        <label for="port">Server Port:</label>
+          <input type="text" name="port" id="port" value="1">
+      </div>
+      <div class="required">
+        <label for="protocol">Protocol:</label>
+          <select name="protocol" id="protocol">
+	    <option value="rpc" selected="selected">RPC</option>
+	    <option value="spy">SPY</option>
+	    <option value="xrpc">XRPC</option>
+	  </select>
+      </div>
+      <div class="required">
+        <label for="ldpath">LD_LIBRARY_PATH:</label>
+	<input type="text" name="ldpath" id="ldpath">
+      </div>
+      <div class="required">
+        <label for="dbname">Database:</label>
+	<input type="text" name="dbname" id="dbname" value="reg.db">
+      </div>      
+      </fieldset>
+    </form>
+  </div>
+<a class="container-close" href="#">Close</a><div class="ft"><span class="button-group"><span id="yui-gen21" class="yui-button yui-push-button default"><span class="first-child"><button type="button" id="yui-gen21-button">Scan!</button></span></span><span id="yui-gen22" class="yui-button yui-push-button"><span class="first-child"><button type="button" id="yui-gen22-button">Show All</button></span></span><span id="yui-gen23" class="yui-button yui-push-button"><span class="first-child"><button type="button" id="yui-gen23-button">Cancel</button></span></span></span></div></div></div>
+
+
+
+
+
+
+
+</div>
+
+
+  <script src="SATURN%20v14.0_files/reg_layout.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    (function() {
+  YAHOO.util.Event.onDOMReady(function() {
+
+  reg_initialize();
+
+  $(".autocomplete").autocomplete(
+    "http://192.168.44.88/search/lookup_register",
+    { delay:10,
+      minChars:2,
+      matchSubset:1,
+      matchContains:1,
+      cacheLength:10,
+      extraParams: context
+    });
+
+  $(".autocomplete").keypress(function(e) {
+    if ( e.which == 13 ) {
+      // return 
+      do_search();
+    }
+  });
+  
+})
+})();
+
+function do_search() {
+  var q = $("#searchbox").val();
+  context.t1 = q;
+  $.getJSON( "http://192.168.44.88/search/fast_search",
+             context,
+	     function(data) {
+	       if ( is_error( data ) ) {
+                 reg_process_error( data );
+               }
+	       else {
+	         if ( data.id2 != 0 ) {
+		   reg_load_register( data.id2 );
+		   reg_load_registers( data.id2 );
+		 }
+		 else {
+		   $("#register").html(data.t1);
+		 }
+	       }
+	     }
+  );
+}
+
+  </script>
+
+
+<div style="display: none; position: absolute;" class="ac_results"></div><div style="position: absolute; height: 1px; width: 1px; top: -1000px; left: -1000px;"><span class="ygtvtm">&nbsp;</span><span class="ygtvtmh">&nbsp;</span><span class="ygtvtp">&nbsp;</span><span class="ygtvtph">&nbsp;</span><span class="ygtvln">&nbsp;</span><span class="ygtvlm">&nbsp;</span><span class="ygtvlmh">&nbsp;</span><span class="ygtvlp">&nbsp;</span><span class="ygtvlph">&nbsp;</span><span class="ygtvloading">&nbsp;</span></div></body></html>

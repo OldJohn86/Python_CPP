@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html dir="ltr" class="client-js" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><title>Create Guid partition table - Cortina Systems Wiki</title>
+<meta name="generator" content="MediaWiki 1.22.6">
+<link rel="stylesheet" href="Create%20Guid%20partition%20table%20-%20Cortina%20Systems%20Wiki_files/cortina.css">
+<link rel="shortcut icon" href="http://sv-wiki-01/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://sv-wiki-01/wiki/opensearch_desc.php" title="Cortina Systems Wiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://sv-wiki-01/wiki/api.php?action=rsd">
+<link rel="alternate" type="application/atom+xml" title="Cortina Systems Wiki Atom feed" href="http://sv-wiki-01/wiki/index.php?title=Special:RecentChanges&amp;feed=atom">
+<link rel="stylesheet" href="Create%20Guid%20partition%20table%20-%20Cortina%20Systems%20Wiki_files/load.css">
+<!--[if IE 6]><link rel="stylesheet" href="/wiki/skins/monobook/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/wiki/skins/monobook/IE70Fixes.css?303" media="screen" /><![endif]--><style>
+.mw-collapsible-toggle{float:right} li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:4250852ed2349a0d4d0fc6509a3e7d4c */
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px -1px 0 0} html > body .suggestions{margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special .special-label{color:gray;text-align:left}.suggestions-special .special-query{color:black;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:white}.autoellipsis-matched,.highlight{font-weight:bold}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:9780324491b653a3780e2d029bdc140c */
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:.6em 3.6em .6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dcd9d9;text-shadow:0 0.0625em 0 rgba(255,255,255,0.5);border-radius:5px;-webkit-box-shadow:0 2px 5px 0 #ccc;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook .postedit{top:6em !important}.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABblBMVEUAAAD///////9PfTf///80aRdTgjn///9Feij///////////9Rfzf///////////9PfjZRgDh1o1xOfTb///////+bwYqLtnj///////9PfTa82K////9WhT6YxIL///9QgDdTgzr////////j7uDl7eLq8efi693k7OH///////9UhjuBr2rp9uRUhjr///9YljVKgir///9WiTlYjT3////9/v57vFlbkT5PjC9dlD/5/fhuq09stUTs9uhxuElctCpfnT1huDFloEZloUZmpENmvDZpvDxpvTxqvjxrvT5rvT9rwTxsqktswD5uwkBvuUdxw0NztFBztU9ztVBzwkp0tlJ1xkd2t1R3uVR4w1F4xk54x014yE15uVZ5v1R5xVB6v1R7yFJ8wVh9xVl9yFR9yVd9ylN+xVh+yFd/x1l/yFeAylmEx1+Ny2uY0Hqe04Wj1Ymv3Ze33qLD47TJ5L3O6cPU7Mrq9eb2+/Q4j37OAAAAQHRSTlMAAQIEBAUFBQwPFB4fJCUoKiosQEhJS01RUlZZXmdydXaChYuSlJSWmJmoq6uur8LExcvM19fg5ejt8fX2+Pr7SljgewAAAKpJREFUGBkFwQNCAwAAAMDLtl3LtrG4rWXbtvX77gAgZ6grFwC0bhwNVgKgdPZx8b0dgLi+s7Wn0VoAqpfOI9+BNADZI7fLrz2pSEwGHZuH+78lSK8ZLkLezF3ooyUG3VPXq2USei9WngeyoG195yBYWDF3E/2pAhl1e9Gr8bGT+bfOFCC2fnvh4X7rcqIAQNNu+HT6sxkAjceTL/2ZAIhv+PorBwBJxfkA//dFHSCBy/UTAAAAAElFTkSuQmCC);background-image:url(http://sv-wiki-01/wiki/resources/mediawiki.action/images/green-checkmark.png?2014-04-24T21:25:00Z)!ie;background-position:left}.postedit-close{position:absolute;padding:0 .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:black;text-shadow:0 0.0625em 0 white;text-decoration:none;opacity:0.2;filter:alpha(opacity=20)}.postedit-close:hover{color:black;text-decoration:none;opacity:0.4;filter:alpha(opacity=40)}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:7f54a550ae14160313958ddb2288bcd7 */</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{text-decoration:none;color:black}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:white}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:52b1797f70c7e4094dfa4191101944e8 */</style><meta name="ResourceLoaderDynamicStyles" content="">
+<style>a:lang(ar),a:lang(ckb),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:2902c472ef4c41bfeaf25eb08706bd57 */</style>
+
+<script src="Create%20Guid%20partition%20table%20-%20Cortina%20Systems%20Wiki_files/load_002.php"></script><script src="Create%20Guid%20partition%20table%20-%20Cortina%20Systems%20Wiki_files/load_004.php"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Create_Guid_partition_table","wgTitle":"Create Guid partition table","wgCurRevisionId":106487,"wgRevisionId":106487,"wgArticleId":9617,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Create_Guid_partition_table","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgRestrictionRead":[],"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"monobook","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"vector-simplesearch":1,"watchcreations":0,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0
+,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"useeditwarning":1,"prefershttps":1,"language":"en","variant-gan":"gan","variant-iu":"iu","variant-kk":"kk","variant-ku":"ku","variant-shi":"shi","variant-sr":"sr","variant-tg":"tg","variant-uz":"uz","variant-zh":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"variant":"en"});},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});},{},{});
+/* cache key: wikiSQL:resourceloader:filter:minify-js:7:68471340157e99d9e2eb390b7623161a */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script><script src="Create%20Guid%20partition%20table%20-%20Cortina%20Systems%20Wiki_files/load_003.php"></script>
+<script async="" src="Create%20Guid%20partition%20table%20-%20Cortina%20Systems%20Wiki_files/load.php"></script></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Create_Guid_partition_table skin-monobook action-view">
+<div id="globalWrapper">
+<div id="column-content"><div id="content" class="mw-body-primary" role="main">
+	<a id="top"></a>
+	<div id="siteNotice"><div id="localNotice" dir="ltr" lang="en"><p>-
+</p>
+<div class="page-warning">
+<p><font size="4" color="red"><b>Login Required for Editting!</b></font>
+</p><p>We are enforcing the rule that every user has to log in before 
+he/she can make any modification to this wiki.  Your Cortina login 
+should work fine here.  There is no real need to create a new account.  
+If you do not want to log in, an anonymous user can only view some 
+specific contents of this wiki.
+</p>
+</div>
+</div></div>
+	<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">Create Guid partition table</span></h1>
+	<div id="bodyContent" class="mw-body">
+		<div id="siteSub">From Cortina Systems Wiki</div>
+		<div id="contentSub"></div>
+		<div id="jump-to-nav" class="mw-jump">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>
+
+		<!-- start content -->
+<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="#" class="internal" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#How_to_create_GPT_partition"><span class="tocnumber">1</span> <span class="toctext">How to create GPT partition</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Modify_typeGUID_for_FIP_partition"><span class="tocnumber">2</span> <span class="toctext">Modify typeGUID for FIP partition</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Set_Active_flag_of_FIP_partition"><span class="tocnumber">3</span> <span class="toctext">Set Active flag of FIP partition</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Set_DDR_type_in_GPT_head"><span class="tocnumber">4</span> <span class="toctext">Set DDR type in GPT head</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Make_GPT_image_with_Nand_info_for_Nand_image"><span class="tocnumber">5</span> <span class="toctext">Make GPT image with Nand info for Nand image</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#1._Create_Nand_info_header_by_gen_nand_info_utilityFile:Gen_nand_info.tgz_for_G3.2FG3HGU"><span class="tocnumber">5.1</span> <span class="toctext">1. Create Nand info header by gen_nand_info utilityFile:Gen nand info.tgz for G3/G3HGU</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#1.1._Create_Nand_info_header_by_gen_nand_info_utilityFile:Gen_nandinfo_venus.tgz_for_Venus"><span class="tocnumber">5.2</span> <span class="toctext">1.1. Create Nand info header by gen_nand_info utilityFile:Gen nandinfo venus.tgz for Venus</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#2._Combine_nand_info.bin_and_GPT_image_together"><span class="tocnumber">5.3</span> <span class="toctext">2. Combine nand_info.bin and GPT image together</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#3._Program_image_to_Nand_flash"><span class="tocnumber">5.4</span> <span class="toctext">3. Program image to Nand flash</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#Tool_to_generate_OOB_file_for_mass_production"><span class="tocnumber">5.5</span> <span class="toctext">Tool to generate OOB file for mass production</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="How_to_create_GPT_partition">How to create GPT partition</span></h2>
+<p>There is no filesystem on ARM Trust firmware. BL1/BL2 parse GPT 
+partition on block device and read out FIP image from GPT partition. 
+This is example to create image and make partition on it.
+</p>
+<pre># Create image
+dd if=/dev/zero of=./gpt.img bs=1M count=3
+
+# Make partition
+parted gpt.img  mklabel gpt
+parted gpt.img mkpart fip0 ext2 1 2
+parted gpt.img mkpart fip1 ext2 2 3
+
+root@hc-d-jason:/space# parted gpt.img
+GNU Parted 3.2
+Using /space/gpt.img
+Welcome to GNU Parted! Type 'help' to view a list of commands.
+(parted) p
+Model:  (file)
+Disk /space/gpt.img: 3146kB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size    File system  Name  Flags
+ 1      1049kB  2097kB  1049kB               fip0
+ 2      2097kB  3129kB  1032kB               fip1
+
+(parted)
+
+
+# Dump fip image into partition image
+dd if=G3/g3-master/build/g3_fpga/release/fip.bin of=gpt.img bs=1K seek=1024 conv=notrunc
+dd if=G3/g3-master/build/g3_fpga/release/fip.bin of=gpt.img bs=1K seek=2048 conv=notrunc
+
+</pre>
+<h2><span class="mw-headline" id="Modify_typeGUID_for_FIP_partition">Modify typeGUID for FIP partition</span></h2>
+<p>Cortina FIP typeGUID is defined as <font color="red"><b>ca777000-f190-b69b-8136-dea2835d4178</b></font>. Both active and standby partition need to be this typeGUID.
+</p>
+<pre>root@hc-d-jason:/space# gdisk gpt.img
+GPT fdisk (gdisk) version 0.8.10
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+
+Command (? for help): p
+Disk gpt.img: 6144 sectors, 3.0 MiB
+Logical sector size: 512 bytes
+Disk identifier (GUID): 449E2715-D2B2-45CE-BD4D-C00308137447
+Partition table holds up to 128 entries
+First usable sector is 34, last usable sector is 6110
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 2014 sectors (1007.0 KiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048            4095   1024.0 KiB  8300  fip0
+   2            4096            6110   1007.5 KiB  8300  fip1
+
+Command (? for help):&nbsp;?
+b       back up GPT data to a file
+c       change a partition's name
+d       delete a partition
+i       show detailed information on a partition
+l       list known partition types
+n       add a new partition
+o       create a new empty GUID partition table (GPT)
+p       print the partition table
+q       quit without saving changes
+r       recovery and transformation options (experts only)
+s       sort partitions
+t       change a partition's type code
+v       verify disk
+w       write table to disk and exit
+x       extra functionality (experts only)
+?       print this menu
+
+Command (? for help): t
+Partition number (1-2): 1
+Current type is 'Linux filesystem'
+Hex code or GUID (L to show codes, Enter = 8300): ca777000-f190-b69b-8136-dea2835d4178
+Changed type of partition to 'Unknown'
+
+Command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): y
+
+</pre>
+<h2><span class="mw-headline" id="Set_Active_flag_of_FIP_partition">Set Active flag of FIP partition</span></h2>
+<p>We set bit0,bit1 attribute for FIP partition. And use bit#48 as 
+active flag. Active partition is unique, only one partition can be set 
+as active. User have to guarantee exclusive active partition.
+</p>
+<pre>root@hc-d-jason:/space# gdisk gpt.img
+GPT fdisk (gdisk) version 0.8.10
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+
+Command (? for help): x
+
+Expert command (? for help): a
+Partition number (1-2): 1
+Known attributes are:
+0: system partition
+1: hide from EFI
+2: legacy BIOS bootable
+60: read-only
+62: hidden
+63: do not automount
+
+Attribute value is 0000000000000000. Set fields are:
+  No fields set
+
+Toggle which attribute field (0-63, 64 or &lt;Enter&gt; to exit): 0
+Have enabled the 'system partition' attribute.
+Attribute value is 0000000000000001. Set fields are:
+0 (system partition)
+
+Toggle which attribute field (0-63, 64 or &lt;Enter&gt; to exit): 1
+Have enabled the 'hide from EFI' attribute.
+Attribute value is 0000000000000003. Set fields are:
+0 (system partition)
+1 (hide from EFI)
+
+Toggle which attribute field (0-63, 64 or &lt;Enter&gt; to exit): 48
+Have enabled the 'Undefined bit #48' attribute.
+Attribute value is 0001000000000003. Set fields are:
+0 (system partition)
+1 (hide from EFI)
+48 (Undefined bit #48)
+
+Toggle which attribute field (0-63, 64 or &lt;Enter&gt; to exit):
+
+Expert command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): y
+OK; writing new GUID partition table (GPT) to gpt.img.
+Warning: The kernel is still using the old partition table.
+The new table will be used at the next reboot.
+The operation has completed successfully.
+root@hc-d-jason:/space#
+
+</pre>
+<h2><span class="mw-headline" id="Set_DDR_type_in_GPT_head">Set DDR type in GPT head</span></h2>
+<p>We set bit#49 as DDR type indicator. 1 stands for DDR4, while 0 stands for DDR3.
+</p>
+<pre>root@hc-d-jason:/space# gdisk gpt.img
+GPT fdisk (gdisk) version 0.8.10
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+
+Command (? for help): x
+
+Expert command (? for help): a
+Partition number (1-2): 1
+Known attributes are:
+0: system partition
+1: hide from EFI
+2: legacy BIOS bootable
+60: read-only
+62: hidden
+63: do not automount
+
+Attribute value is 0001000000000003. Set fields are:
+0 (system partition)
+1 (hide from EFI)
+48 (Undefined bit #48)
+
+Toggle which attribute field (0-63, 64 or &lt;Enter&gt; to exit): 49
+Have enabled the 'Undefined bit #49' attribute.
+Attribute value is 0003000000000003. Set fields are:
+0 (system partition)
+1 (hide from EFI)
+48 (Undefined bit #48)
+49 (Undefined bit #49)
+
+Toggle which attribute field (0-63, 64 or &lt;Enter&gt; to exit):
+
+Expert command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): y
+OK; writing new GUID partition table (GPT) to gpt.img.
+Warning: The kernel is still using the old partition table.
+The new table will be used at the next reboot.
+The operation has completed successfully.
+root@hc-d-jason:/space#
+
+</pre>
+<h2><span class="mw-headline" id="Make_GPT_image_with_Nand_info_for_Nand_image">Make GPT image with Nand info for Nand image</span></h2>
+<h4><span class="mw-headline" id="1._Create_Nand_info_header_by_gen_nand_info_utilityFile:Gen_nand_info.tgz_for_G3.2FG3HGU">1. Create Nand info header by gen_nand_info utility<a href="http://sv-wiki-01/wiki/index.php/File:Gen_nand_info.tgz" title="File:Gen nand info.tgz">File:Gen nand info.tgz</a> for <font color="red">G3/G3HGU</font></span></h4>
+<pre># gen_nand_info 
+ Command syntax:         gen_nand_info ECC_type oob_size page_size block_size
+ ECC_type: 0 =&gt; HAMMING 256_3B
+          1 =&gt; HAMMING 512_3B
+          2 =&gt; BCH_8
+          3 =&gt; BCH_16
+          4 =&gt; BCH_24
+          5 =&gt; BCH_40
+ oob_size: OOB size
+ page_size: Page size
+ block_size: Block size
+
+e.g: gen nand_info for Nand flash of BCH24/216B OOB/4K page/512KB block:
+	gen_nand_info 4 0xd8 0x1000 0x80000
+
+This will output nand_info.bin. The content is "04 00 d8 10 00 00 08 00  00 fd 09 ff ff ff ff ff" repeats 32 entries.
+</pre>.
+<h4><span class="mw-headline" id="1.1._Create_Nand_info_header_by_gen_nand_info_utilityFile:Gen_nandinfo_venus.tgz_for_Venus">1.1. Create Nand info header by gen_nand_info utility<a href="http://sv-wiki-01/wiki/index.php/File:Gen_nandinfo_venus.tgz" title="File:Gen nandinfo venus.tgz">File:Gen nandinfo venus.tgz</a> for <font color="red">Venus</font></span></h4>
+<pre>jason@hc-pb-01:/space/Work/Misc$ ./gen_nandinfo
+Command syntax:         gen_nand_info ECC_type oob_size page_size block_size addr_length
+ECC_type: 0 =&gt; HAMMING 256_3B
+          1 =&gt; HAMMING 512_3B
+          2 =&gt; BCH_8
+          3 =&gt; BCH_16
+          4 =&gt; BCH_24
+          5 =&gt; BCH_40
+oob_size: OOB size
+page_size: Page size
+block_size: Block size
+addr_length: NAND address size(4 or 5 bytes address length)
+jason@hc-pb-01:/space/Work/Misc$ ./gen_nandinfo 3 0x40 0x800 0x20000 5
+ECC_TYPE:3
+OOB_SZ:64
+PAGE_SZ:0x800
+BLOCK_SZ:0x20000
+ADDR_LEN:0x5
+CRC16:0x697f
+</pre>.
+<p>We've verified below Nand Flash model on G3 FPGA:
+</p>
+<ol>
+<li> K9GAG08U0D (MLC, 4K page, 216 OOB) for BCH8~24, Hamming
+</li>
+<li> K9GBG08U0A (MLC, 8K page, 640 OOB) for BCH40
+</li>
+<li> K9GBG08U0E (MLC, 8K page, 436 OOB) for BCH8~24, Hamming
+</li>
+<li> MX30LF1G18AC-TI(SLC/ONFI, 2K page, 64 OOB) boot OK for BCH8/BCH16.
+</li>
+<li> MX30LF2G18AC-TI(SLC/ONFI, 2K page, 64 OOB) boot OK for BCH8/BCH16.
+</li>
+<li> S34ML02G100TF100(ONFI, 2K page, 128 OOB) for BCH8~BCH24
+</li>
+<li> S34ML01G100TF100(ONFI, 2K page, 64 OOB) for BCH8/BCH16
+</li>
+<li> H27U2G8F2CTR(2K page, 64 OOB)
+</li>
+<li> TC58NVG2SOHTA10(4K page, 216 OOB)
+</li>
+</ol>
+<p>Please check flash model on hand to generate corresponding Nand_Info.
+</p><p><br>
+</p>
+<h4><span class="mw-headline" id="2._Combine_nand_info.bin_and_GPT_image_together">2. Combine nand_info.bin and GPT image together</span></h4>
+<p>dd if=./gpt.img of=nand_info.bin skip=1 oflag=append conv=notrunc
+</p>
+<h4><span class="mw-headline" id="3._Program_image_to_Nand_flash">3. Program image to Nand flash</span></h4>
+<ul>
+<li> Configure U-boot build parameters(include/configs/presidio_fpga.h) 
+to compile proper u-boot image(comment out 
+CONFIG_MTD_CORTINA_CS752X_SERIAL, define CONFIG_MTD_CORTINA_G3_NAND and 
+ECC algorithm).
+</li>
+</ul>
+<p><font color="red">
+</font></p><font color="red">
+<dl>
+<dd> //#define CONFIG_MTD_CORTINA_G3_SERIAL
+</dd>
+<dd> #define CONFIG_MTD_CORTINA_G3_NAND
+</dd>
+<dd> #define CONFIG_G3_NAND_ECC_HW_BCH_LEVEL 16
+</dd>
+</dl>
+</font><p><font color="red"></font>
+</p>
+<ul>
+<li> Use T32 to load compiled u-boot image and run.
+</li>
+<li> Use tftp or T32 to load image into DDR(saying 0x5000000)
+</li>
+<li> Erase flash
+</li>
+</ul>
+<dl>
+<dd> G3# nand erase 0 0x300000
+</dd>
+</dl>
+<ul>
+<li> Write image to flash
+</li>
+</ul>
+<dl>
+<dd> G3# nand write 0x5000000 0 0x300000
+</dd>
+</dl>
+<p><br>
+Detail GPT partition format:
+[<a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/GUID_Partition_Table">Guid Partition Table Wiki</a>]
+</p>
+<h3><span class="mw-headline" id="Tool_to_generate_OOB_file_for_mass_production">Tool to generate OOB file for mass production</span></h3>
+<p><a href="http://sv-wiki-01/wiki/index.php/File:Bin2nand.tgz" title="File:Bin2nand.tgz">File:Bin2nand.tgz</a>
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.051 seconds
+Real time usage: 0.054 seconds
+Preprocessor visited node count: 96/1000000
+Preprocessor generated node count: 172/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+</div><div class="printfooter">
+Retrieved from "<a href="http://sv-wiki-01/wiki/index.php?title=Create_Guid_partition_table&amp;oldid=106487">http://sv-wiki-01/wiki/index.php?title=Create_Guid_partition_table&amp;oldid=106487</a>"</div>
+		<div id="catlinks" class="catlinks catlinks-allhidden"></div>		<!-- end content -->
+				<div class="visualClear"></div>
+	</div>
+</div></div>
+<div id="column-one">
+	<h2>Navigation menu</h2>
+	<div id="p-cactions" class="portlet" role="navigation">
+		<h3>Views</h3>
+		<div class="pBody">
+			<ul>
+				<li id="ca-nstab-main" class="selected"><a href="http://sv-wiki-01/wiki/index.php/Create_Guid_partition_table" title="View the content page [alt-shift-c]" accesskey="c">Page</a></li>
+				<li id="ca-talk" class="new"><a href="http://sv-wiki-01/wiki/index.php?title=Talk:Create_Guid_partition_table&amp;action=edit&amp;redlink=1" title="Discussion about the content page [alt-shift-t]" accesskey="t">Discussion</a></li>
+				<li id="ca-viewsource"><a href="http://sv-wiki-01/wiki/index.php?title=Create_Guid_partition_table&amp;action=edit" title="This page is protected.
+You can view its source [alt-shift-e]" accesskey="e">View source</a></li>
+				<li id="ca-history"><a href="http://sv-wiki-01/wiki/index.php?title=Create_Guid_partition_table&amp;action=history" rel="archives" title="Past revisions of this page [alt-shift-h]" accesskey="h">History</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal" role="navigation">
+		<h3>Personal tools</h3>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="http://sv-wiki-01/wiki/index.php?title=Special:UserLogin&amp;returnto=Create+Guid+partition+table" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo" role="banner">
+<a href="http://sv-wiki-01/wiki/index.php/Main_Page" style="background-image: url(/wiki/cortina/images/logo.png);" title="Visit the main page"></a>
+	</div>
+	<div class="generated-sidebar portlet" id="p-navigation" role="navigation">
+		<h3>Navigation</h3>
+		<div class="pBody">
+			<ul>
+				<li id="n-Top-Page"><a href="http://sv-wiki-01/wiki/index.php/Main_Page">Top Page</a></li>
+				<li id="n-Software-Home-Page"><a href="http://sv-wiki-01/wiki/index.php/DH_%26_ACC_Software_Home_Page">Software Home Page</a></li>
+				<li id="n-DHBU-Software-Wiki"><a href="http://sv-wiki-01/wiki/index.php/Digital_Home_Software_Home_Page">DHBU Software Wiki</a></li>
+				<li id="n-Lynx-Software"><a href="http://sv-wiki-01/wiki/index.php/Lynx_Software_Home_Page">Lynx Software</a></li>
+				<li id="n-DHBU-Hardware-Wiki"><a href="http://sv-wiki-01/wiki/index.php/Digital_Home_Hardware_Home_Page">DHBU Hardware Wiki</a></li>
+				<li id="n-portal"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+				<li id="n-currentevents"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Current_events" title="Find background information on current events">Current events</a></li>
+				<li id="n-recentchanges"><a href="http://sv-wiki-01/wiki/index.php/Special:RecentChanges" title="A list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li>
+				<li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" rel="nofollow" title="The place to find out">Help</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="generated-sidebar portlet" id="p-categorytree-portlet" role="navigation">
+		<h3>Categories</h3>
+		<div class="pBody">
+<div class="CategoryTreeTag" data-ct-mode="0" data-ct-options="{&quot;mode&quot;:0,&quot;hideprefix&quot;:20,&quot;showcount&quot;:false,&quot;namespaces&quot;:false}"><div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Admin" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Admin">Admin</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Documentation" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Documentation">Documentation</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeEmptyBullet">► </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Helpdesk_Service">Helpdesk Service</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Prodeng" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Prodeng">Prodeng</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeEmptyBullet">► </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:QA_Eng">QA Eng</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		</div>
+				</div>
+	</div>
+	<div id="p-search" class="portlet" role="search">
+		<h3><label for="searchInput">Search</label></h3>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php" id="searchform">
+				<input type="hidden" name="title" value="Special:Search">
+				<input type="search" name="search" placeholder="Search" title="Search Cortina Systems Wiki [alt-shift-f]" accesskey="f" id="searchInput" autocomplete="off">
+				<input type="submit" name="go" value="Go" title="Go to a page with this exact name if exists" id="searchGoButton" class="searchButton">&nbsp;
+				<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton">
+			</form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb" role="navigation">
+		<h3>Tools</h3>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="http://sv-wiki-01/wiki/index.php/Special:WhatLinksHere/Create_Guid_partition_table" title="A list of all wiki pages that link here [alt-shift-j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="http://sv-wiki-01/wiki/index.php/Special:RecentChangesLinked/Create_Guid_partition_table" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li>
+				<li id="t-specialpages"><a href="http://sv-wiki-01/wiki/index.php/Special:SpecialPages" title="A list of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="http://sv-wiki-01/wiki/index.php?title=Create_Guid_partition_table&amp;printable=yes" rel="alternate" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li>
+				<li id="t-permalink"><a href="http://sv-wiki-01/wiki/index.php?title=Create_Guid_partition_table&amp;oldid=106487" title="Permanent link to this revision of the page">Permanent link</a></li>
+				<li id="t-info"><a href="http://sv-wiki-01/wiki/index.php?title=Create_Guid_partition_table&amp;action=info">Page information</a></li>
+			</ul>
+		</div>
+	</div>
+</div><!-- end of the left (by default at least) column -->
+<div class="visualClear"></div>
+<div id="footer" role="contentinfo">
+	<div id="f-poweredbyico">
+		<a href="http://www.mediawiki.org/"><img src="Create%20Guid%20partition%20table%20-%20Cortina%20Systems%20Wiki_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31"></a>
+	</div>
+	<ul id="f-list">
+		<li id="lastmod"> This page was last modified on 9 April 2019, at 00:54.</li>
+		<li id="viewcount">This page has been accessed 285 times.</li>
+		<li id="privacy"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Privacy_policy" title="Cortina Systems Wiki:Privacy policy">Privacy policy</a></li>
+		<li id="about"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:About" title="Cortina Systems Wiki:About">About Cortina Systems Wiki</a></li>
+		<li id="disclaimer"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:General_disclaimer" title="Cortina Systems Wiki:General disclaimer">Disclaimers</a></li>
+	</ul>
+</div>
+</div>
+<script>/*<![CDATA[*/window.jQuery && jQuery.ready();/*]]>*/</script><script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+mw.loader.load(["ext.categoryTree","mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"],null,true);
+}</script>
+<script>if(window.mw){
+mw.loader.state({"site":"ready"});
+}</script>
+<!-- Served in 0.334 secs. --><div style="display: none; font-size: 11.4667px;" class="suggestions"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>

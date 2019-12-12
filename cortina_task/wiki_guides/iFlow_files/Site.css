@@ -1,0 +1,442 @@
+input[type=submit],#LoginFail{
+	display:none;
+}
+.icons img{
+	padding-top:13px;
+	max-width:16px;
+}
+body {
+        background-color: #154341;
+        font-family: 微軟正黑體, Helvetica, Arial, sans-serif;
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: cover;
+        height: auto;
+        background-attachment: fixed;
+        -moz-background-size: cover;
+    }
+
+#postPwdDiv{
+	display:none;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.alignRight {
+    text-align: right;
+}
+
+table {
+    border-collapse: separate;
+    background: #fff;
+    /*margin: 50px auto;*/
+    -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+thead th {
+    font-size: 10px;
+    font-weight: 400;
+    /*padding: 10px;*/
+    color: white;
+}
+
+tbody tr td {
+    font-weight: 400;
+    color: black;
+    font-size: 13px;
+    /*padding: 25px 25px 25px 25px;*/
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tbody tr:nth-child(2n) {
+    background: #f0f3f5;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.report {
+    float: none;
+    padding-left: 0px !important;
+}
+
+tbody td {
+    padding: 4px 8px;
+}
+
+th {
+    white-space: nowrap;
+}
+
+.treeview-menu .active {
+    color: white;
+}
+
+.thick-border {
+    border-left: 1px solid black;
+}
+
+.tile-stats {
+    position: relative;
+    display: block;
+    margin-bottom: 12px;
+    border: 1px solid #E4E4E4;
+    -webkit-border-radius: 5px;
+    overflow: hidden;
+    padding-bottom: 5px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 5px;
+    -moz-background-clip: padding;
+    border-radius: 5px;
+    background: white !important;
+    transition: all .3s ease-in-out;
+    text-align: center !important;
+}
+
+    .tile-stats .count, .tile-stats h3, .tile-stats p {
+        position: relative;
+        margin: 0 0 0 10px;
+        z-index: 5;
+        padding: 0;
+    }
+
+    .tile-stats .count {
+        font-size: 38px;
+        font-weight: 700;
+        line-height: 1.65857;
+    }
+
+    .tile-stats h3 {
+        color: #BAB8B8;
+    }
+
+    .tile-stats .count, .tile-stats h3, .tile-stats p {
+        position: relative;
+        margin: 0 0 0 10px;
+        z-index: 5;
+        padding: 0;
+    }
+
+    .tile-stats p {
+        margin-top: 5px;
+        font-size: 12px;
+    }
+
+    .tile-stats .count, .tile-stats h3, .tile-stats p {
+        position: relative;
+        margin: 0 0 0 10px;
+        z-index: 5;
+        padding: 0;
+    }
+
+    .tile-stats .icon {
+        width: 20px;
+        height: 20px;
+        color: #BAB8B8;
+        position: absolute;
+        right: 53px;
+        top: 22px;
+        z-index: 1;
+    }
+
+.low-padding {
+    margin: 0px;
+}
+
+.old-user {
+    padding-top: 5px;
+    padding-left: 10px;
+    font-size: large;
+}
+
+.std-yield {
+    color: blue;
+}
+
+.range {
+    width: 60px !important;
+}
+
+.date {
+    width: 110px !important;
+}
+
+label {
+    font-weight: bold !important;
+    padding: 5px !important;
+    text-align: right !important;
+}
+
+fieldset {
+    margin-bottom: 5px;
+}
+
+
+.multi-part {
+    width: 90% !important;
+    max-width: 100% !important;
+}
+
+h1 {
+    color: blue;
+}
+
+.dxpgControl {
+    width: 100%;
+}
+
+.dxpgCustForm {
+    width: 100%;
+}
+
+.detail-info {
+    padding-top: 5px;
+}
+
+.checkbox-inline {
+    font-weight: normal !important;
+    text-align: right !important;
+    margin-left: 15px;
+}
+
+.DTFC_LeftWrapper {
+    top: -6px !important;
+}
+
+.warning-bg {
+    background: rgba(255, 245, 162, 0.87);
+}
+
+table.dataTable thead th,
+  table.dataTable thead td  {
+    border-right: solid 1px white !important;
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 30px;
+    text-align: center;
+}
+
+
+
+
+
+.rtk_logo_img {
+    padding-top: 40px;
+    position: relative;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    margin-left: 40px;
+    transition: all 0.4s;
+    height: 40px;
+    margin-top: 3%;
+}
+
+.system_logo {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 100%;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: top center;
+    margin-top: 20px;
+    height: 100px;
+    padding-bottom: 5px;
+}
+
+.systen_name {
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+    /* margin: 0 auto; */
+    /* color: white; */
+    /* text-align: center; */
+    /* font-size: 1.1em; */
+}
+
+.logo_item {
+    padding-bottom: 20px;
+    padding-top: 5%;
+}
+
+.form-group {
+    padding-bottom: 10px;
+    color: black;
+    margin: 0 auto;
+    /*text-align: center;*/
+}
+
+.title {
+    color: #cccccc;
+    font-size: 0.8em;
+    text-align: left;
+    width: 300px;
+    padding-bottom: 3px;
+}
+
+.login-input {
+    padding: 10px;
+    width: 260px;
+    height: 42px;
+    max-width: 100%;
+    float: right;
+    border: 1px solid white;
+}
+
+.login_item {
+    margin: 0 auto;
+    text-align: center;
+    width: 300px;
+}
+
+button#buttonLogin {
+    font-size: 1em;
+    background-color: #E8733F;
+    width: 300px;
+    height: 42px;
+    border-radius: 4px;
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+    border: none;
+    color: #ffffff;
+    transition: all 0.4s;
+    cursor: pointer;
+}
+
+    button#buttonLogin:hover {
+        background-color: #f38757;
+    }
+
+.Forgot:hover {
+    color: white;
+    cursor: pointer;
+}
+
+input.buttonLogin:hover {
+    background-color: #3ba9d8;
+}
+
+.rememberme {
+    color: #b7b7b7;
+    font-size: 0.9em;
+    text-align: left;
+    padding-bottom: 3px;
+}
+
+.icon {
+    float: left;
+    font-size: 15pt;
+}
+
+.forgot {
+    color: #f3f3f3a8;
+    font-size: 0.9em;
+    text-align: right;
+    padding-bottom: 3px;
+    float: right;
+    font-style: italic;
+}
+
+.footer {
+    color: rgba(255, 255, 255, 0.45);
+    text-align: center;
+    font-size: 12pt;
+    padding-top: 20px;
+    position: absolute;
+    bottom: 20px;
+    right: 0px;
+    left: 0px;
+}
+
+.input-group.margin-bottom-sm {
+    color: #616161;
+    background-color: #ffffff;
+    width: 300px;
+    height: 42px;
+}
+
+span.icons {
+    padding-top: 10px;
+}
+
+i.fa.fa-user, i.fa.fa-lock {
+    padding: 12px;
+}
+
+
+.btn-primary {
+  color: #fff;
+  background-color: #2B5877;
+  border-color: #2e6da4;
+}
+
+.btn-primary:hover {
+  color:  #2B5877;
+  background-color: #D6B85E;
+  border-color: #204d74;
+}
+
+@media only screen and (max-width: 768px) {
+    .rtk_logo_img {
+        padding-top: 40px;
+        position: relative;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        margin-left: 40px;
+        transition: all 0.4s;
+        margin-top: 3%;
+    }
+
+    @media only screen and (max-width: 480px) {
+        .rtk_logo_img {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            max-width: 100%;
+            position: relative;
+            background-repeat: no-repeat;
+            background-position: top center;
+            transition: all 0.4s;
+            margin-top: 3%;
+        }
+
+        @media only screen and (max-width: 320px) {
+            .rtk_logo_img {
+                width: 300px;
+                margin: 0 auto;
+                text-align: center;
+                max-width: 100%;
+                position: relative;
+                background-repeat: no-repeat;
+                background-position: top center;
+                transition: all 0.4s;
+                margin-top: 3%;
+            }

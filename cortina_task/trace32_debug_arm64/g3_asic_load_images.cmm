@@ -1,0 +1,84 @@
+; Load kernel image
+;d.load.binary Z:\tmp_workspace\g3_asic_yocto-20170329\build\tmp\deploy\images\g3-eng\Image 0x80000
+&uart_base=0xf4329148
+;data.set &uart_base      %l 0x01B200e3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=50MHz
+data.set 0xf4329148      %l 0x00043de3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=125MHz
+data.set 0xf432914c %l 0x588	; FC
+data.set 0xf4329150 %l 0x6c		; Sample rate
+data.set 0xf4329158 %l 0x0D		;
+data.set 0xf4329158 %l 0x0A		;
+data.set 0xf4329158 %l 0x49		; print 'I'
+data.set 0xf4329158 %l 0x6D		; print 'm'
+data.set 0xf4329158 %l 0x61		; print 'a'
+data.set 0xf4329158 %l 0x67		; print 'g'
+data.set 0xf4329158 %l 0x65		; print 'e'
+data.set 0xf4329158 %l 0x20		; print ' '
+data.set 0xf4329158 %l 0x4F		; print 'O'
+data.set 0xf4329158 %l 0x4B		; print 'K'
+data.set 0xf4329158 %l 0x21		; print '!'
+data.set 0xf4329158 %l 0x0D		; CR (carriage return)
+data.set 0xf4329158 %l 0x0A		; LF (NL line feed, new line)
+
+; Load Image-ca7774-engboard.dtb image
+;d.load.binary Z:\tmp_workspace\g3_asic_yocto-20170329\build\tmp\deploy\images\g3-eng\Image-ca7774-engboard.dtb 0x1000000
+&uart_base=0xf4329148
+;data.set &uart_base      %l 0x01B200e3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=50MHz
+data.set 0xf4329148      %l 0x00043de3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=125MHz
+data.set 0xf432914c %l 0x588	; FC
+data.set 0xf4329150 %l 0x6c		; Sample rate
+data.set 0xf4329158 %l 0x2E		; print '.'
+data.set 0xf4329158 %l 0x64		; print 'd'
+data.set 0xf4329158 %l 0x74		; print 't'
+data.set 0xf4329158 %l 0x62		; print 'b'
+data.set 0xf4329158 %l 0x20		; print ' '
+data.set 0xf4329158 %l 0x4F		; print 'O'
+data.set 0xf4329158 %l 0x4B		; print 'K'
+data.set 0xf4329158 %l 0x21		; print '!'
+data.set 0xf4329158 %l 0x0D		;
+data.set 0xf4329158 %l 0x0A		;
+
+; Load basic-image-g3-eng.cpio.xz image
+;d.load.binary Z:\tmp_workspace\g3_asic_yocto-20170329\build\tmp\deploy\images\g3-eng\basic-image-g3-eng.cpio.xz 0x6000000
+&uart_base=0xf4329148
+;data.set &uart_base      %l 0x01B200e3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=50MHz
+data.set 0xf4329148      %l 0x00043de3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=125MHz
+data.set 0xf432914c %l 0x588	; FC
+data.set 0xf4329150 %l 0x6c		; Sample rate
+data.set 0xf4329158 %l 0x2E		; print '.'
+data.set 0xf4329158 %l 0x63		; print 'c'
+data.set 0xf4329158 %l 0x70		; print 'p'
+data.set 0xf4329158 %l 0x69		; print 'i'
+data.set 0xf4329158 %l 0x6F		; print 'o'
+data.set 0xf4329158 %l 0x2E		; print '.'
+data.set 0xf4329158 %l 0x78		; print 'x'
+data.set 0xf4329158 %l 0x7A		; print 'z'
+data.set 0xf4329158 %l 0x20		; print ' '
+data.set 0xf4329158 %l 0x4F		; print 'O'
+data.set 0xf4329158 %l 0x4B		; print 'K'
+data.set 0xf4329158 %l 0x21		; print '!'
+data.set 0xf4329158 %l 0x0D		;
+data.set 0xf4329158 %l 0x0A		;
+
+; Load vmlinux image
+data.load.elf Z:\tmp_workspace\g3_asic_yocto-20170329\build\tmp\work\g3_eng-poky-linux\linux-ca\4.4-r0\build\vmlinux /nocode /strippart "/space/" /path "z:\"
+&uart_base=0xf4329148
+;data.set &uart_base      %l 0x01B200e3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=50MHz
+data.set 0xf4329148      %l 0x00043de3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=125MHz
+data.set 0xf432914c %l 0x588	; FC
+data.set 0xf4329150 %l 0x6c		; Sample rate
+data.set 0xf4329158 %l 0x76		; print 'v'
+data.set 0xf4329158 %l 0x6D		; print 'm'
+data.set 0xf4329158 %l 0x6C		; print 'l'
+data.set 0xf4329158 %l 0x69		; print 'i'
+data.set 0xf4329158 %l 0x6E		; print 'n'
+data.set 0xf4329158 %l 0x75		; print 'u '
+data.set 0xf4329158 %l 0x78		; print 'x'
+data.set 0xf4329158 %l 0x20		; print ' '
+data.set 0xf4329158 %l 0x4F		; print 'O'
+data.set 0xf4329158 %l 0x4B		; print 'K'
+data.set 0xf4329158 %l 0x21		; print '!'
+data.set 0xf4329158 %l 0x0D		;
+data.set 0xf4329158 %l 0x0A		;
+;R.S X0 0x1000000
+;R.S PC 0x80000
+;Break.set NSX:0x80228

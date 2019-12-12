@@ -1,0 +1,99 @@
+; --------------------------------------------------------------------------------------------------
+; @Title: Startup script for the G3 FPGA board
+; @Description: This script configures the base addresses for debug and attaches to the core
+; @Copyright: (C) 2015 Cortina Access
+; --------------------------------------------------------------------------------------------------
+; $Id: $
+;
+; NOTE: Interrupts are disabled with SYStem.Option IMASKASM and IMASKHLL per default
+;
+
+; G3 FPGA Configuration:
+; * 4x Cortex-A53
+
+//--------------------------------------------------------------------------------------------------
+// Configuration
+
+SYStem.RESet
+SYStem.CPU CORTEXA53
+
+SYStem.Option EnReset off
+
+SYStem.CONFIG CORENUMBER 4.
+;SYStem.CONFIG CORENUMBER 2.
+
+  CORE.ASSIGN 1. 2. 3. 4.
+  ;CORE.ASSIGN 1. 2.
+
+//
+// Cortex-A53 | debug      | CTI        | PMU        | trace
+// -----------+------------+------------+------------+------------
+//   core 0   | 0x80410000 | 0x80420000 | 0x80430000 | 0x80440000   
+//   core 1   | 0x80510000 | 0x80520000 | 0x80530000 | 0x80540000
+//   core 2   | 0x80610000 | 0x80620000 | 0x80630000 | 0x80640000   
+//   core 3   | 0x80710000 | 0x80720000 | 0x80730000 | 0x80740000   
+//
+// Cortex-A53 ROM-Table: 0x80400000
+//
+
+// Access port numbers are
+SYStem.CONFIG APBACCESSPORT 1.
+SYStem.CONFIG DEBUGACCESSPORT 0.          ;set to 0 to work
+SYStem.CONFIG AXIACCESSPORT 0.
+SYStem.CONFIG MEMORYACCESSPORT 0.
+
+// Pre/Post settings
+;SYStem.CONFIG DAPIRPRE 4.
+;SYStem.CONFIG DAPDRPRE 1.
+;SYStem.CONFIG DAPIRPOST 0.
+;SYStem.CONFIG DAPDRPOST 0.
+
+// Assignment:  MP4
+SYStem.CONFIG COREDEBUG BASE DAP:0x80410000 DAP:0x80510000 DAP:0x80610000 DAP:0x80710000
+SYStem.CONFIG CTI BASE DAP:0x80420000 DAP:0x80520000 DAP:0x80620000 DAP:0x80720000
+SYStem.CONFIG BMC BASE DAP:0x80430000 DAP:0x80530000 DAP:0x80630000 DAP:0x80730000
+SYStem.CONFIG ETM BASE DAP:0x80440000 DAP:0x80540000 DAP:0x80640000 DAP:0x80740000
+
+// Assignment:  MP2
+;SYStem.CONFIG COREDEBUG BASE DAP:0x80410000 DAP:0x80510000
+;SYStem.CONFIG CTI BASE DAP:0x80420000 DAP:0x80520000
+;SYStem.CONFIG BMC BASE DAP:0x80430000 DAP:0x80530000
+;SYStem.CONFIG ETM BASE DAP:0x80440000 DAP:0x80540000
+
+//--------------------------------------------------------------------------------------------------
+// Attach
+
+  // Finally attach to the target
+  ;SYStem.Mode Attach
+  SYStem.Up
+    
+; if run()
+; Break
+
+; Enable DDR_SCH FPGA mode
+data.set 0xf4328864 %l 0x01b74020 ;
+
+;load images
+d.load.elf D:\home\Jason\bl2.elf /strippart "/space/" /path "P:\"
+; reset flash controller
+data.set 0xf4320004 %l 0x00304000
+data.set 0xf4320004 %l 0x00300000
+
+
+&uart_base=0xf4329148
+;data.set &uart_base      %l 0x01B200e3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=50MHz
+data.set 0xf4329148      %l 0x00043de3		; Enable UART0,RX,TX,baudrate to 115200. Assume per_clk=125MHz
+data.set 0xf432914c %l 0x588	; FC
+data.set 0xf4329150 %l 0x6c		; Sample rate
+data.set 0xf4329158 %l 0x4F		; print 'O'
+data.set 0xf4329158 %l 0x4B		; print 'K'
+data.set 0xf4329158 %l 0x21		; print '!'
+data.set 0xf4329158 %l 0x0D		;
+data.set 0xf4329158 %l 0x0A		;
+
+; Global cpll1, epll 
+data.set 0xf4320164 %l 0x9425f;
+data.set 0xf432016c %l 0x9425f;
+
+ENDDO
+

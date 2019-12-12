@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html dir="ltr" class="client-js" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><title>G3 ARM Trusted Firmware - Cortina Systems Wiki</title>
+<meta name="generator" content="MediaWiki 1.22.6">
+<link rel="stylesheet" href="G3%20ARM%20Trusted%20Firmware%20-%20Cortina%20Systems%20Wiki_files/cortina.css">
+<link rel="shortcut icon" href="http://sv-wiki-01/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://sv-wiki-01/wiki/opensearch_desc.php" title="Cortina Systems Wiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://sv-wiki-01/wiki/api.php?action=rsd">
+<link rel="alternate" type="application/atom+xml" title="Cortina Systems Wiki Atom feed" href="http://sv-wiki-01/wiki/index.php?title=Special:RecentChanges&amp;feed=atom">
+<link rel="stylesheet" href="G3%20ARM%20Trusted%20Firmware%20-%20Cortina%20Systems%20Wiki_files/load.css">
+<!--[if IE 6]><link rel="stylesheet" href="/wiki/skins/monobook/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/wiki/skins/monobook/IE70Fixes.css?303" media="screen" /><![endif]--><style>
+.mw-collapsible-toggle{float:right} li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:4250852ed2349a0d4d0fc6509a3e7d4c */
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px -1px 0 0} html > body .suggestions{margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special .special-label{color:gray;text-align:left}.suggestions-special .special-query{color:black;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:white}.autoellipsis-matched,.highlight{font-weight:bold}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:9780324491b653a3780e2d029bdc140c */
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:.6em 3.6em .6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dcd9d9;text-shadow:0 0.0625em 0 rgba(255,255,255,0.5);border-radius:5px;-webkit-box-shadow:0 2px 5px 0 #ccc;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook .postedit{top:6em !important}.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABblBMVEUAAAD///////9PfTf///80aRdTgjn///9Feij///////////9Rfzf///////////9PfjZRgDh1o1xOfTb///////+bwYqLtnj///////9PfTa82K////9WhT6YxIL///9QgDdTgzr////////j7uDl7eLq8efi693k7OH///////9UhjuBr2rp9uRUhjr///9YljVKgir///9WiTlYjT3////9/v57vFlbkT5PjC9dlD/5/fhuq09stUTs9uhxuElctCpfnT1huDFloEZloUZmpENmvDZpvDxpvTxqvjxrvT5rvT9rwTxsqktswD5uwkBvuUdxw0NztFBztU9ztVBzwkp0tlJ1xkd2t1R3uVR4w1F4xk54x014yE15uVZ5v1R5xVB6v1R7yFJ8wVh9xVl9yFR9yVd9ylN+xVh+yFd/x1l/yFeAylmEx1+Ny2uY0Hqe04Wj1Ymv3Ze33qLD47TJ5L3O6cPU7Mrq9eb2+/Q4j37OAAAAQHRSTlMAAQIEBAUFBQwPFB4fJCUoKiosQEhJS01RUlZZXmdydXaChYuSlJSWmJmoq6uur8LExcvM19fg5ejt8fX2+Pr7SljgewAAAKpJREFUGBkFwQNCAwAAAMDLtl3LtrG4rWXbtvX77gAgZ6grFwC0bhwNVgKgdPZx8b0dgLi+s7Wn0VoAqpfOI9+BNADZI7fLrz2pSEwGHZuH+78lSK8ZLkLezF3ooyUG3VPXq2USei9WngeyoG195yBYWDF3E/2pAhl1e9Gr8bGT+bfOFCC2fnvh4X7rcqIAQNNu+HT6sxkAjceTL/2ZAIhv+PorBwBJxfkA//dFHSCBy/UTAAAAAElFTkSuQmCC);background-image:url(http://sv-wiki-01/wiki/resources/mediawiki.action/images/green-checkmark.png?2014-04-24T21:25:00Z)!ie;background-position:left}.postedit-close{position:absolute;padding:0 .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:black;text-shadow:0 0.0625em 0 white;text-decoration:none;opacity:0.2;filter:alpha(opacity=20)}.postedit-close:hover{color:black;text-decoration:none;opacity:0.4;filter:alpha(opacity=40)}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:7f54a550ae14160313958ddb2288bcd7 */</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{text-decoration:none;color:black}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:white}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:52b1797f70c7e4094dfa4191101944e8 */</style><meta name="ResourceLoaderDynamicStyles" content="">
+<style>a:lang(ar),a:lang(ckb),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: wikiSQL:resourceloader:filter:minify-css:7:2902c472ef4c41bfeaf25eb08706bd57 */</style>
+
+<script src="G3%20ARM%20Trusted%20Firmware%20-%20Cortina%20Systems%20Wiki_files/load_002.php"></script><script src="G3%20ARM%20Trusted%20Firmware%20-%20Cortina%20Systems%20Wiki_files/load_004.php"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"G3_ARM_Trusted_Firmware","wgTitle":"G3 ARM Trusted Firmware","wgCurRevisionId":104689,"wgRevisionId":104689,"wgArticleId":9418,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"G3_ARM_Trusted_Firmware","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgRestrictionRead":[],"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"monobook","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"vector-simplesearch":1,"watchcreations":0,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0
+,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"useeditwarning":1,"prefershttps":1,"language":"en","variant-gan":"gan","variant-iu":"iu","variant-kk":"kk","variant-ku":"ku","variant-shi":"shi","variant-sr":"sr","variant-tg":"tg","variant-uz":"uz","variant-zh":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"variant":"en"});},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});},{},{});
+/* cache key: wikiSQL:resourceloader:filter:minify-js:7:68471340157e99d9e2eb390b7623161a */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script><script src="G3%20ARM%20Trusted%20Firmware%20-%20Cortina%20Systems%20Wiki_files/load_003.php"></script>
+<script async="" src="G3%20ARM%20Trusted%20Firmware%20-%20Cortina%20Systems%20Wiki_files/load.php"></script></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-G3_ARM_Trusted_Firmware skin-monobook action-view">
+<div id="globalWrapper">
+<div id="column-content"><div id="content" class="mw-body-primary" role="main">
+	<a id="top"></a>
+	<div id="siteNotice"><div id="localNotice" dir="ltr" lang="en"><p>-
+</p>
+<div class="page-warning">
+<p><font size="4" color="red"><b>Login Required for Editting!</b></font>
+</p><p>We are enforcing the rule that every user has to log in before 
+he/she can make any modification to this wiki.  Your Cortina login 
+should work fine here.  There is no real need to create a new account.  
+If you do not want to log in, an anonymous user can only view some 
+specific contents of this wiki.
+</p>
+</div>
+</div></div>
+	<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">G3 ARM Trusted Firmware</span></h1>
+	<div id="bodyContent" class="mw-body">
+		<div id="siteSub">From Cortina Systems Wiki</div>
+		<div id="contentSub"></div>
+		<div id="jump-to-nav" class="mw-jump">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>
+
+		<!-- start content -->
+<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="#" class="internal" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#ARM_Trusted_Firmware_.28ATF.29_Support_for_G3_Application_Processor_.28AP.29."><span class="tocnumber">1</span> <span class="toctext">ARM Trusted Firmware (ATF) Support for G3 Application Processor (AP).</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Build_Environment"><span class="tocnumber">2</span> <span class="toctext">Build Environment</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Trusted_Board_Boot_Build_.28TBB.29"><span class="tocnumber">2.1</span> <span class="toctext">Trusted Board Boot Build (TBB)</span></a>
+<ul>
+<li class="toclevel-3 tocsection-4"><a href="#FPGA_Build"><span class="tocnumber">2.1.1</span> <span class="toctext">FPGA Build</span></a></li>
+<li class="toclevel-3 tocsection-5"><a href="#ASIC_SIM_BUILD"><span class="tocnumber">2.1.2</span> <span class="toctext">ASIC SIM BUILD</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="#ASIC_BUILD"><span class="tocnumber">2.1.3</span> <span class="toctext">ASIC BUILD</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="#How_to_generate_various_types_of_RSA_keys_and_SHA256_hash_of_public_key"><span class="tocnumber">2.1.4</span> <span class="toctext">How to generate various types of RSA keys and SHA256 hash of public key</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="#How_to_write_public_key_in_ASIC"><span class="tocnumber">2.1.5</span> <span class="toctext">How to write public key in ASIC</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="#Board_Support"><span class="tocnumber">3</span> <span class="toctext">Board Support</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="#FPGA"><span class="tocnumber">3.1</span> <span class="toctext">FPGA</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#Engineering_board_with_ASIC"><span class="tocnumber">3.2</span> <span class="toctext">Engineering board with ASIC</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="#Status"><span class="tocnumber">4</span> <span class="toctext">Status</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="#Other_Documents"><span class="tocnumber">5</span> <span class="toctext">Other Documents</span></a>
+<ul>
+<li class="toclevel-2 tocsection-14"><a href="#Reg.db_.3D"><span class="tocnumber">5.1</span> <span class="toctext">Reg.db =</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-15"><a href="#TODO"><span class="tocnumber">6</span> <span class="toctext">TODO</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="ARM_Trusted_Firmware_.28ATF.29_Support_for_G3_Application_Processor_.28AP.29.">ARM Trusted Firmware (ATF) Support for G3 Application Processor (AP).</span></h2>
+<p>Since ARM v8 ISA provides new secure and non-secure modes, ARM has 
+developed a provided Trusted Firmware for ARM v8 processor to assist 
+customers in supporting this new feature set.   ARM Trusted Firmware is 
+NOT just a Trustzone monitor and initialization code. This is only a 
+small subset.   ARM Trusted Firmware is composed of several boot loader 
+stages as well as providing secure boot functionality, runtime services 
+for non-trusted OS such as Linux and also provides a Trusted OS 
+reference.  It replaces Cortina's Secure Bootloader that was used in G2 
+(which is started at the power on reset vector).  It also replace's 
+Cortina POST loader (second stage) that was used on G2 to initialize 
+DRAM and load U-Boot.   The following is summary of images produced from
+ ARM's Trusted Firmware Release.
+</p>
+<ul>
+<li>BL1 - Replaces Cortina Secure Boot and is started at the reset 
+vector. Basic HW Init including MMU and then copies BL2 into SRAM from 
+non-volatile storage. Can authenticate BL2 using X.509 certificates. 
+Trust zone is not yet available at this stage. However, this region can 
+be secured in later stages. 
+</li>
+<li>BL2 - Replaces Cortina POST. This image sets up DRAM, MMU and 
+Trustzone protection.  It loads MULTIPLE BL3-x third stage images from 
+non-volatile storage into different memory locations. Some protected 
+with Trustzone, some not protected.  It also can can authenticate each 
+of these additional images using separate X.509 certificates Memory is 
+secured via TrustZone.
+</li>
+<li>BL3-0 - This image is optional and may contain non-AP image for 
+loading into system memory location. Such as a binary for the PE. 
+</li>
+<li>BL3-1 - This image runs at EL3 secure mode (highest privilege level 
+on ARMv8) and provides secure runtime services to non-trusted OS such as
+ Linux. Services include ARM's PSCI power management control API and 
+well as other services to shared HW resources via ARM SVC defined 
+software exception API.  Memory is secured via TrustZone.
+</li>
+<li>BL3-2 - This image run at Secure EL1 mode and is optional. Linaro provides a reference OP-TEE  Memory is secured via TrustZone.
+</li>
+<li>BL3-3 - This image run at Non-Secure EL1 mode. Typically UEFI is 
+placed inside this container. Memory is NOT secured via Trustzone.
+</li>
+</ul>
+<h1><span class="mw-headline" id="Build_Environment">Build Environment</span></h1>
+<p>The G3 support source code is available via the Cortina git mirrors 
+and is build with the Linaro GCC bare metal toolchain for ARMv8.
+</p><p>Linaro GCC bare meta toolchain is available via Cortina NFS at 
+the mount point 
+/auto/project2/sw/toolchains/gcc-linaro-4.9-2014.11-x86_64_aarch64-elf/bin.
+ Please make sure it is in your PATH to access the toolchain.   Type:
+</p>
+<pre> which aarch64-none-elf-gcc
+</pre>
+<p>confirm that 
+</p>
+<pre> /auto/project2/sw/toolchains/gcc-linaro-4.9-2014.11-x86_64_aarch64-elf/bin/aarch64-none-elf-gcc
+</pre>
+<p>is returned to make sure the binaries can be found by your development host.
+</p><p>In addition, the following other host tools are required. 
+</p>
+<pre>git build-essential uuid-dev iasl bc ncurses-dev device-tree-compiler libssl-dev
+</pre>
+<p>Once this is done you can clone the source code with:
+</p>
+<pre> git clone gitolite@cs-local-gitmirror:sw/platforms/cs-unified/hypervisors/arm-trusted-firmware
+</pre>
+<p><br>
+Next, cd into the working repository and switch to the Cortina development branch
+</p>
+<pre> cd arm-trusted-firmware
+ git checkout cortina/master_ae43c9493
+</pre>
+<p>If your are are using G3 ASIC(ENG board), you should use asic branch.
+</p>
+<pre> git checkout cortina/g3_asic
+</pre>
+<h2><span class="mw-headline" id="Trusted_Board_Boot_Build_.28TBB.29">Trusted Board Boot Build (TBB)</span></h2>
+<p>Trusted Board Boot uses X.509 certificates to authenticate stages 
+before they are executed. This requires the some additional options in 
+the build, including the use and inclusion of ARM's mbedtls software 
+into the firmware image (formerly known as PolarSSL).  In addition, it 
+requires access to private key (Cortina development or customer).
+</p><p>Clone repo which contains Cortina development keys
+</p>
+<pre>cd ..
+git clone gitolite@cs-local-gitmirror:sw/platforms/cs-unified/host-tools/ca77xx-devel
+</pre>
+<p>Clone mbedtls repo and checkout branch mbedtls-2.2:
+</p>
+<pre>git clone gitolite@cs-local-gitmirror:sw/platforms/cs-unified/packages/oss/mbedtls
+cd mbedtls
+git checkout mbedtls-2.2
+cd ../arm-trusted-firmware
+</pre>
+<p>To build simply type:
+</p>
+<pre>CROSS_COMPILE=aarch64-none-elf- make MBEDTLS_DIR=../mbedtls TRUSTED_BOARD_BOOT=1 \
+GENERATE_COT=1  \
+ARM_ROTPK_LOCATION=regs \
+ROT_KEY=../ca77xx-devel/ATF/TBB/development_keys/g3_rotprivk_rsa.pem \
+V=1 PLAT=g3_fpga
+</pre>
+<p>To build everything inside an ARM FIP format image <b>with</b> UEFI EDK2 build it the BL33 image, then you must <b>first</b> build UEFI EDK2 image. To do this follow the <a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/G3_UEFI">UEFI EDK2 build instructions</a> and then type  the following to bundle it into the ARM FIP image:
+</p>
+<pre>CROSS_COMPILE=aarch64-none-elf- make MBEDTLS_DIR=../mbedtls TRUSTED_BOARD_BOOT=1 \
+GENERATE_COT=1 BL33=../edk2/Build/G3FPGA/RELEASE_GCC49/FV/BL33_UEFI.fd \
+ARM_ROTPK_LOCATION=regs \
+ROT_KEY=../ca77xx-devel/ATF/TBB/development_keys/g3_rotprivk_rsa.pem \
+V=1 PLAT=g3 all fip
+</pre>
+<p><br>
+To build the fip image (include uboot)
+</p>
+<pre> CROSS_COMPILE=aarch64-none-elf- make MBEDTLS_DIR=../mbedtls JTAG_DEBUG=1 CORTINA_BOOT_SFLASH=1 \
+ CORTINA_G3_ASIC_OFFICIAL=1 TRUSTED_BOARD_BOOT=1 CORTINA_MULTIBOOT_ONE_SHOT_SUPPORT=1 GENERATE_COT=1 \
+ BL33=../u-boot.bin ARM_ROTPK_LOCATION=regs \
+ ROT_KEY=../ca77xx-devel/ATF/TBB/development_keys/g3_rotprivk_rsa.pem V=1 \
+ DW_MMC_SUPPORT=1 PLAT=g3_fpga all fip 
+</pre>
+<h4><span class="mw-headline" id="FPGA_Build">FPGA Build</span></h4>
+<p>Alternatively, to build everything with U-BOOT for BL33 instead of UEFI, then you must <b>first</b> build U-BOOT image. To do this follow the <a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/G3_U-BOOT">U-BOOT build instructions</a> and then type  the following to bundle it into the ARM FIP image:
+</p>
+<pre>CROSS_COMPILE=aarch64-none-elf- make MBEDTLS_DIR=../mbedtls TRUSTED_BOARD_BOOT=1 \
+GENERATE_COT=1 BL33=../u-boot/u-boot.bin \
+ARM_ROTPK_LOCATION=regs \
+ROT_KEY=../ca77xx-devel/ATF/TBB/development_keys/g3_rotprivk_rsa.pem \
+V=1 PLAT=g3_fpga all fip
+</pre>
+<p>Alternatively, to build everything with U-BOOT for BL33 instead of UEFI, AND also include OP-TEE OS as BL32, then you must <b>also</b> build OP-TEE image. To do this follow the <a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/G3_OP-TEE">OP-TEE build instructions</a> and then type  the following to bundle both U-BOOT and OP-TEE into the ARM FIP image:
+</p>
+<pre>CROSS_COMPILE=aarch64-none-elf- make MBEDTLS_DIR=../mbedtls TRUSTED_BOARD_BOOT=1 \
+GENERATE_COT=1 BL33=../u-boot/u-boot.bin BL32=../optee_os/out/arm/core/tee-pager.bin SPD=opteed \
+ARM_ROTPK_LOCATION=regs \
+ROT_KEY=../ca77xx-devel/ATF/TBB/development_keys/g3_rotprivk_rsa.pem \
+V=1 PLAT=g3_fpga all fip
+</pre>
+<h4><span class="mw-headline" id="ASIC_SIM_BUILD">ASIC SIM BUILD</span></h4>
+<p>Alternatively, to build everything with U-BOOT for BL33 instead of UEFI, then you must <b>first</b> build U-BOOT image. To do this follow the <a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/G3_U-BOOT">U-BOOT build instructions</a> and then type  the following to bundle it into the ARM FIP image:
+</p>
+<pre>CROSS_COMPILE=aarch64-none-elf- make MBEDTLS_DIR=../mbedtls TRUSTED_BOARD_BOOT=1 \
+GENERATE_COT=1 BL33=../u-boot/u-boot.bin TEST_ON_G3_ASIC_SIM=1 CORTINA_G3_TESTCODE=1 \
+ARM_ROTPK_LOCATION=regs ROT_KEY=../ca77xx-devel/ATF/TBBZ/development_keys/g3_rotprivk_rsa.pem \
+V=1 PLAT=g3_fpga all fip
+</pre>
+<p>Alternatively, to build everything with U-BOOT for BL33 instead of UEFI, AND also include OP-TEE OS as BL32, then you must <b>also</b> build OP-TEE image. To do this follow the <a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/G3_OP-TEE">OP-TEE build instructions</a> and then type  the following to bundle both U-BOOT and OP-TEE into the ARM FIP image:
+</p>
+<pre>CROSS_COMPILE=aarch64-none-elf- make MBEDTLS_DIR=../mbedtls TRUSTED_BOARD_BOOT=1 \
+TEST_ON_G3_ASIC_SIM=1  CORTINA_G3_ASIC=1  CORTINA_G3_TESTCODE=1\
+GENERATE_COT=1 BL33=../u-boot/u-boot.bin BL32=../optee_os/out/arm/core/tee-pager.bin SPD=opteed \
+ARM_ROTPK_LOCATION=regs \
+ROT_KEY=../ca77xx-devel/ATF/TBB/development_keys/g3_rotprivk_rsa.pem \
+V=1 PLAT=g3_fpga all fip
+</pre>
+<h4><span class="mw-headline" id="ASIC_BUILD">ASIC BUILD</span></h4>
+<p>Alternatively, to build everything with U-BOOT for BL33 instead of UEFI, then you must <b>first</b> build U-BOOT image. To do this follow the <a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/G3_U-BOOT">U-BOOT build instructions</a> and then type  the following to bundle it into the ARM FIP image:
+</p>
+<pre>CROSS_COMPILE=aarch64-none-elf- make MBEDTLS_DIR=../mbedtls JTAG_DEBUG=1 CORTINA_BOOT_SFLASH=1 \
+CORTINA_G3_ASIC_OFFICIAL=1 TRUSTED_BOARD_BOOT=1 CORTINA_MULTIBOOT_ONE_SHOT_SUPPORT=1 GENERATE_COT=1 \
+DW_MMC_SUPPORT=1 BL33=../u-boot/u-boot.bin ARM_ROTPK_LOCATION=regs \
+ROT_KEY=../ca77xx-devel/ATF/TBB/development_keys/g3_rotprivk_rsa.pem V=1 PLAT=g3_fpga all fip
+</pre>
+<h3><span class="mw-headline" id="How_to_generate_various_types_of_RSA_keys_and_SHA256_hash_of_public_key">How to generate various types of RSA keys and SHA256 hash of public key</span></h3>
+<p>Below describes the process that is used to generate private/public keys and ROTPK Hash data
+found in ca77xx-devel/ATF/TBB/development_keys. A script is provided in ca77xx-devel/ATF/TBB/generate_new_keys.sh
+which executes the following steps described below:
+</p><p>Generate RSA 2048 bit (PEM) private key (i.e. ROTPK):
+</p>
+<pre>openssl genrsa -out g3_rotprivk_rsa.pem 2048
+</pre>
+<p>Generate RSA 2048 bit public key (DER) from private key (PEM):
+</p>
+<pre>openssl rsa -in g3_rotprivk_rsa.pem -inform PEM -pubout -outform DER -out g3_rotpk_rsa.der
+</pre>
+<p>SHA256 (binary) hash of public key (DER):
+</p>
+<pre>openssl rsa -pubin -inform DER -in g3_rotpk_rsa.der -outform der | openssl dgst -sha256 -binary &gt; g3_rotpk_rsa_sha256.bin
+</pre>
+<p>SHA256 (binary) hash of public key(DER) from private key(PEM): 
+</p>
+<pre>openssl rsa -in g3_rotprivk_rsa.pem -pubout -outform DER | openssl dgst -sha256 -binary &gt; g3_rotpk_rsa_sha256.bin
+</pre>
+<h3><span class="mw-headline" id="How_to_write_public_key_in_ASIC">How to write public key in ASIC</span></h3>
+<pre># First turn off OTP register protection
+mw.l 0xf432014c 0x3bffff
+# Second, turn off local OTP protection bits
+mw.l 0xfff8080c 0x0
+# Set one byte of the scrambled password to a non-zero value
+mw.b 0xfff80080 1 1
+# Finally, set the Programmed OTP bit with a zero JTAG
+mw.b 0xfff80088 1 1
+# Dump 256 bytes of OTP and byte at 0x88 should be 1
+md.b 0xfff80000 0x100
+# Turn protection back on
+mw.l 0xfff8080c 0x3
+# Turn back on OTP register protection
+mw.l 0xf432014c 0x3fffff
+</pre>
+<p><br>
+</p>
+<pre>//Write pubic key&nbsp;: 
+mw.b 0xfff80030 F5
+mw.b 0xfff80031 52
+mw.b 0xfff80032 E5
+mw.b 0xfff80033 BD
+mw.b 0xfff80034 F3
+mw.b 0xfff80035 68
+mw.b 0xfff80036 A0
+mw.b 0xfff80037 4D
+mw.b 0xfff80038 9D
+mw.b 0xfff80039 B7
+mw.b 0xfff8003A 78
+mw.b 0xfff8003B 59
+mw.b 0xfff8003C 9D
+mw.b 0xfff8003D FE
+mw.b 0xfff8003E 84
+mw.b 0xfff8003F 02
+</pre>
+<pre>mw.b 0xfff80040 EF
+mw.b 0xfff80041 30
+mw.b 0xfff80042 FD
+mw.b 0xfff80043 BB
+mw.b 0xfff80044 32
+mw.b 0xfff80045 A3
+mw.b 0xfff80046 EF
+mw.b 0xfff80047 BE
+mw.b 0xfff80048 21
+mw.b 0xfff80049 C5
+mw.b 0xfff8004A AE
+mw.b 0xfff8004B D3
+mw.b 0xfff8004C 30
+mw.b 0xfff8004D 7C
+mw.b 0xfff8004E 95
+mw.b 0xfff8004F 14
+</pre>
+<h1><span class="mw-headline" id="Board_Support">Board Support</span></h1>
+<h2><span class="mw-headline" id="FPGA">FPGA</span></h2>
+<p>See pin strapping settings to determine board boot configuration here. [<a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/HW_Strap_pin_for_boot_device_selection#Boot_device_selection_for_G3">FPGA_pin_strapping</a>]
+</p>
+<h2><span class="mw-headline" id="Engineering_board_with_ASIC">Engineering board with ASIC</span></h2>
+<p>Build flow is same as TBB[<a rel="nofollow" class="external autonumber" href="http://sv-wiki-01/wiki/index.php/G3_ARM_Trusted_Firmware#Trusted_Board_Boot_Build_.28TBB.29">[1]</a>]. But you have to add one more compile flag for ASIC build:  <b><i><font color="red">"CORTINA_G3_ASIC_OFFICIAL=1"</font></i></b>.
+</p>
+<ol>
+<li> How to create GPT image for Parallel Flash.
+</li>
+</ol>
+<p>[<a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/Create_Guid_partition_table">How to create flash image</a>]
+</p>
+<ol>
+<li> How to program Parallel Nand flash on new G3 board.
+</li>
+</ol>
+<p>[<a rel="nofollow" class="external text" href="http://sv-wiki-01/wiki/index.php/How_to_program_flash_on_new_G3_board">How to program Paralle-NAND Flash</a>]
+</p>
+<h1><span class="mw-headline" id="Status">Status</span></h1>
+<pre> Testing OP-TEE support
+</pre>
+<h1><span class="mw-headline" id="Other_Documents">Other Documents</span></h1>
+<h2><span class="mw-headline" id="Reg.db_.3D">Reg.db =</span></h2>
+<pre><a rel="nofollow" class="external text" href="http://sv-reg-01.cortina-access.com/reg?db=/home/anemirov/g3-2016-08-15.db">Aug 15 2016 reg.db upate</a>
+</pre>
+<h1><span class="mw-headline" id="TODO">TODO</span></h1>
+<pre> TBD
+</pre>
+<!-- 
+NewPP limit report
+CPU time usage: 0.025 seconds
+Real time usage: 0.027 seconds
+Preprocessor visited node count: 59/1000000
+Preprocessor generated node count: 66/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+</div><div class="printfooter">
+Retrieved from "<a href="http://sv-wiki-01/wiki/index.php?title=G3_ARM_Trusted_Firmware&amp;oldid=104689">http://sv-wiki-01/wiki/index.php?title=G3_ARM_Trusted_Firmware&amp;oldid=104689</a>"</div>
+		<div id="catlinks" class="catlinks catlinks-allhidden"></div>		<!-- end content -->
+				<div class="visualClear"></div>
+	</div>
+</div></div>
+<div id="column-one">
+	<h2>Navigation menu</h2>
+	<div id="p-cactions" class="portlet" role="navigation">
+		<h3>Views</h3>
+		<div class="pBody">
+			<ul>
+				<li id="ca-nstab-main" class="selected"><a href="http://sv-wiki-01/wiki/index.php/G3_ARM_Trusted_Firmware" title="View the content page [alt-shift-c]" accesskey="c">Page</a></li>
+				<li id="ca-talk" class="new"><a href="http://sv-wiki-01/wiki/index.php?title=Talk:G3_ARM_Trusted_Firmware&amp;action=edit&amp;redlink=1" title="Discussion about the content page [alt-shift-t]" accesskey="t">Discussion</a></li>
+				<li id="ca-viewsource"><a href="http://sv-wiki-01/wiki/index.php?title=G3_ARM_Trusted_Firmware&amp;action=edit" title="This page is protected.
+You can view its source [alt-shift-e]" accesskey="e">View source</a></li>
+				<li id="ca-history"><a href="http://sv-wiki-01/wiki/index.php?title=G3_ARM_Trusted_Firmware&amp;action=history" rel="archives" title="Past revisions of this page [alt-shift-h]" accesskey="h">History</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal" role="navigation">
+		<h3>Personal tools</h3>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="http://sv-wiki-01/wiki/index.php?title=Special:UserLogin&amp;returnto=G3+ARM+Trusted+Firmware" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo" role="banner">
+<a href="http://sv-wiki-01/wiki/index.php/Main_Page" style="background-image: url(/wiki/cortina/images/logo.png);" title="Visit the main page"></a>
+	</div>
+	<div class="generated-sidebar portlet" id="p-navigation" role="navigation">
+		<h3>Navigation</h3>
+		<div class="pBody">
+			<ul>
+				<li id="n-Top-Page"><a href="http://sv-wiki-01/wiki/index.php/Main_Page">Top Page</a></li>
+				<li id="n-Software-Home-Page"><a href="http://sv-wiki-01/wiki/index.php/DH_%26_ACC_Software_Home_Page">Software Home Page</a></li>
+				<li id="n-DHBU-Software-Wiki"><a href="http://sv-wiki-01/wiki/index.php/Digital_Home_Software_Home_Page">DHBU Software Wiki</a></li>
+				<li id="n-Lynx-Software"><a href="http://sv-wiki-01/wiki/index.php/Lynx_Software_Home_Page">Lynx Software</a></li>
+				<li id="n-DHBU-Hardware-Wiki"><a href="http://sv-wiki-01/wiki/index.php/Digital_Home_Hardware_Home_Page">DHBU Hardware Wiki</a></li>
+				<li id="n-portal"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+				<li id="n-currentevents"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Current_events" title="Find background information on current events">Current events</a></li>
+				<li id="n-recentchanges"><a href="http://sv-wiki-01/wiki/index.php/Special:RecentChanges" title="A list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li>
+				<li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" rel="nofollow" title="The place to find out">Help</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="generated-sidebar portlet" id="p-categorytree-portlet" role="navigation">
+		<h3>Categories</h3>
+		<div class="pBody">
+<div class="CategoryTreeTag" data-ct-mode="0" data-ct-options="{&quot;mode&quot;:0,&quot;hideprefix&quot;:20,&quot;showcount&quot;:false,&quot;namespaces&quot;:false}"><div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Admin" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Admin">Admin</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Documentation" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Documentation">Documentation</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeEmptyBullet">► </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Helpdesk_Service">Helpdesk Service</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle" style="display: inline;" data-ct-title="Prodeng" title="expand" data-ct-state="collapsed">►</span> </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:Prodeng">Prodeng</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		<div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeEmptyBullet">► </span> <a class="CategoryTreeLabel  CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="http://sv-wiki-01/wiki/index.php/Category:QA_Eng">QA Eng</a></div>
+		<div class="CategoryTreeChildren" style="display:none"></div></div>
+		
+		</div>
+				</div>
+	</div>
+	<div id="p-search" class="portlet" role="search">
+		<h3><label for="searchInput">Search</label></h3>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php" id="searchform">
+				<input type="hidden" name="title" value="Special:Search">
+				<input type="search" name="search" placeholder="Search" title="Search Cortina Systems Wiki [alt-shift-f]" accesskey="f" id="searchInput" autocomplete="off">
+				<input type="submit" name="go" value="Go" title="Go to a page with this exact name if exists" id="searchGoButton" class="searchButton">&nbsp;
+				<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton">
+			</form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb" role="navigation">
+		<h3>Tools</h3>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="http://sv-wiki-01/wiki/index.php/Special:WhatLinksHere/G3_ARM_Trusted_Firmware" title="A list of all wiki pages that link here [alt-shift-j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="http://sv-wiki-01/wiki/index.php/Special:RecentChangesLinked/G3_ARM_Trusted_Firmware" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li>
+				<li id="t-specialpages"><a href="http://sv-wiki-01/wiki/index.php/Special:SpecialPages" title="A list of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="http://sv-wiki-01/wiki/index.php?title=G3_ARM_Trusted_Firmware&amp;printable=yes" rel="alternate" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li>
+				<li id="t-permalink"><a href="http://sv-wiki-01/wiki/index.php?title=G3_ARM_Trusted_Firmware&amp;oldid=104689" title="Permanent link to this revision of the page">Permanent link</a></li>
+				<li id="t-info"><a href="http://sv-wiki-01/wiki/index.php?title=G3_ARM_Trusted_Firmware&amp;action=info">Page information</a></li>
+			</ul>
+		</div>
+	</div>
+</div><!-- end of the left (by default at least) column -->
+<div class="visualClear"></div>
+<div id="footer" role="contentinfo">
+	<div id="f-poweredbyico">
+		<a href="http://www.mediawiki.org/"><img src="G3%20ARM%20Trusted%20Firmware%20-%20Cortina%20Systems%20Wiki_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31"></a>
+	</div>
+	<ul id="f-list">
+		<li id="lastmod"> This page was last modified on 28 May 2018, at 02:35.</li>
+		<li id="viewcount">This page has been accessed 684 times.</li>
+		<li id="privacy"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:Privacy_policy" title="Cortina Systems Wiki:Privacy policy">Privacy policy</a></li>
+		<li id="about"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:About" title="Cortina Systems Wiki:About">About Cortina Systems Wiki</a></li>
+		<li id="disclaimer"><a href="http://sv-wiki-01/wiki/index.php/Cortina_Systems_Wiki:General_disclaimer" title="Cortina Systems Wiki:General disclaimer">Disclaimers</a></li>
+	</ul>
+</div>
+</div>
+<script>/*<![CDATA[*/window.jQuery && jQuery.ready();/*]]>*/</script><script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+mw.loader.load(["ext.categoryTree","mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"],null,true);
+}</script>
+<script>if(window.mw){
+mw.loader.state({"site":"ready"});
+}</script>
+<!-- Served in 0.267 secs. --><div style="display: none; font-size: 11.4667px;" class="suggestions"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>

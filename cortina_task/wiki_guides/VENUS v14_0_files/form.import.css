@@ -1,0 +1,93 @@
+.ff label img {
+	behavior: url(/behaviors/label_img.htc);
+}
+form.ff fieldset legend {
+	line-height: 150%;
+}
+form.ff input {
+	background-color: rgb(255, 255, 255);
+}
+form.ff select {
+	background-color: rgb(255, 255, 255);
+}
+form.ff textarea {
+	background-color: rgb(255, 255, 255);
+}
+form.ff textarea.expanding {
+	overflow: auto; -ms-overflow-x: auto; -ms-overflow-y: visible;
+}
+.ff div.optional label::before {
+	content: "";
+}
+.ff div.required label::before {
+	content: "";
+}
+form.ff div label.labelCheckbox {
+	padding: 4px 0px 0px 18px; width: 190px; line-height: 120%; text-indent: -18px; display: block;
+}
+form.ff div label.labelRadio {
+	padding: 4px 0px 0px 18px; width: 190px; line-height: 120%; text-indent: -18px; display: block;
+}
+label.labelCheckbox {
+	padding: 4px 0px 0px 18px; width: 190px; line-height: 120%; text-indent: -18px; display: block;
+}
+label.labelRadio {
+	padding: 4px 0px 0px 18px; width: 190px; line-height: 120%; text-indent: -18px; display: block;
+}
+form.ff div label.labelCheckbox input.inputCheckbox {
+	margin: 0px;
+}
+form.ff div label.labelRadio input.inputRadio {
+	margin: 0px;
+}
+label.labelCheckbox input.inputCheckbox {
+	margin: 0px;
+}
+label.labelRadio input.inputRadio {
+	margin: 0px;
+}
+form.ff div fieldset input.inputText {
+	margin: 0px 0px 0px 18px; width: 160px;
+}
+form.ff div fieldset input.inputPassword {
+	margin: 0px 0px 0px 18px; width: 160px;
+}
+form.ff div fieldset input.inputFile {
+	margin: 0px 0px 0px 18px; width: 160px;
+}
+form.ff div fieldset textarea.inputTextarea {
+	margin: 0px 0px 0px 18px; width: 160px;
+}
+form.ff div label.compact {
+	margin: 0px; padding: 4px 10px 0px 0px; width: auto; text-indent: 0px; display: inline;
+}
+form.ff div.wide label {
+	float: none; display: block;
+}
+form.ff div label.wide {
+	width: 348px;
+}
+form.ff div.wide input.inputText {
+	margin: 0px; width: 344px;
+}
+form.ff div.wide input.inputPassword {
+	margin: 0px; width: 344px;
+}
+form.ff div.wide input.inputFile {
+	margin: 0px; width: 344px;
+}
+form.ff div.wide select {
+	margin: 0px; width: 344px;
+}
+form.ff div.wide textarea {
+	margin: 0px; width: 344px;
+}
+form.ff div.notes p {
+	line-height: 125%;
+}
+form.ff div small {
+	line-height: 125%;
+}
+form.ff div.wide small {
+	margin: 0px 0px 5px;
+}

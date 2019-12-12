@@ -1,0 +1,5 @@
+; Intarget reset CPU and load U-Boot to DDR
+R.S PC 0x4000000
+d.load.binary C:\Users\pengpeng.chen\Desktop\Jason_ASICchip\u-boot_ddr4.bin 0x4000000
+;d.load.elf C:\Users\pengpeng.chen\Desktop\Jason_ASICchip\u-boot.symbol /nocode /strippart "/space/" /path "C:\"
+;go

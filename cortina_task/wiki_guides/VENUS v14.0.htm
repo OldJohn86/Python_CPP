@@ -1,0 +1,942 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html class="yui-skin-sam"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>VENUS v14.0</title>
+<style type="text/css">
+body {
+	margin:0;
+	padding:0;
+}
+</style>
+
+<!-- Individual YUI CSS files -->
+<link rel="stylesheet" type="text/css" href="VENUS%20v14.0_files/reset-fonts.css">
+<link rel="stylesheet" type="text/css" href="VENUS%20v14.0_files/skin.css">
+<!-- Individual YUI JS files -->
+<script type="text/javascript" src="VENUS%20v14.0_files/utilities.js"></script>
+<script type="text/javascript" src="VENUS%20v14.0_files/container-min.js"></script>
+<script type="text/javascript" src="VENUS%20v14.0_files/menu-min.js"></script>
+<script type="text/javascript" src="VENUS%20v14.0_files/button-min.js"></script>
+<script type="text/javascript" src="VENUS%20v14.0_files/resize-min.js"></script>
+<script type="text/javascript" src="VENUS%20v14.0_files/selector-beta-min.js"></script>
+<script type="text/javascript" src="VENUS%20v14.0_files/layout-min.js"></script>
+<script type="text/javascript" src="VENUS%20v14.0_files/treeview-min.js"></script>
+
+<script>
+  // This context is used to remember state, and is passed to most
+  // if not all ajax calls to the server.  The server will most, if not
+  // all of the time, return a JSON struct that looks just like this.
+  //
+  var context = {
+    baseurl:  "http://192.168.44.88/",
+    database: "/reg/venus/venus_fpga.db",
+    server:   "localhost",
+    protocol: "rpc",
+    port:     "1",
+    remvec:   "",
+    customer: "cortina",
+    ld_library_path: "",
+    id1: 0,
+    id2: 0,
+    id3: 0,
+    t1: '',
+    t2: '',
+    t3: '',
+    lastr_id: 0,
+    lastr_name: '',
+    error: 0,
+    dyn: 0,
+    nocache: 0 // Set to date.time to prevent ie from caching
+  };
+  // This array is used to remember the most recent register
+  // accesses for quick nav from the 'recents' menu
+  //
+  var recents_array = new Array();
+</script>
+
+<!-- jQuery -->
+<script src="VENUS%20v14.0_files/jquery-1.js" type="text/javascript"></script>
+<script src="VENUS%20v14.0_files/jquery.js" type="text/javascript"></script>
+<script src="VENUS%20v14.0_files/jquery_002.js" type="text/javascript"></script>
+
+<style type="text/css" media="all">@import "/static/jquery.autocomplete.css";</style>
+<style type="text/css" media="all">@import "/static/treeview/jquery.treeview.css";</style>
+<style type="text/css" media="all">@import "/static/fancy_forms/form.css";</style>
+<style type="text/css" media="all">@import "/static/fancy_forms/form.import.css";</style>
+<style type="text/css" media="all">@import "/static/style.css";</style>
+
+</head>
+
+<body class="yui-layout" id="yui-gen0"><iframe id="_yuiResizeMonitor" title="Text Resize Monitor" style="position: absolute; visibility: visible; width: 10em; height: 10em; top: -130px; left: -130px; border-width: 0px;"></iframe><div class="yui-panel-container yui-dialog yui-simple-dialog shadow" id="bulkDialog_c" style="left: 450px; top: 289px; z-index: 2;"><div id="bulkDialog" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 45em;">
+  <div class="hd" style="cursor: move;" id="bulkDialog_h">Bulk Read Results</div>
+  <div class="bd" style="height: 357.333px;">
+    <div id="bulk-results-container">
+    </div>
+  <form name="frm_bulkDialog"><input type="hidden" name="bulkDialog" value=""></form></div>
+<a class="container-close" href="#">Close</a><div class="ft"><span class="button-group"><span id="yui-gen26" class="yui-button yui-push-button default"><span class="first-child"><button type="button" id="yui-gen26-button">Close</button></span></span></span></div></div></div><div class="yui-panel-container yui-dialog yui-simple-dialog shadow" id="moduleDialog_c" style="left: 450px; top: 289px; z-index: 2;"><div id="moduleDialog" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 45em;">
+  <div class="hd" style="cursor: move;" id="moduleDialog_h">Module Function Results</div>
+  <div class="bd" style="height: 357.333px;">
+    <div id="mod-results-container">
+    </div>
+  <form name="frm_moduleDialog"><input type="hidden" name="moduleDialog" value=""></form></div>
+<a class="container-close" href="#">Close</a><div class="ft"><span class="button-group"><span id="yui-gen25" class="yui-button yui-push-button default"><span class="first-child"><button type="button" id="yui-gen25-button">Close</button></span></span></span></div></div></div><div class="yui-panel-container yui-dialog yui-simple-dialog shadow" id="interruptDialog_c" style="left: 450px; top: 289px; z-index: 2;"><div id="interruptDialog" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 45em;">
+  <div class="hd" style="cursor: move;" id="interruptDialog_h">ISR Results</div>
+  <div class="bd" style="height: 357.333px;">
+    <div id="isr-results-container">
+    </div>
+  <form name="frm_interruptDialog"><input type="hidden" name="interruptDialog" value=""></form></div>
+<a class="container-close" href="#">Close</a><div class="ft"><span class="button-group"><span id="yui-gen24" class="yui-button yui-push-button default"><span class="first-child"><button type="button" id="yui-gen24-button">Close</button></span></span></span></div></div></div><div class="yui-panel-container yui-dialog yui-simple-dialog shadow" id="dlg_c" style="visibility: hidden; left: 483px; top: 460px; z-index: 2;"><div id="dlg" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 40em;"><div class="hd" style="cursor: auto;">Warning!</div><div class="bd" style="height: 15.6667px;"><span class="yui-icon warnicon">&nbsp;</span>This is your last warning!<form name="frm_dlg"><input type="hidden" name="dlg" value=""><input type="hidden" name="dlg" value=""></form></div><a class="container-close" href="#">Close</a></div></div><div id="mainmenu" class="yui-module yui-overlay yuimenu" style="z-index: 2; position: absolute; visibility: hidden;"><div class="bd" style="height: 128px;"><ul class="first-of-type"><li class="yuimenuitem first-of-type" id="yui-gen11" groupindex="0" index="0"><a href="#" class="yuimenuitemlabel">New database...</a></li><li class="yuimenuitem" id="yui-gen12" groupindex="0" index="1"><a href="#" class="yuimenuitemlabel">PDF Book...</a></li><li class="yuimenuitem" id="yui-gen13" groupindex="0" index="2"><a href="#" class="yuimenuitemlabel">Connect...</a></li><li class="yuimenuitem" id="yui-gen14" groupindex="0" index="3"><a href="#" class="yuimenuitemlabel">Interrupts...</a></li><li class="yuimenuitem" id="yui-gen15" groupindex="0" index="4"><a href="#" class="yuimenuitemlabel">Change Customer...</a></li><li class="yuimenuitem yuimenuitem-disabled" id="yui-gen16" groupindex="0" index="5"><a href="#" class="yuimenuitemlabel yuimenuitemlabel-disabled"><hr></a></li><li class="yuimenuitem" id="yui-gen27" groupindex="0" index="6"><a href="#" class="yuimenuitemlabel">PE0_ATU_CTL</a></li></ul></div></div><span class="yui-resize-status"></span><span class="yui-resize-status"></span><div id="layout-doc" style="height: 984px; width: 1488px;" class="yui-layout-doc"><div id="yui-gen1" style="width: 200px; position: absolute; top: 40px; left: 1288px; height: 944px;" class="yui-resize yui-layout-unit yui-layout-unit-right yui-layout-scroll"><div class="yui-layout-wrap" id="yui-gen2" style="height: 934px; width: 190px; top: 5px; left: 5px;"><div class="yui-layout-hd" style="width: 188px;"><h2>Map Hierarchy</h2><div title="Click to collapse this pane." class="collapse"></div></div><div class="yui-layout-bd yui-layout-bd-noft" style="height: 909px; width: 188px; top: 24px;"><div id="maps"><div id="maptree"><div class="ygtvitem" id="ygtv0"><div class="ygtvchildren" id="ygtvc0"><div class="ygtvitem" id="ygtv1"><table class="ygtvdepth0" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td id="ygtvt1" class="ygtvlm"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel1" class=" ygtvcontent"><span id="ygtvlabelel1" class="ygtvlabel">VENUS</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc1" style=""><div class="ygtvitem" id="ygtv2"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt2" class="ygtvtp"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel2" class=" ygtvcontent"><span id="ygtvlabelel2" class="ygtvlabel">APB1</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc2" style="display:none;"></div></div><div class="ygtvitem" id="ygtv16"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt16" class="ygtvtp"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel16" class=" ygtvcontent"><span id="ygtvlabelel16" class="ygtvlabel">APB0</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc16" style="display:none;"></div></div><div class="ygtvitem" id="ygtv100"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt100" class="ygtvtp"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel100" class=" ygtvcontent"><span id="ygtvlabelel100" class="ygtvlabel">APB2</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc100" style="display:none;"></div></div><div class="ygtvitem" id="ygtv133"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt133" class="ygtvtp"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel133" class=" ygtvcontent"><span id="ygtvlabelel133" class="ygtvlabel">APB3</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc133" style="display:none;"></div></div><div class="ygtvitem" id="ygtv143"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt143" class="ygtvtn"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel143" class=" ygtvcontent"><span id="ygtvlabelel143" class="ygtvlabel">APB5</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc143" style="display:none;"></div></div><div class="ygtvitem" id="ygtv144"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt144" class="ygtvtn"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel144" class=" ygtvcontent"><span id="ygtvlabelel144" class="ygtvlabel">APB4</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc144" style="display:none;"></div></div><div class="ygtvitem" id="ygtv145"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt145" class="ygtvtn"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel145" class=" ygtvcontent"><span id="ygtvlabelel145" class="ygtvlabel">GPV0</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc145" style="display:none;"></div></div><div class="ygtvitem" id="ygtv146"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt146" class="ygtvtn"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel146" class=" ygtvcontent"><span id="ygtvlabelel146" class="ygtvlabel">GPV1</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc146" style="display:none;"></div></div><div class="ygtvitem" id="ygtv147"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt147" class="ygtvtn"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel147" class=" ygtvcontent"><span id="ygtvlabelel147" class="ygtvlabel">GPV2</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc147" style="display:none;"></div></div><div class="ygtvitem" id="ygtv148"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt148" class="ygtvtn"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel148" class=" ygtvcontent"><span id="ygtvlabelel148" class="ygtvlabel">GPV3</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc148" style="display:none;"></div></div><div class="ygtvitem" id="ygtv149"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt149" class="ygtvtn"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel149" class=" ygtvcontent"><span id="ygtvlabelel149" class="ygtvlabel">GPV4</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc149" style="display:none;"></div></div><div class="ygtvitem" id="ygtv150"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt150" class="ygtvtp"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel150" class=" ygtvcontent"><span id="ygtvlabelel150" class="ygtvlabel">APB7</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc150" style="display:none;"></div></div><div class="ygtvitem" id="ygtv192"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt192" class="ygtvtp"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel192" class=" ygtvcontent"><span id="ygtvlabelel192" class="ygtvlabel">APB6</span></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc192" style="display:none;"></div></div><div class="ygtvitem" id="ygtv202"><table class="ygtvdepth1" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td class="ygtvblankdepthcell"><div class="ygtvspacer"></div></td><td id="ygtvt202" class="ygtvln"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel202" class=" ygtvcontent"><a id="ygtvlabelel202" class="ygtvlabel" href="javascript:reg_map_select(6397,'ROMOTP');" target="">ROMOTP</a></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc202" style="display:none;"></div></div></div></div></div></div></div>
+</div></div></div><div id="yui-gen3" class="yui-resize-handle yui-resize-handle-l"><div class="yui-layout-resize-knob"></div></div></div><div class="yui-resize-proxy" style="height: 0px; width: 200px;"><div class="yui-layout-handle-l"></div></div><div id="yui-gen4" style="width: 200px; position: absolute; top: 40px; height: 944px; left: 0px;" class="yui-resize yui-layout-unit yui-layout-unit-left yui-layout-scroll"><div class="yui-layout-wrap" id="yui-gen5" style="height: 934px; width: 190px; top: 5px; left: 5px;"><div class="yui-layout-hd" style="width: 188px;"><h2>Registers</h2><div title="Click to collapse this pane." class="collapse"></div></div><div class="yui-layout-bd yui-layout-bd-noft" style="height: 909px; width: 188px; top: 24px;"><div id="registers">
+  
+  
+  
+  <div id="reg1" class="reg selected">
+    <a href="javascript: reg_select(1);" title="PE0_ATU_CTL">PE0_ATU_CTL</a>
+  </div>
+
+  
+  
+  
+  <div id="reg2" class="reg">
+    <a href="javascript: reg_select(2);" title="PE0_ATU_DATA0">PE0_ATU_DATA0</a>
+  </div>
+
+  
+  
+  
+  <div id="reg3" class="reg">
+    <a href="javascript: reg_select(3);" title="PE0_ATU_DATA1">PE0_ATU_DATA1</a>
+  </div>
+
+  
+  
+  
+  <div id="reg4" class="reg">
+    <a href="javascript: reg_select(4);" title="PE0_ATU_DATA2">PE0_ATU_DATA2</a>
+  </div>
+
+  
+  
+  
+  <div id="reg5" class="reg">
+    <a href="javascript: reg_select(5);" title="PE0_ATU_DATA3">PE0_ATU_DATA3</a>
+  </div>
+
+  
+  
+  
+  <div id="reg6" class="reg">
+    <a href="javascript: reg_select(6);" title="PE0_ATU_DATA4">PE0_ATU_DATA4</a>
+  </div>
+
+  
+  
+  
+  <div id="reg7" class="reg">
+    <a href="javascript: reg_select(7);" title="PE0_ATU_DATA5">PE0_ATU_DATA5</a>
+  </div>
+
+  
+  
+  
+  <div id="reg8" class="reg">
+    <a href="javascript: reg_select(8);" title="PE0_ATU_UPPER">PE0_ATU_UPPER</a>
+  </div>
+
+</div></div></div><div id="yui-gen6" class="yui-resize-handle yui-resize-handle-r"><div class="yui-layout-resize-knob"></div></div></div><div class="yui-resize-proxy" style="height: 0px; width: 200px;"><div class="yui-layout-handle-r"></div></div><div id="yui-gen7" style="height: 40px; position: absolute; width: 1488px;" class="yui-layout-unit yui-layout-unit-top yui-layout-noscroll"><div class="yui-layout-wrap" id="yui-gen8" style="height: 40px; width: 1488px; top: 0px; left: 0px;"><div class="yui-layout-bd yui-layout-bd-nohd yui-layout-bd-noft" style="height: 38px; width: 1486px; top: 0px;"><div id="nav">
+    <div id="top">
+      <div id="search" class="clear-block">
+        <input type="text" id="searchbox" class="autocomplete search-field ac_input" size="30" autocomplete="off">
+	<button class="submit" id="search-button" onclick="do_search();">search</button>
+	<a href="javascript:advanced_search();">advanced...</a>
+      </div>
+      <div id="menu">
+        <a href="javascript:mainMenu.show();">Menu</a>
+      </div>
+    </div>
+    <div id="bottom">
+      <span>PE0_ATU</span>
+    </div>
+  </div></div></div></div><div id="yui-gen9" class="yui-layout-unit yui-layout-unit-center yui-layout-scroll" style="position: absolute; height: 944px; width: 1088px; top: 40px; left: 200px;"><div class="yui-layout-wrap" id="yui-gen10" style="height: 939px; width: 1088px; top: 5px; left: 0px;"><div class="yui-layout-bd yui-layout-bd-nohd yui-layout-bd-noft" style="height: 937px; width: 1086px; top: 0px;"><div id="register">
+
+
+
+<div class="register">
+  <div id="XR1"></div>
+  <table class="register-header">
+    <colgroup>
+      <col class="c1">
+      <col class="c2">
+    </colgroup>
+    <tbody><tr>
+      <td class="label" width="15%"><b>Register:</b></td>
+      <td width="85%"> Pe0  Atu  Ctl Register</td>
+    </tr>
+    
+    <tr>
+      <td class="label" width="15%"><b>Name:</b></td>
+      <td width="85%">PE0_ATU_CTL</td>
+    </tr>
+    <tr>
+      <td class="label" width="15%"><b>Address(es):</b></td>
+      <td width="85%">
+        
+	  
+	    <span class="static">0x90300000</span>&nbsp;
+	  
+	
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="label" width="15%"><b>Description:</b></td>
+      
+      
+        
+        
+        <td width="85%"><pre>Control register to read/write/enable ATU entries</pre>
+	</td>
+      
+    </tr>
+    <tr>
+      <td class="label" width="15%"><b>Default:</b></td>
+      <td width="85%">0x00000000</td>
+    </tr>
+    
+    
+  </tbody></table> 
+
+  <p></p>
+  
+  
+    
+    
+    
+    
+    
+    
+    
+     
+  
+  
+
+<table class="register-bits" width="650">
+<colgroup>
+  <col class="c1">
+  <col class="c2">
+  <col class="c3">
+  <col class="c4">
+  <col class="c5">
+  <col class="c6">
+  <col class="c7">
+  <col class="c8">
+</colgroup>
+<tbody><tr>
+  <th class="em" width="5%">Bit</th>
+  <th class="em" width="5%">Typ</th>
+  <th class="em" width="5%">Def</th>
+  <th class="em" width="35%">Bitfield</th>
+  <th class="em" width="5%">Bit</th>
+  <th class="em" width="5%">Typ</th>
+  <th class="em" width="5%">Def</th>
+  <th class="em" width="35%">Bitfield</th>
+</tr>
+
+  <tr>
+  
+    <th width="5%">31</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit31" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">w</td>
+    
+  
+    <th width="5%">15</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit15" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">30</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit30" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">r</td>
+    
+  
+    <th width="5%">14</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit14" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">29</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit29" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">idx[5]</td>
+    
+  
+    <th width="5%">13</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit13" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">28</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit28" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">idx[4]</td>
+    
+  
+    <th width="5%">12</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit12" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">27</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit27" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">idx[3]</td>
+    
+  
+    <th width="5%">11</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit11" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">26</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit26" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">idx[2]</td>
+    
+  
+    <th width="5%">10</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit10" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">25</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit25" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">idx[1]</td>
+    
+  
+    <th width="5%">9</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit9" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">24</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit24" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">idx[0]</td>
+    
+  
+    <th width="5%">8</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit8" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">23</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit23" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">7</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit7" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">enable[7]</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">22</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit22" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">6</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit6" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">enable[6]</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">21</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit21" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">5</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit5" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">enable[5]</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">20</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit20" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">4</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit4" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">enable[4]</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">19</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit19" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">3</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit3" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">enable[3]</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">18</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit18" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">2</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit2" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">enable[2]</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">17</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit17" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">1</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit1" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">enable[1]</td>
+    
+  
+  </tr>
+
+  <tr>
+  
+    <th width="5%">16</th>
+    <td class="access" width="5%">R</td>
+    <td id="rbit16" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">&nbsp;</td>
+    
+  
+    <th width="5%">0</th>
+    <td class="access" width="5%">RW</td>
+    <td id="rbit0" class="value" width="5%">
+      <span class="static">0&nbsp;</span>
+    </td>
+    <td class="name" width="35%">enable[0]</td>
+    
+  
+  </tr>
+
+</tbody></table>
+
+  <p></p>
+
+  <table class="register-bitfields" width="650">
+    <colgroup>
+      <col class="c1">
+      <col class="c2">
+    </colgroup>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      <tbody><tr>
+        <td class="label " colspan="2">
+	<b>
+	  
+	    w
+	  
+	</b>
+        &nbsp;<span id="bfield1" class="bfield-value" onclick="app_cvt_toggle('bfield1')"></span>
+	&nbsp;<span id="dyn_enc_1"></span>
+	</td>
+      </tr>
+      
+        <tr>
+          <td width="10%">&nbsp;</td>
+          <td width="90%"><pre>When set to '1' perform a write of the selected translation entry.<br>Note: r and w are mutually exclusive.</pre>
+	    
+	  </td>
+        </tr>  
+      
+      
+      <tr class="last">
+        <td class="last">&nbsp;</td>
+      </tr>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      <tr>
+        <td class="label " colspan="2">
+	<b>
+	  
+	    r
+	  
+	</b>
+        &nbsp;<span id="bfield2" class="bfield-value" onclick="app_cvt_toggle('bfield2')"></span>
+	&nbsp;<span id="dyn_enc_2"></span>
+	</td>
+      </tr>
+      
+        <tr>
+          <td width="10%">&nbsp;</td>
+          <td width="90%"><pre>When set to '1' perform a read of the selected translation entry.<br>Note: r and w are mutually exclusive.</pre>
+	    
+	  </td>
+        </tr>  
+      
+      
+      <tr class="last">
+        <td class="last">&nbsp;</td>
+      </tr>
+    
+      
+      
+      
+        
+        
+        
+      
+      
+      
+      
+      
+      <tr>
+        <td class="label " colspan="2">
+	<b>
+	  
+	    idx[5:0]
+	  
+	</b>
+        &nbsp;<span id="bfield3" class="bfield-value" onclick="app_cvt_toggle('bfield3')"></span>
+	&nbsp;<span id="dyn_enc_3"></span>
+	</td>
+      </tr>
+      
+        <tr>
+          <td width="10%">&nbsp;</td>
+          <td width="90%"><pre>Translation entry index for performing a read or write.</pre>
+	    
+	  </td>
+        </tr>  
+      
+      
+      <tr class="last">
+        <td class="last">&nbsp;</td>
+      </tr>
+    
+      
+      
+      
+        
+        
+        
+      
+      
+      
+      
+      
+      <tr>
+        <td class="label " colspan="2">
+	<b>
+	  
+	    enable[7:0]
+	  
+	</b>
+        &nbsp;<span id="bfield4" class="bfield-value" onclick="app_cvt_toggle('bfield4')"></span>
+	&nbsp;<span id="dyn_enc_4"></span>
+	</td>
+      </tr>
+      
+        <tr>
+          <td width="10%">&nbsp;</td>
+          <td width="90%"><pre>Translation entry enable bits</pre>
+	    
+	  </td>
+        </tr>  
+      
+      
+      <tr class="last">
+        <td class="last">&nbsp;</td>
+      </tr>
+    
+    
+  </tbody></table>
+
+</div>
+</div></div></div></div></div><div id="WzTtDiV" style="visibility: hidden; position: absolute; overflow: hidden; padding: 0px; width: auto; left: 0px; top: 0px;"></div>
+  <script src="VENUS%20v14.0_files/wz_tooltip.js" type="text/javascript"></script>
+  <script src="VENUS%20v14.0_files/tip_balloon.js" type="text/javascript"></script>
+  
+  
+
+  
+
+  
+
+  
+
+  <div id="dyn_panel">
+    r/w
+  </div>
+
+  <div id="dialogs" style="display: block;">
+
+<div class="yui-panel-container yui-dialog shadow" id="dbDialog_c" style="z-index: 2; left: 481px; top: 459px;"><div id="dbDialog" class="yui-module yui-overlay yui-panel" style="visibility: inherit;">
+  <div class="hd" style="cursor: move;" id="dbDialog_h">Load new database...</div>
+  <div class="bd" style="height: 17.3333px;">
+    <form onsubmit="db_dialog_submit(); return false;">
+      <label for="database">Full Path:</label>
+        <input type="text" name="database" size="60" id="database">
+    </form>
+  </div>
+<a class="container-close" href="#">Close</a><div class="ft"><span class="button-group"><span id="yui-gen17" class="yui-button yui-push-button default"><span class="first-child"><button type="button" id="yui-gen17-button">Load</button></span></span></span></div></div></div>
+
+<div class="yui-panel-container yui-dialog shadow" id="custDialog_c" style="z-index: 2; left: 649px; top: 458px;"><div id="custDialog" class="yui-module yui-overlay yui-panel" style="visibility: inherit;">
+  <div class="hd" style="cursor: move;" id="custDialog_h">Change Customer...</div>
+  <div class="bd" style="height: 19.3333px;">
+    <form>
+      <label for="customer">Customer:</label>
+	<select name="customer" id="customer">
+	  <option value="cortina" selected="selected">cortina
+	  </option>
+	  
+	    
+	    <option value="CTC">CTC
+	    </option>
+	  
+	    
+	    <option value="NTT">NTT
+	    </option>
+	  
+	    
+	    
+	    <option value="epon">epon
+	    </option>
+	  
+	    
+	    <option value="extr">extr
+	    </option>
+	  
+	    
+	    <option value="g3">g3
+	    </option>
+	  
+	    
+	    <option value="gpon">gpon
+	    </option>
+	  
+	    
+	    <option value="xgpn">xgpn
+	    </option>
+	  
+	  <option value="others">any customer</option>
+	</select>
+    </form>
+  </div>
+<a class="container-close" href="#">Close</a><div class="ft"><span class="button-group"><span id="yui-gen18" class="yui-button yui-push-button default"><span class="first-child"><button type="button" id="yui-gen18-button">Load</button></span></span></span></div></div></div>
+
+<div class="yui-panel-container shadow" id="registerswait_c" style="z-index: 4; left: 623px; top: 460px; visibility: hidden;"><div id="registerswait" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 240px;">
+  <div class="hd" style="cursor: auto;">Please wait...</div>
+  <div class="bd" style="height: 21.6667px;">
+    <img src="VENUS%20v14.0_files/loading.gif">
+  </div>
+</div><div class="underlay"></div></div>
+
+<div class="yui-panel-container shadow" id="mapswait_c" style="z-index: 4; left: 623px; top: 460px; visibility: hidden;"><div id="mapswait" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 240px;">
+  <div class="hd" style="cursor: auto;">Please wait...</div>
+  <div class="bd" style="height: 21.6667px;">
+    <img src="VENUS%20v14.0_files/loading.gif">
+  </div>
+</div><div class="underlay"></div></div>
+
+<div class="yui-panel-container shadow" id="registerwait_c" style="z-index: 4; left: 623px; top: 460px; visibility: hidden;"><div id="registerwait" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 240px;">
+  <div class="hd" style="cursor: auto;">Please wait...</div>
+  <div class="bd" style="height: 21.6667px;">
+    <img src="VENUS%20v14.0_files/loading.gif">
+  </div>
+</div><div class="underlay"></div></div>
+
+<div class="yui-panel-container yui-dialog shadow" id="advSearch_c" style="z-index: 2; left: 613px; top: 330px;"><div id="advSearch" class="yui-module yui-overlay yui-panel" style="visibility: inherit;">
+ <div class="hd" style="cursor: move;" id="advSearch_h">Advanced Search</div>
+ <div class="bd" style="height: 276.333px;">
+   <form>
+     <label for="regex" class="label">Search for:</label>
+     <input type="text" name="regex" id="regex" class="search-field">
+     <fieldset>
+       <legend>In:</legend>
+       <label for="cb_0" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_0" class="inputCheckbox" checked="checked" value="register,defines"> register names</label>
+
+<label for="cb_1" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_1" class="inputCheckbox" checked="checked" value="register,customers"> register customers</label>
+<label for="cb_2" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_2" class="inputCheckbox" value="register,comments"> register comments</label>
+<label for="cb_3" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_3" class="inputCheckbox" value="register,attributes"> register attributes</label>
+<label for="cb_4" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_4" class="inputCheckbox" value="bitfield,names"> bitfield names</label>
+<label for="cb_5" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_5" class="inputCheckbox" value="bitfield,customers"> bitfield customers</label>
+<label for="cb_6" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_6" class="inputCheckbox" value="bitfield,types"> bitfield types</label>
+
+<label for="cb_7" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_7" class="inputCheckbox" value="bitfield,comments"> bitfield comments</label>
+<label for="cb_8" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_8" class="inputCheckbox" value="bitfield,attributes"> bitfield attributes</label>
+<label for="cb_9" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_9" class="inputCheckbox" value="bitfield,encodings"> bitfield encodings</label>
+<label for="cb_10" class="labelCheckbox"><input type="checkbox" name="fields" id="cb_10" class="inputCheckbox" value="bitfield,tables"> bitfield tables</label>
+     </fieldset>
+   </form>
+ </div>
+<a class="container-close" href="#">Close</a><div class="ft"><span class="button-group"><span id="yui-gen19" class="yui-button yui-push-button default"><span class="first-child"><button type="button" id="yui-gen19-button">Search</button></span></span><span id="yui-gen20" class="yui-button yui-push-button"><span class="first-child"><button type="button" id="yui-gen20-button">Done</button></span></span></span></div></div></div>
+
+<div class="yui-panel-container yui-dialog shadow" id="scanDialog_c" style="z-index: 2; left: 438px; top: 279px;"><div id="scanDialog" class="yui-module yui-overlay yui-panel" style="visibility: inherit;">
+  <div class="hd" style="cursor: move;" id="scanDialog_h">Server Connect</div>
+  <div class="bd" style="height: 378.333px;">
+    <form class="ff">
+      <fieldset>
+<div class="notes">
+  <h4>Instructions</h4>
+  <p>Enter a <b>Server Name</b> and a <b>Service Port</b> and click <b>SCAN!</b> to connect
+     to a server and scan for available asics/fpgas to view.</p>
+  <p><b>Protocol:</b> "rpc" to connect to driver servers, "spy" to connect to RTL models.  "xrpc" to connect
+  to the new "lab4" environment.  You
+     may need to specify a custom <b>LD_LIBRARY_PATH</b> to connect to some (rpc) driver servers.
+  </p>
+  <p><b>Database:</b> Specify a reg database, if other than "reg.db".</p>
+  <p class="last"><b>Or:</b> Click on <b>SHOW ALL</b> to get a list of known asic/fpga register
+     viewers that you can choose from to browse.</p>
+</div>
+
+      <div class="required">
+        <label for="server">Server Name:</label>
+          <input type="text" name="server" id="server" value="localhost">
+      </div>
+      <div class="required">
+        <label for="port">Server Port:</label>
+          <input type="text" name="port" id="port" value="1">
+      </div>
+      <div class="required">
+        <label for="protocol">Protocol:</label>
+          <select name="protocol" id="protocol">
+	    <option value="rpc" selected="selected">RPC</option>
+	    <option value="spy">SPY</option>
+	    <option value="xrpc">XRPC</option>
+	  </select>
+      </div>
+      <div class="required">
+        <label for="ldpath">LD_LIBRARY_PATH:</label>
+	<input type="text" name="ldpath" id="ldpath">
+      </div>
+      <div class="required">
+        <label for="dbname">Database:</label>
+	<input type="text" name="dbname" id="dbname" value="reg.db">
+      </div>      
+      </fieldset>
+    </form>
+  </div>
+<a class="container-close" href="#">Close</a><div class="ft"><span class="button-group"><span id="yui-gen21" class="yui-button yui-push-button default"><span class="first-child"><button type="button" id="yui-gen21-button">Scan!</button></span></span><span id="yui-gen22" class="yui-button yui-push-button"><span class="first-child"><button type="button" id="yui-gen22-button">Show All</button></span></span><span id="yui-gen23" class="yui-button yui-push-button"><span class="first-child"><button type="button" id="yui-gen23-button">Cancel</button></span></span></span></div></div></div>
+
+
+
+
+
+
+
+</div>
+
+
+  <script src="VENUS%20v14.0_files/reg_layout.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    (function() {
+  YAHOO.util.Event.onDOMReady(function() {
+
+  reg_initialize();
+
+  $(".autocomplete").autocomplete(
+    "http://192.168.44.88/search/lookup_register",
+    { delay:10,
+      minChars:2,
+      matchSubset:1,
+      matchContains:1,
+      cacheLength:10,
+      extraParams: context
+    });
+
+  $(".autocomplete").keypress(function(e) {
+    if ( e.which == 13 ) {
+      // return 
+      do_search();
+    }
+  });
+  
+})
+})();
+
+function do_search() {
+  var q = $("#searchbox").val();
+  context.t1 = q;
+  $.getJSON( "http://192.168.44.88/search/fast_search",
+             context,
+	     function(data) {
+	       if ( is_error( data ) ) {
+                 reg_process_error( data );
+               }
+	       else {
+	         if ( data.id2 != 0 ) {
+		   reg_load_register( data.id2 );
+		   reg_load_registers( data.id2 );
+		 }
+		 else {
+		   $("#register").html(data.t1);
+		 }
+	       }
+	     }
+  );
+}
+
+  </script>
+
+
+<div style="display: none; position: absolute;" class="ac_results"></div><div style="position: absolute; height: 1px; width: 1px; top: -1000px; left: -1000px;"><span class="ygtvtm">&nbsp;</span><span class="ygtvtmh">&nbsp;</span><span class="ygtvtp">&nbsp;</span><span class="ygtvtph">&nbsp;</span><span class="ygtvln">&nbsp;</span><span class="ygtvlm">&nbsp;</span><span class="ygtvlmh">&nbsp;</span><span class="ygtvlp">&nbsp;</span><span class="ygtvlph">&nbsp;</span><span class="ygtvloading">&nbsp;</span></div></body></html>
