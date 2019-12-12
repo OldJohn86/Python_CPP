@@ -302,18 +302,6 @@ def upload_log(obj, current_path, config, target, child=''):
     if target == 'g3' or target == 'g3hgu' or target == 'venus':
         log_file = target + '-sanitytest-log.txt';
         target_path = path_info.get(target + '_path', None)
-#        if target == 'g3hgu':
-#            if child == '':
-#                log_file = target + '-sanitytest-log.txt';
-#                target_path = path_info.get('g3hgu_path', None)
-#            elif child == 'epon':
-#                log_file = target + '-' + child + '-sanitytest-log.txt';
-#                target_path = path_info.get('g3hgu_epon_path', None)
-#            elif child == 'gpon':
-#                log_file = target + '-' + child + '-sanitytest-log.txt';
-#                target_path = path_info.get('g3hgu_gpon_path', None)
-#            else:
-#                print("ERROR: Input g3hgu child[%s] is invalid!!" % child)
     elif target == 'saturn-sfu':
         log_file = child + '-sanitytest-log.txt';
         if child == 'epon':
@@ -360,8 +348,9 @@ def do_telnet(config, target):
         activeport_set = tftpboot_info.get(target + '_activeport_set', None).encode('ascii')
         ipaddr_set = tftpboot_info.get(target + '_ipaddr_set', None).encode('ascii')
         serverip_set = tftpboot_info.get(target + '_serverip_set', None).encode('ascii')
-        tftpboot_gpt = tftpboot_info.get(target + '_tftpboot_gpt', None).encode('ascii')
-        upgrade_gpt = tftpboot_info.get(target + '_upgrade_gpt', None).encode('ascii')
+        if target != 'venus' and target != 'g3':
+            tftpboot_gpt = tftpboot_info.get(target + '_tftpboot_gpt', None).encode('ascii')
+            upgrade_gpt = tftpboot_info.get(target + '_upgrade_gpt', None).encode('ascii')
         tftpboot_ubootenv = tftpboot_info.get(target + '_tftpboot_ubootenv', None).encode('ascii')
         upgrade_ubootenv = tftpboot_info.get(target + '_upgrade_ubootenv', None).encode('ascii')
         tftpboot_image = tftpboot_info.get(target + '_tftpboot_image', None).encode('ascii')
@@ -377,13 +366,20 @@ def do_telnet(config, target):
             cmdline_tag = b"root@venus-eng:~# "
         written_ok = b"written: OK"
         tftp_done = b"done"
-        cmd_list = [tftpboot_gpt,
-                    upgrade_gpt,
-                    tftpboot_ubootenv,
-                    upgrade_ubootenv,
-                    tftpboot_image,
-                    upgrade_image,
-                    ]
+        if target != 'venus' and target != 'g3':
+            cmd_list = [tftpboot_gpt,
+                        upgrade_gpt,
+                        tftpboot_ubootenv,
+                        upgrade_ubootenv,
+                        tftpboot_image,
+                        upgrade_image,
+                        ]
+        else:
+            cmd_list = [tftpboot_ubootenv,
+                        upgrade_ubootenv,
+                        tftpboot_image,
+                        upgrade_image,
+                        ]
     elif target == 'saturn-sfu':
         port = int(telnet_info.get('saturn_port', None))
         activeport_set = tftpboot_info.get('saturn_activeport_set', None).encode('ascii')
@@ -460,14 +456,15 @@ def do_telnet(config, target):
     time.sleep(1)
     log_str = tn.read_until(uboot_tag)
     time.sleep(1)
+    if target != 'venus' and target != 'g3':
 #    print(tftpboot_gpt)
-    tn.write(tftpboot_gpt + b"\n")
-    log_str += (tn.read_until(tftp_done))
-    time.sleep(1)
+        tn.write(tftpboot_gpt + b"\n")
+        log_str += (tn.read_until(tftp_done))
+        time.sleep(1)
 #    print(upgrade_gpt)
-    tn.write(upgrade_gpt + b"\n")
-    log_str += (tn.read_until(written_ok))
-    time.sleep(1)
+        tn.write(upgrade_gpt + b"\n")
+        log_str += (tn.read_until(written_ok))
+        time.sleep(1)
 #    print(tftpboot_ubootenv)
     tn.write(tftpboot_ubootenv + b"\n")
 #    time.sleep(1)
@@ -531,7 +528,7 @@ def do_telnet(config, target):
     time.sleep(1)
     tn.write(b"\r\n")
     if target =='saturn-sfu':
-        tn.write(b"ifconfig eth0 192.168.1.1 up\r\n")
+        tn.write(b"ifconfig eth0 192.168.1.12 up\r\n")
         time.sleep(1)
         tn.write(b"\r\n")
     else:
@@ -633,13 +630,13 @@ def main():
             result_list = []
             for value in img_ok.values():
                 result_list.append(value)
-            print(result_list)
+#            print(result_list)
             if True in result_list:
-                print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 10 minutes")
-                time.sleep(10*60)
+#                print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 5 minutes")
+                time.sleep(1*60)
             else:
-                print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 1 hour")
-                time.sleep(60*600)
+#                print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 30 minutes")
+                time.sleep(10*60)
 
 if __name__ == "__main__":
     main()
