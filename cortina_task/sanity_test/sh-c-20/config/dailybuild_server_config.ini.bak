@@ -8,7 +8,7 @@ to_list            = *********************************
 http_link          = http://192.168.61.235:18683/
 [ssh]
 host               = 192.168.61.235
-port               = 28683
+port               = 22
 username           = cortina
 password           = Cortina123
 target             = g3 g3hgu saturn-sfu venus
