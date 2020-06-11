@@ -175,7 +175,7 @@ class SftpTool(object):
         self.password = password
         self.port = port
         self.ip = host
-    def connect(self, target_path_abs):
+    def connect(self):
         try:
             self.ssh = paramiko.SSHClient()
             self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -183,6 +183,7 @@ class SftpTool(object):
             print("Host[%s] connect created!!" % self.ip)
         except Exception as e:
             print("ERROR: Failed to connect to Host[%s]!!" % self.ip)
+    def ls_cmd(self, target_path_abs):
         self.stdin, self.stdout, self.stderr = self.ssh.exec_command("ls " + target_path_abs)
         stdout_str = self.stdout.read().decode('ascii')
 #        print(stdout_str.split())
@@ -193,18 +194,16 @@ class SftpTool(object):
     def put(self):
         sftp = paramiko.SFTPClient.from_transport(self.ssh.get_transport())
         sftp = self.ssh.open_sftp()
-#        self.input()
         sftp.put(self.local_file_abs, self.remote_file_abs)
         sftp.close()
     def get(self):
         sftp = paramiko.SFTPClient.from_transport(self.ssh.get_transport())
         sftp = self.ssh.open_sftp()
-#        self.input()
         sftp.get(self.remote_file_abs, self.local_file_abs)
         sftp.close()
     def close(self):
         self.ssh.close()
-#        print("Host[%s] connect closed!!" % self.ip)
+        print("Host[%s] connect closed!!" % self.ip)
 
 def download_img(obj, current_path, config, target, child=''):
     global glb_img_rev_file
@@ -236,11 +235,10 @@ def download_img(obj, current_path, config, target, child=''):
     remote_path = path_info.get('remote_path', None)
     remote_path_abs = remote_path + target +'/'+ y_m +'/'+ y_m_d + target_path
 #    print(remote_path_abs)
-    return_items = getattr(obj, "connect")(remote_path_abs)
+    return_items = getattr(obj, "ls_cmd")(remote_path_abs)
 #    print(return_items)
     if log_file in return_items:
         print("%s HAD put on the server already!!!" % log_file)
-        getattr(obj, "close")()
         return False
     old_file_list = os.listdir(local_path_abs)
     for item in old_file_list:
@@ -295,7 +293,6 @@ def download_img(obj, current_path, config, target, child=''):
     else:
         print("%s WAS NOT Found on server!!!" % img_rev_info)
         ret = False
-    getattr(obj, "close")()
     return ret
 
 def upload_log(obj, current_path, config, target, child=''):
@@ -322,9 +319,6 @@ def upload_log(obj, current_path, config, target, child=''):
         else:
             print("ERROR: Input saturn-sfu child[%s] is invalid!!" % child)
     remote_path = path_info.get('remote_path', None)
-    remote_path_abs = remote_path + target+'/'+ y_m +'/'+ y_m_d + target_path
-    return_items = getattr(obj, "connect")(remote_path_abs)
-#    print(return_items)
     target_info = read_ini(config, target)
     for item in target_info.values():
         if log_file == item:
@@ -344,7 +338,6 @@ def upload_log(obj, current_path, config, target, child=''):
                 time.sleep(1)
         else:
             pass
-    getattr(obj, "close")()
 
 def do_telnet(config, target):
     y_m_d = date.today().strftime('%Y-%m-%d')
@@ -622,6 +615,7 @@ def main():
     child_list = ssh_info.get('child', None)
 #    print(child_list.split(' '))
     obj = SftpTool(username, password, port, host)
+    getattr(obj, "connect")()
 
     while True:
         for target in target_list.split(' '):
@@ -670,6 +664,7 @@ def main():
             else:
 #                print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 30 minutes")
                 time.sleep(10*60)
+    getattr(obj, "close")()
 
 if __name__ == "__main__":
     main()
