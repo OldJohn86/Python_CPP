@@ -64,6 +64,8 @@ def get_file_last_line(inputfile, lines_sum):
                     lineno += 1
                 last_line += lines[lineno - lines_sum]
 #        print(last_line)
+        else:
+            pass
         return last_line
 
 def send_email(config, target, child=''):
@@ -160,11 +162,11 @@ def log_no_errors(target, child=''):
         if no_error_tag in last_lines:
             for word in key_words:
                 if word in last_lines:
-                    print(last_lines)
+#                    print(last_lines)
                     return False
             return True
         else:
-            print(last_lines)
+#            print(last_lines)
             return False
 
 class SftpTool(object):
@@ -178,7 +180,7 @@ class SftpTool(object):
             self.ssh = paramiko.SSHClient()
             self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             self.ssh.connect(self.ip, self.port, self.user, self.password)
-#            print("Host[%s] connect created!!" % self.ip)
+            print("Host[%s] connect created!!" % self.ip)
         except Exception as e:
             print("ERROR: Failed to connect to Host[%s]!!" % self.ip)
         self.stdin, self.stdout, self.stderr = self.ssh.exec_command("ls " + target_path_abs)
@@ -219,6 +221,9 @@ def download_img(obj, current_path, config, target, child=''):
         target_path = path_info.get(target + '_path', None)
         local_backup_path_abs = os.path.join(local_path_abs, target)
         img_rev_info = target + '-eng.major-image.' + y_m_d + '-rev.txt'
+#        if target == 'venus':
+#            log_file = y_m_d +'-'+ target + '-sanitytest-log_2.txt';
+#        else:
         log_file = y_m_d +'-'+ target + '-sanitytest-log.txt';
     elif target == 'saturn-sfu':
         local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
@@ -241,6 +246,8 @@ def download_img(obj, current_path, config, target, child=''):
     for item in old_file_list:
         if not os.path.isdir(local_path_abs + item):
             os.remove(local_path_abs + item)
+        else:
+            pass
     if not os.path.exists(local_backup_path_abs):
         os.makedirs(local_backup_path_abs)
     else:
@@ -255,10 +262,12 @@ def download_img(obj, current_path, config, target, child=''):
                     print("%s WAS NOT Found on server!!!" % item)
                     ret = False
                     break
+                else:
+                    pass
                 remote_file = remote_path_abs + item
 #                print(remote_file)
                 local_backup_file = os.path.join(local_backup_path_abs, item)
-                if target == 'g3' or target == 'g3hgu' or target == 'venus':
+                if target != 'saturn-sfu':
                     if item == 'uboot-env.bin':
                         local_file = os.path.join(local_path_abs, target +'-'+ item)
                     else:
@@ -299,10 +308,12 @@ def upload_log(obj, current_path, config, target, child=''):
 #    print(local_path_abs)
     if not os.path.exists(local_path_abs):
         print("ERROR: local_path[%s] NOT exists!!" % local_path_abs)
-    if target == 'g3' or target == 'g3hgu' or target == 'venus':
+    else:
+        pass
+    if target != 'saturn-sfu':
         log_file = target + '-sanitytest-log.txt';
         target_path = path_info.get(target + '_path', None)
-    elif target == 'saturn-sfu':
+    else:
         log_file = child + '-sanitytest-log.txt';
         if child == 'epon':
             target_path = path_info.get('epon_path', None)
@@ -310,8 +321,6 @@ def upload_log(obj, current_path, config, target, child=''):
             target_path = path_info.get('gpon_path', None)
         else:
             print("ERROR: Input saturn-sfu child[%s] is invalid!!" % child)
-    else:
-        print("ERROR: Input target[%s] is invalid!!" % target)
     remote_path = path_info.get('remote_path', None)
     remote_path_abs = remote_path + target+'/'+ y_m +'/'+ y_m_d + target_path
     return_items = getattr(obj, "connect")(remote_path_abs)
@@ -333,6 +342,8 @@ def upload_log(obj, current_path, config, target, child=''):
                 getattr(obj, "input")(local_file, remote_file)
                 getattr(obj, "put")()
                 time.sleep(1)
+        else:
+            pass
     getattr(obj, "close")()
 
 def do_telnet(config, target):
@@ -348,13 +359,17 @@ def do_telnet(config, target):
         activeport_set = tftpboot_info.get(target + '_activeport_set', None).encode('ascii')
         ipaddr_set = tftpboot_info.get(target + '_ipaddr_set', None).encode('ascii')
         serverip_set = tftpboot_info.get(target + '_serverip_set', None).encode('ascii')
-        if target != 'venus' and target != 'g3':
-            tftpboot_gpt = tftpboot_info.get(target + '_tftpboot_gpt', None).encode('ascii')
-            upgrade_gpt = tftpboot_info.get(target + '_upgrade_gpt', None).encode('ascii')
+#        if target != 'venus' and target != 'g3':
+        tftpboot_gpt = tftpboot_info.get(target + '_tftpboot_gpt', None).encode('ascii')
+        upgrade_gpt = tftpboot_info.get(target + '_upgrade_gpt', None).encode('ascii')
         tftpboot_ubootenv = tftpboot_info.get(target + '_tftpboot_ubootenv', None).encode('ascii')
         upgrade_ubootenv = tftpboot_info.get(target + '_upgrade_ubootenv', None).encode('ascii')
+        if target == 'venus':
+            upgrade_ubootenv_2 = tftpboot_info.get(target + '_upgrade_ubootenv_2', None).encode('ascii')
         tftpboot_image = tftpboot_info.get(target + '_tftpboot_image', None).encode('ascii')
         upgrade_image = tftpboot_info.get(target + '_upgrade_image', None).encode('ascii')
+        if target == 'venus':
+            upgrade_image_2 = tftpboot_info.get(target + '_upgrade_image_2', None).encode('ascii')
         if target == 'g3':
             uboot_tag = b"G3# "
             cmdline_tag = b"root@g3-eng:~# "
@@ -364,21 +379,25 @@ def do_telnet(config, target):
         elif target == 'venus':
             uboot_tag = b"VENUS# "
             cmdline_tag = b"root@venus-eng:~# "
+        else:
+            pass
         written_ok = b"written: OK"
         tftp_done = b"done"
-        if target != 'venus' and target != 'g3':
-            cmd_list = [tftpboot_gpt,
-                        upgrade_gpt,
-                        tftpboot_ubootenv,
+        if target != 'venus':
+            cmd_list = [tftpboot_ubootenv,
                         upgrade_ubootenv,
                         tftpboot_image,
                         upgrade_image,
                         ]
         else:
-            cmd_list = [tftpboot_ubootenv,
+            cmd_list = [tftpboot_gpt,
+                        upgrade_gpt,
+                        tftpboot_ubootenv,
                         upgrade_ubootenv,
+                        upgrade_ubootenv_2,
                         tftpboot_image,
                         upgrade_image,
+                        upgrade_image_2,
                         ]
     elif target == 'saturn-sfu':
         port = int(telnet_info.get('saturn_port', None))
@@ -456,7 +475,9 @@ def do_telnet(config, target):
     time.sleep(1)
     log_str = tn.read_until(uboot_tag)
     time.sleep(1)
-    if target != 'venus' and target != 'g3':
+    if target == 'g3':
+        pass
+    else:
 #    print(tftpboot_gpt)
         tn.write(tftpboot_gpt + b"\n")
         log_str += (tn.read_until(tftp_done))
@@ -474,14 +495,23 @@ def do_telnet(config, target):
     tn.write(upgrade_ubootenv + b"\n")
     log_str += (tn.read_until(written_ok))
     time.sleep(1)
+    if target == 'venus':
+        tn.write(upgrade_ubootenv_2 + b"\n")
+        log_str += (tn.read_until(written_ok))
+        time.sleep(1)
 #    print(tftpboot_image)
     tn.write(tftpboot_image + b"\n")
     log_str += (tn.read_until(tftp_done))
     time.sleep(1)
 #    print(upgrade_image)
     tn.write(upgrade_image + b"\n")
-    if target =='saturn-sfu':
+    log_str += (tn.read_until(written_ok))
+    if target == 'venus':
+        tn.write(upgrade_image_2 + b"\n")
         log_str += (tn.read_until(written_ok))
+    else:
+        pass
+    if target =='saturn-sfu':
         time.sleep(1)
 #        print(tftpboot_dtb)
         tn.write(tftpboot_dtb + b"\n")
@@ -505,9 +535,10 @@ def do_telnet(config, target):
         time.sleep(1)
 #        print(upgrade_userubi)
         tn.write(upgrade_userubi + b"\n")
+        log_str += (tn.read_until(written_ok))
     else:
         pass
-    log_str += (tn.read_until(written_ok))
+    time.sleep(1)
     tn.write(reset_set + b"\r\n")
     time.sleep(100)
     tn.write(b"root\n")
@@ -560,6 +591,8 @@ def capture_log(current_path, config, target, child=''):
     local_path_abs = os.path.join(current_path, local_path)
     if not os.path.exists(local_path_abs):
         os.makedirs(local_path_abs)
+    else:
+        pass
     if target == 'g3' or target == 'g3hgu' or target == 'venus':
         log_file_path = local_path_abs + y_m_d +'-'+ target +'-sanitytest-log.txt'; 
     elif target == 'saturn-sfu':
