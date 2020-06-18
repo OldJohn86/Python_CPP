@@ -174,35 +174,56 @@ def ifend_deal(lines, cmd, macro):
     old_data = ['' for i in range(len(macro_array))]
     new_data = ['' for i in range(len(macro_array))]
     for i in range(len(macro_array)):
+#        print(macro_array[i])
 #        print(len(macro_array[i]))
         for j in range(len(macro_array[i])):
-#            print(len(macro_array[i][j]))
             old_data[i] += macro_array[i][j]# A+B
-#        print(old_data[i])
+#            print(macro_array[i][j])
+#            print(len(macro_array[i][j]))
+        print("OLD DATA: ")
+        print(old_data[i])
         macro_array[i][0] = deal_startTabLine(macro_array[i][0])
-#        print(macro_array[i][0])
-#        print(macro_array[i][3])
         if cmd == "remove":
-            if macro_array[i][0].lstrip(' ').startswith("#if"):
-#                print(macro_array[i][0])
+            if macro_array[i][0].lstrip(' ').startswith('#ifdef '):
+                new_data[i] += macro_array[i][3]# B: index is 3 or -2
+                print(macro_array[i][0])
 #                print(macro_array[i][3])
+            elif macro_array[i][0].lstrip(' ').startswith('#if 0'):
                 new_data[i] += macro_array[i][3]# B: index is 3 or -2
-            elif macro_array[i][0].lstrip(' ').startswith("#ifndef "):
-#                print(macro_array[i][0])
+                print(macro_array[i][0])
+            elif macro_array[i][0].lstrip(' ').startswith('#if 1'):
+                new_data[i] += macro_array[i][3]# B: index is 3 or -2
+                print(macro_array[i][0])
+            elif macro_array[i][0].lstrip(' ').startswith('#ifndef '):
                 new_data[i] += macro_array[i][1]# A: index is 1
+                print(macro_array[i][0])
+            else:
+                print("Cann't support!")
+                break
         elif cmd == "keep":
-            if macro_array[i][0].lstrip(' ').startswith("#if"):
-#                print(macro_array[i][0])
+            if macro_array[i][0].lstrip(' ').startswith('#ifdef '):
                 new_data[i] += macro_array[i][1]# A: index is 1
-            elif macro_array[i][0].lstrip(' ').startswith("#ifndef"):
-#                print(macro_array[i][0])
+                print(macro_array[i][0])
+            elif macro_array[i][0].lstrip(' ').startswith('#if 0'):
+                new_data[i] += macro_array[i][1]# A: index is 1
+                print(macro_array[i][0])
+            elif macro_array[i][0].lstrip(' ').startswith('#if 1'):
+                new_data[i] += macro_array[i][1]# A: index is 1
+                print(macro_array[i][0])
+            elif macro_array[i][0].lstrip(' ').startswith('#ifndef '):
                 new_data[i] += macro_array[i][3]# B: index is 3 or -2
+                print(macro_array[i][0])
+            else:
+                print("Cann't support!")
+                break
         else:
             print("ERROR: which input cmd is neither remove nor keep!!!")
             break
-#        print(new_data[i])
-#        print(old_data[i])
+        print("New DATA: ")
+        print(new_data[i])
+        print(data.find(old_data[i]))
         if data.find(old_data[i]) != -1:
+            print(data)
             data = data.replace(old_data[i], new_data[i])
     return data
 
@@ -348,6 +369,7 @@ def demo_test(f_name, cmd, macro):
     with open(f_name, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
         data = ifend_deal(lines, cmd, macro)
+#    print(data)
     with open(f_name, 'w', encoding='utf-8', errors='ignore') as f:
         f.writelines(data)
 
