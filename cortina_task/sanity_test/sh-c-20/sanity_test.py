@@ -176,13 +176,13 @@ class SftpTool(object):
         self.port = port
         self.ip = host
     def connect(self):
-        try:
-            self.ssh = paramiko.SSHClient()
-            self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            self.ssh.connect(self.ip, self.port, self.user, self.password)
-            print("Host[%s] connect created!!" % self.ip)
-        except Exception as e:
-            print("ERROR: Failed to connect to Host[%s]!!" % self.ip)
+#        try:
+        self.ssh = paramiko.SSHClient()
+        self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        self.ssh.connect(self.ip, self.port, self.user, self.password)
+        print("Host[%s] connect created!!" % self.ip)
+#        except Exception as e:
+#            print("ERROR: Failed to connect to Host[%s]!!" % self.ip)
     def ls_cmd(self, target_path_abs):
         self.stdin, self.stdout, self.stderr = self.ssh.exec_command("ls " + target_path_abs)
         stdout_str = self.stdout.read().decode('ascii')

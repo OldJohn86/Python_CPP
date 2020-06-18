@@ -117,9 +117,9 @@ def upload_log(obj, config, target, child=''):
     remote_path = path_info.get('remote_path', None)
 
     # Get Timestamp
-    y_m_d = '2018-07-18'
+    y_m_d = '2019-07-18'
 #date.today().strftime('%Y-%m-%d')
-    y_m ='2018-07'
+    y_m ='2019-07'
 #date.today().strftime('%Y-%m')
     print(y_m_d)
     print(y_m)
@@ -162,7 +162,7 @@ if __name__ == "__main__":
     obj = Tools(username, password, port, host)
 #download_img(obj, config, 'saturn-sfu', 'epon')
 #download_img(obj, config, 'saturn-sfu', 'gpon')
-#download_img(obj, config, 'g3')
+    download_img(obj, config, 'g3')
 
-    upload_log(obj, config, 'g3')
+#    upload_log(obj, config, 'g3')
     
