@@ -219,7 +219,10 @@ def download_img(obj, current_path, config, target, child=''):
     if target == 'g3' or target == 'g3hgu' or target == 'venus':
         target_path = path_info.get(target + '_path', None)
         local_backup_path_abs = os.path.join(local_path_abs, target)
-        img_rev_info = target + '-eng.major-image.' + y_m_d + '-rev.txt'
+        if target == 'g3hgu':
+            img_rev_info = target + '-eng.major-image.R1.1-Release-' + y_m_d + '-rev.txt'
+        else:
+            img_rev_info = target + '-eng.major-image.' + y_m_d + '-rev.txt'
 #        if target == 'venus':
 #            log_file = y_m_d +'-'+ target + '-sanitytest-log_2.txt';
 #        else:
