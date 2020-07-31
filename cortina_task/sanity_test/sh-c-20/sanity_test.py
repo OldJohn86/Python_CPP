@@ -157,6 +157,8 @@ def log_no_errors(target, child=''):
             no_error_tag = 'root@saturn-sfu-eng:~# '
         elif target == 'venus':
             no_error_tag = 'root@venus-eng:~# '
+        elif target == 'saturn2-sfu':
+            no_error_tag = 'root@saturn2-sfu-eng:~# '
         else:
             print("Target %s is vaild" % target)
         if no_error_tag in last_lines:
@@ -216,16 +218,13 @@ def download_img(obj, current_path, config, target, child=''):
     if not os.path.exists(local_path_abs):
         os.makedirs(local_path_abs)
     glb_local_path = local_path_abs
-    if target == 'g3' or target == 'g3hgu' or target == 'venus':
+    if target == 'g3' or target == 'g3hgu' or target == 'venus' or target == 'saturn2-sfu':
         target_path = path_info.get(target + '_path', None)
         local_backup_path_abs = os.path.join(local_path_abs, target)
         if target == 'g3hgu':
             img_rev_info = target + '-eng.major-image.R1.1-Release-' + y_m_d + '-rev.txt'
         else:
             img_rev_info = target + '-eng.major-image.' + y_m_d + '-rev.txt'
-#        if target == 'venus':
-#            log_file = y_m_d +'-'+ target + '-sanitytest-log_2.txt';
-#        else:
         log_file = y_m_d +'-'+ target + '-sanitytest-log.txt';
     elif target == 'saturn-sfu':
         local_backup_path_abs = os.path.join(local_path_abs, target +'_'+ child)
@@ -268,15 +267,10 @@ def download_img(obj, current_path, config, target, child=''):
                 remote_file = remote_path_abs + item
 #                print(remote_file)
                 local_backup_file = os.path.join(local_backup_path_abs, item)
-                if target != 'saturn-sfu':
-                    if item == 'uboot-env.bin':
-                        local_file = os.path.join(local_path_abs, target +'-'+ item)
-                    else:
-                        local_file = os.path.join(local_path_abs, item)
+                if item == 'uboot-env.bin':
+                    local_file = os.path.join(local_path_abs, target +'-'+ item)
                 else:
                     local_file = os.path.join(local_path_abs, item)
-#                if target != 'g3hgu':
-#                    print(local_file)
                 getattr(obj, "input")(local_file, remote_file)
                 getattr(obj, "get")()
                 time.sleep(1)
@@ -355,7 +349,6 @@ def do_telnet(config, target):
         activeport_set = tftpboot_info.get(target + '_activeport_set', None).encode('ascii')
         ipaddr_set = tftpboot_info.get(target + '_ipaddr_set', None).encode('ascii')
         serverip_set = tftpboot_info.get(target + '_serverip_set', None).encode('ascii')
-#        if target != 'venus' and target != 'g3':
         tftpboot_gpt = tftpboot_info.get(target + '_tftpboot_gpt', None).encode('ascii')
         upgrade_gpt = tftpboot_info.get(target + '_upgrade_gpt', None).encode('ascii')
         tftpboot_ubootenv = tftpboot_info.get(target + '_tftpboot_ubootenv', None).encode('ascii')
@@ -395,25 +388,30 @@ def do_telnet(config, target):
                         upgrade_image,
                         upgrade_image_2,
                         ]
-    elif target == 'saturn-sfu':
-        port = int(telnet_info.get('saturn_port', None))
-        activeport_set = tftpboot_info.get('saturn_activeport_set', None).encode('ascii')
-        ipaddr_set = tftpboot_info.get('saturn_ipaddr_set', None).encode('ascii')
-        serverip_set = tftpboot_info.get('saturn_serverip_set', None).encode('ascii')
-        tftpboot_gpt = tftpboot_info.get('saturn_tftpboot_gpt', None).encode('ascii')
-        upgrade_gpt = tftpboot_info.get('saturn_upgrade_gpt', None).encode('ascii')
-        tftpboot_ubootenv = tftpboot_info.get('saturn_tftpboot_ubootenv', None).encode('ascii')
-        upgrade_ubootenv = tftpboot_info.get('saturn_upgrade_ubootenv', None).encode('ascii')
-        tftpboot_dtb = tftpboot_info.get('saturn_tftpboot_dtb', None).encode('ascii')
-        upgrade_dtb = tftpboot_info.get('saturn_upgrade_dtb', None).encode('ascii')
-        tftpboot_image = tftpboot_info.get('saturn_tftpboot_image', None).encode('ascii')
-        upgrade_image = tftpboot_info.get('saturn_upgrade_image', None).encode('ascii')
-        tftpboot_rootfs = tftpboot_info.get('saturn_tftpboot_rootfs', None).encode('ascii')
-        upgrade_rootfs = tftpboot_info.get('saturn_upgrade_rootfs', None).encode('ascii')
-        tftpboot_userubi = tftpboot_info.get('saturn_tftpboot_userubi', None).encode('ascii')
-        upgrade_userubi = tftpboot_info.get('saturn_upgrade_userubi', None).encode('ascii')
+    elif target == 'saturn-sfu' or target == 'saturn2-sfu':
+        port = int(telnet_info.get(target + '_port', None))
+        activeport_set = tftpboot_info.get(target + '_activeport_set', None).encode('ascii')
+        ipaddr_set = tftpboot_info.get(target + '_ipaddr_set', None).encode('ascii')
+        serverip_set = tftpboot_info.get(target + '_serverip_set', None).encode('ascii')
+        tftpboot_gpt = tftpboot_info.get(target + '_tftpboot_gpt', None).encode('ascii')
+        upgrade_gpt = tftpboot_info.get(target + '_upgrade_gpt', None).encode('ascii')
+        tftpboot_ubootenv = tftpboot_info.get(target + '_tftpboot_ubootenv', None).encode('ascii')
+        upgrade_ubootenv = tftpboot_info.get(target + '_upgrade_ubootenv', None).encode('ascii')
+        tftpboot_dtb = tftpboot_info.get(target + '_tftpboot_dtb', None).encode('ascii')
+        upgrade_dtb = tftpboot_info.get(target + '_upgrade_dtb', None).encode('ascii')
+        tftpboot_image = tftpboot_info.get(target + '_tftpboot_image', None).encode('ascii')
+        upgrade_image = tftpboot_info.get(target + '_upgrade_image', None).encode('ascii')
+        tftpboot_rootfs = tftpboot_info.get(target + '_tftpboot_rootfs', None).encode('ascii')
+        upgrade_rootfs = tftpboot_info.get(target + '_upgrade_rootfs', None).encode('ascii')
+        tftpboot_userubi = tftpboot_info.get(target + '_tftpboot_userubi', None).encode('ascii')
+        upgrade_userubi = tftpboot_info.get(target + '_upgrade_userubi', None).encode('ascii')
         uboot_tag = b"SATURN# "
-        cmdline_tag = b"root@saturn-sfu-eng:~# "
+        if target == 'saturn-sfu':
+            cmdline_tag = b"root@saturn-sfu-eng:~# "
+        elif target == 'saturn2-sfu':
+            cmdline_tag = b"root@saturn2-sfu-eng:~# "
+        else:
+            print("ERROR: Input target[%s] is invalid!!" % target)
         written_ok = b"Written: OK"
         tftp_done = b"done"
         cmd_list = [tftpboot_gpt,
@@ -507,7 +505,7 @@ def do_telnet(config, target):
         log_str += (tn.read_until(written_ok))
     else:
         pass
-    if target =='saturn-sfu':
+    if target =='saturn-sfu' or 'saturn2-sfu':
         time.sleep(1)
 #        print(tftpboot_dtb)
         tn.write(tftpboot_dtb + b"\n")
@@ -589,7 +587,7 @@ def capture_log(current_path, config, target, child=''):
         os.makedirs(local_path_abs)
     else:
         pass
-    if target == 'g3' or target == 'g3hgu' or target == 'venus':
+    if target == 'g3' or target == 'g3hgu' or target == 'venus' or target == 'saturn2-sfu':
         log_file_path = local_path_abs + y_m_d +'-'+ target +'-sanitytest-log.txt'; 
     elif target == 'saturn-sfu':
         log_file_path = local_path_abs + y_m_d +'-'+ child +'-sanitytest-log.txt'; 
@@ -601,8 +599,8 @@ def capture_log(current_path, config, target, child=''):
     with open(log_file_path, 'w') as f:
         f.write(log)
 
-img_ok = {'g3':False, 'g3hgu':False, 'epon':False, 'gpon':False, 'venus':False}
-log_ok = {'g3':False, 'g3hgu':False, 'epon':False, 'gpon':False, 'venus':False}
+img_ok = {'g3':False, 'g3hgu':False, 'epon':False, 'gpon':False, 'venus':False, 'saturn2-sfu':False}
+log_ok = {'g3':False, 'g3hgu':False, 'epon':False, 'gpon':False, 'venus':False, 'saturn2-sfu':False}
 def main():
     current_path = sys.argv[0].rstrip('/sanity_test.py')
 #    print(current_path)
@@ -640,7 +638,7 @@ def main():
                             send_email(config, target, child)
                         else:
                             print("OKAY: %s_%s log file not checked errors" % (target, child))
-            else: #g3/g3hgu/venus
+            else: #g3/g3hgu/venus/saturn2-sfu
                 img_ok[target] = download_img(obj, current_path, config, target)
                 print("STATUS: %s img download is %s" % (target, img_ok[target]))
 #                print(target, img_ok[target])
@@ -666,7 +664,7 @@ def main():
                 time.sleep(1*60)
             else:
 #                print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 30 minutes")
-                time.sleep(10*60)
+                time.sleep(30*60)
     getattr(obj, "close")()
 
 if __name__ == "__main__":
