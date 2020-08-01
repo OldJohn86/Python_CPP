@@ -505,7 +505,7 @@ def do_telnet(config, target):
         log_str += (tn.read_until(written_ok))
     else:
         pass
-    if target =='saturn-sfu' or 'saturn2-sfu':
+    if target == 'saturn-sfu' or target == 'saturn2-sfu':
         time.sleep(1)
 #        print(tftpboot_dtb)
         tn.write(tftpboot_dtb + b"\n")
