@@ -552,7 +552,7 @@ def do_telnet(config, target):
     tn.write(b"cat /proc/iomem\n")
     time.sleep(1)
     tn.write(b"\r\n")
-    if target =='saturn-sfu':
+    if target =='saturn-sfu' or target == 'saturn2-sfu':
         tn.write(b"ifconfig eth0 192.168.1.12 up\r\n")
         time.sleep(1)
         tn.write(b"\r\n")
@@ -664,7 +664,7 @@ def main():
                 time.sleep(1*60)
             else:
 #                print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 30 minutes")
-                time.sleep(30*60)
+                time.sleep(10*60)
     getattr(obj, "close")()
 
 if __name__ == "__main__":
