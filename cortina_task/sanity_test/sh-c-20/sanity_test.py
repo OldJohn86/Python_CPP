@@ -140,7 +140,7 @@ def send_email(config, target, child=''):
     except smtplib.SMTPException as e:
         print("Email send failed", e)
 
-key_words = ['error', 'err', 'ERROR', 'failure', 'Unknown']
+key_words = ['error', 'err', 'ERROR', 'failure', 'failed with', 'Unknown', 'end trace']
 def log_no_errors(target, child=''):
     global glb_log_file
     if not os.path.exists(glb_log_file):
@@ -267,7 +267,7 @@ def download_img(obj, current_path, config, target, child=''):
                 remote_file = remote_path_abs + item
 #                print(remote_file)
                 local_backup_file = os.path.join(local_backup_path_abs, item)
-                if item == 'uboot-env.bin':
+                if item == 'uboot-env.bin' or item == 'uImage.lzma':
                     local_file = os.path.join(local_path_abs, target +'-'+ item)
                 else:
                     local_file = os.path.join(local_path_abs, item)
@@ -357,28 +357,44 @@ def do_telnet(config, target):
             upgrade_ubootenv_2 = tftpboot_info.get(target + '_upgrade_ubootenv_2', None).encode('ascii')
         tftpboot_image = tftpboot_info.get(target + '_tftpboot_image', None).encode('ascii')
         upgrade_image = tftpboot_info.get(target + '_upgrade_image', None).encode('ascii')
-        if target == 'venus':
+        if target == 'g3' or target == 'venus':
             upgrade_image_2 = tftpboot_info.get(target + '_upgrade_image_2', None).encode('ascii')
+        tftpboot_userubi = tftpboot_info.get(target + '_tftpboot_userubi', None).encode('ascii')
+        upgrade_userubi = tftpboot_info.get(target + '_upgrade_userubi', None).encode('ascii')
         if target == 'g3':
-            uboot_tag = b"G3# "
-            cmdline_tag = b"root@g3-eng:~# "
+            uboot_tag = b"G3#"
+            cmdline_tag = b"root@g3-eng:~#"
         elif target == 'g3hgu':
-            uboot_tag = b"G3# "
-            cmdline_tag = b"root@g3hgu-eng:~# "
+            uboot_tag = b"G3#"
+            cmdline_tag = b"root@g3hgu-eng:~#"
         elif target == 'venus':
-            uboot_tag = b"VENUS# "
-            cmdline_tag = b"root@venus-eng:~# "
+            uboot_tag = b"VENUS#"
+            cmdline_tag = b"root@venus-eng:~#"
         else:
             pass
         written_ok = b"written: OK"
         tftp_done = b"done"
-        if target != 'venus':
+        if target == 'g3':
             cmd_list = [tftpboot_ubootenv,
                         upgrade_ubootenv,
                         tftpboot_image,
                         upgrade_image,
+                        upgrade_image_2,
+                        tftpboot_userubi,
+                        upgrade_userubi
                         ]
-        else:
+        elif target == 'g3hgu':
+            cmd_list = [tftpboot_gpt,
+                        upgrade_gpt,
+                        tftpboot_ubootenv,
+                        upgrade_ubootenv,
+                        tftpboot_image,
+                        upgrade_image,
+                        tftpboot_userubi,
+                        upgrade_userubi
+                        ]
+        elif target == 'venus':
+            tftp_done = b"Bytes transferred ="
             cmd_list = [tftpboot_gpt,
                         upgrade_gpt,
                         tftpboot_ubootenv,
@@ -387,7 +403,11 @@ def do_telnet(config, target):
                         tftpboot_image,
                         upgrade_image,
                         upgrade_image_2,
+                        tftpboot_userubi,
+                        upgrade_userubi
                         ]
+        else:
+            pass
     elif target == 'saturn-sfu' or target == 'saturn2-sfu':
         port = int(telnet_info.get(target + '_port', None))
         activeport_set = tftpboot_info.get(target + '_activeport_set', None).encode('ascii')
@@ -405,11 +425,11 @@ def do_telnet(config, target):
         upgrade_rootfs = tftpboot_info.get(target + '_upgrade_rootfs', None).encode('ascii')
         tftpboot_userubi = tftpboot_info.get(target + '_tftpboot_userubi', None).encode('ascii')
         upgrade_userubi = tftpboot_info.get(target + '_upgrade_userubi', None).encode('ascii')
-        uboot_tag = b"SATURN# "
+        uboot_tag = b"SATURN#"
         if target == 'saturn-sfu':
-            cmdline_tag = b"root@saturn-sfu-eng:~# "
+            cmdline_tag = b"root@saturn-sfu-eng:~#"
         elif target == 'saturn2-sfu':
-            cmdline_tag = b"root@saturn2-sfu-eng:~# "
+            cmdline_tag = b"root@saturn2-sfu-eng:~#"
         else:
             print("ERROR: Input target[%s] is invalid!!" % target)
         written_ok = b"Written: OK"
@@ -441,7 +461,7 @@ def do_telnet(config, target):
     tn = telnetlib.Telnet(host, port, timeout=50)
     tn.write(b"\r\n")
     time.sleep(1)
-    tn.write(b"root\n")
+    tn.write(b"root\r\n")
     time.sleep(1)
     i, tag, read_all = tn.expect([uboot_tag, cmdline_tag])
 #    print(tag)
@@ -467,22 +487,26 @@ def do_telnet(config, target):
     tn.read_until(b"Hit any key to stop autoboot: ")
     tn.write(b"\n")
     time.sleep(1)
+#    print(uboot_tag)
     log_str = tn.read_until(uboot_tag)
     time.sleep(1)
     if target == 'g3':
         pass
     else:
-#    print(tftpboot_gpt)
+#        print(tftpboot_gpt)
         tn.write(tftpboot_gpt + b"\n")
+        time.sleep(1)
+#        print(tftp_done)
         log_str += (tn.read_until(tftp_done))
         time.sleep(1)
-#    print(upgrade_gpt)
+#        print(upgrade_gpt)
         tn.write(upgrade_gpt + b"\n")
+        time.sleep(1)
+#        print(written_ok)
         log_str += (tn.read_until(written_ok))
         time.sleep(1)
 #    print(tftpboot_ubootenv)
     tn.write(tftpboot_ubootenv + b"\n")
-#    time.sleep(1)
     log_str += (tn.read_until(tftp_done))
     time.sleep(1)
 #    print(upgrade_ubootenv)
@@ -500,7 +524,8 @@ def do_telnet(config, target):
 #    print(upgrade_image)
     tn.write(upgrade_image + b"\n")
     log_str += (tn.read_until(written_ok))
-    if target == 'venus':
+    if target == 'g3' or target == 'venus':
+        time.sleep(1)
         tn.write(upgrade_image_2 + b"\n")
         log_str += (tn.read_until(written_ok))
     else:
@@ -522,16 +547,16 @@ def do_telnet(config, target):
 #        print(upgrade_rootfs)
         tn.write(upgrade_rootfs + b"\n")
         log_str += (tn.read_until(written_ok))
-        time.sleep(1)
-#        print(tftpboot_userubi)
-        tn.write(tftpboot_userubi + b"\n")
-        log_str += (tn.read_until(tftp_done))
-        time.sleep(1)
-#        print(upgrade_userubi)
-        tn.write(upgrade_userubi + b"\n")
-        log_str += (tn.read_until(written_ok))
     else:
         pass
+    time.sleep(1)
+#    print(tftpboot_userubi)
+    tn.write(tftpboot_userubi + b"\n")
+    log_str += (tn.read_until(tftp_done))
+    time.sleep(1)
+#    print(upgrade_userubi)
+    tn.write(upgrade_userubi + b"\n")
+    log_str += (tn.read_until(written_ok))
     time.sleep(1)
     tn.write(reset_set + b"\r\n")
     time.sleep(100)
@@ -661,7 +686,7 @@ def main():
 #            print(result_list)
             if True in result_list:
 #                print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 5 minutes")
-                time.sleep(1*60)
+                time.sleep(10*6)
             else:
 #                print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 30 minutes")
                 time.sleep(10*60)
