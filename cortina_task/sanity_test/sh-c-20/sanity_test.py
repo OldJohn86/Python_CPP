@@ -7,10 +7,12 @@ Date: 2018-01-01
 import os
 import sys
 import time
+import argparse
 import paramiko
 import telnetlib
 import getpass
 import smtplib
+import datetime
 from datetime import date
 from configparser import ConfigParser
 from email import encoders
@@ -22,6 +24,14 @@ glb_log_file = ""
 glb_img_rev_file = ""
 glb_cmd_file = ""
 glb_local_path = ""
+glb_nday = 0
+glb_redo = 0
+
+def getlastday(n):
+    today = datetime.date.today()
+    nday = datetime.timedelta(days=n)
+    lastday = today - nday
+    return lastday.strftime('%Y-%m-%d')
 
 def read_ini(config, option):
     info = dict()
@@ -73,7 +83,8 @@ def send_email(config, target, child=''):
     global glb_img_rev_file
     global glb_upgrade_cmds
 #    print(glb_img_rev_file)
-    y_m_d = date.today().strftime('%Y-%m-%d')
+#    y_m_d = date.today().strftime('%Y-%m-%d')
+    y_m_d = getlastday(glb_nday)
     y_m = date.today().strftime('%Y-%m')
     mail_info = read_ini(config, 'mail')
     mail_user = str(mail_info.get('user', None))
@@ -210,7 +221,9 @@ class SftpTool(object):
 def download_img(obj, current_path, config, target, child=''):
     global glb_img_rev_file
     global glb_local_path
-    y_m_d = date.today().strftime('%Y-%m-%d')
+    global glb_redo
+#    y_m_d = date.today().strftime('%Y-%m-%d')
+    y_m_d = getlastday(glb_nday)
     y_m = date.today().strftime('%Y-%m')
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
@@ -241,7 +254,8 @@ def download_img(obj, current_path, config, target, child=''):
 #    print(return_items)
     if log_file in return_items:
         print("%s HAD put on the server already!!!" % log_file)
-        return False
+        if glb_redo == 0:
+            return False
     old_file_list = os.listdir(local_path_abs)
     for item in old_file_list:
         if not os.path.isdir(local_path_abs + item):
@@ -294,7 +308,8 @@ def download_img(obj, current_path, config, target, child=''):
 
 def upload_log(obj, current_path, config, target, child=''):
     global glb_log_file
-    y_m_d = date.today().strftime('%Y-%m-%d')
+#    y_m_d = date.today().strftime('%Y-%m-%d')
+    y_m_d = getlastday(glb_nday)
     y_m = date.today().strftime('%Y-%m')
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
@@ -337,7 +352,8 @@ def upload_log(obj, current_path, config, target, child=''):
             pass
 
 def do_telnet(config, target):
-    y_m_d = date.today().strftime('%Y-%m-%d')
+#    y_m_d = date.today().strftime('%Y-%m-%d')
+    y_m_d = getlastday(glb_nday)
     global glb_cmd_file
     telnet_info = read_ini(config, 'telnet')
     host = telnet_info.get('host', None)
@@ -603,7 +619,8 @@ def do_telnet(config, target):
     return (str(log_str.decode('utf-8', errors='ignore')))
 
 def capture_log(current_path, config, target, child=''):
-    y_m_d = date.today().strftime('%Y-%m-%d')
+#    y_m_d = date.today().strftime('%Y-%m-%d')
+    y_m_d = getlastday(glb_nday)
     y_m = date.today().strftime('%Y-%m')
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
@@ -627,6 +644,17 @@ def capture_log(current_path, config, target, child=''):
 img_ok = {'g3':False, 'g3hgu':False, 'epon':False, 'gpon':False, 'venus':False, 'saturn2-sfu':False}
 log_ok = {'g3':False, 'g3hgu':False, 'epon':False, 'gpon':False, 'venus':False, 'saturn2-sfu':False}
 def main():
+    global glb_nday
+    global glb_dbg
+    parser = argparse.ArgumentParser(description='set ndays (1, 2, 3, 4 ...)')
+    parser.add_argument('--ndays', type=int, default=0)
+    parser.add_argument('--delay', type=int, default=10)
+    parser.add_argument('--redo', type=int, default=0)
+    args = parser.parse_args()
+    glb_nday = args.ndays
+    glb_redo = args.redo
+    delay = args.delay
+    print(getlastday(glb_nday))
     current_path = sys.argv[0].rstrip('/sanity_test.py')
 #    print(current_path)
     config = os.path.join(current_path, 'config/dailybuild_server_config.ini')
@@ -686,10 +714,10 @@ def main():
 #            print(result_list)
             if True in result_list:
 #                print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 5 minutes")
-                time.sleep(10*6)
+                time.sleep(delay*6)
             else:
 #                print("DELAY: g3/epon/gpon/g3hgu/venus sanity test process sleep 30 minutes")
-                time.sleep(10*60)
+                time.sleep(delay*60)
     getattr(obj, "close")()
 
 if __name__ == "__main__":
