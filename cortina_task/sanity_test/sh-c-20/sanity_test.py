@@ -466,6 +466,7 @@ def do_telnet(config, target):
     else:
         print("ERROR: Input target[%s] is invalid!!" % target)
 #    print(cmd_list)
+    cortina_tag = b"Cortina"
     glb_cmd_file = glb_local_path + y_m_d +'-'+ target + "-cmd_list.txt"
     run_cmds = [str(i.decode('ascii')) for i in cmd_list]
 #    print('\r\n'.join(run_cmds))
@@ -479,13 +480,20 @@ def do_telnet(config, target):
     time.sleep(1)
     tn.write(b"root\r\n")
     time.sleep(1)
-    i, tag, read_all = tn.expect([uboot_tag, cmdline_tag])
+    i, tag, read_all = tn.expect([uboot_tag, cmdline_tag, cortina_tag])
 #    print(tag)
     if i == 0:
         time.sleep(1)
         tn.write(b"reset\n")
     elif i == 1:
         time.sleep(1)
+        tn.write(b"\r\n")
+        time.sleep(1)
+        tn.write(b"reboot\n")
+    elif i == 2:
+        time.sleep(1)
+        tn.write(b"logout\n")
+        print("11111111111111")
         tn.write(b"\r\n")
         time.sleep(1)
         tn.write(b"reboot\n")
@@ -574,6 +582,10 @@ def do_telnet(config, target):
     tn.write(upgrade_userubi + b"\n")
     log_str += (tn.read_until(written_ok))
     time.sleep(1)
+    tn.write(activeport_set + b"\r\n")
+    tn.write(serverip_set + b"\r\n")
+    tn.write(ipaddr_set + b"\r\n")
+    tn.write(saveenv_set + b"\r\n")
     tn.write(reset_set + b"\r\n")
     time.sleep(100)
     tn.write(b"root\n")
