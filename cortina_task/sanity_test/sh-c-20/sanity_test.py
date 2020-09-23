@@ -83,8 +83,8 @@ def send_email(config, target, child=''):
     global glb_img_rev_file
     global glb_upgrade_cmds
 #    print(glb_img_rev_file)
-#    y_m_d = date.today().strftime('%Y-%m-%d')
-    y_m_d = getlastday(glb_nday)
+    y_m_d = date.today().strftime('%Y-%m-%d')
+#    y_m_d = getlastday(glb_nday)
     y_m = date.today().strftime('%Y-%m')
     mail_info = read_ini(config, 'mail')
     mail_user = str(mail_info.get('user', None))
@@ -222,8 +222,8 @@ def download_img(obj, current_path, config, target, child=''):
     global glb_img_rev_file
     global glb_local_path
     global glb_redo
-#    y_m_d = date.today().strftime('%Y-%m-%d')
-    y_m_d = getlastday(glb_nday)
+    y_m_d = date.today().strftime('%Y-%m-%d')
+#    y_m_d = getlastday(glb_nday)
     y_m = date.today().strftime('%Y-%m')
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
@@ -308,8 +308,8 @@ def download_img(obj, current_path, config, target, child=''):
 
 def upload_log(obj, current_path, config, target, child=''):
     global glb_log_file
-#    y_m_d = date.today().strftime('%Y-%m-%d')
-    y_m_d = getlastday(glb_nday)
+    y_m_d = date.today().strftime('%Y-%m-%d')
+#    y_m_d = getlastday(glb_nday)
     y_m = date.today().strftime('%Y-%m')
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
@@ -352,8 +352,8 @@ def upload_log(obj, current_path, config, target, child=''):
             pass
 
 def do_telnet(config, target):
-#    y_m_d = date.today().strftime('%Y-%m-%d')
-    y_m_d = getlastday(glb_nday)
+    y_m_d = date.today().strftime('%Y-%m-%d')
+#    y_m_d = getlastday(glb_nday)
     global glb_cmd_file
     telnet_info = read_ini(config, 'telnet')
     host = telnet_info.get('host', None)
@@ -441,14 +441,16 @@ def do_telnet(config, target):
         upgrade_rootfs = tftpboot_info.get(target + '_upgrade_rootfs', None).encode('ascii')
         tftpboot_userubi = tftpboot_info.get(target + '_tftpboot_userubi', None).encode('ascii')
         upgrade_userubi = tftpboot_info.get(target + '_upgrade_userubi', None).encode('ascii')
-        uboot_tag = b"SATURN#"
         if target == 'saturn-sfu':
+            uboot_tag = b"SATURN#"
             cmdline_tag = b"root@saturn-sfu-eng:~#"
+            written_ok = b"Written: OK"
         elif target == 'saturn2-sfu':
+            uboot_tag = b"SATURN2#"
             cmdline_tag = b"root@saturn2-sfu-eng:~#"
+            written_ok = b"Writing "
         else:
             print("ERROR: Input target[%s] is invalid!!" % target)
-        written_ok = b"Written: OK"
         tftp_done = b"done"
         cmd_list = [tftpboot_gpt,
                     upgrade_gpt,
@@ -493,7 +495,6 @@ def do_telnet(config, target):
     elif i == 2:
         time.sleep(1)
         tn.write(b"logout\n")
-        print("11111111111111")
         tn.write(b"\r\n")
         time.sleep(1)
         tn.write(b"reboot\n")
@@ -513,75 +514,75 @@ def do_telnet(config, target):
     time.sleep(1)
 #    print(uboot_tag)
     log_str = tn.read_until(uboot_tag)
-    time.sleep(1)
+    time.sleep(2)
     if target == 'g3':
         pass
     else:
 #        print(tftpboot_gpt)
         tn.write(tftpboot_gpt + b"\n")
-        time.sleep(1)
+        time.sleep(2)
 #        print(tftp_done)
         log_str += (tn.read_until(tftp_done))
-        time.sleep(1)
+        time.sleep(2)
 #        print(upgrade_gpt)
         tn.write(upgrade_gpt + b"\n")
-        time.sleep(1)
+        time.sleep(2)
 #        print(written_ok)
         log_str += (tn.read_until(written_ok))
-        time.sleep(1)
+        time.sleep(2)
 #    print(tftpboot_ubootenv)
     tn.write(tftpboot_ubootenv + b"\n")
     log_str += (tn.read_until(tftp_done))
-    time.sleep(1)
+    time.sleep(2)
 #    print(upgrade_ubootenv)
     tn.write(upgrade_ubootenv + b"\n")
     log_str += (tn.read_until(written_ok))
-    time.sleep(1)
+    time.sleep(2)
     if target == 'venus':
         tn.write(upgrade_ubootenv_2 + b"\n")
         log_str += (tn.read_until(written_ok))
-        time.sleep(1)
+        time.sleep(2)
 #    print(tftpboot_image)
     tn.write(tftpboot_image + b"\n")
     log_str += (tn.read_until(tftp_done))
-    time.sleep(1)
+    time.sleep(2)
 #    print(upgrade_image)
     tn.write(upgrade_image + b"\n")
     log_str += (tn.read_until(written_ok))
     if target == 'g3' or target == 'venus':
-        time.sleep(1)
+        time.sleep(2)
         tn.write(upgrade_image_2 + b"\n")
         log_str += (tn.read_until(written_ok))
     else:
         pass
     if target == 'saturn-sfu' or target == 'saturn2-sfu':
-        time.sleep(1)
+        time.sleep(2)
 #        print(tftpboot_dtb)
         tn.write(tftpboot_dtb + b"\n")
         log_str += (tn.read_until(tftp_done))
-        time.sleep(1)
+        time.sleep(2)
 #        print(upgrade_dtb)
         tn.write(upgrade_dtb + b"\n")
         log_str += (tn.read_until(written_ok))
-        time.sleep(1)
+        time.sleep(2)
 #        print(tftpboot_rootfs)
         tn.write(tftpboot_rootfs + b"\n")
         log_str += (tn.read_until(tftp_done))
-        time.sleep(1)
+        time.sleep(2)
 #        print(upgrade_rootfs)
         tn.write(upgrade_rootfs + b"\n")
         log_str += (tn.read_until(written_ok))
     else:
         pass
-    time.sleep(1)
-#    print(tftpboot_userubi)
+    print(tftpboot_userubi)
+    time.sleep(15)
     tn.write(tftpboot_userubi + b"\n")
     log_str += (tn.read_until(tftp_done))
-    time.sleep(1)
+    time.sleep(2)
 #    print(upgrade_userubi)
     tn.write(upgrade_userubi + b"\n")
     log_str += (tn.read_until(written_ok))
-    time.sleep(1)
+    time.sleep(2)
     tn.write(activeport_set + b"\r\n")
     tn.write(serverip_set + b"\r\n")
     tn.write(ipaddr_set + b"\r\n")
@@ -631,8 +632,8 @@ def do_telnet(config, target):
     return (str(log_str.decode('utf-8', errors='ignore')))
 
 def capture_log(current_path, config, target, child=''):
-#    y_m_d = date.today().strftime('%Y-%m-%d')
-    y_m_d = getlastday(glb_nday)
+    y_m_d = date.today().strftime('%Y-%m-%d')
+#    y_m_d = getlastday(glb_nday)
     y_m = date.today().strftime('%Y-%m')
     path_info = read_ini(config, 'path')
     local_path = path_info.get('local_path', None)
@@ -657,7 +658,7 @@ img_ok = {'g3':False, 'g3hgu':False, 'epon':False, 'gpon':False, 'venus':False, 
 log_ok = {'g3':False, 'g3hgu':False, 'epon':False, 'gpon':False, 'venus':False, 'saturn2-sfu':False}
 def main():
     global glb_nday
-    global glb_dbg
+    global glb_redo
     parser = argparse.ArgumentParser(description='set ndays (1, 2, 3, 4 ...)')
     parser.add_argument('--ndays', type=int, default=0)
     parser.add_argument('--delay', type=int, default=10)
