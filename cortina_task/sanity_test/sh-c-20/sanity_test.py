@@ -433,6 +433,8 @@ def do_telnet(config, target):
         upgrade_gpt = tftpboot_info.get(target + '_upgrade_gpt', None).encode('ascii')
         tftpboot_ubootenv = tftpboot_info.get(target + '_tftpboot_ubootenv', None).encode('ascii')
         upgrade_ubootenv = tftpboot_info.get(target + '_upgrade_ubootenv', None).encode('ascii')
+        if target == 'saturn2-sfu':
+            upgrade_ubootenv_2 = tftpboot_info.get(target + '_upgrade_ubootenv_2', None).encode('ascii')
         tftpboot_dtb = tftpboot_info.get(target + '_tftpboot_dtb', None).encode('ascii')
         upgrade_dtb = tftpboot_info.get(target + '_upgrade_dtb', None).encode('ascii')
         tftpboot_image = tftpboot_info.get(target + '_tftpboot_image', None).encode('ascii')
@@ -445,26 +447,40 @@ def do_telnet(config, target):
             uboot_tag = b"SATURN#"
             cmdline_tag = b"root@saturn-sfu-eng:~#"
             written_ok = b"Written: OK"
+            cmd_list = [tftpboot_gpt,
+                upgrade_gpt,
+                tftpboot_ubootenv,
+                upgrade_ubootenv,
+                tftpboot_dtb,
+                upgrade_dtb,
+                tftpboot_image,
+                upgrade_image,
+                tftpboot_rootfs,
+                upgrade_rootfs,
+                tftpboot_userubi,
+                upgrade_userubi
+                ]
         elif target == 'saturn2-sfu':
             uboot_tag = b"SATURN2#"
             cmdline_tag = b"root@saturn2-sfu-eng:~#"
             written_ok = b"Writing "
+            cmd_list = [tftpboot_gpt,
+                upgrade_gpt,
+                tftpboot_ubootenv,
+                upgrade_ubootenv,
+                upgrade_ubootenv_2,
+                tftpboot_dtb,
+                upgrade_dtb,
+                tftpboot_image,
+                upgrade_image,
+                tftpboot_rootfs,
+                upgrade_rootfs,
+                tftpboot_userubi,
+                upgrade_userubi
+                ]
         else:
             print("ERROR: Input target[%s] is invalid!!" % target)
         tftp_done = b"done"
-        cmd_list = [tftpboot_gpt,
-                    upgrade_gpt,
-                    tftpboot_ubootenv,
-                    upgrade_ubootenv,
-                    tftpboot_dtb,
-                    upgrade_dtb,
-                    tftpboot_image,
-                    upgrade_image,
-                    tftpboot_rootfs,
-                    upgrade_rootfs,
-                    tftpboot_userubi,
-                    upgrade_userubi
-                    ]
     else:
         print("ERROR: Input target[%s] is invalid!!" % target)
 #    print(cmd_list)
@@ -538,7 +554,7 @@ def do_telnet(config, target):
     tn.write(upgrade_ubootenv + b"\n")
     log_str += (tn.read_until(written_ok))
     time.sleep(2)
-    if target == 'venus':
+    if target == 'venus' or target == 'saturn2-sfu':
         tn.write(upgrade_ubootenv_2 + b"\n")
         log_str += (tn.read_until(written_ok))
         time.sleep(2)
@@ -588,7 +604,7 @@ def do_telnet(config, target):
     tn.write(ipaddr_set + b"\r\n")
     tn.write(saveenv_set + b"\r\n")
     tn.write(reset_set + b"\r\n")
-    time.sleep(100)
+    time.sleep(200)
     tn.write(b"root\n")
     time.sleep(1)
     tn.write(b"\r\n")
@@ -667,7 +683,7 @@ def main():
     glb_nday = args.ndays
     glb_redo = args.redo
     delay = args.delay
-    print(getlastday(glb_nday))
+#    print(getlastday(glb_nday))
     current_path = sys.argv[0].rstrip('/sanity_test.py')
 #    print(current_path)
     config = os.path.join(current_path, 'config/dailybuild_server_config.ini')
