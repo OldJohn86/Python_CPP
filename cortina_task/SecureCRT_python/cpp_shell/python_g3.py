@@ -25,6 +25,13 @@ crt.Screen.IgnoreCase = True
 # nand erase 0x500000 0xD000000
 # nand write 0x05000000 0x500000 $filesize 
 
+#tftpboot 0x05000000 major-image-g3-eng.mubi;
+#nand erase 0x00500000 0x0D000000; nand write 0x05000000 0x00500000 0x${filesize};
+#nand erase 0x0D500000 0x0D000000; nand write 0x05000000 0x0D500000 0x${filesize};
+#tftpboot 0x05000000 major-image-g3-eng_user.ubi;
+#nand erase 0x1a500000 0x05800000; nand write 0x05000000 0x1a500000 0x${filesize};
+
+
 # For G3 sanity test dailybuild
 def main():
 	crt.Screen.Send("\r\nreboot\r\n")
@@ -37,8 +44,8 @@ def main():
 
 	# Setenv
 	crt.Screen.Send("setenv active_port 1;\r\n")
-	crt.Screen.Send("setenv serverip 192.168.1.1;\r\n")
-	crt.Screen.Send("setenv ipaddr 192.168.1.2;\r\n")
+	crt.Screen.Send("setenv serverip 192.168.1.128;\r\n")
+	crt.Screen.Send("setenv ipaddr 192.168.1.12;\r\n")
 	crt.Screen.Send("saveenv;\r\n")
 	crt.Screen.Send("reset\r\n")
 
@@ -48,25 +55,31 @@ def main():
 		crt.Dialog.MessageBox("Waiting <Hit any key> Timed out!")
 
 	# Upgrade gpt
-	if crt.Screen.WaitForStrings("G3#") == 1:
-		crt.Screen.Send("tftpboot 0x84100000 g3-gpt-nandinfo.img;")
-		crt.Screen.Send("nand erase 0x0 0x400000; nand write 0x84100000 0x0 0x300000;\r\n")
-	else:
-		crt.Dialog.MessageBox("Upgrade gpt Timed out!")
+	# if crt.Screen.WaitForStrings("G3#") == 1:
+		# crt.Screen.Send("tftpboot 0x84100000 g3-gpt-nandinfo.img;")
+		# crt.Screen.Send("nand erase 0x0 0x400000; nand write 0x84100000 0x0 0x300000;\r\n")
+	# else:
+		# crt.Dialog.MessageBox("Upgrade gpt Timed out!")
 
 	# Upgrade uboot-env
-	if crt.Screen.WaitForStrings("written: OK") == 1:
-		crt.Screen.Send("tftpboot 0x84000000 g3-uboot-env.bin;")
-		crt.Screen.Send("nand erase 0x400000 0x100000; nand write 0x84000000 0x400000 0x20000;\r\n")
-	else:
-		crt.Dialog.MessageBox("Upgrade uboot-env Timed out!")
+	# if crt.Screen.WaitForStrings("written: OK") == 1:
+		# crt.Screen.Send("tftpboot 0x84000000 g3-uboot-env.bin;")
+		# crt.Screen.Send("nand erase 0x400000 0x100000; nand write 0x84000000 0x400000 0x20000;\r\n")
+	# else:
+		# crt.Dialog.MessageBox("Upgrade uboot-env Timed out!")
 
 	# Upgrade kernel
-	# if crt.Screen.WaitForStrings("written: OK") == 1:
-		# crt.Screen.Send("tftpboot 0x85000000 g3-rootfs.mubi;")
-		# crt.Screen.Send("nand erase 0x500000 0xD000000; nand write 0x85000000 0x500000 0x${filesize};\r\n")
-	# else:
-		# crt.Dialog.MessageBox("Upgrade kernel Timed out!")
+	if crt.Screen.WaitForStrings("G3#") == 1:
+		crt.Screen.Send("tftpboot 0x05000000 major-image-g3-eng.mubi;")
+		crt.Screen.Send("nand erase 0x00500000 0x0D000000; nand write 0x05000000 0x00500000 0x${filesize};\r\n")
+	else:
+		crt.Dialog.MessageBox("Upgrade kernel Timed out!")
+
+	# Upgrade kernel
+	if crt.Screen.WaitForStrings("written: OK") == 1:
+		crt.Screen.Send("nand erase 0x0D500000 0x0D000000; nand write 0x05000000 0x0D500000 0x${filesize};\r\n")
+	else:
+		crt.Dialog.MessageBox("Upgrade kernel Timed out!")
 
 	# Reset target when upgraded success this time
 	if crt.Screen.WaitForStrings("written: OK") == 1:

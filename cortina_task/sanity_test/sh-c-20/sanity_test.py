@@ -391,7 +391,9 @@ def do_telnet(config, target):
         written_ok = b"written: OK"
         tftp_done = b"done"
         if target == 'g3':
-            cmd_list = [tftpboot_ubootenv,
+            cmd_list = [tftpboot_gpt,
+                        upgrade_gpt,
+                        tftpboot_ubootenv,
                         upgrade_ubootenv,
                         tftpboot_image,
                         upgrade_image,

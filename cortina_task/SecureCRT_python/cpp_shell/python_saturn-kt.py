@@ -53,14 +53,14 @@ def main():
 		
 	# Upgrade gpt
 	# if crt.Screen.WaitForStrings("SATURN#") == 1:
-		# crt.Screen.Send("tftpboot 0x84100000 saturn_sfu_eng_epon-gpt.img;")
+		# crt.Screen.Send("tftpboot 0x84100000 major-image-saturn-sfu-eng-kt-gpt.img;")
 		# crt.Screen.Send("spi_nand erase 0x0 0x400000; spi_nand write 0x84100000 0x0 0x300000;\r\n")
 	# else:
 		# crt.Dialog.MessageBox("Upgrade gpt Timed out!")
 
 	# Upgrade uboot-env
 	# if crt.Screen.WaitForStrings("Written: OK") == 1:
-		# crt.Screen.Send("tftpboot 0x84000000 saturn_sfu_eng_epon-uboot-env.bin;")
+		# crt.Screen.Send("tftpboot 0x84000000 uboot-env.bin;")
 		# crt.Screen.Send("spi_nand erase 0x400000 0x100000; spi_nand write 0x84000000 0x400000 0x20000;\r\n")
 	# else:
 		# crt.Dialog.MessageBox("Upgrade uboot-env Timed out!")
@@ -94,10 +94,10 @@ def main():
 #		crt.Dialog.MessageBox("Upgrade user.ubi Timed out!")
 
 	# Reset target when upgraded success this time
-	if crt.Screen.WaitForStrings("Written: OK") == 1:
-		crt.Screen.Send("reset\r\n")
-	else:
-		crt.Dialog.MessageBox("Total Upgrade Images Timed out!")
+	# if crt.Screen.WaitForStrings("Written: OK") == 1:
+		# crt.Screen.Send("reset\r\n")
+	# else:
+		# crt.Dialog.MessageBox("Total Upgrade Images Timed out!")
 
 	# if crt.Screen.WaitForStrings("saturn-sfu-eng login:") == 1:
 		# crt.Screen.Send("\r\nroot\r\n")

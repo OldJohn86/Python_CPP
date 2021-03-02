@@ -44,7 +44,7 @@ def main():
 
 	# Setenv
 	crt.Screen.Send("setenv active_port 4;\r\n")
-	crt.Screen.Send("setenv serverip 192.168.1.130;\r\n")
+	crt.Screen.Send("setenv serverip 192.168.1.128;\r\n")
 	crt.Screen.Send("setenv ipaddr 192.168.1.5;\r\n")
 	crt.Screen.Send("saveenv;\r\n")
 	crt.Screen.Send("reset\r\n")

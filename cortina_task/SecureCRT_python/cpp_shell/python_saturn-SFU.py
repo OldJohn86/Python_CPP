@@ -64,13 +64,13 @@ def main():
 	# Upgrade kernel
 	if crt.Screen.WaitForStrings("SATURN#") == 1:
 		crt.Screen.Send("tftpboot 0x85100000 uImage;")
-		crt.Screen.Send("spi_nand erase 0x600000 0x600000; spi_nand write 0x85100000 0x600000 0x500000;\r\n")
+		crt.Screen.Send("spi_nand erase 0x600000 0x600000; spi_nand write 0x85100000 0x600000 ${filesize};\r\n")
 	else:
 		crt.Dialog.MessageBox("Upgrade kernel Timed out!")
 
 	# Upgrade dtb
 	if crt.Screen.WaitForStrings("Written: OK") == 1:
-		crt.Screen.Send("tftpboot 0x85000000 uImage-saturn_sfu.dtb;")
+		crt.Screen.Send("tftpboot 0x85000000 saturn_sfu.dtb;")
 		crt.Screen.Send("spi_nand erase 0x500000 0x100000; spi_nand write 0x85000000 0x500000 0x20000;\r\n")
 	else:
 		crt.Dialog.MessageBox("Upgrade dtb Timed out!")
@@ -83,11 +83,11 @@ def main():
 		crt.Dialog.MessageBox("Upgrade rootfs Timed out!")
 
 	# Upgrade user.ubi
-	# if crt.Screen.WaitForStrings("Written: OK") == 1:
-		# crt.Screen.Send("tftpboot 0x87000000 major-image-saturn-sfu-eng_user.ubi;")
-		# crt.Screen.Send("spi_nand erase 0x6300000 0x1400000; spi_nand write 0x87000000 0x6300000 ${filesize};\r\n")
-	# else:
-		# crt.Dialog.MessageBox("Upgrade user.ubi Timed out!")
+	if crt.Screen.WaitForStrings("Written: OK") == 1:
+		crt.Screen.Send("tftpboot 0x87000000 major-image-saturn-sfu-eng_user.ubi;")
+		crt.Screen.Send("spi_nand erase 0x6300000 0x1400000; spi_nand write 0x87000000 0x6300000 ${filesize};\r\n")
+	else:
+		crt.Dialog.MessageBox("Upgrade user.ubi Timed out!")
 
 	# Reset target when upgraded success this time
 	if crt.Screen.WaitForStrings("Written: OK", 180) == 1:
