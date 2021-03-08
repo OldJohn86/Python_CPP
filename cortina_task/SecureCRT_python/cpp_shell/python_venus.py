@@ -13,7 +13,6 @@ crt.Screen.Clear()
 crt.Screen.Synchronous = True
 crt.Screen.IgnoreCase = True
 
-
 # tftpboot 0x05000000 gpt-nandinfo.img
 # nand erase 0x0 0x00400000
 # nand write 0x05000000 0x0 0x00300000
@@ -25,14 +24,14 @@ crt.Screen.IgnoreCase = True
 # tftpboot 0x05000000 rootfs.mubi 
 # ... Bytes transferred = 72876032 (4800000 hex)
 # nand erase 0x00600000 0x0D000000
-# nand write 0x05000000 0x00600000 $filesize 
+# nand write 0x05000000 0x00600000 ${filesize}
 # nand erase 0x0D600000 0x0D000000            <--- Optional
-# nand write 0x05000000 0x0D600000 $filesize  <--- Optional
-# tftpboot 0x05000000 user.ubi                
-# nand erase 0x1a600000 0x5800000 
+# nand write 0x05000000 0x0D600000 ${filesize}<--- Optional
+# tftpboot 0x05000000 user.ubi                <--- Optional
+# nand erase 0x1a600000 0x5800000             
 # nand write 0x05000000 0x1a600000 ${filesize}
 
-# For G3 sanity test dailybuild
+
 def main():
 	crt.Screen.Send("reboot\r\n")
 	crt.Screen.Send("reset\r\n")
